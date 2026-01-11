@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>곽동현 학습 보고서 - 2026년 01월</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #1e3a5f;
+            color: white;
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        section {
+            margin: 25px;
+            padding: 25px;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+        }
+
+        section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .basic-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .info-item {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .info-item label {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .info-item value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .kpi-card.attendance {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .kpi-card.absent {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .kpi-card.score {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+
+        .kpi-card .value {
+            font-size: 36px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .kpi-card .label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .comment-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid;
+        }
+
+        .comment-box.positive {
+            background-color: #ecfdf5;
+            border-left-color: #10b981;
+        }
+
+        .comment-box.improvement {
+            background-color: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+
+        .comment-box.plan {
+            background-color: #eff6ff;
+            border-left-color: #2563eb;
+        }
+
+        .comment-box h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e3a5f;
+        }
+
+        .comment-box p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 24px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #2563eb;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #2563eb;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            width: 2px;
+            height: calc(100% + 8px);
+            background-color: #e5e7eb;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .timeline-course {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 4px;
+        }
+
+        .timeline-lesson {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .attendance-chart {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 13px;
+        }
+
+        .log-table th {
+            background-color: #f0f0f0;
+            color: #1e3a5f;
+            padding: 12px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .log-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .log-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .log-table .date {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .log-table .course {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #1e3a5f;
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            section {
+                margin: 15px;
+                padding: 15px;
+            }
+
+            section h2 {
+                font-size: 20px;
+            }
+
+            .basic-info {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .log-table {
+                font-size: 12px;
+            }
+
+            .log-table th,
+            .log-table td {
+                padding: 8px;
+            }
+
+            .timeline-item {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                width: 12px;
+                height: 12px;
+                left: 5px;
+            }
+
+            .timeline-item::after {
+                left: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header>
+            <h1>곽동현</h1>
+            <p>2026년 01월 학습 보고서</p>
+        </header>
+
+        <!-- 학생 기본 정보 -->
+        <section>
+            <h2>📋 학생 기본 정보</h2>
+            <div class="basic-info">
+                <div class="info-item">
+                    <label>학교</label>
+                    <value>오성중학교</value>
+                </div>
+                <div class="info-item">
+                    <label>학년</label>
+                    <value>중학교 3학년</value>
+                </div>
+                <div class="info-item">
+                    <label>현재 과정</label>
+                    <value>중3-1</value>
+                </div>
+                <div class="info-item">
+                    <label>사용 교재</label>
+                    <value>RPM</value>
+                </div>
+            </div>
+        </section>
+
+        <!-- 학습 요약 -->
+        <section>
+            <h2>📊 01월 학습 요약</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="label">총 수업 수</div>
+                    <div class="value">6</div>
+                    <div class="label">회차</div>
+                </div>
+                <div class="kpi-card attendance">
+                    <div class="label">출석률</div>
+                    <div class="value">83%</div>
+                    <div class="label">정상 출석</div>
+                </div>
+                <div class="kpi-card absent">
+                    <div class="label">결석</div>
+                    <div class="value">4</div>
+                    <div class="label">회차 (1.3~1.16)</div>
+                </div>
+                <div class="kpi-card score">
+                    <div class="label">단원평가</div>
+                    <div class="value">80%</div>
+                    <div class="label">제곱근 단원</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 종합 코멘트 -->
+        <section>
+            <h2>💬 종합 코멘트</h2>
+            
+            <div class="comment-box positive">
+                <h3>🌟 긍정적인 학습 태도</h3>
+                <p>동현이는 수업 시간에 열심히 참여하고 있습니다. 중2 과정에서 배운 내용을 잘 기억하고 있으며, 새로운 중3-1 과정 진입 시에도 개념을 빠르게 습득하는 모습을 보이고 있습니다. 특히 제곱근의 정의와 성질 관련 단원평가에서 80점을 획득하여 학습 성과가 나타나고 있습니다.</p>
+            </div>
+
+            <div class="comment-box improvement">
+                <h3>📈 개선이 필요한 부분</h3>
+                <p>최근 숙제 과정에서 계산 실수가 비교적 자주 나타나고 있습니다. 이는 문제를 너무 급하게 풀려는 습관에서 비롯된 것으로 보입니다. 정확성을 높이기 위해 문제 풀이 시 충분한 시간을 가지고 차근차근 풀어가는 습관을 기르는 것이 중요합니다. 또한 오전 등원 관리 프로그램에 대해 다소 거부감을 보이고 있으나, 중2 과정 점검과 반복 학습에 매우 도움이 될 수 있으니 긍정적인 참여를 권유드립니다.</p>
+            </div>
+
+            <div class="comment-box plan">
+                <h3>🎯 다음달 학습 계획</h3>
+                <p>1월 3일부터 16일까지 여행 일정으로 4회 결석이 예정되어 있습니다. 복귀 후에는 제곱근 단원을 마무리하고 무리식의 계산과 정리 단원으로 진행할 예정입니다. 계산 정확성 향상에 중점을 두고, 단계적인 복습을 통해 중3-1 과정을 견고하게 학습할 계획입니다.</p>
+            </div>
+        </section>
+
+        <!-- 학습 진도 현황 -->
+        <section>
+            <h2>📚 학습 진도 현황</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년 12월 16일 (화)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-course">중2-2 과정</div>
+                        <div class="timeline-lesson">시험지 리뷰 및 중3-1 준비</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년 12월 19일 (금)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-course">중3-1 RPM</div>
+                        <div class="timeline-lesson">제곱근의 정의와 성질 (~p. 27)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년 12월 23일 (화)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-course">중3-1 RPM</div>
+                        <div class="timeline-lesson">제곱근의 계산 (~p. 39)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년 12월 26일 (금)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-course">중3-1 RPM</div>
+                        <div class="timeline-lesson">제곱근의 계산 (~p. 44)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년 12월 30일 (화)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-course">중3-1 RPM</div>
+                        <div class="timeline-lesson">제곱근 계산 연습 및 재점검</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026년 01월 02일 (금)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-course">중3-1 RPM</div>
+                        <div class="timeline-lesson">제곱근 정리 및 단원평가 (8/10)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 출석 현황 -->
+        <section>
+            <h2>📅 출석 현황</h2>
+            <div class="attendance-chart">
+                <canvas id="attendanceChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 수업 로그 -->
+        <section>
+            <h2>📝 01월 수업 로그</h2>
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>과정</th>
+                        <th>교재</th>
+                        <th>학습 내용</th>
+                        <th>숙제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="date">12/16(화)</td>
+                        <td class="course">중2-2</td>
+                        <td>기타</td>
+                        <td>시험지 리뷰</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date">12/19(금)</td>
+                        <td class="course">중3-1</td>
+                        <td>RPM</td>
+                        <td>제곱근의 정의와 성질</td>
+                        <td>~p. 27</td>
+                    </tr>
+                    <tr>
+                        <td class="date">12/23(화)</td>
+                        <td class="course">중3-1</td>
+                        <td>RPM</td>
+                        <td>제곱근의 계산</td>
+                        <td>~p. 39</td>
+                    </tr>
+                    <tr>
+                        <td class="date">12/26(금)</td>
+                        <td class="course">중3-1</td>
+                        <td>RPM</td>
+                        <td>제곱근의 계산</td>
+                        <td>~p. 44</td>
+                    </tr>
+                    <tr>
+                        <td class="date">12/30(화)</td>
+                        <td class="course">중3-1</td>
+                        <td>RPM</td>
+                        <td>제곱근의 계산</td>
+                        <td>~p. 44</td>
+                    </tr>
+                    <tr>
+                        <td class="date">01/02(금)</td>
+                        <td class="course">중3-1</td>
+                        <td>RPM</td>
+                        <td>제곱근 정리</td>
+                        <td>~p. 51</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 푸터 -->
+        <footer>
+            <h3>JD 수학</h3>
+            <p>학생 맞춤형 수학 학습 프로그램</p>
+            <p style="font-size: 12px; margin-top: 15px; opacity: 0.7;">본 보고서는 학생의 학습 진도 및 성과를 정리한 자료입니다.</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['출석 (5회)', '결석 (1회)', '예정 결석 (4회)'],
+                datasets: [{
+                    data: [5, 1, 4],
+                    backgroundColor: [
+                        '#10b981',
+                        '#ef4444',
+                        '#f59e0b'
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                family: "'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif",
+                                size: 13,
+                                weight: '600'
+                            },
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
