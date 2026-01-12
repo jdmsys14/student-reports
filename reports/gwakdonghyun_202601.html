@@ -3,318 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>곽동현 학생 학습 리포트 - 2024년 12월</title>
+    <title>곽동현 학생 학습 리포트</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             line-height: 1.6;
+            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 10px;
+            padding: 20px 10px;
         }
-
+        
         .container {
-            max-width: 420px;
+            max-width: 480px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             overflow: hidden;
         }
-
+        
         .header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            padding: 25px 20px;
-            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 30px 25px;
+            text-align: center;
         }
-
+        
         .header h1 {
-            font-size: 1.5em;
-            margin-bottom: 5px;
+            font-size: 24px;
             font-weight: 700;
+            margin-bottom: 8px;
         }
-
+        
         .header p {
-            font-size: 0.9em;
+            font-size: 16px;
             opacity: 0.9;
         }
-
+        
         .content {
-            padding: 20px;
+            padding: 25px;
         }
-
+        
         .section {
             margin-bottom: 25px;
         }
-
-        .section h2 {
-            font-size: 1.2em;
-            color: #333;
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #4facfe;
+            border-bottom: 2px solid #e2e8f0;
             display: flex;
             align-items: center;
         }
-
-        .section h2::before {
+        
+        .section-title::before {
             content: '';
             width: 4px;
             height: 20px;
-            background: #4facfe;
-            margin-right: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 2px;
+            margin-right: 10px;
         }
-
+        
+        .card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+        }
+        
         .summary-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
             margin-bottom: 15px;
         }
-
+        
         .summary-item {
-            background: #f8f9ff;
-            padding: 15px;
-            border-radius: 10px;
             text-align: center;
-            border: 1px solid #e8ecff;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-
-        .summary-item .number {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #4facfe;
+        
+        .summary-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
             margin-bottom: 5px;
         }
-
-        .summary-item .label {
-            font-size: 0.85em;
-            color: #666;
+        
+        .summary-label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
         }
-
-        .class-list {
-            space-y: 10px;
-        }
-
-        .class-item {
-            background: #f8f9ff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border-left: 4px solid #4facfe;
-        }
-
-        .class-date {
-            font-size: 0.85em;
-            color: #4facfe;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .class-content {
-            font-size: 0.9em;
-            color: #333;
-            margin-bottom: 6px;
-        }
-
-        .class-content strong {
-            color: #2c3e50;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            color: #2d3436;
-        }
-
-        .highlight-box h3 {
-            font-size: 1em;
-            margin-bottom: 8px;
-            color: #d63031;
-        }
-
+        
         .progress-bar {
-            background: #e9ecef;
+            background: #e2e8f0;
+            border-radius: 10px;
             height: 8px;
-            border-radius: 4px;
             overflow: hidden;
             margin: 10px 0;
         }
-
+        
         .progress-fill {
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
             height: 100%;
-            width: 35%;
-            border-radius: 4px;
-        }
-
-        .progress-text {
-            font-size: 0.85em;
-            color: #666;
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        .goals-list {
-            list-style: none;
-        }
-
-        .goals-list li {
-            background: #e8f5e8;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            border-left: 3px solid #28a745;
-            font-size: 0.9em;
-        }
-
-        .goals-list li::before {
-            content: '✓';
-            color: #28a745;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .notice-box {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            padding: 15px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             border-radius: 10px;
-            margin-top: 15px;
+            width: 60%;
+            transition: width 0.3s ease;
         }
-
-        .notice-box h3 {
-            color: #856404;
-            font-size: 1em;
+        
+        .lesson-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .lesson-date {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
             margin-bottom: 8px;
         }
-
-        .notice-box p {
-            color: #856404;
-            font-size: 0.9em;
-            line-height: 1.5;
+        
+        .lesson-content {
+            font-size: 15px;
+            color: #2d3748;
+            margin-bottom: 5px;
         }
-
-        .footer {
-            background: #f8f9fa;
-            padding: 20px;
+        
+        .lesson-material {
+            font-size: 13px;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .homework {
+            font-size: 14px;
+            color: #e53e3e;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        
+        .comment {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .warning {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #92400e;
+        }
+        
+        .test-result {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 15px;
             text-align: center;
-            border-top: 1px solid #e9ecef;
-            color: #666;
-            font-size: 0.85em;
+            margin: 10px 0;
+        }
+        
+        .test-score {
+            font-size: 24px;
+            font-weight: 700;
+            color: #38a169;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 400px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>곽동현 학생 학습 리포트</h1>
-            <p>2024년 12월 학습 현황</p>
+            <h1>곽동현 학생</h1>
+            <p>2026년 01월 학습 리포트</p>
         </div>
-
+        
         <div class="content">
             <div class="section">
-                <h2>📊 학습 요약</h2>
+                <h2 class="section-title">학습 요약</h2>
                 <div class="summary-grid">
                     <div class="summary-item">
-                        <div class="number">6</div>
-                        <div class="label">총 수업 횟수</div>
+                        <div class="summary-number">6</div>
+                        <div class="summary-label">총 수업 횟수</div>
                     </div>
                     <div class="summary-item">
-                        <div class="number">80%</div>
-                        <div class="label">단원평가 점수</div>
+                        <div class="summary-number">8/10</div>
+                        <div class="summary-label">단원평가 점수</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <strong>📚 학습 과정:</strong> 중2-2 → 중3-1<br>
+                    <strong>📖 교재:</strong> RPM (중3-1)<br>
+                    <strong>📝 주요 단원:</strong> 제곱근의 정의와 성질, 제곱근의 계산
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <small style="color: #64748b;">제곱근 단원 진도율 약 60%</small>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">수업 기록</h2>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/16 (화) - 중2-2</div>
+                    <div class="lesson-material">기타 (시험지)</div>
+                    <div class="lesson-content">시험지 리뷰</div>
+                    <div class="comment">
+                        시험지 리뷰를 진행했습니다. 최근 오성중학교 시험에 비해 어렵지는 않았으나 까다로운 문제들이 다소 보였습니다. 공부했던 부분을 최선을 다해 풀어주어 고마웠고, 그 모습이 시험지에 잘 드러났습니다.
                     </div>
                 </div>
                 
-                <div class="highlight-box">
-                    <h3>🎯 주요 성과</h3>
-                    <p>• 중3-1 과정 시작, 제곱근 단원 학습 완료<br>
-                    • 이전 학습 내용 잘 기억하고 있음<br>
-                    • 개념 이해도가 우수함</p>
+                <div class="lesson-item">
+                    <div class="lesson-date">12/19 (금) - 중3-1</div>
+                    <div class="lesson-material">RPM</div>
+                    <div class="lesson-content">제곱근의 정의와 성질</div>
+                    <div class="homework">📝 과제: ~p. 27</div>
+                    <div class="comment">
+                        중3-1 수업을 처음 진행했습니다. 이전 학원에서 배운 내용부터 복습 진행하여 개념을 잘 기억하고 있고, 잘 따라왔습니다. 😊
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/23 (화) - 중3-1</div>
+                    <div class="lesson-material">RPM</div>
+                    <div class="lesson-content">제곱근의 계산</div>
+                    <div class="homework">📝 과제: ~p. 39</div>
+                    <div class="comment">
+                        <span class="highlight">제곱근의 정의와 a의 제곱근과 제곱근 a의 구분</span> 등 다시 한번 중요한 부분을 함께 다뤘습니다.
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/26 (금) - 중3-1</div>
+                    <div class="lesson-material">RPM</div>
+                    <div class="lesson-content">제곱근의 계산</div>
+                    <div class="homework">📝 과제: ~p. 44</div>
+                    <div class="comment">
+                        방학 기간 동안 오전 등원하여 관리 프로그램에 대해 이야기했습니다. 동현이는 해당 프로그램 참여에 대해 다소 거부감을 보이고 있으나, 개인적인 입장에서는 <span class="highlight">오전 등원을 통해 중2 과정 점검과 중3 반복 학습을 병행</span>하는 것이 학습에 도움이 될 것으로 판단하고 있습니다.
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/30 (화) - 중3-1</div>
+                    <div class="lesson-material">RPM</div>
+                    <div class="lesson-content">제곱근의 계산</div>
+                    <div class="homework">📝 과제: ~p. 44</div>
+                    <div class="warning">
+                        ⚠️ 이번 숙제에서 계산 실수가 비교적 잦았고, 동현이의 말에 따르면 문제를 급하게 풀었다고 합니다. 풀이 속도를 조절할 필요가 있다고 이야기했습니다.
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">01/02 (금) - 중3-1</div>
+                    <div class="lesson-material">RPM</div>
+                    <div class="lesson-content">제곱근 정리</div>
+                    <div class="homework">📝 과제: ~p. 51</div>
+                    <div class="test-result">
+                        <div class="test-score">8/10</div>
+                        <div>제곱근 단원평가 결과</div>
+                    </div>
+                    <div class="warning">
+                        📅 1월 3일 ~ 1월 16일 여행일정으로 결석 예정 (4회)
+                    </div>
                 </div>
             </div>
-
+            
             <div class="section">
-                <h2>📈 진도 현황</h2>
-                <div class="class-content">
-                    <strong>현재 학습:</strong> 중3-1 제곱근
-                </div>
-                <div class="class-content">
-                    <strong>교재:</strong> RPM
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <div class="progress-text">제곱근 단원 진도율: 약 35%</div>
-            </div>
-
-            <div class="section">
-                <h2>📝 수업 기록</h2>
-                <div class="class-list">
-                    <div class="class-item">
-                        <div class="class-date">12/16(화) - 중2-2</div>
-                        <div class="class-content"><strong>내용:</strong> 시험지 리뷰</div>
-                        <div class="class-content">최선을 다해 풀어준 모습이 시험지에 잘 드러남</div>
-                    </div>
-
-                    <div class="class-item">
-                        <div class="class-date">12/19(금) - 중3-1</div>
-                        <div class="class-content"><strong>내용:</strong> 제곱근의 정의와 성질</div>
-                        <div class="class-content">중3-1 수업 시작, 개념을 잘 기억하고 따라옴</div>
-                    </div>
-
-                    <div class="class-item">
-                        <div class="class-date">12/23(화) - 중3-1</div>
-                        <div class="class-content"><strong>내용:</strong> 제곱근의 계산</div>
-                        <div class="class-content">중요한 개념 구분 재복습</div>
-                    </div>
-
-                    <div class="class-item">
-                        <div class="class-date">12/30(화) - 중3-1</div>
-                        <div class="class-content"><strong>내용:</strong> 제곱근의 계산</div>
-                        <div class="class-content">계산 실수 다소 발생, 풀이 속도 조절 필요</div>
-                    </div>
-
-                    <div class="class-item">
-                        <div class="class-date">01/02(금) - 중3-1</div>
-                        <div class="class-content"><strong>내용:</strong> 제곱근 정리</div>
-                        <div class="class-content">단원평가 실시 (8/10 문제 정답)</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>🎯 다음 달 목표</h2>
-                <ul class="goals-list">
-                    <li>제곱근의 계산 완벽 마스터</li>
-                    <li>계산 정확도 향상 (실수 줄이기)</li>
-                    <li>무리수와 실수 개념 학습</li>
-                    <li>근호를 포함한 식의 계산 연습</li>
-                </ul>
-            </div>
-
-            <div class="notice-box">
-                <h3>📢 특별 안내사항</h3>
-                <p><strong>여행 일정:</strong> 1월 3일 ~ 1월 16일 (4회 결석)<br>
-                방학 오전 관리 프로그램 참여 검토 중<br>
-                중2 과정 점검과 중3 반복 학습 병행 권장</p>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>궁금한 사항이 있으시면 언제든 연락 주세요 😊</p>
-            <p>작성일: 2025년 1월</p>
-        </div>
-    </div>
-</body>
-</html>
+                <h2 class="section-title">선생님 종합 코멘트</h2>
+                <div class="card">
+                    <p style="margin-bottom: 15px;"><strong>🎯 학습 태도:</strong> 중3-1 과정을 처음 시작하면서 이전 개념을 잘 기억하고 있어 수업을 잘 따라오고 있습니다. 시험지 리뷰에서도 최선을 다하는 모습이 인상적이었습니다.</p>
+                    
+                    <p style="margin-bottom: 15px;"><strong>📊 학습 성과:</strong> 제곱근 단원평가에서 8/10점을 받아 전반적으로 개념 이해가 잘 되어 있습니다. 중요한 개념인 'a의 제곱근과 제곱근 a의 구분'도 잘 학습했습니다.</p>
+                    
+                    <p style="margin-bottom: 15px;"><strong>⚠️ 개선점:</strong> 계산 실수가 다소 있었는데, 문제를 급하게 푸는 경향이 있어 <span class="highlight">풀이 속도 조절</span>이 필요합니다.</p>
+                    
+                    <p><strong>📈 향후 계획:</strong> 여행으로 인한 결석 기간 이후, 중2 과정 점검과 중3 반복 학습을 통해 기초를 더욱 탄탄히 하면 좋을
