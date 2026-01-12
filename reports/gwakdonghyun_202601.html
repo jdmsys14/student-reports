@@ -3,551 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>곽동현 학습 보고서 - 2026년 01월</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>곽동현 학생 학습 리포트 - 2026년 01월</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-            background-color: #f9fafb;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', '맑은 고딕', sans-serif;
             line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 10px;
         }
-
+        
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-
-        header {
-            background-color: #1e3a5f;
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
-            padding: 40px 25px;
+            padding: 30px 20px;
             text-align: center;
         }
-
-        header h1 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 8px;
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
         }
-
-        header p {
+        
+        .header p {
             font-size: 16px;
             opacity: 0.9;
         }
-
-        section {
-            margin: 25px;
-            padding: 25px;
-            border: 2px solid #f0f0f0;
-            border-radius: 8px;
+        
+        .content {
+            padding: 20px;
         }
-
-        section h2 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1e3a5f;
+        
+        .card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
             margin-bottom: 20px;
+            border-left: 5px solid #4facfe;
+        }
+        
+        .card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
         }
-
-        .info-grid {
+        
+        .card h2:before {
+            content: "📚";
+            margin-right: 8px;
+        }
+        
+        .summary-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
-
-        .info-item {
-            background-color: #f9fafb;
-            padding: 12px;
-            border-radius: 6px;
+        
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
-        .info-label {
+        
+        .summary-item .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4facfe;
+            display: block;
+        }
+        
+        .summary-item .label {
             font-size: 12px;
             color: #666;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-top: 5px;
         }
-
-        .info-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1e3a5f;
+        
+        .lesson-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #00f2fe;
         }
-
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+        
+        .lesson-date {
+            font-weight: bold;
+            color: #4facfe;
+            font-size: 14px;
         }
-
-        .kpi-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 20px;
+        
+        .lesson-content {
+            color: #333;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        
+        .lesson-note {
+            background: #fff8e7;
+            padding: 10px;
             border-radius: 8px;
-            border-left: 4px solid #2563eb;
-            text-align: center;
-        }
-
-        .kpi-card.success {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);
-            border-left-color: #10b981;
-        }
-
-        .kpi-card.warning {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-            border-left-color: #f59e0b;
-        }
-
-        .kpi-card.info {
-            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
-            border-left-color: #8b5cf6;
-        }
-
-        .kpi-value {
-            font-size: 28px;
-            font-weight: 800;
-            color: #1e3a5f;
-            margin: 10px 0;
-        }
-
-        .kpi-label {
             font-size: 13px;
             color: #666;
-            font-weight: 600;
+            margin-top: 10px;
+            border-left: 3px solid #ffc107;
         }
-
-        .comment-box {
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            border-left: 4px solid;
+        
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 20px;
+            height: 8px;
+            overflow: hidden;
+            margin: 10px 0;
         }
-
-        .comment-box.positive {
-            background-color: #f0fdf4;
-            border-left-color: #10b981;
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.3s ease;
         }
-
-        .comment-box.improvement {
-            background-color: #fffbeb;
-            border-left-color: #f59e0b;
+        
+        .highlight {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
         }
-
-        .comment-box.plan {
-            background-color: #eff6ff;
-            border-left-color: #2563eb;
+        
+        .warning {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
         }
-
-        .comment-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1e3a5f;
-        }
-
-        .comment-text {
-            font-size: 14px;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline-item {
-            padding-left: 30px;
-            padding-bottom: 20px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 4px;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            background-color: #2563eb;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #2563eb;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 9px;
-            top: 12px;
-            width: 2px;
-            height: calc(100% - 12px);
-            background-color: #e5e7eb;
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-date {
-            font-size: 13px;
-            font-weight: 700;
-            color: #2563eb;
-            margin-bottom: 4px;
-        }
-
-        .timeline-content {
-            font-size: 14px;
-            color: #444;
-        }
-
-        .attendance-chart {
-            position: relative;
-            margin: 20px 0;
-            height: 300px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        table thead {
-            background-color: #f9fafb;
-        }
-
-        table th {
-            padding: 12px;
-            text-align: left;
-            font-size: 13px;
-            font-weight: 700;
-            color: #1e3a5f;
-            border-bottom: 2px solid #e5e7eb;
-        }
-
-        table td {
-            padding: 12px;
-            font-size: 13px;
-            color: #444;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        table tr:hover {
-            background-color: #f9fafb;
-        }
-
-        footer {
-            background-color: #1e3a5f;
+        
+        .next-goals {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px 25px;
-            text-align: center;
+            border-radius: 15px;
+            padding: 20px;
         }
-
-        footer h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        
+        .next-goals h2:before {
+            content: "🎯";
         }
-
-        footer p {
-            font-size: 13px;
-            opacity: 0.9;
-            margin-bottom: 4px;
+        
+        .goal-item {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 14px;
         }
-
-        @media (max-width: 600px) {
-            header {
-                padding: 30px 20px;
+        
+        @media (max-width: 480px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
             }
-
-            header h1 {
-                font-size: 24px;
+            
+            .header h1 {
+                font-size: 20px;
             }
-
-            section {
-                margin: 15px;
+            
+            .card {
                 padding: 15px;
-            }
-
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .kpi-value {
-                font-size: 24px;
-            }
-
-            table {
-                font-size: 12px;
-            }
-
-            table th, table td {
-                padding: 8px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 헤더 -->
-        <header>
-            <h1>곽동현</h1>
-            <p>2026년 01월 학습 보고서</p>
-        </header>
-
-        <!-- 📋 학생 기본 정보 -->
-        <section>
-            <h2>📋 학생 기본 정보</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-label">학교</div>
-                    <div class="info-value">오성중학교</div>
+        <div class="header">
+            <h1>곽동현 학생 학습 리포트</h1>
+            <p>2026년 01월 학습 현황</p>
+        </div>
+        
+        <div class="content">
+            <!-- 학습 요약 -->
+            <div class="card">
+                <h2>학습 요약</h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span class="number">6</span>
+                        <div class="label">총 수업 횟수</div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="number">중3-1</span>
+                        <div class="label">현재 과정</div>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <div class="info-label">학년</div>
-                    <div class="info-value">중학교 3학년</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">현재 과정</div>
-                    <div class="info-value">중3-1 RPM</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">학습 주제</div>
-                    <div class="info-value">제곱근</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 📊 01월 학습 요약 -->
-        <section>
-            <h2>📊 01월 학습 요약</h2>
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">총 수업 회차</div>
-                    <div class="kpi-value">6회</div>
-                </div>
-                <div class="kpi-card success">
-                    <div class="kpi-label">출석률</div>
-                    <div class="kpi-value">66.7%</div>
-                </div>
-                <div class="kpi-card warning">
-                    <div class="kpi-label">결석</div>
-                    <div class="kpi-value">4회</div>
-                </div>
-                <div class="kpi-card info">
-                    <div class="kpi-label">단원평가</div>
-                    <div class="kpi-value">8/10</div>
+                
+                <div class="highlight">
+                    <strong>📈 주요 성과</strong><br>
+                    • 중2-2 과정 시험 완료 및 중3-1 과정 시작<br>
+                    • 제곱근 단원 학습 완료 (단원평가 8/10 달성)<br>
+                    • 이전 학습 내용을 잘 기억하며 수업 참여도 우수
                 </div>
             </div>
-        </section>
-
-        <!-- 💬 종합 코멘트 -->
-        <section>
-            <h2>💬 종합 코멘트</h2>
             
-            <div class="comment-box positive">
-                <div class="comment-title">🌟 긍정적인 학습 태도</div>
-                <div class="comment-text">
-                    동현이는 중3 과정에 매우 긍정적인 태도로 임하고 있습니다. 이전 학원에서 배운 제곱근 개념을 잘 기억하고 있었으며, 새로운 과정에 따라오는 모습이 우수합니다. 특히 시험지 리뷰 시 공부했던 부분을 최선을 다해 풀어주어 성실한 학습 태도를 보여주었습니다. 최근 단원평가에서 8/10의 좋은 성적을 기록하며 학습 내용을 잘 이해하고 있음을 증명했습니다.
+            <!-- 진도 현황 -->
+            <div class="card">
+                <h2>진도 현황</h2>
+                <div style="margin-bottom: 15px;">
+                    <strong>중3-1 RPM - 제곱근</strong>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <small style="color: #666;">진도율: 85% (p.51까지 완료)</small>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/16 (화) - 시험지 리뷰</div>
+                    <div class="lesson-content">중2-2 과정 시험 리뷰 및 중3-1 교재 준비</div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/19 (금) - 제곱근의 정의와 성질</div>
+                    <div class="lesson-content">중3-1 과정 시작, 과제: ~p.27</div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/23 (화) - 제곱근의 계산</div>
+                    <div class="lesson-content">제곱근 계산 방법 학습, 과제: ~p.39</div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/26 (금) - 제곱근의 계산</div>
+                    <div class="lesson-content">방학 관리 프로그램 상담, 과제: ~p.44</div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">12/30 (화) - 제곱근의 계산</div>
+                    <div class="lesson-content">계산 실수 점검 및 풀이 속도 조절 지도</div>
+                    <div class="lesson-note">
+                        ⚠️ 계산 실수가 다소 발생 - 문제 풀이 시 속도 조절 필요
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-date">01/02 (금) - 제곱근 정리</div>
+                    <div class="lesson-content">단원평가 실시 (8/10), 과제: ~p.51</div>
+                    <div class="lesson-note">
+                        📅 1/3~1/16 여행으로 인한 결석 예정 (4회 수업)
+                    </div>
                 </div>
             </div>
-
-            <div class="comment-box improvement">
-                <div class="comment-title">📈 개선이 필요한 부분</div>
-                <div class="comment-text">
-                    계산 실수가 비교적 빈번한 것으로 나타났습니다. 12월 30일 숙제에서 계산 실수가 잦았으며, 동현이 자신도 문제를 급하게 풀었다고 인정했습니다. 앞으로 풀이 속도를 조절하여 정확성을 높이는 것이 필요합니다. 또한 오전 등원 관리 프로그램에 다소 거부감을 보이고 있으나, 학습 효율성 향상을 위해 개방적인 태도를 권장합니다.
+            
+            <!-- 특이사항 -->
+            <div class="card">
+                <h2>🔍 학습 분석</h2>
+                
+                <div class="highlight">
+                    <strong>👍 우수한 점</strong><br>
+                    • 이전 학습 내용을 잘 기억하고 있어 수업 적응이 빠름<br>
+                    • 제곱근 단원평가에서 8/10 문제 정답으로 양호한 성취도<br>
+                    • 학습에 대한 성실한 자세와 적극적인 참여
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ 개선 필요 사항</strong><br>
+                    • 문제 풀이 시 속도 조절을 통한 계산 실수 감소<br>
+                    • 방학 관리 프로그램 참여 검토 (중2 과정 점검 및 중3 반복학습)<br>
+                    • 여행으로 인한 학습 공백 최소화 방안 모색
                 </div>
             </div>
-
-            <div class="comment-box plan">
-                <div class="comment-title">🎯 다음달 학습 계획</div>
-                <div class="comment-text">
-                    2월에는 제곱근 단원을 완료하고 무리식의 계산 및 정리 단원으로 진행할 예정입니다. RPM 교재 p. 51 이후를 학습하며 중3-1 과정을 체계적으로 마무리할 계획입니다. 계산 속도와 정확성의 균형을 맞추기 위해 매 수업시간 풀이 방법을 점검하고, 숙제 검토 시 세심한 지도를 제공하겠습니다.
+            
+            <!-- 다음 달 목표 -->
+            <div class="next-goals">
+                <h2>2월 학습 목표</h2>
+                
+                <div class="goal-item">
+                    🎯 제곱근의 활용 단원 완전 마스터
+                </div>
+                
+                <div class="goal-item">
+                    📝 계산 정확도 향상을 위한 단계별 검산 습관화
+                </div>
+                
+                <div class="goal-item">
+                    🔄 여행 후 학습 공백 보완을 위한 집중 복습
+                </div>
+                
+                <div class="goal-item">
+                    📊 중2 과정 취약 부분 점검 및 보완 학습
+                </div>
+                
+                <div class="goal-item">
+                    🎪 이차방정식 단원 예습 준비
                 </div>
             </div>
-        </section>
-
-        <!-- 📚 학습 진도 현황 -->
-        <section>
-            <h2>📚 학습 진도 현황</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">12월 16일(화)</div>
-                    <div class="timeline-content"><strong>시험지 리뷰</strong><br>오성중학교 시험지 리뷰 및 중3-1 RPM 교재 학습 준비</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">12월 19일(금)</div>
-                    <div class="timeline-content"><strong>제곱근의 정의와 성질</strong><br>중3-1 과정 시작, 이전 학원 내용 복습 진행 (~p. 27)</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">12월 23일(화)</div>
-                    <div class="timeline-content"><strong>제곱근의 계산</strong><br>a의 제곱근과 제곱근 a 구분 학습 (~p. 39)</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">12월 26일(금)</div>
-                    <div class="timeline-content"><strong>제곱근의 계산 (계속)</strong><br>방학 오전 등원 프로그램 상담 (~p. 44)</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">12월 30일(화)</div>
-                    <div class="timeline-content"><strong>제곱근의 계산 (심화)</strong><br>계산 실수 점검, 풀이 속도 조절 지도 (~p. 44)</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">01월 02일(금)</div>
-                    <div class="timeline-content"><strong>제곱근 정리 및 단원평가</strong><br>제곱근 성질 및 계산 단원평가 진행 (8/10) (~p. 51)</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 📅 출석 현황 -->
-        <section>
-            <h2>📅 출석 현황</h2>
-            <div class="attendance-chart">
-                <canvas id="attendanceChart"></canvas>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>구분</th>
-                        <th>횟수</th>
-                        <th>비율</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>✅ 출석</td>
-                        <td>6회</td>
-                        <td>66.7%</td>
-                    </tr>
-                    <tr>
-                        <td>❌ 결석 (1월 3~16일 여행)</td>
-                        <td>4회</td>
-                        <td>33.3%</td>
-                    </tr>
-                    <tr style="background-color: #f9fafb; font-weight: 700;">
-                        <td>📊 계획된 수업</td>
-                        <td>10회</td>
-                        <td>100%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- 📝 01월 수업 로그 -->
-        <section>
-            <h2>📝 01월 수업 로그</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>날짜</th>
-                        <th>과정</th>
-                        <th>학습 내용</th>
-                        <th>교재</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>12/16(화)</td>
-                        <td>중2-2</td>
-                        <td>시험지 리뷰</td>
-                        <td>기타</td>
-                    </tr>
-                    <tr>
-                        <td>12/19(금)</td>
-                        <td>중3-1</td>
-                        <td>제곱근의 정의와 성질</td>
-                        <td>RPM</td>
-                    </tr>
-                    <tr>
-                        <td>12/23(화)</td>
-                        <td>중3-1</td>
-                        <td>제곱근의 계산</td>
-                        <td>RPM</td>
-                    </tr>
-                    <tr>
-                        <td>12/26(금)</td>
-                        <td>중3-1</td>
-                        <td>제곱근의 계산</td>
-                        <td>RPM</td>
-                    </tr>
-                    <tr>
-                        <td>12/30(화)</td>
-                        <td>중3-1</td>
-                        <td>제곱근의 계산</td>
-                        <td>RPM</td>
-                    </tr>
-                    <tr>
-                        <td>01/02(금)</td>
-                        <td>중3-1</td>
-                        <td>제곱근 정리 (단원평가)</td>
-                        <td>RPM</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- 푸터 -->
-        <footer>
-            <h3>제이디 수학</h3>
-            <p>전문적인 수학 교육으로 학생의 꿈을 응원합니다.</p>
-            <p style="margin-top: 16px; font-size: 12px; opacity: 0.8;">
-                이 보고서는 학생의 학습 진도와 태도를 객관적으로 평가하여 작성되었습니다.
-            </p>
-        </footer>
+        </div>
     </div>
-
-    <script>
-        // 출석 현황 차트
-        const ctx = document.getElementById('attendanceChart').getContext('2d');
-        const attendanceChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['출석 (6회)', '결석 (4회)'],
-                datasets: [{
-                    data: [6, 4],
-                    backgroundColor: ['#10b981', '#f59e0b'],
-                    borderColor: ['#059669', '#d97706'],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            font: {
-                                family: "'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif",
-                                size: 13,
-                                weight: '600'
-                            },
-                            padding: 15,
-                            usePointStyle: true
-                        }
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
