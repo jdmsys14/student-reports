@@ -13,99 +13,97 @@
         }
         
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f8fafc;
-            line-height: 1.6;
-            color: #334155;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 16px;
+            color: #333;
         }
         
         .container {
-            max-width: 480px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 20px 16px;
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 24px 20px;
-            border-radius: 16px;
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
         .header h1 {
+            color: #4A5568;
             font-size: 24px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 8px;
         }
         
         .header p {
-            font-size: 14px;
-            opacity: 0.9;
+            color: #718096;
+            font-size: 16px;
         }
         
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 24px;
             margin-bottom: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
         .card-title {
             font-size: 18px;
             font-weight: 600;
-            color: #1e293b;
+            color: #2D3748;
             margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
         }
         
-        .icon {
-            width: 20px;
+        .card-title::before {
+            content: '';
+            width: 4px;
             height: 20px;
             background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 4px;
-            display: inline-block;
+            border-radius: 2px;
+            margin-right: 12px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
         }
         
         .summary-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
+            background: #F7FAFC;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
         }
         
-        .summary-item:last-child {
-            border-bottom: none;
+        .summary-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 4px;
         }
         
         .summary-label {
             font-size: 14px;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .summary-value {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1e293b;
+            color: #718096;
         }
         
         .class-item {
-            background: #f8fafc;
-            border-radius: 8px;
+            background: #F8F9FA;
+            border-radius: 12px;
             padding: 16px;
             margin-bottom: 12px;
             border-left: 4px solid #667eea;
-        }
-        
-        .class-item:last-child {
-            margin-bottom: 0;
         }
         
         .class-date {
@@ -117,135 +115,187 @@
         
         .class-content {
             font-size: 14px;
-            color: #64748b;
+            color: #4A5568;
             line-height: 1.5;
         }
         
         .homework {
-            background: #fef3c7;
-            color: #92400e;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
+            background: #FFF5F5;
+            border: 1px solid #FED7D7;
+            border-radius: 8px;
+            padding: 12px;
             margin-top: 8px;
-            display: inline-block;
         }
         
-        .comment-box {
-            background: #f0f9ff;
-            border-left: 4px solid #0ea5e9;
-            padding: 16px;
-            border-radius: 8px;
+        .homework-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #E53E3E;
+            margin-bottom: 4px;
+        }
+        
+        .homework-content {
             font-size: 14px;
-            line-height: 1.6;
+            color: #742A2A;
         }
         
         .progress-bar {
-            background: #e2e8f0;
-            border-radius: 8px;
-            height: 8px;
+            background: #E2E8F0;
+            border-radius: 10px;
+            height: 20px;
             overflow: hidden;
-            margin-top: 8px;
+            margin: 16px 0;
         }
         
         .progress-fill {
             background: linear-gradient(90deg, #667eea, #764ba2);
             height: 100%;
-            width: 75%;
+            width: 50%;
+            border-radius: 10px;
             transition: width 0.3s ease;
         }
         
-        .no-data {
-            color: #94a3b8;
-            font-style: italic;
+        .progress-text {
             text-align: center;
-            padding: 20px 0;
+            font-size: 14px;
+            color: #718096;
+            margin-top: 8px;
+        }
+        
+        .comment-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .comment-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .no-data {
+            text-align: center;
+            color: #A0AEC0;
+            font-style: italic;
+            padding: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 12px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .summary-grid {
+                gap: 12px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- 헤더 -->
         <div class="header">
-            <h1>학습 리포트</h1>
-            <p>이름_없음 · 2026년 01월</p>
+            <h1>📚 학습 리포트</h1>
+            <p>이름_없음 | 2026년 01월</p>
         </div>
         
+        <!-- 학습 요약 -->
         <div class="card">
-            <div class="card-title">
-                <span class="icon"></span>
-                학습 요약
+            <div class="card-title">📊 학습 요약</div>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-number">4</div>
+                    <div class="summary-label">총 수업 횟수</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">1</div>
+                    <div class="summary-label">과제 부여</div>
+                </div>
             </div>
-            <div class="summary-item">
-                <span class="summary-label">총 수업 횟수</span>
-                <span class="summary-value">4회</span>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-number">함수</div>
+                    <div class="summary-label">주요 학습 주제</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">연속성</div>
+                    <div class="summary-label">현재 진도</div>
+                </div>
             </div>
-            <div class="summary-item">
-                <span class="summary-label">주요 학습 내용</span>
-                <span class="summary-value">함수의 연속</span>
+        </div>
+        
+        <!-- 수업 기록 -->
+        <div class="card">
+            <div class="card-title">📝 수업 기록</div>
+            
+            <div class="class-item">
+                <div class="class-date">2025년 12월 22일</div>
+                <div class="class-content">수업 준비 단계</div>
             </div>
-            <div class="summary-item">
-                <span class="summary-label">과제 진행률</span>
-                <span class="summary-value">75%</span>
+            
+            <div class="class-item">
+                <div class="class-date">2025년 01월 02일 (금)</div>
+                <div class="class-content">함수의 연속성 학습 진행</div>
+                <div class="homework">
+                    <div class="homework-label">📋 과제</div>
+                    <div class="homework-content">~p56 (함수의 연속)</div>
+                </div>
             </div>
+            
+            <div class="class-item">
+                <div class="class-date">2025년 01월 02일 (금) - 추가 수업</div>
+                <div class="class-content">함수의 연속성 심화 학습</div>
+                <div class="homework">
+                    <div class="homework-label">📋 과제</div>
+                    <div class="homework-content">~p56 (함수의 연속)</div>
+                </div>
+            </div>
+            
+            <div class="class-item">
+                <div class="class-date">2026년 01월 12일</div>
+                <div class="class-content">차기 수업 예정</div>
+            </div>
+        </div>
+        
+        <!-- 진도 현황 -->
+        <div class="card">
+            <div class="card-title">📈 진도 현황</div>
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title">
-                <span class="icon"></span>
-                수업 기록
-            </div>
-            <div class="class-item">
-                <div class="class-date">2025-12-22</div>
-                <div class="class-content">수업 내용이 기록되지 않았습니다.</div>
-            </div>
-            <div class="class-item">
-                <div class="class-date">2025-01-02 (금)</div>
-                <div class="class-content">수업 내용이 기록되지 않았습니다.</div>
-                <div class="homework">과제: ~p56 (함수의 연속)</div>
-            </div>
-            <div class="class-item">
-                <div class="class-date">2025-01-02 (금)</div>
-                <div class="class-content">수업 내용이 기록되지 않았습니다.</div>
-                <div class="homework">과제: ~p56 (함수의 연속)</div>
-            </div>
-            <div class="class-item">
-                <div class="class-date">2026-01-12</div>
-                <div class="class-content">수업 내용이 기록되지 않았습니다.</div>
+            <div class="progress-text">함수의 연속성 (p.56까지 완료)</div>
+            <div style="margin-top: 16px; padding: 16px; background: #F0F4F8; border-radius: 8px;">
+                <div style="font-size: 14px; color: #4A5568; line-height: 1.5;">
+                    <strong>현재 학습 중:</strong> 함수의 연속성<br>
+                    <strong>다음 예정:</strong> 연속성 심화 문제 해결
+                </div>
             </div>
         </div>
         
+        <!-- 선생님 코멘트 -->
         <div class="card">
-            <div class="card-title">
-                <span class="icon"></span>
-                진도 현황
-            </div>
-            <div class="summary-item">
-                <span class="summary-label">현재 진도</span>
-                <span class="summary-value">함수의 연속 (~p56)</span>
-            </div>
-            <div class="summary-item">
-                <span class="summary-label">과제 완료</span>
-                <span class="summary-value">부분 완료</span>
-            </div>
-            <div class="summary-item">
-                <span class="summary-label">다음 목표</span>
-                <span class="summary-value">연속함수의 성질</span>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title">
-                <span class="icon"></span>
-                선생님 코멘트
-            </div>
+            <div class="card-title">💬 선생님 코멘트</div>
             <div class="comment-box">
-                함수의 연속 단원을 꾸준히 학습하고 있습니다. 과제를 통해 개념을 정리하고 있으나, 수업 내용이 상세히 기록되지 않아 구체적인 학습 상황을 파악하기 어려운 상태입니다. 
-                <br><br>
-                앞으로는 수업 중 학습한 주요 개념과 문제 유형을 더 자세히 기록하여 체계적인 학습 관리가 이루어질 수 있도록 하겠습니다.
+                <div class="comment-text">
+                    함수의 연속성 개념을 차근차근 학습하고 있습니다.<br>
+                    주어진 과제를 통해 개념을 확실히 정리하고,<br>
+                    다음 수업에서는 더 다양한 문제를 다뤄보겠습니다.<br><br>
+                    꾸준히 열심히 하고 있으니 계속 화이팅! 💪
+                </div>
             </div>
         </div>
     </div>
