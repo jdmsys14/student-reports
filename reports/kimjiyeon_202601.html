@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 김지연</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 16px;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card {
+            background: #f1f5f9;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .info-card h3 {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .info-card p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .section {
+            margin-bottom: 28px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .summary-text {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.7;
+            border-left: 4px solid #667eea;
+        }
+        
+        .progress-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .progress-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #1e293b;
+        }
+        
+        .progress-status {
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .progress-content {
+            font-size: 14px;
+            color: #475569;
+        }
+        
+        .assignment-grid {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .assignment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #fefefe;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        
+        .assignment-date {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .assignment-task {
+            font-size: 14px;
+            color: #1e293b;
+            flex-grow: 1;
+            margin-left: 12px;
+        }
+        
+        .test-result {
+            background: #f0f9ff;
+            color: #0c4a6e;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .comment-text {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #92400e;
+        }
+        
+        .highlight {
+            background: #ddd6fe;
+            color: #5b21b6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <p>김지연 학생</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>수업 기간</h3>
+                    <p>2025년 12월</p>
+                </div>
+                <div class="info-card">
+                    <h3>총 수업 횟수</h3>
+                    <p>7회</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📚 학습 요약</h2>
+                <div class="summary-text">
+                    12월 한 달간 <strong>중2-2 과정</strong>의 핵심 단원들을 체계적으로 학습했습니다. 
+                    피타고라스정리, 무게중심을 시작으로 경우의 수와 확률 단원을 완전히 마스터하였고, 
+                    이후 삼각형의 성질(외심, 내심) 단원으로 진행하여 <span class="highlight">중2-2 개념 수업을 완료</span>했습니다. 
+                    각 단원마다 단원평가를 통해 학습 성과를 점검하며 체계적으로 진도를 나갔습니다.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📈 진도 현황</h2>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <div class="progress-title">피타고라스정리 & 무게중심</div>
+                        <div class="progress-status">완료</div>
+                    </div>
+                    <div class="progress-content">
+                        개념 학습 및 단원평가 완료 (무게중심 10/10, 피타고라스 7/10)
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <div class="progress-title">경우의 수 & 확률</div>
+                        <div class="progress-status">완료</div>
+                    </div>
+                    <div class="progress-content">
+                        중2-2 교재 완전 마무리, 단원평가 만점 달성 (10/10)
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <div class="progress-title">삼각형의 외심과 내심</div>
+                        <div class="progress-status">진행중</div>
+                    </div>
+                    <div class="progress-content">
+                        개념 복습 및 쎈 교재 진행 (~p.60), 장기기억 정착 위주 수업
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">✅ 과제 수행 현황</h2>
+                
+                <div class="assignment-grid">
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/01</div>
+                        <div class="assignment-task">무게중심, 피타고라스 복습</div>
+                        <div class="test-result">단원평가</div>
+                    </div>
+                    
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/04</div>
+                        <div class="assignment-task">경우의 수 ~p.209</div>
+                    </div>
+                    
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/08</div>
+                        <div class="assignment-task">경우의 수 오답 정리</div>
+                    </div>
+                    
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/11</div>
+                        <div class="assignment-task">확률 ~p.231(끝)</div>
+                    </div>
+                    
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/15</div>
+                        <div class="assignment-task">교재 마무리</div>
+                        <div class="test-result">확률 10/10</div>
+                    </div>
+                    
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/18</div>
+                        <div class="assignment-task">외심, 내심 ~p.25</div>
+                    </div>
+                    
+                    <div class="assignment-item">
+                        <div class="assignment-date">12/22</div>
+                        <div class="assignment-task">외심, 내심 ~p.60</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">💬 선생님 코멘트</h2>
+                <div class="comment-text">
+                    지연이가 12월 한 달 동안 정말 성실하게 학습에 임했습니다! 
+                    <strong>중2-2 개념 수업을 완전히 마무리</strong>한 것이 가장 큰 성과입니다. 
+                    특히 단원평가에서 <strong>무게중심과 확률 단원은 만점</strong>을 받아 개념 이해도가 매우 높음을 확인할 수 있었습니다.<br><br>
+                    
+                    삼각형의 외심과 내심 단원에서는 이전에 배운 내용을 다시 한번 복습하면서 
+                    <strong>장기기억으로 정착</strong>될 수 있도록 수업을 진행했는데, 지연이가 잊어버린 부분을 차근차근 되짚어가며 
+                    다시 기억해내는 모습이 인상적이었습니다.<br><br>
+                    
+                    앞으로는 쎈 교재를 통해 <strong>문제 해결 능력 향상</strong>에 집중하여 
+                    더욱 탄탄한 수학 실력을 기를 수 있도록 하겠습니다. 화이팅! 😊
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
