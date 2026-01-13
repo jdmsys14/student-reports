@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 조인성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px 16px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 24px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header .student-name {
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eef2f7;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title::before {
+            content: '📊';
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .info-item {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .progress-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #10b981;
+        }
+
+        .progress-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .progress-detail {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .unit-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .unit-list li {
+            font-size: 12px;
+            color: #475569;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .unit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #374151;
+            background: #f0f9ff;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .assignment-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f0fdf4;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #22c55e;
+        }
+
+        .assignment-label {
+            font-size: 13px;
+            color: #166534;
+            font-weight: 500;
+        }
+
+        .assignment-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #15803d;
+        }
+
+        .test-result {
+            background: #fef3c7;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            text-align: center;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .test-result-text {
+            font-size: 13px;
+            color: #92400e;
+            font-weight: 600;
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 16px 12px;
+            }
+            
+            .card {
+                padding: 16px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="student-name">조인성 학생</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title" style="--card-emoji: '📋'">학습 정보</div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">수업 기간</div>
+                    <div class="info-value">2025년 12월</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">총 수업 횟수</div>
+                    <div class="info-value">10회 (1회 결석)</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">학습 과정</div>
+                    <div class="info-value">공통수학2</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사용 교재</div>
+                    <div class="info-value">쎈</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title" style="--card-emoji: '📚'">학습 요약</div>
+            <div class="comment-text">
+                12월 한 달 동안 공통수학2의 <span class="highlight">원의 방정식</span>, <span class="highlight">도형의 이동</span>, <span class="highlight">집합</span> 단원을 체계적으로 학습했습니다. 각 단원별로 단계적 학습을 통해 B단계에서 C단계로 난이도를 높여가며 진행하였고, 단원평가를 통해 학습 성취도를 확인했습니다. 특히 고등 과정에 앞서 우함수, 기함수 등 고2 내용을 미리 다루어 수학적 사고력을 확장했습니다.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title" style="--card-emoji: '📈'">진도 현황</div>
+            <div class="progress-item">
+                <div class="progress-title">원의 방정식 (완료)</div>
+                <div class="progress-detail">
+                    C단계까지 완료하여 고난도 문제 해결 능력을 기름
+                </div>
+                <div class="test-result">
+                    <div class="test-result-text">단원평가: 10/10 (만점)</div>
+                </div>
+            </div>
+            
+            <div class="progress-item">
+                <div class="progress-title">도형의 이동 (완료)</div>
+                <div class="progress-detail">
+                    평행이동, 대칭이동, 우함수·기함수 개념까지 학습
+                </div>
+                <ul class="unit-list">
+                    <li>평행이동 및 대칭이동 (중등 복습 + 고등 심화)</li>
+                    <li>우함수, 기함수 (고2 과정 선행)</li>
+                </ul>
+                <div class="test-result">
+                    <div class="test-result-text">단원평가: 10/10 (만점)</div>
+                </div>
+            </div>
+            
+            <div class="progress-item">
+                <div class="progress-title">집합 (진행 중)</div>
+                <div class="progress-detail">
+                    집합의 정의, 종류, 성질, 연산 학습 완료. C단계 문제 해결 중
+                </div>
+                <ul class="unit-list">
+                    <li>집합의 정의와 종류</li>
+                    <li>집합의 성질</li>
+                    <li>집합의 연산</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title" style="--card-emoji: '✅'">과제 수행 현황</div>
+            <div class="assignment-status">
+                <div class="assignment-label">전체 과제 수행률</div>
+                <div class="assignment-value">우수</div>
+            </div>
+            <div class="progress-detail" style="margin-top: 12px;">
+                매 수업마다 주어진 과제를 성실히 수행하고 있으며, B단계에서 C단계로 단계적으로 난이도를 높여가며 학습하고 있습니다. 결석 시에도 보강 수업을 통해 학습 공백 없이 진행하였습니다.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title" style="--card-emoji: '💬'">선생님 코멘트</div>
+            <div class="comment-text">
+                조인성 학생은 매우 성실한 학습 태도를 보이고 있습니다. 각 단원의 단원평가에서 모두 만점을 받아 개념 이해도가 우수함을 보여주었습니다.<br><br>
+                
+                <strong>강점:</strong> 기본 개념 이해도가 뛰어나며, C단계 고난도 문제까지 체계적으로 해결하고 있습니다. 결석 후에도 적극적으로 보강 수업에 참여하는 등 학습 의지가 강합니다.<br><br>
+                
+                <strong>보완점:</strong> 집합 단원 학습 중 공통수학1의 경우의 수 개념에서 일부 어려움을 보이고 있습니다. 이 부분은 집합 문제를 풀면서 함께 보완하고 있습니다.<br><br>
+                
+                <strong>향후 계획:</strong> 1월에는 집합 단원을 완료하고 다음 단원으로 진행할 예정이며, 방학 기간 중 오전 관리 프로그램 참여를 통해 더욱 체계적인 학습이 가능할 것으로 예상됩니다.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
