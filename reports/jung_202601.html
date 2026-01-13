@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 천의정</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px 16px;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header .student-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .header .period {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 24px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .progress-item {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .progress-content {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .summary-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4a5568;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .comment-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4a5568;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .evaluation-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .evaluation-subject {
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .evaluation-score {
+            font-weight: 700;
+            color: #38a169;
+            font-size: 16px;
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 16px 12px;
+            }
+            
+            .section {
+                padding: 20px 16px;
+            }
+            
+            .header {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="student-name">천의정</div>
+            <div class="period">수업 기간: 2025년 12월 (총 10회)</div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">수업 정보</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">수업 기간</span>
+                        <span class="info-value">2025년 12월</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">총 수업 횟수</span>
+                        <span class="info-value">10회</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">출석률</span>
+                        <span class="info-value">90% (1회 병결)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">학습 요약</h2>
+                <div class="summary-text">
+                    12월 한 달 동안 <span class="highlight">복소수, 이차방정식, 이차함수</span> 단원을 체계적으로 학습했습니다. 
+                    복소수 단원을 완벽히 마스터한 후, 중학교 3학년 과정과 연계하여 이차방정식을 복습하며 심화 내용을 학습했습니다. 
+                    이차함수에서는 기초가 부족한 부분을 발견하여 중3 과정부터 차근차근 다시 정리하며 탄탄한 기초를 다졌습니다.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">진도 현황</h2>
+                <div class="progress-item">
+                    <div class="progress-title">📚 복소수</div>
+                    <div class="progress-content">
+                        • 복소수의 기본 개념부터 제곱과 음의 제곱근까지 완료<br>
+                        • 단원 전체 마무리 완료 (~p.101)
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-title">📐 이차방정식</div>
+                    <div class="progress-content">
+                        • 기본 이차방정식부터 근과 계수와의 관계까지 학습<br>
+                        • 중3 과정 복습과 병행하여 진행 (~p.130)
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-title">📈 이차함수</div>
+                    <div class="progress-content">
+                        • 이차함수의 기본 개념 및 다른 직선과의 관계<br>
+                        • 최댓값, 최솟값 개념까지 학습 (~p.153)
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">단원평가 결과</h2>
+                <div class="evaluation-item">
+                    <span class="evaluation-subject">다항식</span>
+                    <span class="evaluation-score">9/10</span>
+                </div>
+                <div class="evaluation-item">
+                    <span class="evaluation-subject">복소수</span>
+                    <span class="evaluation-score">10/10</span>
+                </div>
+                <div class="evaluation-item">
+                    <span class="evaluation-subject">이차방정식</span>
+                    <span class="evaluation-score">10/10</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">과제 수행 현황</h2>
+                <div class="summary-text">
+                    매 수업 후 주어진 과제를 성실히 수행했습니다. 자습 시간에도 적극적으로 오답 정리 및 복습을 진행하여 
+                    <span class="highlight">자기주도적 학습 습관</span>이 잘 형성되어 있습니다.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">선생님 코멘트</h2>
+                <div class="comment-text">
+                    의정이가 수학에 대한 열정과 성실함으로 매 수업을 임해주어 정말 기쁩니다. 
+                    <strong>복소수 단원에서 보여준 뛰어난 이해력</strong>과 <strong>단원평가에서의 우수한 성과</strong>는 
+                    의정이의 수학적 사고력이 크게 성장했음을 보여줍니다.<br><br>
+                    
+                    특히 문제 풀이 과정에서 보여준 논리적 사고와 체계적인 접근법이 인상적이었습니다. 
+                    이차함수 단원에서 기초 부분의 부족함을 발견했을 때도, 
+                    <strong>차근차근 다시 정리해가는 의정이의 학습 태도</strong>가 매우 바람직합니다.<br><br>
+                    
+                    앞으로도 이런 성실한 자세로 학습을 이어간다면 더욱 훌륭한 성과를 거둘 것이라 확신합니다. 
+                    방학 기간에도 꾸준히 관리하여 더욱 탄탄한 수학 실력을 쌓아가길 기대합니다!
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
