@@ -6,282 +6,248 @@
     <title>학습 보고서 - 조인성</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
-            padding: 20px 16px;
+            padding: 16px;
         }
-
+        
         .container {
-            max-width: 600px;
+            max-width: 480px;
             margin: 0 auto;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-
+        
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 24px 20px;
             text-align: center;
-            padding: 32px 20px;
         }
-
+        
         .header h1 {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 8px;
         }
-
-        .header p {
-            font-size: 16px;
+        
+        .header .period {
+            font-size: 14px;
             opacity: 0.9;
-            font-weight: 400;
         }
-
+        
         .content {
-            padding: 24px;
+            padding: 24px 20px;
         }
-
-        .student-info {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 20px;
+        
+        .info-section {
             margin-bottom: 24px;
-            border-left: 4px solid #667eea;
         }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .info-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #4a5568;
-            font-size: 14px;
-        }
-
-        .info-value {
-            font-weight: 500;
-            color: #2d3748;
-            font-size: 14px;
-        }
-
-        .section {
-            margin-bottom: 28px;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        .section-title {
+        
+        .info-section h2 {
             font-size: 18px;
             font-weight: 600;
             color: #2d3748;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e2e8f0;
         }
-
-        .card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
+        
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-item .label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+        
+        .info-item .value {
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .summary-card {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
         }
-
+        
+        .summary-card h3 {
+            color: #c53030;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .summary-card p {
+            color: #4a5568;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .status-card {
+            background: #f0fff4;
+            border: 1px solid #c6f6d5;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .status-card h3 {
+            color: #38a169;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .status-item::before {
+            content: "•";
+            color: #38a169;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .comment-card {
+            background: #fffbf0;
+            border: 1px solid #fbd38d;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .comment-card h3 {
+            color: #d69e2e;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .comment-text {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
         .no-data {
             text-align: center;
             color: #718096;
-            font-style: italic;
-            padding: 40px 20px;
-            background: #f7fafc;
-            border-radius: 12px;
-            border: 2px dashed #cbd5e0;
-        }
-
-        .no-data-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-
-        .summary-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 12px;
+            font-size: 14px;
             padding: 20px;
+            background: #f7fafc;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+        
+        .footer {
             text-align: center;
-            color: #8b4513;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.8;
-        }
-
-        .comment-box {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 8px;
-        }
-
-        .comment-text {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #2d3748;
-            font-style: italic;
-        }
-
-        .teacher-signature {
-            text-align: right;
-            margin-top: 16px;
-            font-weight: 600;
-            color: #4a5568;
-            font-size: 14px;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 16px 12px;
-            }
-            
-            .header {
-                padding: 28px 16px;
-            }
-            
-            .header h1 {
-                font-size: 22px;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .summary-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .info-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
+            padding: 20px;
+            color: #718096;
+            font-size: 12px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 24px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1>📚 학습 보고서</h1>
-            <p>2026년 01월 학습 보고서</p>
-        </header>
-
+        <div class="header">
+            <h1>학습 보고서</h1>
+            <div class="period">2026년 01월</div>
+        </div>
+        
         <div class="content">
-            <div class="student-info">
-                <div class="info-row">
-                    <span class="info-label">👨‍🎓 학생명</span>
-                    <span class="info-value">조인성</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">📅 수업 기간</span>
-                    <span class="info-value">2025년 12월</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">📊 총 수업 횟수</span>
-                    <span class="info-value">0회</span>
+            <div class="info-section">
+                <h2>📚 학습 개요</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">학생명</span>
+                        <span class="value">조인성</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">수업 기간</span>
+                        <span class="value">2025년 12월</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">총 수업 횟수</span>
+                        <span class="value">0회</span>
+                    </div>
                 </div>
             </div>
-
-            <section class="section">
-                <h2 class="section-title">📈 학습 요약</h2>
-                <div class="summary-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">수업 횟수</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">-</div>
-                        <div class="stat-label">참여도</div>
-                    </div>
+            
+            <div class="info-section">
+                <h2>📊 학습 요약</h2>
+                <div class="summary-card">
+                    <h3>⚠️ 수업 미참여</h3>
+                    <p>2025년 12월 동안 수업에 참여하지 않았습니다.<br>
+                    학습 연속성 유지를 위해 빠른 수업 재개가 필요합니다.</p>
                 </div>
+            </div>
+            
+            <div class="info-section">
+                <h2>📈 진도 현황</h2>
                 <div class="no-data">
-                    <div class="no-data-icon">📋</div>
-                    <p><strong>수업 기록이 없습니다.</strong><br>
-                    2025년 12월에는 수업이 진행되지 않았습니다.</p>
+                    수업이 진행되지 않아 진도 현황이 없습니다.
                 </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title">📚 진도 현황</h2>
+            </div>
+            
+            <div class="info-section">
+                <h2>📋 과제 수행 현황</h2>
                 <div class="no-data">
-                    <div class="no-data-icon">📖</div>
-                    <p><strong>진도 기록이 없습니다.</strong><br>
-                    수업이 진행되지 않아 학습 진도를 기록할 수 없습니다.</p>
+                    수업이 진행되지 않아 과제 현황이 없습니다.
                 </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title">✏️ 과제 수행 현황</h2>
-                <div class="no-data">
-                    <div class="no-data-icon">📝</div>
-                    <p><strong>과제 기록이 없습니다.</strong><br>
-                    수업이 진행되지 않아 과제 수행 현황을 기록할 수 없습니다.</p>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2 class="section-title">💬 선생님 코멘트</h2>
-                <div class="comment-box">
-                    <p class="comment-text">
-                        조인성 학생, 안녕하세요!<br><br>
-                        
-                        2025년 12월에는 수업이 진행되지 않았지만, 새로운 한 해를 맞이하여 학습에 대한 의지를 다시 한번 다져보는 시간을 가져보시기 바랍니다. 
-                        <br><br>
-                        앞으로 진행될 수업에서는 체계적이고 꾸준한 학습을 통해 목표를 달성할 수 있도록 최선을 다해 지도하겠습니다. 
-                        <br><br>
-                        새해 복 많이 받으시고, 2026년에는 더욱 발전하는 모습을 기대하겠습니다! 💪
-                    </p>
-                    <div class="teacher-signature">
-                        - 담당 선생님 올림
+            </div>
+            
+            <div class="info-section">
+                <h2>💬 선생님 코멘트</h2>
+                <div class="comment-card">
+                    <h3>👨‍🏫 담당 선생님</h3>
+                    <div class="comment-text">
+                        12월 한 달간 수업에 참여하지 않으셨습니다. 학습의 연속성을 위해 가능한 빨리 수업을 재개하시기 바랍니다. 
+                        복귀하실 때는 이전 학습 내용을 간단히 복습한 후 새로운 진도를 나가도록 하겠습니다. 
+                        언제든지 연락 주시면 수업 일정을 조정해드릴 수 있습니다.
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+        
+        <div class="footer">
+            본 보고서는 2026년 01월에 작성되었습니다.
         </div>
     </div>
 </body>
