@@ -1,430 +1,288 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>제이디 수학 - 12월 학습 보고서</title>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Pretendard', sans-serif;
-      background: #ffffff;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    
-    .container {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border-radius: 12px;
-      border: 1px solid #e9ecef;
-      overflow: hidden;
-    }
-    
-    .header {
-      background: #1e3a5f;
-      color: white;
-      padding: 40px 30px;
-      text-align: center;
-    }
-    
-    .header h1 {
-      font-size: 28px;
-      font-weight: 800;
-      margin: 0 0 8px 0;
-    }
-    
-    .header p {
-      font-size: 16px;
-      opacity: 0.9;
-      margin: 0;
-    }
-    
-    .section {
-      margin: 25px;
-      padding: 25px;
-      border-radius: 16px;
-      border: 2px solid #f0f0f0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-    }
-    
-    .section:hover {
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      transform: translateY(-2px);
-    }
-    
-    .section-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1e3a5f;
-      border-bottom: 3px solid #2563eb;
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .section-icon {
-      width: 40px;
-      height: 40px;
-      background: #2563eb;
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-    
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      text-align: center;
-    }
-    
-    .info-item {
-      background: #f8f9fa;
-      padding: 16px;
-      border-radius: 12px;
-      border-top: 3px solid #2563eb;
-    }
-    
-    .info-label {
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-    
-    .info-value {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1e3a5f;
-    }
-    
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-    
-    .kpi-card {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 14px;
-      text-align: center;
-      border-top: 4px solid #2563eb;
-      transition: all 0.3s ease;
-    }
-    
-    .kpi-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    }
-    
-    .kpi-value {
-      font-size: 32px;
-      font-weight: 800;
-      color: #1e3a5f;
-      margin-bottom: 4px;
-    }
-    
-    .kpi-label {
-      font-size: 14px;
-      color: #6b7280;
-    }
-    
-    .progress-bar {
-      background: #e5e7eb;
-      border-radius: 12px;
-      height: 28px;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-    
-    .progress-fill {
-      background: linear-gradient(90deg, #2563eb, #3b82f6);
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 12px;
-      color: white;
-      font-weight: 700;
-      width: 0%;
-    }
-    
-    .unit-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    
-    .unit-item {
-      padding: 12px;
-      background: #fafafa;
-      border-radius: 8px;
-      border-left: 3px solid #e5e7eb;
-      font-size: 14px;
-    }
-    
-    .unit-item.completed {
-      border-left-color: #10b981;
-      background: #f0fdf4;
-    }
-    
-    .attendance-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-top: 16px;
-    }
-    
-    .attendance-day {
-      padding: 12px 8px;
-      text-align: center;
-      border-radius: 8px;
-      font-size: 14px;
-      background: #fafafa;
-      border: 1px solid #e5e7eb;
-    }
-    
-    .attendance-day.present {
-      background: #f0fdf4;
-      border-color: #10b981;
-      color: #059669;
-    }
-    
-    .attendance-header {
-      color: #6b7280;
-      font-weight: 600;
-      background: transparent !important;
-      border: none !important;
-    }
-    
-    .lesson-log {
-      margin-bottom: 24px;
-      padding: 20px;
-      background: #fafafa;
-      border-radius: 12px;
-      border: 2px solid #e5e7eb;
-    }
-    
-    .log-header {
-      font-weight: 700;
-      color: #1e3a5f;
-      margin-bottom: 12px;
-      font-size: 16px;
-    }
-    
-    .log-content {
-      color: #374151;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    
-    .comment-box {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      padding: 16px;
-      border-radius: 10px;
-      border-left: 4px solid #f59e0b;
-      margin-top: 12px;
-    }
-    
-    .comment-text {
-      color: #92400e;
-      font-size: 14px;
-      margin: 0;
-    }
-    
-    .evaluation-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    
-    .evaluation-item {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 12px;
-      border-left: 4px solid #2563eb;
-    }
-    
-    .evaluation-item h4 {
-      color: #1e3a5f;
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-    
-    .evaluation-item p {
-      color: #374151;
-      font-size: 14px;
-      margin: 0;
-    }
-    
-    .footer {
-      background: #f8f9fa;
-      padding: 25px;
-      text-align: center;
-      color: #6b7280;
-      border-top: 1px solid #e9ecef;
-    }
-    
-    .footer-title {
-      font-weight: 700;
-      color: #1e3a5f;
-      margin-bottom: 8px;
-    }
-    
-    .no-lesson-notice {
-      text-align: center;
-      padding: 40px;
-      background: #fef3c7;
-      border-radius: 12px;
-      border: 2px solid #f59e0b;
-    }
-    
-    .no-lesson-notice h3 {
-      color: #92400e;
-      margin-bottom: 12px;
-    }
-    
-    .no-lesson-notice p {
-      color: #a16207;
-      margin: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 보고서 - 조인성</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px 16px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 32px 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .student-info {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-weight: 500;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .no-data {
+            text-align: center;
+            color: #718096;
+            font-style: italic;
+            padding: 40px 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border: 2px dashed #cbd5e0;
+        }
+
+        .no-data-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: #8b4513;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .comment-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 8px;
+        }
+
+        .comment-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #2d3748;
+            font-style: italic;
+        }
+
+        .teacher-signature {
+            text-align: right;
+            margin-top: 16px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 12px;
+            }
+            
+            .header {
+                padding: 28px 16px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- 헤더 -->
-    <div class="header">
-      <h1>📊 12월 학습 보고서</h1>
-      <p>2025년 12월 학습 기간</p>
-    </div>
+    <div class="container">
+        <header class="header">
+            <h1>📚 학습 보고서</h1>
+            <p>2026년 01월 학습 보고서</p>
+        </header>
 
-    <!-- 학생 정보 -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-icon">👤</div>
-        학생 정보
-      </div>
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="info-label">학생명</div>
-          <div class="info-value">조인성</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">수업 횟수</div>
-          <div class="info-value">0회</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">보고서 기준</div>
-          <div class="info-value">12월</div>
-        </div>
-      </div>
-    </div>
+        <div class="content">
+            <div class="student-info">
+                <div class="info-row">
+                    <span class="info-label">👨‍🎓 학생명</span>
+                    <span class="info-value">조인성</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">📅 수업 기간</span>
+                    <span class="info-value">2025년 12월</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">📊 총 수업 횟수</span>
+                    <span class="info-value">0회</span>
+                </div>
+            </div>
 
-    <!-- 학습 요약 -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-icon">📈</div>
-        학습 요약
-      </div>
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-value">0</div>
-          <div class="kpi-label">총 수업 일수</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-value">-</div>
-          <div class="kpi-label">출석률</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-value">0%</div>
-          <div class="kpi-label">학습 진행률</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-value">-</div>
-          <div class="kpi-label">과제 완료율</div>
-        </div>
-      </div>
-    </div>
+            <section class="section">
+                <h2 class="section-title">📈 학습 요약</h2>
+                <div class="summary-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">수업 횟수</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">-</div>
+                        <div class="stat-label">참여도</div>
+                    </div>
+                </div>
+                <div class="no-data">
+                    <div class="no-data-icon">📋</div>
+                    <p><strong>수업 기록이 없습니다.</strong><br>
+                    2025년 12월에는 수업이 진행되지 않았습니다.</p>
+                </div>
+            </section>
 
-    <!-- 종합 평가 -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-icon">⭐</div>
-        종합 평가
-      </div>
-      <div class="evaluation-content">
-        <div class="evaluation-item">
-          <h4>🔍 12월 학습 현황</h4>
-          <p>12월에는 수업이 진행되지 않았습니다. 새로운 학습 계획 수립을 통해 체계적인 수학 학습을 시작할 준비를 하고 있습니다.</p>
-        </div>
-        <div class="evaluation-item">
-          <h4>🎯 1월 학습 계획</h4>
-          <p>2026년 1월부터 정규 수업을 시작하여 기초 개념 정립과 단계적 문제 해결 능력 향상을 목표로 합니다. 개인별 맞춤 학습으로 진행할 예정입니다.</p>
-        </div>
-      </div>
-    </div>
+            <section class="section">
+                <h2 class="section-title">📚 진도 현황</h2>
+                <div class="no-data">
+                    <div class="no-data-icon">📖</div>
+                    <p><strong>진도 기록이 없습니다.</strong><br>
+                    수업이 진행되지 않아 학습 진도를 기록할 수 없습니다.</p>
+                </div>
+            </section>
 
-    <!-- 학습 진도 현황 -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-icon">📚</div>
-        학습 진도 현황
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" style="width: 0%;">0%</div>
-      </div>
-      <div class="unit-list">
-        <div class="unit-item">📖 기초 개념 학습 (대기)</div>
-        <div class="unit-item">🧮 연산 능력 향상 (대기)</div>
-        <div class="unit-item">📐 도형의 이해 (대기)</div>
-        <div class="unit-item">📊 문제 해결 전략 (대기)</div>
-      </div>
-    </div>
+            <section class="section">
+                <h2 class="section-title">✏️ 과제 수행 현황</h2>
+                <div class="no-data">
+                    <div class="no-data-icon">📝</div>
+                    <p><strong>과제 기록이 없습니다.</strong><br>
+                    수업이 진행되지 않아 과제 수행 현황을 기록할 수 없습니다.</p>
+                </div>
+            </section>
 
-    <!-- 출석 현황 -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-icon">📅</div>
-        출석 현황
-      </div>
-      <div class="no-lesson-notice">
-        <h3>📋 12월 수업 없음</h3>
-        <p>12월에는 수업이 진행되지 않았습니다.<br>정규 수업은 2026년 1월부터 시작됩니다.</p>
-      </div>
-    </div>
-
-    <!-- 수업 로그 -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-icon">📝</div>
-        수업 로그
-      </div>
-      <div class="lesson-log">
-        <div class="log-header">📌 12월 학습 기록</div>
-        <div class="log-content">
-          12월에는 수업이 진행되지 않았습니다.
+            <section class="section">
+                <h2 class="section-title">💬 선생님 코멘트</h2>
+                <div class="comment-box">
+                    <p class="comment-text">
+                        조인성 학생, 안녕하세요!<br><br>
+                        
+                        2025년 12월에는 수업이 진행되지 않았지만, 새로운 한 해를 맞이하여 학습에 대한 의지를 다시 한번 다져보는 시간을 가져보시기 바랍니다. 
+                        <br><br>
+                        앞으로 진행될 수업에서는 체계적이고 꾸준한 학습을 통해 목표를 달성할 수 있도록 최선을 다해 지도하겠습니다. 
+                        <br><br>
+                        새해 복 많이 받으시고, 2026년에는 더욱 발전하는 모습을 기대하겠습니다! 💪
+                    </p>
+                    <div class="teacher-signature">
+                        - 담당 선생님 올림
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="comment-box">
-          <p class="comment-text">
-            <strong>💡 학습 준비 단계:</strong> 새로운 학기를 맞아 체계적인 수학 학습 계획을 준비하고 있습니다. 1월부터 정규 수업을 통해 단계별 학습 목표를 달성해 나갈 예정입니다.
-          </p>
-        </div>
-      </div>
     </div>
-
-    <!-- 푸터 -->
-    <div class="footer">
-      <div class="footer-title">📞 제이디 수학</div>
-      <p>궁금한 사항이 있으시면 카카오채널로 언제든 문의해 주세요!</p>
-      <p style="font-weight: 600; color: #2563eb; margin-top: 8px;">카카오채널: 제이디 수학</p>
-    </div>
-  </div>
 </body>
 </html>
