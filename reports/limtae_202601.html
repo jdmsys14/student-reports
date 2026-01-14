@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 보고서 - 임태범</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header .date {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .student-info {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .student-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .period {
+            font-size: 16px;
+            color: #718096;
+        }
+        
+        .card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .card p {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        .no-class-notice {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            color: #d63031;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .footer {
+            background: #f8fafc;
+            padding: 20px 25px;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 375px) {
+            .container {
+                margin: 10px;
+                border-radius: 16px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .student-name {
+                font-size: 24px;
+            }
+            
+            .stats {
+                gap: 12px;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 학습 보고서</h1>
+            <div class="date">2026년 01월</div>
+        </div>
+        
+        <div class="content">
+            <div class="student-info">
+                <div class="student-name">임태범</div>
+                <div class="period">수업 기간: 2025년 12월</div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">총 수업 횟수</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">-</div>
+                    <div class="stat-label">출석률</div>
+                </div>
+            </div>
+            
+            <div class="no-class-notice">
+                ⚠️ 해당 기간 동안 수업이 진행되지 않았습니다.
+            </div>
+            
+            <div class="card">
+                <h3>학습 요약</h3>
+                <p>2025년 12월 기간 중 수업이 진행되지 않아 학습 내용이 없습니다. 다음 수업 시작 시 체계적인 학습 계획을 세워 진행할 예정입니다.</p>
+            </div>
+            
+            <div class="card">
+                <h3>진도 현황</h3>
+                <p>수업 미진행으로 인한 진도 변화 없음</p>
+            </div>
+            
+            <div class="card">
+                <h3>과제 수행 현황</h3>
+                <p>부여된 과제 없음</p>
+            </div>
+            
+            <div class="card">
+                <h3>선생님 코멘트</h3>
+                <p>안녕하세요, 임태범 학생! 2025년 12월에는 수업이 진행되지 않았지만, 새해 시작과 함께 체계적이고 알찬 학습을 시작할 준비를 해두겠습니다. 다음 수업부터 학생의 학습 목표와 현재 수준을 파악하여 맞춤형 커리큘럼으로 진행하겠습니다. 함께 좋은 성과를 만들어가요! 💪</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📞 문의사항이 있으시면 언제든 연락주세요</p>
+        </div>
+    </div>
+</body>
+</html>
