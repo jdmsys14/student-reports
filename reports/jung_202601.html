@@ -1,256 +1,385 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학습 보고서 - 천의정</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 16px;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 24px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .content {
-            padding: 24px;
-        }
-        
-        .info-section {
-            background: #f8f9ff;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e8ecf4;
-        }
-        
-        .info-item:last-child {
-            border-bottom: none;
-        }
-        
-        .info-label {
-            font-weight: 600;
-            color: #4a5568;
-            font-size: 14px;
-        }
-        
-        .info-value {
-            font-weight: 500;
-            color: #1a202c;
-            font-size: 14px;
-        }
-        
-        .section-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-        
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 18px;
-            background: #667eea;
-            border-radius: 2px;
-            margin-right: 12px;
-        }
-        
-        .no-data {
-            text-align: center;
-            padding: 40px 20px;
-            color: #718096;
-            background: #f7fafc;
-            border-radius: 8px;
-            border: 2px dashed #e2e8f0;
-        }
-        
-        .no-data-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-        
-        .no-data h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #4a5568;
-        }
-        
-        .no-data p {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        
-        .comment-box {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 8px;
-        }
-        
-        .comment-text {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #744210;
-            font-style: italic;
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 12px;
-            }
-            
-            .header {
-                padding: 20px 16px;
-            }
-            
-            .header h1 {
-                font-size: 20px;
-            }
-            
-            .content {
-                padding: 20px 16px;
-            }
-            
-            .section-card {
-                padding: 16px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이디 수학 - 12월 학습 보고서</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: #ffffff;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .container {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      border: 1px solid #e9ecef;
+      overflow: hidden;
+      margin: 20px;
+    }
+
+    .header {
+      background: #1e3a5f;
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .section {
+      margin: 25px;
+      padding: 25px;
+      border-radius: 16px;
+      border: 2px solid #f0f0f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .section:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: #1e3a5f;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background: #2563eb;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .info-item {
+      text-align: center;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-top: 3px solid #2563eb;
+    }
+
+    .info-label {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .kpi-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      border-top: 4px solid #2563eb;
+      transition: all 0.3s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1e3a5f;
+      margin-bottom: 8px;
+    }
+
+    .kpi-label {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 12px;
+      height: 28px;
+      overflow: hidden;
+      margin: 16px 0;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 12px;
+      color: white;
+      font-weight: 700;
+      width: 0%;
+    }
+
+    .attendance-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .attendance-day {
+      padding: 12px 8px;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 14px;
+      background: #f8f9fa;
+      color: #6b7280;
+    }
+
+    .attendance-present {
+      background: #10b981;
+      color: white;
+    }
+
+    .lesson-log {
+      margin-bottom: 24px;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+    }
+
+    .lesson-date {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 12px;
+    }
+
+    .lesson-content {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .comment-box {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      padding: 16px;
+      border-radius: 10px;
+      border-left: 4px solid #f59e0b;
+      margin: 16px 0;
+    }
+
+    .comment-title {
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 8px;
+    }
+
+    .comment-text {
+      color: #92400e;
+      font-size: 14px;
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 25px;
+      text-align: center;
+      color: #6b7280;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .footer-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1e3a5f;
+    }
+
+    .no-class-notice {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      border-radius: 16px;
+      margin: 20px 0;
+    }
+
+    .no-class-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .no-class-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .no-class-text {
+      color: #6b7280;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📚 학습 보고서</h1>
-            <p>2026년 01월 학습 현황</p>
-        </div>
-        
-        <div class="content">
-            <!-- 학생 기본 정보 -->
-            <div class="info-section">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-label">학생명</span>
-                        <span class="info-value">천의정</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">수업 기간</span>
-                        <span class="info-value">2025년 12월</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">총 수업 횟수</span>
-                        <span class="info-value">0회</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 학습 요약 -->
-            <div class="section-card">
-                <div class="section-title">학습 요약</div>
-                <div class="no-data">
-                    <div class="no-data-icon">📝</div>
-                    <h3>수업 기록이 없습니다</h3>
-                    <p>2025년 12월 기간 동안<br>진행된 수업이 없어<br>학습 요약 내용이 없습니다.</p>
-                </div>
-            </div>
-            
-            <!-- 진도 현황 -->
-            <div class="section-card">
-                <div class="section-title">진도 현황</div>
-                <div class="no-data">
-                    <div class="no-data-icon">📖</div>
-                    <h3>진도 정보가 없습니다</h3>
-                    <p>수업이 진행되지 않아<br>진도 현황을 표시할<br>내용이 없습니다.</p>
-                </div>
-            </div>
-            
-            <!-- 과제 수행 현황 -->
-            <div class="section-card">
-                <div class="section-title">과제 수행 현황</div>
-                <div class="no-data">
-                    <div class="no-data-icon">✏️</div>
-                    <h3>과제 기록이 없습니다</h3>
-                    <p>수업이 진행되지 않아<br>과제 관련 내용이<br>없습니다.</p>
-                </div>
-            </div>
-            
-            <!-- 선생님 코멘트 -->
-            <div class="section-card">
-                <div class="section-title">선생님 코멘트</div>
-                <div class="comment-box">
-                    <div class="comment-text">
-                        안녕하세요, 천의정 학생 학부모님!<br><br>
-                        
-                        2025년 12월 기간 동안 수업이 진행되지 않아 구체적인 학습 현황을 말씀드릴 수 없어 아쉽습니다.<br><br>
-                        
-                        새해가 되면서 새로운 마음으로 학습을 시작할 좋은 기회라고 생각됩니다. 앞으로 진행될 수업에서는 학생의 학습 성향과 수준을 파악하여 맞춤형 지도를 제공하겠습니다.<br><br>
-                        
-                        규칙적인 수업 참여와 꾸준한 학습을 통해 좋은 성과를 거둘 수 있도록 최선을 다해 지도하겠습니다.
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <h1>📊 12월 학습 보고서</h1>
+      <p>2025년 12월 학습 기간</p>
     </div>
+
+    <div class="section">
+      <div class="section-title">
+        <div class="section-icon">👨‍🎓</div>
+        학생 정보
+      </div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">학생명</div>
+          <div class="info-value">천의정</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">수업 횟수</div>
+          <div class="info-value">0회</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">보고 기간</div>
+          <div class="info-value">12월</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <div class="section-icon">📈</div>
+        학습 요약
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">0</div>
+          <div class="kpi-label">총 수업 일수</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">-</div>
+          <div class="kpi-label">출석률</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">-</div>
+          <div class="kpi-label">학습 진행률</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">-</div>
+          <div class="kpi-label">과제 완료율</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <div class="section-icon">⭐</div>
+        종합 평가
+      </div>
+      <div class="comment-box">
+        <div class="comment-title">🎯 12월 학습 현황</div>
+        <div class="comment-text">
+          12월에는 수업이 진행되지 않았습니다. 새로운 학습 계획을 준비하여 다음 달부터 체계적인 수업을 시작할 예정입니다.
+        </div>
+      </div>
+      <div class="comment-box">
+        <div class="comment-title">📋 1월 학습 계획</div>
+        <div class="comment-text">
+          • 수학 기초 실력 진단 및 맞춤형 학습 계획 수립<br>
+          • 체계적인 단원별 학습 진행<br>
+          • 정기적인 평가를 통한 학습 성과 점검<br>
+          • 학습 습관 형성을 위한 일정한 수업 스케줄 운영
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <div class="section-icon">📚</div>
+        학습 진도 현황
+      </div>
+      <div class="no-class-notice">
+        <div class="no-class-icon">📖</div>
+        <div class="no-class-title">진도 현황 없음</div>
+        <div class="no-class-text">12월에는 수업이 진행되지 않아 학습 진도가 없습니다.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <div class="section-icon">📅</div>
+        출석 현황
+      </div>
+      <div class="no-class-notice">
+        <div class="no-class-icon">📋</div>
+        <div class="no-class-title">출석 기록 없음</div>
+        <div class="no-class-text">12월에는 수업이 예정되지 않았습니다.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <div class="section-icon">📝</div>
+        수업 로그
+      </div>
+      <div class="no-class-notice">
+        <div class="no-class-icon">📚</div>
+        <div class="no-class-title">수업 기록 없음</div>
+        <div class="no-class-text">12월에는 수업이 진행되지 않았습니다.<br>1월부터 정규 수업을 시작할 예정입니다.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-title">📞 제이디 수학</div>
+      <p>궁금한 사항이 있으시면 카카오채널로 언제든 문의해 주세요!</p>
+      <p style="font-size: 14px; margin-top: 8px; opacity: 0.8;">보고서 생성일: 2026년 01월</p>
+    </div>
+  </div>
 </body>
 </html>
