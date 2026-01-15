@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학습 보고서 - 임태범</title>
+    <title>2026년 01월 학습 보고서 - 임태범</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -11,172 +13,216 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
-            color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
-            max-width: 480px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
             padding: 30px 25px;
             text-align: center;
         }
-        
+
         .header h1 {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-        
-        .header .date {
+
+        .header .student-info {
             font-size: 16px;
-            opacity: 0.9;
             font-weight: 400;
+            opacity: 0.9;
         }
-        
+
         .content {
-            padding: 25px;
+            padding: 30px 25px;
         }
-        
-        .student-info {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .student-name {
-            font-size: 28px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 8px;
-        }
-        
-        .period {
-            font-size: 16px;
-            color: #718096;
-        }
-        
-        .card {
-            background: #f8fafc;
-            border-radius: 16px;
+
+        .info-card {
+            background: #f8f9ff;
+            border-radius: 15px;
             padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
+            margin-bottom: 25px;
+            border-left: 4px solid #4facfe;
         }
-        
-        .card h3 {
+
+        .info-card h3 {
+            color: #333;
             font-size: 18px;
             font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
-        
-        .card h3::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #667eea;
-            border-radius: 50%;
-            margin-right: 10px;
+
+        .info-card h3::before {
+            content: "📊";
+            margin-right: 8px;
         }
-        
-        .card p {
-            font-size: 15px;
-            color: #4a5568;
-            line-height: 1.6;
-        }
-        
-        .stats {
+
+        .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 20px;
         }
-        
-        .stat-card {
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item .label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-item .value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #4facfe;
+        }
+
+        .progress-card {
             background: white;
             border-radius: 12px;
             padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e2e8f0;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #00d4aa;
         }
-        
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            color: #718096;
-            font-weight: 500;
-        }
-        
-        .no-class-notice {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-            color: #d63031;
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 500;
+
+        .progress-header {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
             font-size: 16px;
         }
-        
-        .footer {
-            background: #f8fafc;
-            padding: 20px 25px;
-            text-align: center;
-            color: #718096;
+
+        .progress-content {
+            color: #666;
             font-size: 14px;
-            border-top: 1px solid #e2e8f0;
+            line-height: 1.8;
         }
-        
-        @media (max-width: 375px) {
-            .container {
-                margin: 10px;
-                border-radius: 16px;
+
+        .homework-list {
+            list-style: none;
+        }
+
+        .homework-list li {
+            background: white;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 3px solid #ffa726;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+        }
+
+        .homework-list li::before {
+            content: "📝 ";
+            margin-right: 8px;
+        }
+
+        .comment-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .comment-box h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .comment-box p {
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .highlight {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+        }
+
+        .achievement {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 500;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
             }
-            
+
+            .container {
+                border-radius: 15px;
+            }
+
             .header {
                 padding: 25px 20px;
             }
-            
+
+            .header h1 {
+                font-size: 22px;
+            }
+
             .content {
-                padding: 20px;
+                padding: 25px 20px;
             }
-            
-            .student-name {
-                font-size: 24px;
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
-            
-            .stats {
-                gap: 12px;
-            }
-            
-            .stat-card {
-                padding: 15px;
+
+            .section-title {
+                font-size: 18px;
             }
         }
     </style>
@@ -184,54 +230,86 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚 학습 보고서</h1>
-            <div class="date">2026년 01월</div>
+            <h1>📚 2026년 01월 학습 보고서</h1>
+            <div class="student-info">임태범 학생</div>
         </div>
-        
+
         <div class="content">
-            <div class="student-info">
-                <div class="student-name">임태범</div>
-                <div class="period">수업 기간: 2025년 12월</div>
-            </div>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">총 수업 횟수</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">-</div>
-                    <div class="stat-label">출석률</div>
+            <div class="info-card">
+                <h3>학습 개요</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="label">수업 기간</div>
+                        <div class="value">2025년 12월</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">총 수업 횟수</div>
+                        <div class="value">6회</div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="no-class-notice">
-                ⚠️ 해당 기간 동안 수업이 진행되지 않았습니다.
+
+            <div class="section">
+                <h2 class="section-title">🎯 학습 요약</h2>
+                <div class="progress-card">
+                    <div class="progress-content">
+                        12월 한 달간 <strong>연립방정식 활용과 부등식</strong>을 시작으로 <strong>유한소수와 순환소수</strong>, 그리고 <strong>다항식의 계산</strong>까지 체계적으로 학습을 진행했습니다. 
+                        중간에 단원평가를 통해 학습 성과를 점검하고 부족한 부분을 보완하는 시간을 가졌습니다.
+                    </div>
+                </div>
             </div>
-            
-            <div class="card">
-                <h3>학습 요약</h3>
-                <p>2025년 12월 기간 중 수업이 진행되지 않아 학습 내용이 없습니다. 다음 수업 시작 시 체계적인 학습 계획을 세워 진행할 예정입니다.</p>
+
+            <div class="section">
+                <h2 class="section-title">📈 진도 현황</h2>
+                
+                <div class="progress-card">
+                    <div class="progress-header">🔹 연립방정식 및 부등식 단원</div>
+                    <div class="progress-content">
+                        • 연립방정식 활용 문제 해결<br>
+                        • 일차부등식 활용 학습<br>
+                        • 단원평가 완료 (연립방정식 10/10, 부등식 재시험 후 4/4 완료)
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">🔹 수와 식 단원</div>
+                    <div class="progress-content">
+                        • 유한소수와 순환소수 개념 학습<br>
+                        • 다항식의 계산 진입<br>
+                        • p.43까지 진행 완료
+                    </div>
+                </div>
             </div>
-            
-            <div class="card">
-                <h3>진도 현황</h3>
-                <p>수업 미진행으로 인한 진도 변화 없음</p>
+
+            <div class="section">
+                <h2 class="section-title">📋 과제 수행 현황</h2>
+                <ul class="homework-list">
+                    <li>p. 114~117, 부등식 오답 정리</li>
+                    <li>p. 74 ~ 79 문제 풀이</li>
+                    <li>~p. 83 일차부등식 활용</li>
+                    <li>~p. 21 유한소수와 순환소수</li>
+                    <li>~p. 31 순환소수 심화</li>
+                    <li>~p. 43 다항식의 계산</li>
+                </ul>
             </div>
-            
-            <div class="card">
-                <h3>과제 수행 현황</h3>
-                <p>부여된 과제 없음</p>
+
+            <div class="highlight">
+                <div class="achievement">✨ 연립방정식 단원평가 만점 달성!</div>
+                <div class="achievement">🎯 부등식 단원 재평가 완주!</div>
             </div>
-            
-            <div class="card">
-                <h3>선생님 코멘트</h3>
-                <p>안녕하세요, 임태범 학생! 2025년 12월에는 수업이 진행되지 않았지만, 새해 시작과 함께 체계적이고 알찬 학습을 시작할 준비를 해두겠습니다. 다음 수업부터 학생의 학습 목표와 현재 수준을 파악하여 맞춤형 커리큘럼으로 진행하겠습니다. 함께 좋은 성과를 만들어가요! 💪</p>
+
+            <div class="comment-box">
+                <h3>👨‍🏫 선생님 종합 코멘트</h3>
+                <p>
+                    임태범 학생은 12월 한 달간 매우 성실하게 학습에 임했습니다. 특히 연립방정식에서는 만점이라는 훌륭한 성과를 거두었고, 
+                    부등식에서 처음 어려움을 겪었지만 포기하지 않고 재시험을 통해 완벽하게 이해하는 모습을 보여주었습니다.
+                    <br><br>
+                    결석에 대한 보강 수업도 적극적으로 참여했으며, 새로운 단원인 순환소수와 다항식 계산에서도 차근차근 따라오고 있습니다. 
+                    이런 꾸준한 학습 태도가 유지된다면 앞으로도 좋은 성과를 기대할 수 있을 것입니다.
+                    <br><br>
+                    <strong>새해에도 지금처럼 성실한 자세로 함께 화이팅해요! 🎉</strong>
+                </p>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p>📞 문의사항이 있으시면 언제든 연락주세요</p>
         </div>
     </div>
 </body>
