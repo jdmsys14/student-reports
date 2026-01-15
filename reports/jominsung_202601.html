@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 조민성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header .student-name {
+            font-size: 1.3rem;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+        }
+        
+        .card h2 {
+            color: #495057;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .info-item {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-item .label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .timeline-item {
+            background: #f8f9fa;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            position: relative;
+        }
+        
+        .timeline-date {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 4px 4px 4px 0;
+        }
+        
+        .badge.success {
+            background: #28a745;
+        }
+        
+        .badge.warning {
+            background: #ffc107;
+            color: #000;
+        }
+        
+        .comment-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            margin-top: 16px;
+        }
+        
+        .comment-box p {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 12px 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header .student-name {
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card h2 {
+                font-size: 1.2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="student-name">조민성</div>
+        </div>
+        
+        <div class="card">
+            <h2>📊 수업 개요</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">수업 기간</div>
+                    <div class="value">2025년 12월</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">총 수업 횟수</div>
+                    <div class="value">7회</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">학습 과정</div>
+                    <div class="value">고2 대수</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">사용 교재</div>
+                    <div class="value">개념플러스 유형</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📚 학습 요약</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <strong>시험 대비 보강</strong> - 기출문제 정리 및 풀이를 통한 실전 감각 향상
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <strong>고2 대수 과정 시작</strong> - 지수와 거듭제곱근 개념 학습 시작
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <strong>지수 완성</strong> - 지수의 거듭제곱과 거듭제곱근 심화 학습
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <strong>로그 학습</strong> - 로그의 정의, 성질, 활용 전반 학습
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <strong>지수함수 학습</strong> - 지수함수와 실생활 활용 문제 해결
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📈 진도 현황</h2>
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #495057; margin-bottom: 12px;">지수와 로그 단원</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+                <div style="font-size: 0.9rem; color: #6c757d; margin-top: 8px;">진도율: 85% 완료</div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">완료 단원</div>
+                    <div class="value">
+                        <span class="badge success">지수</span>
+                        <span class="badge success">로그</span>
+                        <span class="badge">지수함수</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="label">단원 평가</div>
+                    <div class="value">지수와 로그: 9/10 문제 정답</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>✏️ 과제 수행 현황</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">12월 2주차</div>
+                    <div class="timeline-content">개념편 소단원 1단원 <span class="badge success">완료</span></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">12월 3주차</div>
+                    <div class="timeline-content">개념편, 유형편 지수 <span class="badge success">완료</span></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">12월 3주차</div>
+                    <div class="timeline-content">교재 ~p. 46 <span class="badge success">완료</span></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">12월 4주차</div>
+                    <div class="timeline-content">유형편 지수, 로그 <span class="badge success">완료</span></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">12월 4주차</div>
+                    <div class="timeline-content">(개념편) ~p. 70 <span class="badge success">완료</span></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">12월 5주차</div>
+                    <div class="timeline-content">(유형편) ~p. 27 <span class="badge">진행중</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💬 선생님 코멘트</h2>
+            <div class="comment-box">
+                <p><strong>📍 학습 성취도:</strong> 조민성 학생은 12월 한 달간 고2 대수 과정을 차근차근 잘 따라왔습니다. 특히 지수와 로그 단원에서 9/10 문제를 정답으로 맞춘 것은 매우 우수한 성과입니다.</p>
+                
+                <p><strong>📍 학습 태도:</strong> 기출문제 정리부터 신규 단원 학습까지 성실하게 참여하며, 주어진 과제를 빠짐없이 완수하는 모습이 인상적입니다.</p>
+                
+                <p><strong>📍 향후 계획:</strong> 고2 1학기에는 대수와 미적분이 함께 진행되므로, 방학 기간 동안 학원에서 병행 학습을 통해 탄탄한 기초를 다질 예정입니다.</p>
+                
+                <div class="highlight">
+                    <strong>🎯 특별 권장사항:</strong> 방학 기간 동안 오전 시간을 활용한 자율 학습을 권장드렸습니다. 꾸준한 학습 습관으로 더욱 발전된 모습을 기대합니다.
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; color: #6c757d; font-size: 0.9rem;">
+            <p>본 보고서는 2025년 12월 수업을 바탕으로 작성되었습니다.</p>
+            <p style="margin-top: 8px;">문의사항이 있으시면 언제든 연락 주시기 바랍니다.</p>
+        </div>
+    </div>
+</body>
+</html>
