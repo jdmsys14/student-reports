@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 조규민</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #718096;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .summary-content {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .progress-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #48bb78;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .progress-detail {
+            color: #4a5568;
+            font-size: 15px;
+        }
+
+        .assignment-list {
+            list-style: none;
+        }
+
+        .assignment-item {
+            background: #fff5f5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #f56565;
+        }
+
+        .assignment-date {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .assignment-content {
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .comment-content {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 12px;
+            color: #2d3748;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: #fef5e7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #c05621;
+        }
+
+        .evaluation-score {
+            display: inline-flex;
+            align-items: center;
+            background: #48bb78;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            .header {
+                padding: 24px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 18px;
+            }
+
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="subtitle">Monthly Learning Report</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">학생 정보</div>
+            <div class="student-info">
+                <div class="info-item">
+                    <div class="info-label">학생명</div>
+                    <div class="info-value">조규민</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">수업 기간</div>
+                    <div class="info-value">2025년 12월</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">총 수업 횟수</div>
+                    <div class="info-value">7회</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">학습 요약</div>
+            <div class="summary-content">
+                12월 한 달간 고2 대수 과정을 본격적으로 시작하였습니다. 기출문제 정리를 통한 학습 점검 후, <span style="background: rgba(255,255,255,0.3); padding: 2px 8px; border-radius: 4px;">지수와 로그</span> 단원을 체계적으로 학습하였습니다. 거듭제곱근의 기본 개념부터 시작하여 지수함수의 활용까지 단계별로 진행하였으며, 단원평가에서 우수한 성과를 보였습니다.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">진도 현황</div>
+            <div class="progress-item">
+                <div class="progress-title">📚 사용 교재</div>
+                <div class="progress-detail">개념플러스 유형 (개념편/유형편)</div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">📖 완료 단원</div>
+                <div class="progress-detail">
+                    • 지수 - 거듭제곱근<br>
+                    • 지수의 거듭제곱과 거듭제곱근<br>
+                    • 로그의 정의와 성질<br>
+                    • 지수함수와 활용
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">🎯 학습 성과</div>
+                <div class="progress-detail">
+                    지수와 로그 단원평가 결과
+                    <div class="evaluation-score">9/10 문제 정답</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">과제 수행 현황</div>
+            <ul class="assignment-list">
+                <li class="assignment-item">
+                    <div class="assignment-date">12월 10일 부여</div>
+                    <div class="assignment-content">개념편 소단원 1단원</div>
+                </li>
+                <li class="assignment-item">
+                    <div class="assignment-date">12월 13일 부여</div>
+                    <div class="assignment-content">개념편, 유형편 지수</div>
+                </li>
+                <li class="assignment-item">
+                    <div class="assignment-date">12월 17일 부여</div>
+                    <div class="assignment-content">~p. 46</div>
+                </li>
+                <li class="assignment-item">
+                    <div class="assignment-date">12월 20일 부여</div>
+                    <div class="assignment-content">유형편 지수, 로그</div>
+                </li>
+                <li class="assignment-item">
+                    <div class="assignment-date">12월 24일 부여</div>
+                    <div class="assignment-content">(개념편) ~p. 70</div>
+                </li>
+                <li class="assignment-item">
+                    <div class="assignment-date">12월 27일 부여</div>
+                    <div class="assignment-content">(유형편) ~p. 27</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">선생님 코멘트</div>
+            <div class="comment-content">
+                조규민 학생은 12월 한 달간 <span class="highlight">대수 과정</span>에 성실히 참여하며 좋은 성과를 보였습니다. 특히 지수와 로그 단원평가에서 <span class="highlight">9/10 문제를 정답</span>으로 맞혀 우수한 이해도를 보여주었습니다.<br><br>
+
+                고2 1학기에는 대수와 미적분이 함께 진행되는 만큼, 방학 기간을 활용한 선행학습이 중요합니다. 1월 5일 월요일부터 <span class="highlight">오전 자율학습</span>에 참여하여 꾸준한 학습 리듬을 유지할 예정입니다.<br><br>
+
+                앞으로도 현재의 학습 태도를 유지하며 체계적으로 진행한다면 고2 과정에서도 좋은 결과를 기대할 수 있을 것입니다.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
