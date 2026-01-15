@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026년 01월 학습 보고서 - 조인성</title>
+    <title>2026년 01월 학습 보고서</title>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,217 +13,198 @@
         }
 
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px 15px;
+            color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
             text-align: center;
-            padding: 40px 20px;
+            color: white;
+            margin-bottom: 30px;
         }
 
         .header h1 {
-            font-size: 1.8rem;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .header .date {
-            font-size: 1rem;
+        .header p {
+            font-size: 14px;
             opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .content {
-            padding: 30px;
         }
 
         .card {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid #e2e8f0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h2 {
-            color: #2d3748;
-            font-size: 1.3rem;
-            font-weight: 600;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
             margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
             display: flex;
             align-items: center;
         }
 
-        .card h2::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            border-radius: 2px;
-            margin-right: 12px;
+        .card-title::before {
+            content: "📊";
+            margin-right: 8px;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 12px;
         }
 
         .info-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            text-align: center;
+            display: flex;
+            padding: 12px;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
         }
 
-        .info-item .label {
-            color: #718096;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+        .info-label {
+            font-weight: 500;
+            color: #4a5568;
+            min-width: 80px;
+            margin-right: 12px;
         }
 
-        .info-item .value {
+        .info-value {
             color: #2d3748;
-            font-size: 1.1rem;
-            font-weight: 600;
+            flex: 1;
         }
 
         .summary-text {
-            background: white;
-            padding: 20px;
+            background: #f7fafc;
+            padding: 16px;
             border-radius: 12px;
-            line-height: 1.8;
-            border-left: 4px solid #4facfe;
+            margin-top: 12px;
+            border-left: 4px solid #48bb78;
+            line-height: 1.7;
         }
 
         .progress-item {
-            background: white;
-            padding: 20px;
+            background: #f7fafc;
+            padding: 16px;
             border-radius: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid #48bb78;
+            margin-bottom: 12px;
+            border-left: 4px solid #ed8936;
         }
 
-        .progress-item h3 {
-            color: #2d3748;
-            font-size: 1.1rem;
+        .progress-title {
             font-weight: 600;
-            margin-bottom: 10px;
+            color: #2d3748;
+            margin-bottom: 8px;
         }
 
-        .progress-item .details {
+        .progress-content {
+            font-size: 14px;
             color: #4a5568;
             line-height: 1.6;
         }
 
         .assignment-list {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
+            list-style: none;
         }
 
         .assignment-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #e2e8f0;
+            background: #f7fafc;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #9f7aea;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .assignment-item:last-child {
-            border-bottom: none;
-        }
-
         .assignment-date {
+            font-size: 12px;
             color: #718096;
-            font-size: 0.9rem;
             font-weight: 500;
-        }
-
-        .assignment-content {
-            color: #2d3748;
-            flex: 1;
-            margin-left: 15px;
         }
 
         .comment-text {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 25px;
+            background: linear-gradient(135deg, #667eea10, #764ba220);
+            padding: 20px;
             border-radius: 12px;
-            line-height: 1.8;
-            color: #2d3748;
-            font-weight: 500;
+            margin-top: 12px;
+            border: 1px solid #667eea30;
+            line-height: 1.7;
         }
 
         .highlight {
-            background: #fed7d7;
+            background: #fef5e7;
             padding: 2px 6px;
             border-radius: 4px;
-            color: #c53030;
-            font-weight: 600;
+            font-weight: 500;
+            color: #c05621;
         }
 
-        .success {
-            background: #c6f6d5;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #22543d;
-            font-weight: 600;
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
         }
 
-        @media (max-width: 768px) {
+        .success-badge {
+            background: #48bb78;
+        }
+
+        .warning-badge {
+            background: #ed8936;
+        }
+
+        @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 15px 10px;
             }
-
-            .content {
-                padding: 20px;
-            }
-
+            
             .card {
                 padding: 20px;
+                margin-bottom: 15px;
             }
-
+            
             .header h1 {
-                font-size: 1.5rem;
+                font-size: 22px;
             }
-
-            .info-grid {
-                grid-template-columns: 1fr;
+            
+            .card-title {
+                font-size: 16px;
             }
-
-            .assignment-item {
+            
+            .info-item {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 4px;
             }
-
-            .assignment-content {
-                margin-left: 0;
-                margin-top: 8px;
+            
+            .info-label {
+                min-width: auto;
+                margin-right: 0;
             }
         }
     </style>
@@ -232,111 +213,126 @@
     <div class="container">
         <div class="header">
             <h1>2026년 01월 학습 보고서</h1>
-            <div class="date">조인성 학생</div>
+            <p>Mathematics Learning Report</p>
         </div>
 
-        <div class="content">
-            <div class="card">
-                <h2>기본 정보</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="label">학생명</div>
-                        <div class="value">조인성</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">수업 기간</div>
-                        <div class="value">2025년 12월</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">총 수업 횟수</div>
-                        <div class="value">9회 (보강 1회 포함)</div>
-                    </div>
+        <!-- 학생 기본 정보 -->
+        <div class="card">
+            <div class="card-title" style="--icon: '👨‍🎓';">학생 정보</div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">학생명</span>
+                    <span class="info-value">조인성</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">수업 기간</span>
+                    <span class="info-value">2025년 12월 (한 달간)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">총 수업</span>
+                    <span class="info-value">9회 수업 <span class="badge success-badge">보강 1회 포함</span></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">결석</span>
+                    <span class="info-value">1회 (개인사정, 보강 완료)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 학습 요약 -->
+        <div class="card">
+            <div class="card-title" style="--icon: '📚';">학습 요약</div>
+            <div class="summary-text">
+                12월 한 달간 <span class="highlight">원의 방정식</span>부터 시작하여 <span class="highlight">도형의 이동</span>, <span class="highlight">집합</span>까지 체계적으로 학습을 진행했습니다. 
+                각 단원별로 B단계에서 C단계로 단계적 심화 학습을 통해 기본기를 탄탄히 다졌으며, 
+                단원 평가에서 <strong>원의 방정식 10/10문제</strong>, <strong>평행이동·대칭이동 10/10문제</strong>로 완벽한 성취를 보였습니다.
+                특히 고등과정과 연계되는 <span class="highlight">우함수·기함수</span> 개념을 미리 학습하여 수학적 사고력을 확장했습니다.
+            </div>
+        </div>
+
+        <!-- 진도 현황 -->
+        <div class="card">
+            <div class="card-title" style="--icon: '📈';">진도 현황</div>
+            
+            <div class="progress-item">
+                <div class="progress-title">원의 방정식 <span class="badge success-badge">완료</span></div>
+                <div class="progress-content">
+                    • C단계까지 완전 학습 완료<br>
+                    • 단원 평가: <strong>10/10문제 정답</strong><br>
+                    • 기본 개념부터 고난도 문제까지 완벽 이해
                 </div>
             </div>
 
-            <div class="card">
-                <h2>학습 요약</h2>
-                <div class="summary-text">
-                    12월 한 달간 수학의 핵심 단원들을 체계적으로 학습했습니다. <strong>원의 방정식</strong>부터 시작하여 <strong>도형의 이동(평행이동, 대칭이동)</strong>, 그리고 <strong>집합</strong> 단원까지 진행했습니다. 각 단원마다 단계별 학습(B단계 → C단계)을 통해 기초부터 심화까지 탄탄하게 다졌으며, 단원평가에서 <span class="success">만점(10/10)</span>을 두 번 달성하는 우수한 성과를 보였습니다. 특히 고등 과정과 연계되는 우함수, 기함수 개념도 선행 학습하여 향후 학습에 대비했습니다.
+            <div class="progress-item">
+                <div class="progress-title">도형의 이동 (평행이동, 대칭이동) <span class="badge success-badge">완료</span></div>
+                <div class="progress-content">
+                    • 중등과정 복습 + 고등과정 심화 학습<br>
+                    • 우함수·기함수 개념 연계 학습 (수학2 선행)<br>
+                    • 단원 평가: <strong>10/10문제 정답</strong>
                 </div>
             </div>
 
-            <div class="card">
-                <h2>진도 현황</h2>
-                <div class="progress-item">
-                    <h3>📐 원의 방정식</h3>
-                    <div class="details">
-                        C단계까지 완료 | 단원평가 <span class="success">10/10 만점</span> 달성<br>
-                        기본 개념부터 심화 문제까지 완전 학습
-                    </div>
-                </div>
-                <div class="progress-item">
-                    <h3>🔄 도형의 이동</h3>
-                    <div class="details">
-                        평행이동, 선대칭, 점대칭 C단계 완료 | 단원평가 <span class="success">10/10 만점</span><br>
-                        중등과정 복습 + 고등 추가내용 집중 학습<br>
-                        고2 우함수, 기함수 선행학습 진행
-                    </div>
-                </div>
-                <div class="progress-item">
-                    <h3>📊 집합</h3>
-                    <div class="details">
-                        집합의 정의, 종류, 성질, 연산까지 진행 중<br>
-                        B~C단계 학습 중 | <span class="highlight">경우의 수 보완 학습 병행</span>
-                    </div>
+            <div class="progress-item">
+                <div class="progress-title">집합 <span class="badge warning-badge">진행중</span></div>
+                <div class="progress-content">
+                    • 집합의 정의와 종류 학습 완료<br>
+                    • 집합의 성질 및 연산 학습 완료<br>
+                    • B~C단계 문제 해결 중<br>
+                    • <em>경우의 수 연계 복습 필요</em>
                 </div>
             </div>
+        </div>
 
-            <div class="card">
-                <h2>과제 수행 현황</h2>
-                <div class="assignment-list">
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/02</div>
-                        <div class="assignment-content">원의 방정식 끝까지</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/05</div>
-                        <div class="assignment-content">원방정식 마무리</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/09</div>
-                        <div class="assignment-content">평행이동, 대칭이동 B단계</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/12</div>
-                        <div class="assignment-content">도형의 이동 C단계</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/19</div>
-                        <div class="assignment-content">집합 B단계</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/23</div>
-                        <div class="assignment-content">집합 C단계</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12/26</div>
-                        <div class="assignment-content">집합의 연산 B~C단계</div>
-                    </div>
-                </div>
-            </div>
+        <!-- 과제 수행 현황 -->
+        <div class="card">
+            <div class="card-title" style="--icon: '📝';">과제 수행 현황</div>
+            <ul class="assignment-list">
+                <li class="assignment-item">
+                    <span>원의 방정식 끝까지</span>
+                    <span class="assignment-date">12/02</span>
+                </li>
+                <li class="assignment-item">
+                    <span>원방정식 마무리</span>
+                    <span class="assignment-date">12/05</span>
+                </li>
+                <li class="assignment-item">
+                    <span>평행이동·대칭이동 B단계</span>
+                    <span class="assignment-date">12/09</span>
+                </li>
+                <li class="assignment-item">
+                    <span>도형의 이동 C단계</span>
+                    <span class="assignment-date">12/12</span>
+                </li>
+                <li class="assignment-item">
+                    <span>집합 B단계</span>
+                    <span class="assignment-date">12/19</span>
+                </li>
+                <li class="assignment-item">
+                    <span>집합의 성질 C단계</span>
+                    <span class="assignment-date">12/23</span>
+                </li>
+                <li class="assignment-item">
+                    <span>집합의 연산 B~C단계</span>
+                    <span class="assignment-date">12/26</span>
+                </li>
+            </ul>
+        </div>
 
-            <div class="card">
-                <h2>선생님 코멘트</h2>
-                <div class="comment-text">
-                    조인성 학생은 12월 한 달 동안 매우 성실하고 꾸준한 학습 태도를 보여주었습니다. <br><br>
-
-                    <strong>🎯 우수한 성과</strong><br>
-                    • 원의 방정식과 도형의 이동 단원평가에서 연속 만점 달성<br>
-                    • 각 단계별 과제를 빠짐없이 성실하게 수행<br>
-                    • 고2 과정인 우함수, 기함수까지 선행학습으로 학습 범위 확장<br><br>
-
-                    <strong>📈 보완 필요 영역</strong><br>
-                    집합 단원에서 경우의 수와 연계된 문제에서 다소 어려움을 보이고 있습니다. 이를 위해 수업 중 경우의 수 개념을 함께 복습하며 단계적으로 접근하고 있습니다.<br><br>
-
-                    <strong>💡 향후 학습 방향</strong><br>
-                    집합 단원을 마무리한 후, 경우의 수와의 연계 학습을 강화하여 공통수학1 전반에 대한 이해도를 높여나가겠습니다. 방학 중 관리 프로그램 참여를 통해 더욱 체계적인 학습이 가능할 것으로 기대됩니다.
-                </div>
+        <!-- 선생님 코멘트 -->
+        <div class="card">
+            <div class="card-title" style="--icon: '💬';">선생님 코멘트</div>
+            <div class="comment-text">
+                조인성 학생은 12월 한 달간 매우 성실하게 학습에 임했습니다. 
+                <strong>두 번의 단원 평가에서 모두 만점</strong>을 받아 완벽한 이해도를 보여주었고, 특히 어려운 개념들을 차근차근 소화해내는 모습이 인상적이었습니다.
+                <br><br>
+                개인사정으로 인한 결석도 즉시 보강 일정을 잡아 보충하는 등 학습에 대한 책임감이 돋보입니다. 
+                현재 집합 단원에서 <span class="highlight">경우의 수 부분에서 약간의 어려움</span>을 보이고 있으나, 
+                수업 시간에 연계 복습을 통해 함께 해결해나가고 있습니다.
+                <br><br>
+                고등과정과의 연계를 위해 <strong>우함수·기함수</strong> 개념을 미리 다룬 것이 향후 학습에 큰 도움이 될 것입니다. 
+                방학 기간 중 관리 프로그램 참여를 통해 더욱 체계적인 학습이 가능할 것으로 예상됩니다.
+                <br><br>
+                전반적으로 매우 우수한 학습 태도와 성취도를 보이고 있어, 다음 달 학습도 기대됩니다.
             </div>
         </div>
     </div>
