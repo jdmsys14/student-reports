@@ -11,359 +11,278 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px 16px;
+            padding: 20px 10px;
+            line-height: 1.6;
         }
-        
+
         .container {
-            max-width: 800px;
+            max-width: 480px;
             margin: 0 auto;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        
+
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 24px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px 25px;
             text-align: center;
+            color: white;
         }
-        
+
         .header h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             margin-bottom: 8px;
         }
-        
-        .header .period {
-            font-size: 16px;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-        
-        .info-section {
-            padding: 24px;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .info-item {
-            background: #f8fafc;
-            padding: 16px;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .info-item .label {
+
+        .header p {
             font-size: 14px;
-            color: #64748b;
-            font-weight: 500;
-            margin-bottom: 4px;
+            opacity: 0.9;
         }
-        
-        .info-item .value {
+
+        .content {
+            padding: 25px;
+        }
+
+        .info-card {
+            background: #f8faff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #34495e;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
             font-size: 18px;
             font-weight: 600;
-            color: #1e293b;
-        }
-        
-        .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid #e8f4fd;
         }
-        
-        .content-section {
-            padding: 24px;
-        }
-        
+
         .summary-text {
-            background: #f1f5f9;
+            background: #f8faff;
             padding: 20px;
             border-radius: 12px;
-            line-height: 1.8;
-            color: #334155;
-            margin-bottom: 16px;
+            font-size: 14px;
+            color: #34495e;
+            line-height: 1.7;
         }
-        
+
         .progress-item {
-            background: #fefefe;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-        
-        .progress-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: white;
+            border: 1px solid #e8f0fe;
+            border-radius: 10px;
+            padding: 15px;
             margin-bottom: 12px;
         }
-        
+
+        .progress-item:last-child {
+            margin-bottom: 0;
+        }
+
         .progress-title {
             font-weight: 600;
-            color: #1e293b;
-            font-size: 16px;
-        }
-        
-        .progress-status {
-            background: #10b981;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .progress-status.incomplete {
-            background: #f59e0b;
-        }
-        
-        .progress-detail {
-            color: #64748b;
+            color: #2c3e50;
             font-size: 14px;
-            line-height: 1.6;
+            margin-bottom: 8px;
         }
-        
+
+        .progress-content {
+            font-size: 13px;
+            color: #5a6c7d;
+            line-height: 1.5;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .status-progress {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-complete {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .status-attention {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
         .assignment-list {
             list-style: none;
         }
-        
+
         .assignment-list li {
-            background: #f8fafc;
-            padding: 12px 16px;
-            margin-bottom: 8px;
+            background: white;
+            border: 1px solid #e8f0fe;
             border-radius: 8px;
-            border-left: 3px solid #3b82f6;
-            font-size: 14px;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #34495e;
         }
-        
+
         .comment-box {
-            background: linear-gradient(135deg, #fef7cd 0%, #fef3c7 100%);
-            border: 1px solid #f59e0b;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             padding: 20px;
-            position: relative;
-        }
-        
-        .comment-box::before {
-            content: "💬";
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: #fbbf24;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 15px;
             font-size: 14px;
+            line-height: 1.7;
         }
-        
-        .comment-text {
-            line-height: 1.8;
-            color: #92400e;
-            font-weight: 500;
-        }
-        
-        .highlight {
-            background: #dbeafe;
-            color: #1e40af;
+
+        .comment-highlight {
+            background: rgba(255,255,255,0.2);
             padding: 2px 6px;
             border-radius: 4px;
-            font-weight: 600;
+            font-weight: 500;
         }
-        
-        .warning {
-            background: #fef2f2;
-            border-left: 4px solid #ef4444;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0;
-            color: #991b1b;
-            font-size: 14px;
-        }
-        
-        .success {
-            background: #f0fdf4;
-            border-left: 4px solid #10b981;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0;
-            color: #065f46;
-            font-size: 14px;
-        }
-        
-        @media (max-width: 640px) {
-            body {
-                padding: 12px 8px;
-            }
-            
-            .header {
-                padding: 24px 20px;
-            }
-            
-            .header h1 {
-                font-size: 20px;
-            }
-            
-            .info-section, .content-section {
-                padding: 20px;
-            }
-            
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .section-title {
-                font-size: 18px;
-            }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <div class="card">
-            <div class="header">
-                <h1>2026년 01월 학습 보고서</h1>
-                <div class="period">2025년 12월 수업 기준</div>
-            </div>
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <p>Monthly Learning Report</p>
         </div>
 
-        <!-- 학생 정보 -->
-        <div class="card">
-            <div class="info-section">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="label">학생명</div>
-                        <div class="value">이성현</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">수업 기간</div>
-                        <div class="value">2025년 12월</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">총 수업 횟수</div>
-                        <div class="value">4회 수업 / 2회 결석</div>
-                    </div>
+        <div class="content">
+            <!-- 기본 정보 -->
+            <div class="info-card">
+                <div class="info-row">
+                    <span class="info-label">학생명</span>
+                    <span class="info-value">이성현</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">수업 기간</span>
+                    <span class="info-value">2025년 12월</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">총 수업 횟수</span>
+                    <span class="info-value">4회 (2회 병결)</span>
                 </div>
             </div>
-        </div>
 
-        <!-- 학습 요약 -->
-        <div class="card">
-            <div class="content-section">
-                <h2 class="section-title">📚 학습 요약</h2>
+            <!-- 학습 요약 -->
+            <div class="section">
+                <h2>📚 학습 요약</h2>
                 <div class="summary-text">
-                    12월 한 달 동안 <span class="highlight">중학교 3-1 과정</span>의 이차함수 마무리와 제곱근 단원을 중심으로 학습을 진행했습니다. 
-                    개념원리 교재를 완료하고 RPM 교재로의 전환을 준비하는 단계에서, 제곱근의 기본 개념부터 계산까지 체계적으로 학습했습니다. 
-                    특히 1단원 제곱근 단원평가에서 <span class="highlight">만점(10/10)</span>을 달성하여 학습 성과를 확인할 수 있었습니다.
-                </div>
-                <div class="warning">
-                    ⚠️ 12월 중 총 3회 결석(12/11, 12/18, 12/22)이 발생하여 학습 연속성에 영향이 있었습니다.
-                </div>
-                <div class="success">
-                    ✅ 1월 토요일 보강 수업을 통해 결석으로 인한 학습 공백을 보완할 예정입니다.
+                    12월 한 달간 <strong>중학교 3학년 1학기 수학</strong> 과정을 학습하였습니다. 
+                    이차함수의 기본형을 마지막으로 개념원리 교재를 완료하고, 제곱근 단원으로 새로운 학습을 시작했습니다. 
+                    무리수와 실수의 개념을 학습하고 제곱근의 계산까지 진행하여 <strong>1단원 제곱근을 완료</strong>했습니다. 
+                    단원평가에서 만점을 받는 등 우수한 학습 성과를 보였으나, 후반부 병결로 인해 보강 수업이 필요한 상황입니다.
                 </div>
             </div>
-        </div>
 
-        <!-- 진도 현황 -->
-        <div class="card">
-            <div class="content-section">
-                <h2 class="section-title">📈 진도 현황</h2>
-                
+            <!-- 진도 현황 -->
+            <div class="section">
+                <h2>📈 진도 현황</h2>
                 <div class="progress-item">
-                    <div class="progress-header">
-                        <div class="progress-title">이차함수 (기본형)</div>
-                        <div class="progress-status">완료</div>
-                    </div>
-                    <div class="progress-detail">
-                        중3-1 개념원리 교재의 이차함수 단원을 완전히 마무리했습니다. 기본형 이차함수의 개념과 그래프 그리기를 완벽하게 이해했습니다.
+                    <div class="progress-title">중3-1 개념원리 교재</div>
+                    <div class="progress-content">
+                        이차함수(기본형)까지 완료하여 전체 교재 마무리
+                        <span class="status-badge status-complete">완료</span>
                     </div>
                 </div>
-
                 <div class="progress-item">
-                    <div class="progress-header">
-                        <div class="progress-title">제곱근과 무리수</div>
-                        <div class="progress-status">완료</div>
-                    </div>
-                    <div class="progress-detail">
-                        제곱근의 기본 개념과 무리수, 실수의 개념을 정확히 이해했습니다. 단원평가에서 만점을 받아 개념 이해가 완벽함을 확인했습니다.
+                    <div class="progress-title">1단원: 제곱근</div>
+                    <div class="progress-content">
+                        제곱근의 뜻과 성질, 무리수와 실수, 제곱근의 계산 완료<br>
+                        단원평가 10문제 만점 달성
+                        <span class="status-badge status-complete">완료</span>
                     </div>
                 </div>
-
                 <div class="progress-item">
-                    <div class="progress-header">
-                        <div class="progress-title">제곱근의 계산</div>
-                        <div class="progress-status incomplete">진행중</div>
-                    </div>
-                    <div class="progress-detail">
-                        근호를 포함한 식의 계산과 다항식의 곱셈까지 학습했으나, 결석으로 인해 추가 심화 학습이 필요합니다.
+                    <div class="progress-title">RPM 교재 준비</div>
+                    <div class="progress-content">
+                        개념원리 완료 후 RPM 교재로 문제 풀이 학습 예정
+                        <span class="status-badge status-progress">대기중</span>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 과제 수행 현황 -->
-        <div class="card">
-            <div class="content-section">
-                <h2 class="section-title">📝 과제 수행 현황</h2>
+            <!-- 과제 수행 현황 -->
+            <div class="section">
+                <h2>📝 과제 수행 현황</h2>
                 <ul class="assignment-list">
-                    <li><strong>12/01:</strong> 교재끝까지 (개념원리 완료) ✅</li>
-                    <li><strong>12/04:</strong> ~p. 24 (제곱근 기본 문제) ⚠️ 교재 미지참으로 확인 불가</li>
-                    <li><strong>12/08:</strong> 근호를 포함한 식의 계산 ✅</li>
-                    <li><strong>12/15:</strong> 다항식의 곱셈 ⏸️ 결석으로 미완료</li>
+                    <li><strong>12/01:</strong> 교재 끝까지 (개념원리 완료)</li>
+                    <li><strong>12/04:</strong> ~p.24 (제곱근 기본 개념)</li>
+                    <li><strong>12/08:</strong> 근호를 포함한 식의 계산</li>
+                    <li><strong>12/15:</strong> 다항식의 곱셈</li>
                 </ul>
-                <div class="warning">
-                    교재 지참 및 과제 확인에 어려움이 있었습니다. 지속적인 관리가 필요합니다.
+                <div style="margin-top: 10px; padding: 10px; background: #fff3e0; border-radius: 8px; font-size: 13px; color: #f57c00;">
+                    ⚠️ 12/04 개념원리 교재 미지참으로 숙제 확인 불가
+                </div>
+            </div>
+
+            <!-- 선생님 코멘트 -->
+            <div class="section">
+                <h2>💬 선생님 코멘트</h2>
+                <div class="comment-box">
+                    성현이는 <span class="comment-highlight">수학적 이해력이 뛰어나</span> 제곱근 단원평가에서 만점을 받는 등 우수한 학습 능력을 보여주고 있습니다. 
+                    
+                    <br><br>다만 12월 중순 이후 <span class="comment-highlight">총 3회 병결</span>(12/11, 12/18, 12/22)로 인해 학습 연속성에 약간의 공백이 생겼습니다. 
+                    
+                    <br><br>이를 보완하기 위해 <span class="comment-highlight">1월 토요일 보강 수업</span>을 통해 누락된 진도를 따라잡고, RPM 교재로 문제 해결 능력을 더욱 향상시켜 나가겠습니다. 
+                    
+                    <br><br>앞으로도 꾸준한 출석과 함께 교재 준비에 신경 써 주시면 더욱 효과적인 학습이 가능할 것입니다.
                 </div>
             </div>
         </div>
 
-        <!-- 선생님 코멘트 -->
-        <div class="card">
-            <div class="content-section">
-                <h2 class="section-title">👨‍🏫 선생님 코멘트</h2>
-                <div class="comment-box">
-                    <div class="comment-text">
-                        이성현 학생은 <strong>개념 이해력이 매우 우수</strong>하며, 특히 제곱근 단원평가에서 만점을 받은 것은 정말 훌륭한 성과입니다. 
-                        다만 12월 중 잦은 결석(총 3회)으로 인해 학습의 연속성이 다소 아쉬웠습니다.<br><br>
-                        
-                        <strong>1월 학습 계획:</strong><br>
-                        • 토요일 보강 수업을 통한 결석 분량 보완<br>
-                        • RPM 교재로 전환하여 문제 해결 능력 강화<br>
-                        • 교재 지참 및 과제 관리 습관 개선<br><br>
-                        
-                        학생의 높은 이해력을 바탕으로 꾸준한 학습만 유지된다면 더욱 좋은 성과를 기대할 수 있겠습니다. 
-                        건강 관리에 유의하시어 결석 없이 꾸준히 학습할 수 있도록 도와주시기 바랍니다.
-                    </div>
-                </div>
-            </div>
+        <div class="footer">
+            <p>2026.01 학습 보고서 | 수학 전문 학원</p>
         </div>
     </div>
 </body>
