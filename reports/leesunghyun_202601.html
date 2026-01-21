@@ -13,99 +13,59 @@
         }
 
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px 10px;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
             line-height: 1.6;
+            padding: 20px 16px;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 640px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
         }
 
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 32px 24px;
+            border-radius: 16px;
             text-align: center;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: white;
-            border-radius: 2px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .header h1 {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .header-info {
+        .header p {
             font-size: 16px;
             opacity: 0.9;
         }
 
-        .content {
-            padding: 30px 20px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .info-item {
-            background: #f8f9ff;
-            padding: 15px;
+        .card {
+            background: white;
             border-radius: 12px;
-            text-align: center;
-            border-left: 4px solid #667eea;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
         }
 
-        .info-item .label {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .info-item .value {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .section-title {
+        .card-title {
             font-size: 18px;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
+            color: #1e293b;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .section-title::before {
+        .card-title::before {
             content: '';
             width: 4px;
             height: 20px;
@@ -113,135 +73,125 @@
             border-radius: 2px;
         }
 
-        .card {
-            background: #fff;
-            border: 1px solid #e1e8ed;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
         }
 
-        .lesson-item {
-            background: #f8f9ff;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 10px;
+        .info-item {
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
             border-left: 3px solid #667eea;
         }
 
-        .lesson-date {
-            font-size: 14px;
-            color: #667eea;
+        .info-label {
+            font-size: 12px;
             font-weight: 500;
+            color: #64748b;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .progress-item {
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 3px solid #10b981;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .progress-desc {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .lesson-item {
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .lesson-date {
+            font-size: 12px;
+            font-weight: 500;
+            color: #f59e0b;
             margin-bottom: 8px;
         }
 
         .lesson-content {
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 5px;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 4px;
         }
 
         .lesson-homework {
-            font-size: 13px;
-            color: #666;
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin-top: 8px;
+            font-size: 14px;
+            color: #64748b;
         }
 
-        .special-note {
-            background: #fff3cd;
-            border-left: 3px solid #ffc107;
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: #856404;
+        .absent-item {
+            border-left-color: #ef4444;
         }
 
-        .absent-note {
-            background: #f8d7da;
-            border-left: 3px solid #dc3545;
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: #721c24;
+        .absent-item .lesson-date {
+            color: #ef4444;
         }
 
-        .progress-bar {
-            background: #e9ecef;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .progress-fill {
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .comment-box {
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
-            border: 2px solid #667eea;
-            border-radius: 12px;
+        .comment-text {
+            background: #f1f5f9;
             padding: 20px;
-            position: relative;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.7;
+            border-left: 4px solid #667eea;
         }
 
-        .comment-box::before {
-            content: '💭';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: white;
-            padding: 0 8px;
-            font-size: 20px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            margin: 2px;
-        }
-
-        .tag.absent {
-            background: #dc3545;
-        }
-
-        .tag.complete {
-            background: #28a745;
+        .highlight {
+            background: linear-gradient(120deg, #a78bfa 0%, #ec4899 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
         }
 
         @media (max-width: 480px) {
-            .container {
-                margin: 0;
-                border-radius: 0;
+            body {
+                padding: 16px 12px;
+            }
+            
+            .card {
+                padding: 20px;
             }
             
             .header {
-                padding: 20px 15px;
+                padding: 24px 20px;
             }
             
             .header h1 {
                 font-size: 20px;
             }
             
-            .content {
-                padding: 20px 15px;
-            }
-            
             .info-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
     </style>
@@ -250,148 +200,136 @@
     <div class="container">
         <div class="header">
             <h1>2026년 01월 학습 보고서</h1>
-            <div class="header-info">이성현 학생</div>
+            <p>이성현 학생</p>
         </div>
 
-        <div class="content">
+        <div class="card">
+            <div class="card-title">기본 정보</div>
             <div class="info-grid">
                 <div class="info-item">
-                    <div class="label">학생명</div>
-                    <div class="value">이성현</div>
+                    <div class="info-label">학생명</div>
+                    <div class="info-value">이성현</div>
                 </div>
                 <div class="info-item">
-                    <div class="label">수업 기간</div>
-                    <div class="value">2025년 12월</div>
+                    <div class="info-label">수업 기간</div>
+                    <div class="info-value">2025년 12월</div>
                 </div>
                 <div class="info-item">
-                    <div class="label">총 수업 횟수</div>
-                    <div class="value">4회 / 6회</div>
+                    <div class="info-label">총 수업 횟수</div>
+                    <div class="info-value">4회 / 6회 예정</div>
                 </div>
                 <div class="info-item">
-                    <div class="label">출석률</div>
-                    <div class="value">66.7%</div>
+                    <div class="info-label">출석률</div>
+                    <div class="info-value">66.7%</div>
                 </div>
             </div>
+        </div>
 
-            <div class="section">
-                <h2 class="section-title">학습 요약</h2>
-                <div class="card">
-                    <p><strong>중학교 3-1 과정</strong>을 중심으로 학습을 진행하였습니다.</p>
-                    <div style="margin: 15px 0;">
-                        <span class="tag complete">이차함수 완료</span>
-                        <span class="tag complete">제곱근 단원평가 만점</span>
-                        <span class="tag absent">3회 결석</span>
-                        <span class="tag">보강수업 예정</span>
-                    </div>
-                    <p>12월 초 이차함수 학습을 완료하고, 제곱근 단원으로 진입하여 무리수와 실수, 제곱근의 계산까지 학습하였습니다. 단원평가에서 만점을 받는 등 우수한 성과를 보였으나, 후반부 연속 결석으로 인해 1월 보강수업이 계획되어 있습니다.</p>
+        <div class="card">
+            <div class="card-title">학습 요약</div>
+            <div class="progress-item">
+                <div class="progress-title">12월 학습 흐름</div>
+                <div class="progress-desc">
+                    중3-1 개념원리 교재 완주 → 제곱근 단원 학습 시작 → 무리수와 실수 개념 정립 → 제곱근 계산 및 단원평가 완료
                 </div>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">수업 기록</h2>
-                
-                <div class="lesson-item">
-                    <div class="lesson-date">2025-12-01 (1회차)</div>
-                    <div class="lesson-content"><strong>이차함수 (기본형)</strong></div>
-                    <div class="lesson-homework">📝 과제: 교재끝까지</div>
-                    <div class="special-note">
-                        중3-1 개념원리 교재가 완전히 마무리되었습니다. 다음 시간부터 RPM 교재로 진행 예정입니다.
-                    </div>
-                </div>
-
-                <div class="lesson-item">
-                    <div class="lesson-date">2025-12-04 (2회차)</div>
-                    <div class="lesson-content"><strong>제곱근</strong></div>
-                    <div class="lesson-homework">📝 과제: ~p. 24</div>
-                    <div class="special-note">
-                        개념원리 교재 미지참으로 숙제 확인이 어려웠습니다. 교재 지참의 중요성을 안내하였습니다.
-                    </div>
-                </div>
-
-                <div class="lesson-item">
-                    <div class="lesson-date">2025-12-08 (3회차)</div>
-                    <div class="lesson-content"><strong>무리수와 실수</strong></div>
-                    <div class="lesson-homework">📝 과제: 근호를 포함한 식의 계산</div>
-                </div>
-
-                <div class="lesson-item">
-                    <div class="lesson-date">2025-12-15 (4회차)</div>
-                    <div class="lesson-content"><strong>제곱근의 계산</strong></div>
-                    <div class="lesson-homework">📝 과제: 다항식의 곱셈</div>
-                    <div class="special-note">
-                        🎉 <strong>1단원 제곱근 단원평가 만점 달성!</strong> (10/10문제)<br>
-                        부족한 풀이는 함께 보완하여 완벽하게 이해할 수 있도록 지도하였습니다.
-                    </div>
-                </div>
-
-                <div class="lesson-item">
-                    <div class="lesson-date">2025-12-18 (5회차)</div>
-                    <div class="lesson-content">수업 진행 없음</div>
-                    <div class="absent-note">
-                        병결로 인한 결석. 보강수업으로 진행 예정입니다.
-                    </div>
-                </div>
-
-                <div class="lesson-item">
-                    <div class="lesson-date">2025-12-22 (6회차)</div>
-                    <div class="lesson-content">수업 진행 없음</div>
-                    <div class="absent-note">
-                        병결로 인한 결석. 12월 총 3회 결석으로, 1월 토요일 보강수업을 통해 진도를 따라잡을 예정입니다.
-                    </div>
+            <div class="progress-item">
+                <div class="progress-title">주요 성과</div>
+                <div class="progress-desc">
+                    • 이차함수 기본형 완성<br>
+                    • 제곱근 단원평가 만점(10/10) 달성<br>
+                    • 무리수와 실수 개념 이해 완료
                 </div>
             </div>
+        </div>
 
-            <div class="section">
-                <h2 class="section-title">진도 현황</h2>
-                <div class="card">
-                    <div style="margin-bottom: 15px;">
-                        <strong>중3-1 개념원리</strong>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%;"></div>
-                        </div>
-                        <small>✅ 완료 (100%)</small>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <strong>제곱근 단원</strong>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 75%;"></div>
-                        </div>
-                        <small>🔄 진행중 (75% - 단원평가 완료)</small>
-                    </div>
-
-                    <div>
-                        <strong>RPM 교재</strong>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%;"></div>
-                        </div>
-                        <small>⏳ 시작 예정 (0%)</small>
-                    </div>
+        <div class="card">
+            <div class="card-title">진도 현황</div>
+            <div class="progress-item">
+                <div class="progress-title">완료된 단원</div>
+                <div class="progress-desc">
+                    • 이차함수 (기본형)<br>
+                    • 제곱근 (기본 개념 및 계산)<br>
+                    • 무리수와 실수
                 </div>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">과제 수행 현황</h2>
-                <div class="card">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
-                        <div>
-                            <div style="font-size: 24px; color: #28a745;">✅</div>
-                            <div style="font-size: 14px; margin-top: 5px;">정시 제출</div>
-                            <div style="font-weight: 600;">2회</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 24px; color: #ffc107;">⚠️</div>
-                            <div style="font-size: 14px; margin-top: 5px;">미확인</div>
-                            <div style="font-weight: 600;">1회</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 24px; color: #dc3545;">❌</div>
-                            <div style="font-size: 14px; margin-top: 5px;">미제출</div>
-                            <div style="font-weight: 600;">3회</div>
-                        </div>
-                    </div>
+            <div class="progress-item">
+                <div class="progress-title">현재 학습 중</div>
+                <div class="progress-desc">
+                    • 근호를 포함한 식의 계산<br>
+                    • 다항식의 곱셈 (예정)
                 </div>
             </div>
+            <div class="progress-item">
+                <div class="progress-title">다음 진도</div>
+                <div class="progress-desc">
+                    • RPM 교재로 문제 풀이 강화 예정<br>
+                    • 제곱근 응용 문제 학습
+                </div>
+            </div>
+        </div>
 
-            <div class="section">
-                <h2 class="section-title">선생님 코멘트</h
+        <div class="card">
+            <div class="card-title">수업 기록</div>
+            <div class="lesson-item">
+                <div class="lesson-date">2025-12-01 (1회차)</div>
+                <div class="lesson-content">이차함수 (기본형)</div>
+                <div class="lesson-homework">과제: 교재끝까지</div>
+            </div>
+            <div class="lesson-item">
+                <div class="lesson-date">2025-12-04 (2회차)</div>
+                <div class="lesson-content">제곱근</div>
+                <div class="lesson-homework">과제: ~p. 24</div>
+            </div>
+            <div class="lesson-item">
+                <div class="lesson-date">2025-12-08 (3회차)</div>
+                <div class="lesson-content">무리수와 실수</div>
+                <div class="lesson-homework">과제: 근호를 포함한 식의 계산</div>
+            </div>
+            <div class="lesson-item">
+                <div class="lesson-date">2025-12-15 (4회차)</div>
+                <div class="lesson-content">제곱근의 계산 + 단원평가</div>
+                <div class="lesson-homework">과제: 다항식의 곱셈</div>
+            </div>
+            <div class="lesson-item absent-item">
+                <div class="lesson-date">2025-12-18 (결석)</div>
+                <div class="lesson-content">병결</div>
+                <div class="lesson-homework">-</div>
+            </div>
+            <div class="lesson-item absent-item">
+                <div class="lesson-date">2025-12-22 (결석)</div>
+                <div class="lesson-content">병결</div>
+                <div class="lesson-homework">-</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">과제 수행 현황</div>
+            <div class="progress-item">
+                <div class="progress-title">과제 완료율</div>
+                <div class="progress-desc">
+                    전반적으로 양호하나, 12월 4일 개념원리 교재 미지참으로 숙제 확인 불가
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">단원평가 결과</div>
+                <div class="progress-desc">
+                    <span class="highlight">제곱근 단원평가 만점(10/10) 달성</span><br>
+                    부족한 풀이는 즉시 보완 학습 진행
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">선생님 종합 코멘트</div>
+            <div class="comment-text">
+                성현이는 12월 한 달 동안 중3-1 개념원리 교재를 완주하고 제곱근 단원에서 뛰어난 성과를 보여주었습니다. 특히 <strong>제곱근 단원평가에서 만점을 달성</strong>한 것은 매우 칭찬할 만한 성과입니다.
+                <br><br>
+                다만 12월 중순 이후 연속된 병결로 인해 학습 리듬이 다소 끊어진 점이 아쉽습니다. 총 3회 결석분에 대해서는 <strong>1월 토요일 보강 수업</strong>을 통해 충분히 보완할 예정입니다.
+                <br><br>
+                앞으로는 RPM 교재를 활용한 문제 풀이 강화와 함께 제곱근 응용 문제까지 확실히 마스터할 수 있도록 지도하겠습니다. 성현이의 수학적 이해력과 성실함을 바탕으로 더욱 발전된 모습을 기대합니다.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
