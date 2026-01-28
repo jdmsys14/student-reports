@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 전민건</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 10px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .student-info {
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 0;
+        }
+        
+        .card {
+            margin: 20px;
+            padding: 24px;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e8f4f8;
+        }
+        
+        .info-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8fafe;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #34495e;
+            min-width: 80px;
+        }
+        
+        .info-value {
+            color: #2c3e50;
+            margin-left: 12px;
+        }
+        
+        .learning-summary {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #8b4513;
+        }
+        
+        .learning-summary h2 {
+            color: #8b4513;
+            border-bottom-color: #f4a460;
+        }
+        
+        .progress-item {
+            background: #f0f8f0;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .progress-date {
+            font-size: 14px;
+            color: #27ae60;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .progress-content {
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .assignment-item {
+            background: #fff5e6;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .assignment-date {
+            font-size: 14px;
+            color: #e67e22;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .assignment-content {
+            font-size: 15px;
+            color: #2c3e50;
+        }
+        
+        .comment-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .comment-section h2 {
+            color: #2c3e50;
+            border-bottom-color: #d1ecf1;
+        }
+        
+        .comment-item {
+            background: rgba(255,255,255,0.7);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        .comment-category {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .comment-text {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: '•';
+            color: #4facfe;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .text-highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .container {
+                margin: 0;
+                border-radius: 16px;
+            }
+            
+            .card {
+                margin: 15px;
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="student-info">전민건 학생</div>
+        </div>
+        
+        <div class="content">
+            <div class="card">
+                <h2>📊 기본 정보</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">학생명</span>
+                        <span class="info-value">전민건</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">수업 기간</span>
+                        <span class="info-value">2025년 12월</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">총 수업</span>
+                        <span class="info-value">2회</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card learning-summary">
+                <h2>📚 학습 요약</h2>
+                <div class="comment-text">
+                    12월 한 달간 <span class="text-highlight">순환소수</span>부터 <span class="text-highlight">지수법칙과 단항식의 계산</span>까지 단계적으로 학습을 진행했습니다. 
+                    학생은 숙제를 성실히 수행하며 개념 이해도가 점진적으로 향상되고 있으나, 계산 정확성과 문제 해결 완성도 측면에서 추가적인 연습이 필요한 상황입니다.
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>📈 진도 현황</h2>
+                <div class="progress-item">
+                    <div class="progress-date">2025-12-19 (1차시)</div>
+                    <div class="progress-content">
+                        <strong>순환소수</strong> 개념 학습 완료<br>
+                        • 개념원리 교재 활용<br>
+                        • 수력충전 교재 병행 학습
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-date">2025-12-26 (2차시)</div>
+                    <div class="progress-content">
+                        <strong>지수법칙과 단항식의 계산</strong><br>
+                        • 곱셈과 거듭제곱 비교 설명<br>
+                        • 지수법칙까지 확장 학습 진행
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>✏️ 과제 수행 현황</h2>
+                <div class="assignment-item">
+                    <div class="assignment-date">12월 19일 부여</div>
+                    <div class="assignment-content">
+                        개념원리 ~P33, 수력충전 ~P34
+                    </div>
+                </div>
+                <div class="assignment-item">
+                    <div class="assignment-date">12월 26일 부여</div>
+                    <div class="assignment-content">
+                        교재 ~P57까지 진행
+                    </div>
+                </div>
+                <div class="comment-text" style="margin-top: 16px; padding: 12px; background: #e8f5e8; border-radius: 8px;">
+                    <strong>✅ 숙제 수행 상태 양호</strong> - 학생이 주어진 과제를 성실히 완료하고 있습니다.
+                </div>
+            </div>
+            
+            <div class="card comment-section">
+                <h2>👨‍🏫 선생님 코멘트</h2>
+                
+                <div class="comment-item">
+                    <div class="comment-category">🔍 개선이 필요한 부분</div>
+                    <div class="comment-text">
+                        <ul>
+                            <li><strong>계산력 향상</strong>: 긴 나눗셈에서 오답이 자주 발생하므로 기본 계산 연습이 필요합니다</li>
+                            <li><strong>필기 습관</strong>: 숫자를 더 또렷하고 정확하게 써나가는 연습이 요구됩니다</li>
+                            <li><strong>문제 완성도</strong>: 문제를 끝까지 완전히 마무리하는 습관을 기르는 것이 중요합니다</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="comment-item">
+                    <div class="comment-category">👍 긍정적인 면</div>
+                    <div class="comment-text">
+                        성실한 숙제 수행으로 학습 태도가 매우 양호하며, 새로운 개념(지수법칙) 이해도가 점진적으로 향상되고 있습니다.
+                    </div>
+                </div>
+                
+                <div class="comment-item">
+                    <div class="comment-category">📅 향후 계획</div>
+                    <div class="comment-text">
+                        현재 금요일 오후 4시 30분, 토요일 오후 4시로 스케줄 진행 중이며, 방학 시작 시 스케줄 조정이 있을 수 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
