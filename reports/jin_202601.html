@@ -4,382 +4,366 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026년 01월 학습 보고서 - 진애스턴</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px 16px;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
             color: #333;
+            background-color: #f8fafc;
+            padding: 16px;
         }
-
-        .report-container {
+        
+        .container {
             max-width: 800px;
             margin: 0 auto;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
         }
-
+        
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 32px 24px;
+            border-radius: 16px;
             text-align: center;
-            position: relative;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
         }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="white" opacity="0.1"/></svg>');
-        }
-
+        
         .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .student-info {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(10px);
-        }
-
-        .student-info h2 {
             font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .info-item {
-            text-align: center;
-        }
-
-        .info-label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .info-value {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .content {
-            padding: 40px 30px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #4a5568;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: #764ba2;
-        }
-
-        .card {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .summary-text {
-            line-height: 1.8;
-            font-size: 16px;
-            color: #4a5568;
-        }
-
-        .progress-item {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-        }
-
-        .progress-title {
-            font-weight: 600;
-            font-size: 18px;
-            color: #2d3748;
-            margin-bottom: 10px;
-        }
-
-        .progress-content {
-            color: #4a5568;
-            line-height: 1.6;
-        }
-
-        .assignment-grid {
-            display: grid;
-            gap: 15px;
-        }
-
-        .assignment-item {
-            background: white;
-            border-radius: 12px;
-            padding: 18px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-        }
-
-        .assignment-date {
-            font-size: 14px;
-            color: #667eea;
             font-weight: 600;
             margin-bottom: 8px;
         }
-
-        .assignment-task {
+        
+        .header .student-name {
+            font-size: 18px;
             font-weight: 500;
-            color: #2d3748;
-            margin-bottom: 5px;
+            opacity: 0.9;
         }
-
-        .comment-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
-
-        .comment-text {
-            line-height: 1.8;
-            font-size: 16px;
-            margin-bottom: 15px;
+        
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
-
-        .highlight {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            backdrop-filter: blur(10px);
+        
+        .info-card .number {
+            font-size: 24px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 4px;
         }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
+        
+        .info-card .label {
             font-size: 14px;
+            color: #64748b;
             font-weight: 500;
-            margin: 5px 5px 5px 0;
         }
-
-        @media (max-width: 768px) {
-            .report-container {
-                border-radius: 15px;
-            }
-
-            .header {
-                padding: 30px 20px;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
-
-            .section-title {
-                font-size: 20px;
-            }
-
-            .card, .comment-card {
-                padding: 20px;
-            }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
-
+        
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .progress-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .progress-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .progress-title {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+        
+        .progress-content {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .lesson-timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        
+        .lesson-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        
+        .lesson-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        .lesson-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 20px;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+        
+        .lesson-date {
+            font-size: 12px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .lesson-subject {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+        
+        .lesson-homework {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .lesson-note {
+            font-size: 13px;
+            color: #475569;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #fbbf24;
+        }
+        
+        .comment-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #f59e0b;
+        }
+        
+        .comment-section h3 {
+            color: #92400e;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .comment-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #451a03;
+            line-height: 1.5;
+        }
+        
+        .comment-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .emoji {
+            margin-right: 8px;
+        }
+        
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 12px;
             }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            
+            .header {
+                padding: 24px 16px;
             }
-
+            
             .header h1 {
-                font-size: 22px;
+                font-size: 20px;
             }
-
-            .section-title {
-                font-size: 18px;
+            
+            .card {
+                padding: 20px 16px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <div class="report-container">
+    <div class="container">
         <div class="header">
-            <h1>📚 2026년 01월 학습 보고서</h1>
-            <div class="student-info">
-                <h2>진애스턴</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-label">수업 기간</div>
-                        <div class="info-value">2025년 12월</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">총 수업 횟수</div>
-                        <div class="info-value">7회</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">주요 학습 영역</div>
-                        <div class="info-value">수학</div>
-                    </div>
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="student-name">진애스턴</div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="number">12월</div>
+                <div class="label">수업 기간</div>
+            </div>
+            <div class="info-card">
+                <div class="number">7회</div>
+                <div class="label">총 수업</div>
+            </div>
+            <div class="info-card">
+                <div class="number">2단원</div>
+                <div class="label">학습 단원</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📊 학습 요약</h2>
+            <div class="progress-item">
+                <div class="progress-title">주요 학습 내용</div>
+                <div class="progress-content">
+                    2025년 12월 한 달간 총 7회 수업을 통해 정수와 유리수의 기본 개념부터 계산, 그리고 문자와 식의 기초까지 체계적으로 학습하였습니다. 개념 이해는 우수하나 계산 실수와 문제 풀이 속도 개선이 필요한 상황입니다.
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">학습 진행 흐름</div>
+                <div class="progress-content">
+                    정수와 유리수 개념 정리 → 유리수 계산 학습 → 등식의 성질 이해 → 문자와 식 기초 → 단원평가 준비 순으로 체계적 학습 진행
                 </div>
             </div>
         </div>
-
-        <div class="content">
-            <div class="section">
-                <h3 class="section-title">📈 학습 요약</h3>
-                <div class="card">
-                    <div class="summary-text">
-                        2025년 12월 한 달간 총 7회 수업을 통해 <strong>정수와 유리수</strong> 단원을 중심으로 학습을 진행하였습니다. 
-                        초기에는 정수와 유리수의 기본 개념 정리부터 시작하여, 점진적으로 유리수의 계산, 등식의 성질로 확장하였으며, 
-                        마지막 수업에서는 <strong>문자와 식</strong> 단원까지 진입하였습니다.
-                        <br><br>
-                        학생은 전반적으로 수업 내용을 잘 이해하고 있으나, 계산 실수와 문제 풀이 속도 개선이 필요한 상황입니다. 
-                        특히 등식의 개념 이해와 수직선상의 비율 문제에서 집중적인 지도가 이루어졌습니다.
-                    </div>
+        
+        <div class="card">
+            <h2>📚 진도 현황</h2>
+            <div class="progress-item">
+                <div class="progress-title">정수와 유리수 단원</div>
+                <div class="progress-content">
+                    • 개념 학습: 정수와 유리수의 정의, 절댓값 개념 완료<br>
+                    • 계산 학습: 유리수의 사칙연산, 등식의 성질 학습<br>
+                    • 단원평가: 12월 말 실시 예정 (준비 완료)
                 </div>
             </div>
-
-            <div class="section">
-                <h3 class="section-title">📖 진도 현황</h3>
-                <div class="progress-item">
-                    <div class="progress-title">🔢 정수와 유리수</div>
-                    <div class="progress-content">
-                        • 정수와 유리수의 기본 개념 및 절댓값<br>
-                        • 유리수의 사칙연산 및 혼합계산<br>
-                        • 등식의 성질 및 응용<br>
-                        • 수직선상의 비율 문제<br>
-                        <span class="badge">단원평가 예정</span>
-                    </div>
+            <div class="progress-item">
+                <div class="progress-title">문자와 식 단원</div>
+                <div class="progress-content">
+                    • 기초 개념 학습 시작 (12월 22일부터)<br>
+                    • 다음 달 본격적인 학습 예정
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">사용 교재</div>
+                <div class="progress-content">
+                    • 개념원리: 기본 개념 학습용 (~p.129까지 진행)<br>
+                    • RPM: 문제 풀이 연습용 (~p.71까지 진행)
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📝 과제 수행 현황</h2>
+            <div class="lesson-timeline">
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 1일</div>
+                    <div class="lesson-subject">RPM 정수와 유리수</div>
+                    <div class="lesson-homework">과제: 정수와 유리수 단원 끝까지</div>
+                </div>
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 4일</div>
+                    <div class="lesson-subject">개념원리 유리수와 정수</div>
+                    <div class="lesson-homework">과제: 개념원리 유리수와 정수 단원</div>
+                </div>
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 8일</div>
+                    <div class="lesson-subject">유리수의 계산</div>
+                    <div class="lesson-homework">과제: ~p.80</div>
+                </div>
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 11일</div>
+                    <div class="lesson-subject">정수와 유리수</div>
+                    <div class="lesson-homework">과제: 개념원리 ~p.94</div>
+                </div>
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 15일</div>
+                    <div class="lesson-subject">정수와 유리수의 계산</div>
+                    <div class="lesson-homework">과제: RPM p.54~65</div>
+                </div>
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 18일</div>
+                    <div class="lesson-subject">정수와 유리수의 계산</div>
+                    <div class="lesson-homework">과제: RPM ~p.71</div>
+                </div>
+                <div class="lesson-item">
+                    <div class="lesson-date">12월 22일</div>
+                    <div class="lesson-subject">문자와 식</div>
+                    <div class="lesson-homework">과제: ~p.129</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💬 선생님 종합 의견</h2>
+            <div class="comment-section">
+                <h3>🎯 학습 태도 및 성과</h3>
+                <div class="comment-item">
+                    <span class="emoji">👍</span>
+                    진애스턴 학생은 수업을 성실히 따라오고 있으며, 개념 이해력이 우수합니다. 특히 숙제를 제대로 해오지 못한 날 일찍 등원하여 독서실을 이용하는 등 자기주도적 학습 태도가 돋보입니다.
                 </div>
                 
-                <div class="progress-item">
-                    <div class="progress-title">📝 문자와 식</div>
-                    <div class="progress-content">
-                        • 문자를 사용한 식의 표현 (도입 단계)<br>
-                        <span class="badge">신규 시작</span>
-                    </div>
+                <h3>📈 개선이 필요한 부분</h3>
+                <div class="comment-item">
+                    <span class="emoji">⚠️</span>
+                    <strong>계산 실수 개선:</strong> 계산 과정은 잘 이해하고 있으나 실수가 자주 발생합니다. 검산하는 습관을 기르면 실수를 크게 줄일 수 있을 것입니다.
                 </div>
-            </div>
-
-            <div class="section">
-                <h3 class="section-title">📋 과제 수행 현황</h3>
-                <div class="assignment-grid">
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 1일</div>
-                        <div class="assignment-task">(RPM) 정수와 유리수 끝까지</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 4일</div>
-                        <div class="assignment-task">(개념원리) 유리수와 정수</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 8일</div>
-                        <div class="assignment-task">~p. 80</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 11일</div>
-                        <div class="assignment-task">(개념원리) ~p. 94</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 15일</div>
-                        <div class="assignment-task">(RPM) p. 54~65</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 18일</div>
-                        <div class="assignment-task">(RPM) ~p. 71 (특히 p.67 우선)</div>
-                    </div>
-                    <div class="assignment-item">
-                        <div class="assignment-date">12월 22일</div>
-                        <div class="assignment-task">~p. 129 + 단원평가 준비</div>
-                    </div>
+                <div class="comment-item">
+                    <span class="emoji">🐌</span>
+                    <strong>문제 풀이 속도:</strong> 문제 풀이 속도가 다소 느린 편입니다. 정의와 개념을 활용한 문제 해결 방법을 꾸준히 연습하여 속도를 높여나가겠습니다.
                 </div>
-            </div>
-
-            <div class="section">
-                <h3 class="section-title">💬 선생님 종합 코멘트</h3>
-                <div class="comment-card">
-                    <div class="comment-text">
-                        <strong>진애스턴 학생의 12월 학습 평가</strong>
-                    </div>
-                    <div class="comment-text">
-                        진애스턴 학생은 전반적으로 수업을 성실히 따라오고 있으며, 개념 이해 능력이 뛰어납니다. 
-                        특히 숙제를 덜 해온 날 스스로 일찍 등원해 독서실을 이용하는 모습에서 학습에 대한 책임감을 엿볼 수 있었습니다.
-                    </div>
-                    
-                    <div class="highlight">
-                        <strong>📌 개선이 필요한 부분:</strong><br>
-                        • 계산 실수 빈도가 높음 → 검산 습관 형성 필요<br>
-                        • 문제 풀이 속도가 다소 느림 → 반복 연습으로 속도 향상<br>
-                        • 모르는 부분을 즉시 질문하는 적극성 필요<br><br>
-                        
-                        <strong>🎯 앞으로의 학습 방향:</strong><br>
-                        정수와 유리수 단원평가를 앞두고 있으니, 지금까지 학습한 내용을 체계적으로 복습하여 
-                        개념을 확실히 정립하고, 계산 실수를 최소화할 수 있도록 지도하겠습니다.
-                    </div>
+                <div class="comment-item">
+                    <span class="emoji">❓</span>
+                    <strong>적극적인 질문:</strong> 등식이나 등호의 의미를 이해하지 못했을 때처럼, 모르는 부분이 있으면 즉시 질문하는 습관을 기르면 더욱 효과적인 학습이 가능합니다.
                 </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                
+                <h3>🎊 다음 달 학습 계획</h3>
+                <div class="comment-item">
+                    <span class="emoji">📅</span>
+                    정수
