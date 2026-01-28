@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026년 01월 학습 보고서 - 조민성</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,251 +11,220 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px 10px;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        
+
         .header {
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             color: white;
-            padding: 30px;
+            padding: 30px 20px;
             text-align: center;
         }
-        
+
         .header h1 {
-            font-size: 24px;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
-        
+
         .header .subtitle {
-            font-size: 16px;
+            font-size: 1rem;
             opacity: 0.9;
+            font-weight: 400;
         }
-        
+
         .content {
-            padding: 30px;
+            padding: 30px 20px;
         }
-        
+
         .info-card {
             background: #f8fafc;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 15px;
+            padding: 25px;
             margin-bottom: 25px;
-            border-left: 4px solid #4f46e5;
+            border-left: 5px solid #4f46e5;
         }
-        
+
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin-bottom: 20px;
+            margin-top: 15px;
         }
-        
+
         .info-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
         }
-        
-        .info-label {
+
+        .info-item .label {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .info-item .value {
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #4f46e5;
-            min-width: 80px;
+            color: #1e293b;
         }
-        
-        .info-value {
-            color: #1f2937;
-        }
-        
+
         .section {
             margin-bottom: 30px;
         }
-        
+
         .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1f2937;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e293b;
             margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
             display: flex;
             align-items: center;
-            gap: 10px;
         }
-        
+
         .section-title::before {
-            content: '';
+            content: "";
             width: 4px;
-            height: 24px;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            height: 20px;
+            background: #4f46e5;
+            margin-right: 10px;
             border-radius: 2px;
         }
-        
+
         .card {
             background: white;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border: 1px solid #e5e7eb;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
         }
-        
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
         .progress-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f3f4f6;
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
         }
-        
-        .progress-item:last-child {
-            border-bottom: none;
-        }
-        
-        .progress-topic {
+
+        .progress-header {
             font-weight: 600;
-            color: #374151;
+            color: #334155;
+            margin-bottom: 8px;
         }
-        
-        .progress-status {
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
+
+        .progress-content {
+            font-size: 0.95rem;
+            color: #64748b;
         }
-        
+
         .assignment-list {
             list-style: none;
         }
-        
-        .assignment-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid #f3f4f6;
+
+        .assignment-list li {
+            background: #f8fafc;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+            font-size: 0.95rem;
         }
-        
-        .assignment-item:last-child {
-            border-bottom: none;
-        }
-        
-        .assignment-check {
-            width: 20px;
-            height: 20px;
-            background: #22c55e;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-        }
-        
-        .assignment-text {
-            flex: 1;
-            color: #374151;
-        }
-        
-        .comment-card {
+
+        .comment-box {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border-radius: 12px;
-            padding: 25px;
-            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-left: 5px solid #f59e0b;
         }
-        
-        .comment-title {
-            font-size: 18px;
-            font-weight: 700;
+
+        .comment-box h4 {
             color: #92400e;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .comment-text {
-            color: #451a03;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-        
-        .highlight {
-            background: linear-gradient(120deg, #a78bfa 0%, #ec4899 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
+            margin-bottom: 10px;
             font-weight: 600;
-            text-align: center;
-            margin-top: 15px;
         }
-        
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+
+        .comment-box p {
+            color: #78350f;
+            line-height: 1.7;
+            margin-bottom: 10px;
         }
-        
-        .summary-card {
-            background: #f1f5f9;
+
+        .highlight {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 8px;
             border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            background: #f8fafc;
             padding: 20px;
             text-align: center;
-            border: 2px solid #e2e8f0;
-        }
-        
-        .summary-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #4f46e5;
-            display: block;
-        }
-        
-        .summary-label {
-            font-size: 14px;
             color: #64748b;
-            margin-top: 5px;
+            font-size: 0.9rem;
         }
-        
-        @media (max-width: 768px) {
+
+        @media (max-width: 600px) {
             body {
-                padding: 10px;
+                padding: 10px 5px;
             }
-            
-            .content {
-                padding: 20px;
-            }
-            
+
             .header {
-                padding: 20px;
+                padding: 25px 15px;
             }
-            
+
             .header h1 {
-                font-size: 20px;
+                font-size: 1.5rem;
             }
-            
+
+            .content {
+                padding: 20px 15px;
+            }
+
             .info-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .section-title {
-                font-size: 18px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -265,130 +232,117 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚 2026년 01월 학습 보고서</h1>
-            <div class="subtitle">학습 현황 종합 분석</div>
+            <h1>2026년 01월 학습 보고서</h1>
+            <div class="subtitle">Monthly Learning Report</div>
         </div>
-        
+
         <div class="content">
+            <!-- 기본 정보 -->
             <div class="info-card">
+                <h3 style="margin-bottom: 15px; color: #1e293b;">📚 학습 기본 정보</h3>
                 <div class="info-grid">
                     <div class="info-item">
-                        <span class="info-label">👤 학생명:</span>
-                        <span class="info-value">조민성</span>
+                        <div class="label">학생명</div>
+                        <div class="value">조민성</div>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">📅 수업기간:</span>
-                        <span class="info-value">2025년 12월</span>
+                        <div class="label">수업 기간</div>
+                        <div class="value">2025년 12월</div>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">📊 총 수업:</span>
-                        <span class="info-value">7회 완료</span>
+                        <div class="label">총 수업 횟수</div>
+                        <div class="value">7회</div>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">📖 주요 과목:</span>
-                        <span class="info-value">고2 대수</span>
+                        <div class="label">주요 교재</div>
+                        <div class="value">개념플러스 유형</div>
                     </div>
                 </div>
             </div>
 
+            <!-- 학습 요약 -->
             <div class="section">
                 <h2 class="section-title">📈 학습 요약</h2>
-                <div class="summary-grid">
-                    <div class="summary-card">
-                        <span class="summary-number">7</span>
-                        <div class="summary-label">총 수업 횟수</div>
-                    </div>
-                    <div class="summary-card">
-                        <span class="summary-number">90%</span>
-                        <div class="summary-label">단원평가 점수</div>
-                    </div>
-                </div>
-                
-                <div class="card" style="margin-top: 20px;">
-                    <p><strong>🎯 12월 학습 흐름:</strong></p>
-                    <p>기출문제 정리 → 고2 대수 시작 → 지수·거듭제곱근 학습 → 로그 정의와 성질 → 지수함수와 활용까지 체계적으로 진행하여 탄탄한 기초를 완성했습니다.</p>
+                <div class="card">
+                    <p style="line-height: 1.8; color: #475569;">
+                        12월 한 달간 <span class="highlight">고2 대수 과정</span>을 본격적으로 시작하여 
+                        <strong>지수와 로그</strong> 단원을 집중적으로 학습했습니다. 
+                        월 초 기출문제 정리를 통한 복습으로 시작하여, 
+                        거듭제곱근부터 지수함수 활용까지 체계적으로 진도를 나갔습니다. 
+                        특히 단원평가에서 <span class="badge">9/10 문제 정답</span>을 달성하여 
+                        우수한 학습 성과를 보였습니다.
+                    </p>
                 </div>
             </div>
 
+            <!-- 진도 현황 -->
             <div class="section">
-                <h2 class="section-title">📚 진도 현황</h2>
+                <h2 class="section-title">📖 진도 현황</h2>
                 <div class="card">
                     <div class="progress-item">
-                        <span class="progress-topic">🔢 지수 - 거듭제곱근</span>
-                        <span class="progress-status">완료</span>
+                        <div class="progress-header">🔢 지수 단원</div>
+                        <div class="progress-content">
+                            거듭제곱근의 개념부터 지수의 거듭제곱까지 완료
+                        </div>
                     </div>
                     <div class="progress-item">
-                        <span class="progress-topic">📊 로그의 정의와 성질</span>
-                        <span class="progress-status">완료</span>
+                        <div class="progress-header">📊 로그 단원</div>
+                        <div class="progress-content">
+                            로그의 정의와 성질, 기본 계산 방법 학습 완료
+                        </div>
                     </div>
                     <div class="progress-item">
-                        <span class="progress-topic">📈 지수함수와 활용</span>
-                        <span class="progress-status">완료</span>
-                    </div>
-                    <div class="progress-item">
-                        <span class="progress-topic">📖 개념플러스 유형 교재</span>
-                        <span class="progress-status">진행중</span>
+                        <div class="progress-header">📈 지수함수</div>
+                        <div class="progress-content">
+                            지수함수의 개념과 활용 문제 학습 진행 중
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 과제 수행 현황 -->
             <div class="section">
                 <h2 class="section-title">✅ 과제 수행 현황</h2>
                 <div class="card">
                     <ul class="assignment-list">
-                        <li class="assignment-item">
-                            <div class="assignment-check">✓</div>
-                            <span class="assignment-text">개념편 소단원 1단원</span>
-                        </li>
-                        <li class="assignment-item">
-                            <div class="assignment-check">✓</div>
-                            <span class="assignment-text">개념편, 유형편 지수</span>
-                        </li>
-                        <li class="assignment-item">
-                            <div class="assignment-check">✓</div>
-                            <span class="assignment-text">교재 ~p. 46 (로그 부분)</span>
-                        </li>
-                        <li class="assignment-item">
-                            <div class="assignment-check">✓</div>
-                            <span class="assignment-text">유형편 지수, 로그</span>
-                        </li>
-                        <li class="assignment-item">
-                            <div class="assignment-check">✓</div>
-                            <span class="assignment-text">개념편 ~p. 70</span>
-                        </li>
-                        <li class="assignment-item">
-                            <div class="assignment-check">✓</div>
-                            <span class="assignment-text">유형편 ~p. 27</span>
-                        </li>
+                        <li>개념편 소단원 1단원 (12/10)</li>
+                        <li>개념편, 유형편 지수 문제 (12/13)</li>
+                        <li>교재 ~p.46까지 (12/17)</li>
+                        <li>유형편 지수, 로그 문제 (12/20)</li>
+                        <li>개념편 ~p.70까지 (12/24)</li>
+                        <li>유형편 ~p.27까지 (12/27)</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- 선생님 코멘트 -->
             <div class="section">
                 <h2 class="section-title">💬 선생님 코멘트</h2>
-                <div class="comment-card">
-                    <div class="comment-title">🎯 종합 평가</div>
+                <div class="comment-box">
+                    <h4>🎯 종합 평가</h4>
+                    <p>
+                        조민성 학생은 고2 대수 과정 첫 시작을 매우 성실하고 체계적으로 임하고 있습니다. 
+                        특히 지수와 로그 단원평가에서 10문제 중 9문제를 맞힌 것은 매우 우수한 성과입니다.
+                    </p>
                     
-                    <div class="comment-text">
-                        <strong>🏆 우수한 학습 성과:</strong><br>
-                        12월 한 달간 고2 대수의 핵심 단원인 지수와 로그를 완전히 마스터했습니다. 특히 단원평가에서 90%(9/10문제) 정답을 보여주며 탄탄한 이해도를 입증했습니다.
-                    </div>
+                    <h4>📚 학습 태도</h4>
+                    <p>
+                        매 수업마다 주어진 과제를 성실히 수행하고 있으며, 개념편과 유형편을 
+                        병행하여 이론과 실습을 균형있게 학습하고 있습니다.
+                    </p>
                     
-                    <div class="comment-text">
-                        <strong>📚 체계적인 학습 진행:</strong><br>
-                        기출문제 정리부터 시작하여 개념 학습, 유형 연습까지 단계별로 차근차근 진행하여 흔들리지 않는 기초를 완성했습니다.
-                    </div>
-                    
-                    <div class="comment-text">
-                        <strong>🎯 앞으로의 계획:</strong><br>
-                        고2 1학기에 대수와 미적분이 함께 진행되는 만큼, 방학 기간 동안 선행학습을 통해 더욱 탄탄한 준비를 할 예정입니다.
-                    </div>
-                    
-                    <div class="highlight">
-                        ⭐ 자율적 학습 습관 형성을 위해 방학 중 오전 시간을 활용한 개별 학습도 권장드립니다!
-                    </div>
+                    <h4>🚀 향후 계획</h4>
+                    <p>
+                        고2 1학기에 대수와 미적분이 함께 진행되는 점을 고려하여, 방학 기간 동안 
+                        학원에서 병행 학습을 진행할 예정입니다. 또한 오전 시간을 활용한 
+                        자율학습을 통해 학습량을 늘려갈 계획입니다.
+                    </p>
                 </div>
             </div>
+        </div>
+
+        <div class="footer">
+            <p>📅 보고서 생성일: 2026년 01월 | 💡 문의사항이 있으시면 언제든 연락주세요</p>
         </div>
     </div>
 </body>
