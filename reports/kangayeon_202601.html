@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 01월 학습 보고서 - 강아연</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .header .period {
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        .content {
+            background: white;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 24px;
+        }
+
+        .student-info h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-item .label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 4px;
+        }
+
+        .info-item .value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 32px 24px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .progress-cards {
+            display: grid;
+            gap: 16px;
+        }
+
+        .progress-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .progress-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .progress-content {
+            color: #5a6c7d;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3498db, #9b59b6);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .timeline-task {
+            font-size: 14px;
+            color: #5a6c7d;
+        }
+
+        .comment-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+        }
+
+        .comment-box::before {
+            content: '"';
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .comment-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        .teacher-name {
+            text-align: right;
+            font-weight: 600;
+            color: #e67e22;
+            font-size: 14px;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 4px 8px 4px 0;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 12px;
+            }
+
+            .header {
+                padding: 24px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .section {
+                padding: 24px 20px;
+            }
+
+            .section h3 {
+                font-size: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .timeline {
+                padding-left: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 01월 학습 보고서</h1>
+            <p class="period">2025년 12월 수업 기준</p>
+        </div>
+
+        <div class="content">
+            <div class="student-info">
+                <h2>강아연 학생</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="label">수업 기간</div>
+                        <div class="value">2025.12</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">총 수업</div>
+                        <div class="value">7회</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">단원평가</div>
+                        <div class="value">2회</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>
+                    <span class="icon">📚</span>
+                    학습 요약
+                </h3>
+                <div class="progress-cards">
+                    <div class="progress-card">
+                        <h4>기하학 심화 과정</h4>
+                        <div class="progress-content">
+                            2025년 12월 한 달 동안 기하학의 핵심 단원들을 체계적으로 학습했습니다. 
+                            여러가지 사각형의 성질부터 시작하여 닮음과 그 활용, 삼각형의 무게중심, 
+                            그리고 피타고라스 정리까지 단계적으로 진행하며 기하학적 사고력을 향상시켰습니다.
+                        </div>
+                    </div>
+                    <div class="progress-card">
+                        <h4>학습 성취도</h4>
+                        <div class="progress-content">
+                            <span class="achievement-badge">사각형 단원평가 9/10</span>
+                            <span class="achievement-badge">닮음 단원평가 10/10</span>
+                            <br><br>
+                            두 번의 단원평가에서 우수한 성적을 거두며 학습 내용을 확실히 이해하고 있음을 보여주었습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>
+                    <span class="icon">📖</span>
+                    진도 현황
+                </h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">12월 1주</div>
+                        <div class="timeline-content">여러가지 사각형</div>
+                        <div class="timeline-task">사각형의 성질과 특징 학습</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">12월 2주</div>
+                        <div class="timeline-content">닮음과 닮음의 활용</div>
+                        <div class="timeline-task">닮음의 개념과 실생활 적용</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">12월 3주</div>
+                        <div class="timeline-content">평행선의 닮음</div>
+                        <div class="timeline-task">평행선과 닮음의 관계 탐구</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">12월 4주</div>
+                        <div class="timeline-content">삼각형의 무게중심 & 피타고라스 정리</div>
+                        <div class="timeline-task">삼각형의 중심과 직각삼각형의 성질</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>
+                    <span class="icon">✏️</span>
+                    과제 수행 현황
+                </h3>
+                <div class="progress-cards">
+                    <div class="progress-card">
+                        <h4>과제 완료율</h4>
+                        <div class="progress-content">
+                            매 수업마다 주어진 과제를 성실하게 수행했습니다. C단계 문제부터 프린트 30문제까지 
+                            다양한 유형의 문제를 꾸준히 풀며 실력을 향상시켰습니다.
+                        </div>
+                    </div>
+                    <div class="progress-card">
+                        <h4>주요 과제 내역</h4>
+                        <div class="progress-content">
+                            • 여러가지 사각형 C단계<br>
+                            • 닮음 C단계 문제<br>
+                            • 교재 p.142~147, p.138, p.170<br>
+                            • 프린트 30문제 (닮음의 활용)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>
+                    <span class="icon">💭</span>
+                    선생님 코멘트
+                </h3>
+                <div class="comment-box">
+                    <div class="comment-text">
+                        강아연 학생은 항상 수업에 성실히 임하고 과제도 꾸준히 해오고 있습니다. 
+                        이전에 배운 내용을 잘 이해하고 있어 수업에서 큰 어려움 없이 진행하고 있으며, 
+                        특히 삼각형의 무게중심을 설명하면서 이전에 학습한 삼각형의 외심, 내심을 
+                        연결하여 설명했을 때 잊어버린 부분을 다시 기억하고 장기 기억으로 연결하는 
+                        모습이 인상적이었습니다. 두 번의 단원평가에서도 우수한 성적을 거두며 
+                        꾸준한 학습 성과를 보여주고 있습니다.
+                    </div>
+                    <div class="teacher-name">- 담당 선생님 -</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
