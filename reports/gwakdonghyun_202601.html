@@ -1,388 +1,454 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>곽동현 학생 학습 리포트 - 2026년 01월</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            padding: 20px 16px;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            color: white;
-            padding: 24px 20px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .content {
-            padding: 24px 20px;
-        }
-        
-        .section {
-            margin-bottom: 32px;
-        }
-        
-        .section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e5e7eb;
-        }
-        
-        .card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border-left: 4px solid #4f46e5;
-        }
-        
-        .card:last-child {
-            margin-bottom: 0;
-        }
-        
-        .summary-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .summary-item {
-            background: #f1f5f9;
-            padding: 16px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .summary-item .number {
-            font-size: 24px;
-            font-weight: 700;
-            color: #4f46e5;
-            margin-bottom: 4px;
-        }
-        
-        .summary-item .label {
-            font-size: 14px;
-            color: #64748b;
-        }
-        
-        .class-record {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-        
-        .class-record:last-child {
-            margin-bottom: 0;
-        }
-        
-        .class-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        
-        .class-date {
-            font-weight: 600;
-            color: #1f2937;
-        }
-        
-        .class-course {
-            background: #ddd6fe;
-            color: #5b21b6;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .class-info {
-            margin-bottom: 8px;
-        }
-        
-        .class-info strong {
-            color: #374151;
-            font-weight: 600;
-        }
-        
-        .special-notes {
-            background: #fef3c7;
-            border: 1px solid #fbbf24;
-            border-radius: 6px;
-            padding: 12px;
-            margin-top: 12px;
-        }
-        
-        .special-notes p {
-            margin-bottom: 8px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        
-        .special-notes p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .highlight {
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-        
-        .progress-bar {
-            background: #e5e7eb;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-        
-        .progress-fill {
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            height: 100%;
-            border-radius: 4px;
-        }
-        
-        .teacher-comment {
-            background: #ecfdf5;
-            border: 1px solid #10b981;
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-        
-        .teacher-comment h4 {
-            color: #047857;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .teacher-comment p {
-            color: #064e3b;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 12px 8px;
-            }
-            
-            .header {
-                padding: 20px 16px;
-            }
-            
-            .header h1 {
-                font-size: 20px;
-            }
-            
-            .content {
-                padding: 20px 16px;
-            }
-            
-            .summary-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .class-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>곽동현 - 2026년 01월 학습 보고서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F1F5F9;
+      color: #1E293B;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 480px; margin: 0 auto; background: #F1F5F9; min-height: 100vh; }
+    
+    /* 헤더 */
+    .header {
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      color: white;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .header__academy { font-size: 0.8125rem; font-weight: 500; opacity: 0.9; margin-bottom: 4px; letter-spacing: 0.5px; }
+    .header__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .header__period { font-size: 0.875rem; opacity: 0.85; }
+    .header__student {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    
+    /* 콘텐츠 */
+    .content { padding: 20px 16px 32px; }
+    
+    /* 카드 */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card__title-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+    
+    /* 통계 */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .stat-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .stat-item__value { font-size: 1.5rem; font-weight: 700; color: #3B82F6; }
+    .stat-item__label { font-size: 0.75rem; color: #64748B; margin-top: 4px; }
+    
+    /* 요약 */
+    .summary-card {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1px solid #BFDBFE;
+    }
+    .summary-card .card__title-icon { background: #3B82F6; color: white; }
+    .summary__text { font-size: 0.9375rem; color: #334155; line-height: 1.8; }
+    
+    /* 진도 */
+    .progress-section .card__title-icon { background: #10B981; color: white; }
+    .progress-item { margin-bottom: 16px; }
+    .progress-item:last-child { margin-bottom: 0; }
+    .progress-item__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .progress-item__label { font-size: 0.875rem; font-weight: 600; color: #334155; }
+    .progress-item__value { font-size: 0.8125rem; color: #3B82F6; font-weight: 600; }
+    .progress-bar { height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden; }
+    .progress-bar__fill { height: 100%; background: linear-gradient(90deg, #3B82F6, #60A5FA); border-radius: 4px; }
+    
+    /* 수업 기록 */
+    .lessons-section .card__title-icon { background: #8B5CF6; color: white; }
+    .lesson-list { display: flex; flex-direction: column; gap: 12px; }
+    .lesson-item { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; }
+    .lesson-item__header {
+      background: #F8FAFC;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .lesson-item__date { font-size: 0.875rem; font-weight: 600; color: #1E293B; }
+    .lesson-item__course {
+      font-size: 0.75rem;
+      color: #3B82F6;
+      background: #EFF6FF;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    .lesson-item__body { padding: 16px; display: none; }
+    .lesson-item.active .lesson-item__body { display: block; }
+    .lesson-item__row { display: flex; margin-bottom: 10px; }
+    .lesson-item__row:last-child { margin-bottom: 0; }
+    .lesson-item__label { width: 64px; flex-shrink: 0; font-size: 0.8125rem; color: #64748B; font-weight: 500; }
+    .lesson-item__content { font-size: 0.875rem; color: #334155; flex: 1; }
+    .toggle-icon {
+      width: 20px; height: 20px; border-radius: 50%; background: #E2E8F0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: #64748B; transition: transform 0.2s;
+    }
+    .lesson-item.active .toggle-icon { transform: rotate(180deg); }
+    
+    /* 과제 */
+    .homework-section .card__title-icon { background: #F59E0B; color: white; }
+    .homework-list { display: flex; flex-direction: column; gap: 10px; }
+    .homework-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 12px;
+      background: #FFFBEB; border-radius: 10px; border-left: 3px solid #F59E0B;
+    }
+    .homework-item__date { font-size: 0.75rem; color: #92400E; font-weight: 600; white-space: nowrap; }
+    .homework-item__content { font-size: 0.875rem; color: #78350F; }
+    
+    /* 코멘트 */
+    .comment-section .card__title-icon { background: #EC4899; color: white; }
+    .comment-box {
+      background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
+      border-radius: 12px; padding: 20px; border-left: 4px solid #EC4899;
+    }
+    .comment-box__text { font-size: 0.9375rem; color: #831843; line-height: 1.8; white-space: pre-line; }
+    .comment-box__signature { margin-top: 16px; text-align: right; font-size: 0.8125rem; color: #9D174D; font-weight: 600; }
+    
+    /* 푸터 */
+    .footer { background: #1E293B; color: white; padding: 24px 20px; text-align: center; }
+    .footer__academy { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+    .footer__contact { display: flex; flex-direction: column; gap: 8px; }
+    .footer__contact a { color: #94A3B8; text-decoration: none; font-size: 0.875rem; }
+    .footer__copyright { margin-top: 16px; font-size: 0.75rem; color: #64748B; }
+    
+    .empty-state { text-align: center; padding: 24px; color: #94A3B8; font-size: 0.875rem; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>곽동현 학생 학습 리포트</h1>
-            <p>2026년 01월 학습 현황</p>
+  <div class="container">
+    <header class="header">
+      <div class="header__academy">JD Math Academy</div>
+      <h1 class="header__title">2026년 01월</h1>
+      <p class="header__period">학습 보고서</p>
+      <div class="header__student">곽동현 학생</div>
+    </header>
+
+    <main class="content">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-item__value">8</div>
+          <div class="stat-item__label">수업 횟수</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-item__value">5</div>
+          <div class="stat-item__label">과제 수</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__value">100%</div>
+          <div class="stat-item__label">출석률</div>
+        </div>
+      </div>
+
+      <section class="card summary-card">
+        <h2 class="card__title"><span class="card__title-icon">📊</span>학습 요약</h2>
+        <p class="summary__text">12월 초 중2 기말고사 대비로 닮음과 피타고라스 정리 복습 및 쎈 B단계 마무리를 진행했습니다. 시험 후에는 중3-1 과정을 시작하여 제곱근의 정의, 성질, 계산 단원을 차례로 학습하고 있습니다.</p>
+      </section>
+
+      <section class="card progress-section">
+        <h2 class="card__title"><span class="card__title-icon">📈</span>진도 현황</h2>
         
-        <div class="content">
-            <div class="section">
-                <h2 class="section-title">📊 학습 요약</h2>
-                <div class="summary-grid">
-                    <div class="summary-item">
-                        <div class="number">6</div>
-                        <div class="label">총 수업 횟수</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="number">중3-1</div>
-                        <div class="label">현재 과정</div>
-                    </div>
-                </div>
-                <div class="card">
-                    <strong>주요 학습 내용:</strong> 제곱근의 정의와 성질, 제곱근의 계산<br>
-                    <strong>사용 교재:</strong> RPM 중3-1<br>
-                    <strong>단원평가 결과:</strong> <span class="highlight">8/10 문제 정답</span>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title">📚 수업 기록</h2>
-                
-                <div class="class-record">
-                    <div class="class-header">
-                        <div class="class-date">12/16 (화)</div>
-                        <div class="class-course">중2-2</div>
-                    </div>
-                    <div class="class-info">
-                        <strong>수업내용:</strong> 시험지 리뷰<br>
-                        <strong>교재:</strong> 기타
-                    </div>
-                    <div class="special-notes">
-                        <p>• 최근 오성중학교 시험에 비해 어렵지는 않았으나 까다로운 문제들이 다소 보였습니다.</p>
-                        <p>• 공부했던 부분을 최선을 다해 풀어주어 고마웠고, 그 모습이 시험지에 잘 드러났습니다.</p>
-                        <p>• 이번주 금요일까지 "중3-1 RPM"교재 준비 안내</p>
-                    </div>
-                </div>
-                
-                <div class="class-record">
-                    <div class="class-header">
-                        <div class="class-date">12/19 (금)</div>
-                        <div class="class-course">중3-1</div>
-                    </div>
-                    <div class="class-info">
-                        <strong>수업내용:</strong> 제곱근의 정의와 성질<br>
-                        <strong>교재:</strong> RPM<br>
-                        <strong>과제:</strong> ~p. 27
-                    </div>
-                    <div class="special-notes">
-                        <p>• 중3-1 수업 처음 진행하였습니다.</p>
-                        <p>• 이전 학원에서 배운 내용부터 복습 진행하여 개념을 잘 기억하고 있고, 잘 따라왔습니다. 😊</p>
-                    </div>
-                </div>
-                
-                <div class="class-record">
-                    <div class="class-header">
-                        <div class="class-date">12/23 (화)</div>
-                        <div class="class-course">중3-1</div>
-                    </div>
-                    <div class="class-info">
-                        <strong>수업내용:</strong> 제곱근의 계산<br>
-                        <strong>교재:</strong> RPM<br>
-                        <strong>과제:</strong> ~p. 39
-                    </div>
-                    <div class="special-notes">
-                        <p>• 제곱근의 정의와 a의 제곱근과 제곱근 a의 구분 등 다시 한번 중요한 부분을 함께 다루었습니다.</p>
-                    </div>
-                </div>
-                
-                <div class="class-record">
-                    <div class="class-header">
-                        <div class="class-date">12/26 (금)</div>
-                        <div class="class-course">중3-1</div>
-                    </div>
-                    <div class="class-info">
-                        <strong>수업내용:</strong> 제곱근의 계산<br>
-                        <strong>교재:</strong> RPM<br>
-                        <strong>과제:</strong> ~p. 44
-                    </div>
-                    <div class="special-notes">
-                        <p>• 방학 기간 동안 오전 등원하여 관리 프로그램에 대해 이야기하였습니다.</p>
-                        <p>• 오전 등원을 통해 중2 과정 점검과 중3 반복 학습을 병행하는 것이 학습에 도움이 될 것으로 판단합니다.</p>
-                    </div>
-                </div>
-                
-                <div class="class-record">
-                    <div class="class-header">
-                        <div class="class-date">12/30 (화)</div>
-                        <div class="class-course">중3-1</div>
-                    </div>
-                    <div class="class-info">
-                        <strong>수업내용:</strong> 제곱근의 계산<br>
-                        <strong>교재:</strong> RPM<br>
-                        <strong>과제:</strong> ~p. 44
-                    </div>
-                    <div class="special-notes">
-                        <p>• 이번 숙제에서 계산 실수가 비교적 잦았고, 문제를 급하게 풀었다고 합니다.</p>
-                        <p>• 풀이 속도를 조절할 필요가 있다고 이야기하였습니다.</p>
-                        <p>• 다음시간 제곱근 관련하여 단원평가 진행 예정</p>
-                    </div>
-                </div>
-                
-                <div class="class-record">
-                    <div class="class-header">
-                        <div class="class-date">01/02 (금)</div>
-                        <div class="class-course">중3-1</div>
-                    </div>
-                    <div class="class-info">
-                        <strong>수업내용:</strong> 제곱근 정리<br>
-                        <strong>교재:</strong> RPM<br>
-                        <strong>과제:</strong> ~p. 51
-                    </div>
-                    <div class="special-notes">
-                        <p>• 제곱근의 성질 및 계산 단원평가: <span class="highlight">8/10문제 정답</span></p>
-                        <p>• 1월 3일 ~ 1월 16일 여행일정으로 결석 예정 (4회)</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title">🎯 진도 현황</h2>
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span><strong>제곱근 단원</strong></span>
-                        <span style="color: #059669; font-weight: 600;">완료</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 100%;"></div>
-                    </div>
-                    <div style="margin-top: 8px; font-size: 14px; color: #6b7280;">
-                        • 제곱근의 정의와 성질<br>
-                        • 제곱근의 계산<br>
-                        • 단원평가 완료 (8/10 정답)
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section
+    <div class="progress-item">
+      <div class="progress-item__header">
+        <span class="progress-item__label">중2 기말고사 대비</span>
+        <span class="progress-item__value">100%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" style="width: 100%"></div>
+      </div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-item__header">
+        <span class="progress-item__label">중3-1 제곱근</span>
+        <span class="progress-item__value">35%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" style="width: 35%"></div>
+      </div>
+    </div>
+      </section>
+
+      <section class="card lessons-section">
+        <h2 class="card__title"><span class="card__title-icon">📚</span>수업 기록</h2>
+        <div class="lesson-list">
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 2일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">닮음 ~ 피타고라스 C단계</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 지난주와 동일하게 12월 3일 (수) 16시 등원하여 내신대비보강 진행 예정입니다. 참고부탁드립니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 3일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">쎈 B단계 마무리</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 쎈 B단계를 이전 학원에서 한 번, 제이디에서 한 번 총 두 차례 풀었습니다. 이 중 다시 풀었을 때 틀린 문제들은 숙제로 한 번 더 풀 수 있도록 부여하였습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 5일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">(지난 프린트) 오답</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 쎈 B단계를 다시 풀면서 틀린 문제를 복습할 수 있도록 프린트 진행하였고, 다음주 수요일 시험으로 기출 풀어 볼 수 있도록 숙제로 부여하였습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 9일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">시험직전보강</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] [24-2-기말][신명여중] 오답 진행
+[2] [24-2-기말][오성중] 풀고 오답 진행
+
+[3] 내일 시험을 앞두고 오늘 직전 보강 시간에 기출 문제를 함께 점검했습니다.
+짧은 시간 안에 최대한 집중해서 준비했지만, 아직 보완이 필요한 부분이 있어 마음이 많이 쓰입니다.
+그래도 아이가 끝까지 포기하지 않고 성실하게 노력하는 모습이 정말 대견했습니다.
+
+내일 시험 무리 없이 잘 치를 수 있도록 저도 함께 끝까지 응원하겠습니다.
+
+감사합니다. :)</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 16일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">시험지 리뷰</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 시험지 리뷰 진행하였습니다.
+- 최근 오성중학교 시험에 비해 어렵지는 않았으나 까다로운 문제들이 다소 보였습니다. 
+- 공부했던 부분을 최선을 다해 풀어주어 고마웠고, 그 모습이 시험지에 잘 드러났습니다.
+[2] 시험지 리뷰 후, 앞으로 공부할 교재에 대해 이야기하였습니다.
+> 이번주 금요일까지 “중3-1 RPM”교재 챙겨주시면 부족한 부분 잘 채워서 학습할 수 있도록 하겠습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 19일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">제곱근의 정의와 성질</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 중3-1 수업 처음 진행하였습니다. 이전 학원에서 배운 내용부터 복습 진행하여 개념을 잘 기억하고 있고, 잘 따라왔습니다.^^</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 23일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">제곱근의 계산</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 제곱근의 정의와 a의 제곱근과 제곱근 a의 구분 등 다시 한번 중요한 부분을 함께 다루었습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">12월 26일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">제곱근의 계산</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 방학 기간 동안 오전 등원하여 관리 프로그램에 대해 이야기하였습니다. 가정에서 상의해 보시고, 추후 발송될 문자에 의견을 주시면 반영하도록 하겠습니다.
+> 동현이는 해당 프로그램 참여에 대해 다소 거부감을 보이고 있으나, 개인적인 입장에서는 오전 등원을 통해 중2 과정 점검과 중3 반복 학습을 병행하는 것이 학습에 도움이 될 것으로 판단하고 있습니다.</span>
+        </div>
+      </div>
+    </div></div>
+      </section>
+
+      <section class="card homework-section">
+        <h2 class="card__title"><span class="card__title-icon">✏️</span>과제 현황</h2>
+        <div class="homework-list">
+    <div class="homework-item">
+      <span class="homework-item__date">12월 3일</span>
+      <span class="homework-item__content">틀린 문제 복습 (프린트)</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">12월 5일</span>
+      <span class="homework-item__content">[24-2-기말][신명여중][2]</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">12월 19일</span>
+      <span class="homework-item__content">~p. 27</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">12월 23일</span>
+      <span class="homework-item__content">~p. 39</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">12월 26일</span>
+      <span class="homework-item__content">~p. 44</span>
+    </div></div>
+      </section>
+
+      <section class="card comment-section">
+        <h2 class="card__title"><span class="card__title-icon">💬</span>선생님 코멘트</h2>
+        <div class="comment-box">
+          <p class="comment-box__text">기말고사 준비 과정에서 끝까지 포기하지 않고 성실하게 노력하는 모습이 매우 대견했습니다. 중3-1 과정 시작 후 이전에 배운 개념들을 잘 기억하고 있어 수업을 원활하게 따라오고 있습니다. 제곱근의 정의와 계산 부분에서 중요한 개념들을 차근차근 다지고 있으며, 방학 기간 중 중2 과정 점검과 중3 반복학습을 통해 더욱 탄탄한 실력을 쌓아나가겠습니다.</p>
+          <p class="comment-box__signature">- JD Math Academy 담당 선생님</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__academy">JD Math Academy</div>
+      <div class="footer__contact">
+        <a href="tel:053-123-4567">📞 053-123-4567</a>
+        <a href="http://pf.kakao.com/_jdmath">💬 카카오톡 상담</a>
+      </div>
+      <p class="footer__copyright">© 2025 JD Math Academy. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.lesson-item__header').forEach(header => {
+      header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
