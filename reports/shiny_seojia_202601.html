@@ -120,6 +120,29 @@
             margin-bottom: 6px;
         }
         .criteria-icon { font-size: 14px; flex-shrink: 0; }
+        .vocab-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .vocab-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            background: white;
+            border: 1.5px solid;
+        }
+        .vocab-count {
+            font-size: 12px;
+            color: #868e96;
+            margin-bottom: 10px;
+            text-align: center;
+        }
         .book-card {
             background: #f8f9fa;
             border-radius: 12px;
@@ -190,6 +213,7 @@
             .student-info h1 { font-size: 18px; }
             .summary-value { font-size: 18px; }
             .footer-quote { font-size: 10px; }
+            .vocab-tag { font-size: 10px; padding: 4px 8px; }
         }
     </style>
 </head>
@@ -211,31 +235,32 @@
                 <div class="summary-item">
                     <div class="summary-label">완료 도서</div>
                     <div class="summary-value">0권</div>
-                    <div class="summary-sub">비문학 수업 진행중</div>
+                    <div class="summary-sub">비문학 커리큘럼 진행중</div>
                 </div>
                 <div class="summary-item">
                     <div class="summary-label">최고 점수</div>
                     <div class="summary-value">우수</div>
-                    <div class="summary-sub">비문학 독해력과 어휘력 향상 중</div>
+                    <div class="summary-sub">비문학 독해력 향상</div>
                 </div>
                 <div class="summary-item">
                     <div class="summary-label">학습 태도</div>
                     <div class="summary-value">우수</div>
-                    <div class="summary-sub">집중읽기와 인출정리에 적극적 참여</div>
+                    <div class="summary-sub">문단별 집중읽기 태도 우수함</div>
                 </div>
             </div>
         </div>
         <div class="card">
             <div class="card-title"><span>📝</span><span>수업 내용</span></div>
-            <div class="content-box">1월에는 광고, 언론, 문화, 지리, 정치, 경영 등 다양한 분야의 비문학 지문을 학습했습니다.<br>문단별 집중읽기를 통해 독해력을 기르고, 간과, 경시, 기우 등 31개의 새로운 어휘를 습득했습니다.<br>인출정리 활동을 통해 내용 이해도를 높이고 있습니다.</div>
+            <div class="content-box">1월에는 광고, 언론, 문화, 지리, 정치, 경영 등 다양한 분야의 비문학 지문을 학습했습니다.<br>간과, 경시, 기우, 남발 등 31개의 핵심 어휘를 익혔습니다.<br>문단별 집중읽기를 통해 비문학 독해 능력을 체계적으로 기를 수 있었습니다.</div>
         </div>
+        
         
         <div class="card">
             <div class="card-title"><span>⚠️</span><span>특이사항</span></div>
-            <div class="special-box"><strong>비문학 지문 문단별로 집중읽기 및 인출정리</strong></div>
+            <div class="special-box"><strong>비문학 지문 문단별로 집중읽기 및 인출정리 훈련 실시</strong></div>
         </div>
         <div class="card">
-            <div class="card-title"><span>⭐</span><span>바빠 독해 평가 기준 (5점 만점)</span></div>
+            <div class="card-title"><span>⭐</span><span>탐구도서 평가기준 (5점 만점)</span></div>
             <div class="criteria-item"><span class="criteria-icon">✍️</span><span><strong>1.</strong> 바른 글씨체(맞춤법)</span></div>
             <div class="criteria-item"><span class="criteria-icon">📏</span><span><strong>2.</strong> 글씨 크기 일정하게</span></div>
             <div class="criteria-item"><span class="criteria-icon">↔️</span><span><strong>3.</strong> 띄어쓰기 정확하게</span></div>
@@ -248,17 +273,32 @@
             
             <div class="book-card">
                 <div class="book-header">
-                    <div class="book-title">📖 비문학 독해 (6개 영역)</div>
-                    <div class="book-score book-score-progress">진행중</div>
+                    <div class="book-title">📖 비문학 독해 커리큘럼</div>
+                    <div class="book-score book-score-good">우수</div>
                 </div>
                 
                 <div class="book-section">
-                    <div class="book-label">📌 다양한 분야 비문학 지문 학습</div>
-                    <div class="book-text">광고, 언론, 문화, 지리, 정치, 경영 등 6개 영역의 지문을 통해 배경지식과 독해력을 동시에 향상</div>
+                    <div class="book-label">📌 다양한 분야 비문학 학습</div>
+                    <div class="book-text">광고, 언론, 문화, 지리, 정치, 경영 등 6개 분야의 비문학 지문을 통해 폭넓은 배경지식을 쌓았습니다.</div>
                 </div>
                 <div class="book-section">
-                    <div class="book-label">✨ 어휘력 및 독해 전략 습득</div>
-                    <div class="book-text">31개의 새로운 어휘 학습과 문단별 집중읽기, 인출정리를 통한 체계적인 독해 능력 개발</div>
+                    <div class="book-label">✨ 체계적 독해력 향상</div>
+                    <div class="book-text">문단별 집중읽기와 인출정리 방법을 통해 비문학 독해의 기초 실력을 탄탄히 다질 수 있었습니다.</div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-title">📖 어휘력 강화 학습</div>
+                    <div class="book-score book-score-good">우수</div>
+                </div>
+                
+                <div class="book-section">
+                    <div class="book-label">📌 핵심 어휘 31개 학습</div>
+                    <div class="book-text">간과, 경시, 기우, 남발, 도용, 맹종 등 중학생 필수 어휘 31개를 체계적으로 학습했습니다.</div>
+                </div>
+                <div class="book-section">
+                    <div class="book-label">✨ 어휘력 확장</div>
+                    <div class="book-text">한자어와 고급 어휘 학습을 통해 독해력의 기초가 되는 어휘력을 크게 향상시켰습니다.</div>
                 </div>
             </div>
         </div>
@@ -268,10 +308,20 @@
             <div class="timeline-item">
                 <div class="timeline-dot">📚</div>
                 <div class="timeline-content">
-                    <div class="timeline-date">1월</div>
+                    <div class="timeline-date">1월 전체</div>
                     <div class="timeline-desc">
-                        <strong>비문학 독해 (진행중)</strong><br>
-                        6개 영역 지문 학습 및 어휘 31개 습득
+                        <strong>비문학 독해 커리큘럼 (우수)</strong><br>
+                        6개 분야 지문학습 + 31개 어휘 습득
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">✏️</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">1월 중순</div>
+                    <div class="timeline-desc">
+                        <strong>문단별 집중읽기 훈련 (우수)</strong><br>
+                        체계적 독해 방법 익히기
                     </div>
                 </div>
             </div>
