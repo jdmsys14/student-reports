@@ -29,7 +29,6 @@
             box-shadow: 0 10px 40px rgba(98, 16, 159, 0.1);
         }
         
-        /* 헤더 */
         .header {
             background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
             color: white;
@@ -58,7 +57,6 @@
             display: inline-block;
         }
         
-        /* 섹션 공통 */
         .section {
             padding: 24px 20px;
             border-bottom: 8px solid #f5f7fa;
@@ -86,7 +84,6 @@
             border-radius: 2px;
         }
         
-        /* 출석현황 카드 */
         .attendance-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -133,7 +130,6 @@
             margin-top: 6px;
         }
         
-        /* 학습현황 - 완성도 그래프 */
         .learning-item {
             background: #f8fafc;
             border-radius: 12px;
@@ -180,7 +176,6 @@
             color: #991b1b;
         }
         
-        /* 완성도 바 */
         .progress-bar {
             height: 8px;
             background: #e2e8f0;
@@ -229,7 +224,6 @@
         .legend-dot.red { background: #ef4444; }
         .legend-dot.gray { background: #94a3b8; }
         
-        /* 강점 및 개선사항 */
         .insight-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -273,7 +267,6 @@
         .insight-card.strength .insight-list { color: #15803d; }
         .insight-card.improve .insight-list { color: #a16207; }
         
-        /* 코멘트 박스 */
         .comment-box {
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             padding: 20px;
@@ -327,7 +320,6 @@
             color: #1e40af;
         }
         
-        /* 태그 */
         .tag-row {
             margin-top: 16px;
             display: flex;
@@ -363,7 +355,6 @@
             color: #991b1b;
         }
         
-        /* KPI 요약 카드 */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -403,7 +394,6 @@
             margin-top: 4px;
         }
         
-        /* 푸터 */
         .footer {
             background: #1e293b;
             color: white;
@@ -419,12 +409,6 @@
             margin-bottom: 8px;
         }
         
-        .footer-address {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-bottom: 16px;
-        }
-        
         .btn-call {
             display: inline-block;
             background: #2563EB;
@@ -436,7 +420,6 @@
             font-size: 14px;
         }
         
-        /* 반응형 */
         @media (max-width: 360px) {
             body { padding: 10px; }
             .section { padding: 20px 16px; }
@@ -449,14 +432,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- 헤더 -->
         <div class="header">
-            <h1>정윤정영어 | Winter School</h1>
+            <h1>정윤정영어 | 윈터 대전외고1</h1>
             <h2>이화령</h2>
             <div class="badge">2026년 1월</div>
         </div>
         
-        <!-- 1. 출석현황 -->
         <div class="section">
             <div class="section-title">출석현황</div>
             <div class="attendance-grid">
@@ -472,7 +453,6 @@
                 </div>
             </div>
             
-            <!-- KPI 요약 -->
             <div class="kpi-grid">
                 <div class="kpi-card">
                     <div class="kpi-label">과제 제출률</div>
@@ -492,11 +472,9 @@
             </div>
         </div>
         
-        <!-- 2. 학습현황 (완성도 그래프) -->
         <div class="section">
             <div class="section-title">학습현황</div>
             
-            <!-- Logic Flow 작성 -->
             <div class="learning-item">
                 <div class="learning-header">
                     <span class="learning-name">📝 Logic Flow 작성</span>
@@ -515,7 +493,6 @@
                 </div>
             </div>
             
-            <!-- 주간지 풀이 -->
             <div class="learning-item">
                 <div class="learning-header">
                     <span class="learning-name">📖 주간지 풀이</span>
@@ -532,7 +509,6 @@
                 </div>
             </div>
             
-            <!-- 서답형 동형훈련 -->
             <div class="learning-item">
                 <div class="learning-header">
                     <span class="learning-name">✍️ 서답형 동형훈련</span>
@@ -550,7 +526,6 @@
                 </div>
             </div>
             
-            <!-- 클래스카드 (수정됨: 완료/미응시/통과x) -->
             <div class="learning-item">
                 <div class="learning-header">
                     <span class="learning-name">🃏 클래스카드 (어휘)</span>
@@ -569,7 +544,6 @@
                 </div>
             </div>
             
-            <!-- NELT 레벨테스트 -->
             <div class="learning-item">
                 <div class="learning-header">
                     <span class="learning-name">📊 NELT 레벨테스트</span>
@@ -587,7 +561,6 @@
             </div>
         </div>
         
-        <!-- 3. 강점 및 개선사항 -->
         <div class="section">
             <div class="section-title">강점 및 개선사항</div>
             <div class="insight-grid">
@@ -614,7 +587,6 @@
             </div>
         </div>
         
-        <!-- 4. 학습관리 조교 코멘트 -->
         <div class="section">
             <div class="section-title">학습관리 조교 코멘트</div>
             <div class="comment-box">
@@ -625,9 +597,7 @@
                         <div class="comment-role">학습관리 담당</div>
                     </div>
                 </div>
-                <p class="comment-text">
-                    기출문제와 모의고사를 통한 실전 연습은 매우 좋은 학습 방향입니다. 어법 영역의 체계적인 학습도 인상적이네요. 다만 클카 과제 미완성과 로직플로우, 백지복습 미제출이 반복되고 있어 걱정스럽습니다. 과제 관리와 복습 시스템을 다시 점검해보시고, 꾸준한 학습 습관 형성에 더욱 집중해주시기 바랍니다.
-                </p>
+                <p class="comment-text">1월 17일 수업에서는 독해와 어법 영역을 균형있게 학습했으나, 클카 Day 5 과제가 미완성된 점이 아쉽습니다. 1월 24일과 31일 수업 내용이 기록되지 않았고, 특히 31일에는 로직플로우와 백지복습 과제를 제출하지 않았습니다. 꾸준한 과제 수행과 복습이 성적 향상의 핵심이므로, 앞으로는 과제 관리에 더욱 신경써주시기 바랍니다.</p>
             </div>
             <div class="tag-row">
                 <div class="tag positive">#수업태도우수</div>
@@ -637,7 +607,6 @@
             </div>
         </div>
         
-        <!-- 푸터 -->
         <div class="footer">
             <div class="footer-logo">정윤정영어</div>
             <p style="font-size: 13px; margin-bottom: 12px;">문의사항이 있으신가요?</p>
