@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>정윤정영어 - 학습 리포트</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 15px; line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 480px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(98, 16, 159, 0.1); }
+        .header { background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); color: white; padding: 25px 20px; text-align: center; }
+        .header h1 { font-size: 14px; opacity: 0.9; margin-bottom: 4px; font-weight: 400; }
+        .header h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .header .badge { background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-size: 13px; display: inline-block; }
+        .section { padding: 24px 20px; border-bottom: 8px solid #f5f7fa; }
+        .section:last-of-type { border-bottom: none; }
+        .section-title { font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 16px; display: flex; align-items: center; }
+        .section-title::before { content: ''; width: 4px; height: 18px; background: #2563EB; margin-right: 10px; border-radius: 2px; }
+        .attendance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .attendance-card { background: #f8fafc; padding: 20px 16px; border-radius: 16px; border: 1px solid #e2e8f0; }
+        .attendance-card.highlight { border-left: 4px solid #2563EB; }
+        .attendance-label { font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500; }
+        .attendance-value { font-size: 32px; font-weight: 800; color: #1e293b; line-height: 1; }
+        .attendance-value span { font-size: 18px; font-weight: 600; }
+        .attendance-value.primary { color: #2563EB; }
+        .attendance-sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+        .learning-item { background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .learning-item:last-child { margin-bottom: 0; }
+        .learning-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .learning-name { font-size: 14px; font-weight: 600; color: #1e293b; }
+        .learning-status { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; }
+        .status-complete { background: #dcfce7; color: #166534; }
+        .status-partial { background: #fef3c7; color: #92400e; }
+        .status-incomplete { background: #fee2e2; color: #991b1b; }
+        .progress-bar { height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+        .progress-fill { height: 100%; border-radius: 4px; transition: width 0.3s ease; }
+        .progress-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .progress-fill.yellow { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .progress-fill.red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .progress-fill.blue { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+        .progress-detail { display: flex; justify-content: space-between; font-size: 11px; color: #64748b; }
+        .progress-legend { display: flex; gap: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .legend-dot.green { background: #22c55e; }
+        .legend-dot.yellow { background: #f59e0b; }
+        .legend-dot.red { background: #ef4444; }
+        .legend-dot.gray { background: #94a3b8; }
+        .comment-box { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 20px; border-radius: 16px; border-left: 4px solid #2563EB; }
+        .comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .comment-avatar { width: 36px; height: 36px; background: #2563EB; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 700; }
+        .comment-info { flex: 1; }
+        .comment-name { font-size: 14px; font-weight: 700; color: #1e293b; }
+        .comment-role { font-size: 11px; color: #64748b; }
+        .comment-text { font-size: 14px; color: #334155; line-height: 1.8; word-break: keep-all; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+        .kpi-card { background: #f8fafc; padding: 14px 10px; border-radius: 12px; text-align: center; border: 1px solid #e2e8f0; }
+        .kpi-label { font-size: 11px; color: #64748b; margin-bottom: 6px; font-weight: 500; }
+        .kpi-value { font-size: 18px; font-weight: 800; color: #1e293b; }
+        .kpi-value.excellent { color: #16a34a; }
+        .kpi-value.good { color: #2563eb; }
+        .kpi-value.warning { color: #d97706; }
+        .kpi-value.danger { color: #dc2626; }
+        .kpi-sub { font-size: 10px; color: #94a3b8; margin-top: 4px; }
+        .footer { background: #1e293b; color: white; padding: 24px 20px; text-align: center; border-top-left-radius: 24px; border-top-right-radius: 24px; }
+        .footer-logo { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .btn-call { display: inline-block; background: #2563EB; color: white; text-decoration: none; padding: 12px 28px; border-radius: 30px; font-weight: 600; font-size: 14px; }
+        @media (max-width: 360px) {
+            body { padding: 10px; }
+            .section { padding: 20px 16px; }
+            .header { padding: 20px 16px; }
+            .header h2 { font-size: 22px; }
+            .attendance-value { font-size: 28px; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>정윤정영어 | 대전외고2</h1>
+            <h2>박서희</h2>
+            <div class="badge">2026년 02월</div>
+        </div>
+        <div class="section">
+            <div class="section-title">출석현황</div>
+            <div class="attendance-grid">
+                <div class="attendance-card highlight">
+                    <div class="attendance-label">총 수업 횟수</div>
+                    <div class="attendance-value">2<span>회</span></div>
+                </div>
+                <div class="attendance-card">
+                    <div class="attendance-label">출석률</div>
+                    <div class="attendance-value primary">100.0<span>%</span></div>
+                    <div class="attendance-sub">출석 0회 · 동영상 2회</div>
+                </div>
+            </div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">과제 제출률</div>
+                    <div class="kpi-value warning">0%</div>
+                    <div class="kpi-sub">0/0 완료</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">어휘 통과율</div>
+                    <div class="kpi-value warning">0%</div>
+                    <div class="kpi-sub">0/0 통과</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">클래스카드</div>
+                    <div class="kpi-value warning">0%</div>
+                    <div class="kpi-sub">0/0 완료</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">학습현황</div>
+            
+            
+            
+            
+        </div>
+        <div class="section">
+            <div class="section-title">학습관리 조교 코멘트</div>
+            <div class="comment-box">
+                <div class="comment-header">
+                    <div class="comment-avatar">손</div>
+                    <div class="comment-info">
+                        <div class="comment-name">손윤아 조교</div>
+                        <div class="comment-role">학습관리 담당</div>
+                    </div>
+                </div>
+                <p class="comment-text">서희 학생이 꾸준히 수업에 참여하는 모습이 정말 대견합니다. 매일 성실하게 출석하며 학습에 임하는 자세가 훌륭해요. 앞으로도 이런 꾸준함을 유지한다면 분명히 좋은 결과가 있을 것입니다. 학부모님의 따뜻한 관심과 격려 덕분에 서희 학생이 더욱 열심히 할 수 있는 것 같아요.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-logo">정윤정영어</div>
+            <p style="font-size: 13px; margin-bottom: 12px;">문의사항이 있으신가요?</p>
+            <a href="tel:01086740509" class="btn-call">📞 010-8674-0509 전화하기</a>
+        </div>
+    </div>
+</body>
+</html>
