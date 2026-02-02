@@ -5,421 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>정윤정영어 - 학습 리포트</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-            padding: 15px;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(98, 16, 159, 0.1);
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 4px;
-            font-weight: 400;
-        }
-        
-        .header h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .header .badge {
-            background: rgba(255,255,255,0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            display: inline-block;
-        }
-        
-        .section {
-            padding: 24px 20px;
-            border-bottom: 8px solid #f5f7fa;
-        }
-        
-        .section:last-of-type {
-            border-bottom: none;
-        }
-        
-        .section-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #1E293B;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 18px;
-            background: #2563EB;
-            margin-right: 10px;
-            border-radius: 2px;
-        }
-        
-        .attendance-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        
-        .attendance-card {
-            background: #f8fafc;
-            padding: 20px 16px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .attendance-card.highlight {
-            border-left: 4px solid #2563EB;
-        }
-        
-        .attendance-label {
-            font-size: 13px;
-            color: #64748b;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .attendance-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: #1e293b;
-            line-height: 1;
-        }
-        
-        .attendance-value span {
-            font-size: 18px;
-            font-weight: 600;
-        }
-        
-        .attendance-value.primary {
-            color: #2563EB;
-        }
-        
-        .attendance-sub {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 6px;
-        }
-        
-        .learning-item {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-        
-        .learning-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .learning-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .learning-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1e293b;
-        }
-        
-        .learning-status {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 12px;
-        }
-        
-        .status-complete {
-            background: #dcfce7;
-            color: #166534;
-        }
-        
-        .status-partial {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        
-        .status-incomplete {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 15px; line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 480px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(98, 16, 159, 0.1); }
+        .header { background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); color: white; padding: 25px 20px; text-align: center; }
+        .header h1 { font-size: 14px; opacity: 0.9; margin-bottom: 4px; font-weight: 400; }
+        .header h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .header .badge { background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-size: 13px; display: inline-block; }
+        .section { padding: 24px 20px; border-bottom: 8px solid #f5f7fa; }
+        .section:last-of-type { border-bottom: none; }
+        .section-title { font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 16px; display: flex; align-items: center; }
+        .section-title::before { content: ''; width: 4px; height: 18px; background: #2563EB; margin-right: 10px; border-radius: 2px; }
+        .attendance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .attendance-card { background: #f8fafc; padding: 20px 16px; border-radius: 16px; border: 1px solid #e2e8f0; }
+        .attendance-card.highlight { border-left: 4px solid #2563EB; }
+        .attendance-label { font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500; }
+        .attendance-value { font-size: 32px; font-weight: 800; color: #1e293b; line-height: 1; }
+        .attendance-value span { font-size: 18px; font-weight: 600; }
+        .attendance-value.primary { color: #2563EB; }
+        .attendance-sub { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+        .learning-item { background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .learning-item:last-child { margin-bottom: 0; }
+        .learning-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .learning-name { font-size: 14px; font-weight: 600; color: #1e293b; }
+        .learning-status { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; }
+        .status-complete { background: #dcfce7; color: #166534; }
+        .status-partial { background: #fef3c7; color: #92400e; }
+        .status-incomplete { background: #fee2e2; color: #991b1b; }
+        .progress-bar { height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+        .progress-fill { height: 100%; border-radius: 4px; transition: width 0.3s ease; }
         .progress-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
         .progress-fill.yellow { background: linear-gradient(90deg, #f59e0b, #d97706); }
         .progress-fill.red { background: linear-gradient(90deg, #ef4444, #dc2626); }
         .progress-fill.blue { background: linear-gradient(90deg, #3b82f6, #2563eb); }
-        
-        .progress-detail {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: #64748b;
-        }
-        
-        .progress-legend {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .legend-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-        
+        .progress-detail { display: flex; justify-content: space-between; font-size: 11px; color: #64748b; }
+        .progress-legend { display: flex; gap: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
         .legend-dot.green { background: #22c55e; }
         .legend-dot.yellow { background: #f59e0b; }
         .legend-dot.red { background: #ef4444; }
         .legend-dot.gray { background: #94a3b8; }
-        
-        .insight-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        
-        .insight-card {
-            padding: 16px;
-            border-radius: 12px;
-        }
-        
-        .insight-card.strength {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-            border: 1px solid #86efac;
-        }
-        
-        .insight-card.improve {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 1px solid #fcd34d;
-        }
-        
-        .insight-icon {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-        
-        .insight-title {
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .insight-card.strength .insight-title { color: #166534; }
-        .insight-card.improve .insight-title { color: #92400e; }
-        
-        .insight-list {
-            font-size: 12px;
-            line-height: 1.6;
-        }
-        
-        .insight-card.strength .insight-list { color: #15803d; }
-        .insight-card.improve .insight-list { color: #a16207; }
-        
-        .comment-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            padding: 20px;
-            border-radius: 16px;
-            border-left: 4px solid #2563EB;
-        }
-        
-        .comment-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        
-        .comment-avatar {
-            width: 36px;
-            height: 36px;
-            background: #2563EB;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-            font-weight: 700;
-        }
-        
-        .comment-info {
-            flex: 1;
-        }
-        
-        .comment-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: #1e293b;
-        }
-        
-        .comment-role {
-            font-size: 11px;
-            color: #64748b;
-        }
-        
-        .comment-text {
-            font-size: 14px;
-            color: #334155;
-            line-height: 1.8;
-            word-break: keep-all;
-        }
-        
-        .comment-text strong {
-            color: #1e40af;
-        }
-        
-        .tag-row {
-            margin-top: 16px;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            font-size: 11px;
-            padding: 5px 10px;
-            border-radius: 6px;
-            background: white;
-            border: 1px solid #e2e8f0;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .tag.positive {
-            background: #dcfce7;
-            border-color: #86efac;
-            color: #166534;
-        }
-        
-        .tag.warning {
-            background: #fef3c7;
-            border-color: #fcd34d;
-            color: #92400e;
-        }
-        
-        .tag.danger {
-            background: #fee2e2;
-            border-color: #fca5a5;
-            color: #991b1b;
-        }
-        
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 16px;
-        }
-        
-        .kpi-card {
-            background: #f8fafc;
-            padding: 14px 10px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .kpi-label {
-            font-size: 11px;
-            color: #64748b;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        
-        .kpi-value {
-            font-size: 18px;
-            font-weight: 800;
-            color: #1e293b;
-        }
-        
+        .comment-box { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 20px; border-radius: 16px; border-left: 4px solid #2563EB; }
+        .comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .comment-avatar { width: 36px; height: 36px; background: #2563EB; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 700; }
+        .comment-info { flex: 1; }
+        .comment-name { font-size: 14px; font-weight: 700; color: #1e293b; }
+        .comment-role { font-size: 11px; color: #64748b; }
+        .comment-text { font-size: 14px; color: #334155; line-height: 1.8; word-break: keep-all; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+        .kpi-card { background: #f8fafc; padding: 14px 10px; border-radius: 12px; text-align: center; border: 1px solid #e2e8f0; }
+        .kpi-label { font-size: 11px; color: #64748b; margin-bottom: 6px; font-weight: 500; }
+        .kpi-value { font-size: 18px; font-weight: 800; color: #1e293b; }
         .kpi-value.excellent { color: #16a34a; }
         .kpi-value.good { color: #2563eb; }
         .kpi-value.warning { color: #d97706; }
         .kpi-value.danger { color: #dc2626; }
-        
-        .kpi-sub {
-            font-size: 10px;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-        
-        .footer {
-            background: #1e293b;
-            color: white;
-            padding: 24px 20px;
-            text-align: center;
-            border-top-left-radius: 24px;
-            border-top-right-radius: 24px;
-        }
-        
-        .footer-logo {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .btn-call {
-            display: inline-block;
-            background: #2563EB;
-            color: white;
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
+        .kpi-sub { font-size: 10px; color: #94a3b8; margin-top: 4px; }
+        .footer { background: #1e293b; color: white; padding: 24px 20px; text-align: center; border-top-left-radius: 24px; border-top-right-radius: 24px; }
+        .footer-logo { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .btn-call { display: inline-block; background: #2563EB; color: white; text-decoration: none; padding: 12px 28px; border-radius: 30px; font-weight: 600; font-size: 14px; }
         @media (max-width: 360px) {
             body { padding: 10px; }
             .section { padding: 20px 16px; }
@@ -437,14 +82,12 @@
             <h2>이화령</h2>
             <div class="badge">2026년 1월</div>
         </div>
-        
         <div class="section">
             <div class="section-title">출석현황</div>
             <div class="attendance-grid">
                 <div class="attendance-card highlight">
                     <div class="attendance-label">총 수업 횟수</div>
                     <div class="attendance-value">3<span>회</span></div>
-                    <div class="attendance-sub">3일간 학습</div>
                 </div>
                 <div class="attendance-card">
                     <div class="attendance-label">출석률</div>
@@ -452,141 +95,31 @@
                     <div class="attendance-sub">출석 3회 · 동영상 0회</div>
                 </div>
             </div>
-            
             <div class="kpi-grid">
                 <div class="kpi-card">
                     <div class="kpi-label">과제 제출률</div>
-                    <div class="kpi-value good">90%</div>
-                    <div class="kpi-sub">9/10 완료</div>
+                    <div class="kpi-value warning">0%</div>
+                    <div class="kpi-sub">0/0 완료</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">어휘 완료율</div>
-                    <div class="kpi-value warning">60%</div>
-                    <div class="kpi-sub">12/20 완료</div>
+                    <div class="kpi-label">어휘 통과율</div>
+                    <div class="kpi-value warning">0%</div>
+                    <div class="kpi-sub">0/0 통과</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">복습 테스트</div>
-                    <div class="kpi-value excellent">우수</div>
-                    <div class="kpi-sub">80점 이상</div>
+                    <div class="kpi-label">클래스카드</div>
+                    <div class="kpi-value warning">0%</div>
+                    <div class="kpi-sub">0/0 완료</div>
                 </div>
             </div>
         </div>
-        
         <div class="section">
             <div class="section-title">학습현황</div>
             
-            <div class="learning-item">
-                <div class="learning-header">
-                    <span class="learning-name">📝 Logic Flow 작성</span>
-                    <span class="learning-status status-partial">부분 완료</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill yellow" style="width: 60%;"></div>
-                </div>
-                <div class="progress-detail">
-                    <span>주간 논리 흐름 정리</span>
-                    <div class="progress-legend">
-                        <div class="legend-item"><div class="legend-dot green"></div>제출 4</div>
-                        <div class="legend-item"><div class="legend-dot yellow"></div>보완 2</div>
-                        <div class="legend-item"><div class="legend-dot red"></div>미제출 1</div>
-                    </div>
-                </div>
-            </div>
             
-            <div class="learning-item">
-                <div class="learning-header">
-                    <span class="learning-name">📖 주간지 풀이</span>
-                    <span class="learning-status status-complete">완료</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill green" style="width: 100%;"></div>
-                </div>
-                <div class="progress-detail">
-                    <span>문제풀이 및 오답정리</span>
-                    <div class="progress-legend">
-                        <div class="legend-item"><div class="legend-dot green"></div>제출 7</div>
-                    </div>
-                </div>
-            </div>
             
-            <div class="learning-item">
-                <div class="learning-header">
-                    <span class="learning-name">✍️ 서답형 동형훈련</span>
-                    <span class="learning-status status-incomplete">미제출</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill red" style="width: 20%;"></div>
-                </div>
-                <div class="progress-detail">
-                    <span>서술형 답안 작성 연습</span>
-                    <div class="progress-legend">
-                        <div class="legend-item"><div class="legend-dot green"></div>제출 1</div>
-                        <div class="legend-item"><div class="legend-dot red"></div>미제출 4</div>
-                    </div>
-                </div>
-            </div>
             
-            <div class="learning-item">
-                <div class="learning-header">
-                    <span class="learning-name">🃏 클래스카드 (어휘)</span>
-                    <span class="learning-status status-partial">60% 완료</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill yellow" style="width: 60%;"></div>
-                </div>
-                <div class="progress-detail">
-                    <span>일일 어휘 암기 테스트</span>
-                    <div class="progress-legend">
-                        <div class="legend-item"><div class="legend-dot green"></div>완료 12</div>
-                        <div class="legend-item"><div class="legend-dot gray"></div>미응시 5</div>
-                        <div class="legend-item"><div class="legend-dot red"></div>통과x 3</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="learning-item">
-                <div class="learning-header">
-                    <span class="learning-name">📊 NELT 레벨테스트</span>
-                    <span class="learning-status status-complete">응시 완료</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill blue" style="width: 100%;"></div>
-                </div>
-                <div class="progress-detail">
-                    <span>영어 능력 진단 평가</span>
-                    <div class="progress-legend">
-                        <div class="legend-item"><div class="legend-dot green"></div>완료</div>
-                    </div>
-                </div>
-            </div>
         </div>
-        
-        <div class="section">
-            <div class="section-title">강점 및 개선사항</div>
-            <div class="insight-grid">
-                <div class="insight-card strength">
-                    <div class="insight-icon">💪</div>
-                    <div class="insight-title">강점</div>
-                    <div class="insight-list">
-                        • 수업 집중도 우수<br>
-                        • 주간지 100% 완료<br>
-                        • 복습 테스트 고득점<br>
-                        • 성실한 출석 태도
-                    </div>
-                </div>
-                <div class="insight-card improve">
-                    <div class="insight-icon">📈</div>
-                    <div class="insight-title">개선 필요</div>
-                    <div class="insight-list">
-                        • 어휘 암기 보강 필요<br>
-                        • 서답형 과제 제출<br>
-                        • Logic Flow 완성도<br>
-                        • 클래스카드 참여율
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <div class="section">
             <div class="section-title">학습관리 조교 코멘트</div>
             <div class="comment-box">
@@ -597,16 +130,9 @@
                         <div class="comment-role">학습관리 담당</div>
                     </div>
                 </div>
-                <p class="comment-text">화령이가 대전외고 기출문제와 어법 심화 과정을 성실히 따라가고 있어 기특합니다. 다만 클카 과제와 로직플로우, 백지복습 등 복습 과제가 미완성된 부분이 있어 아쉬웠습니다. 학습한 내용을 완전히 내 것으로 만들기 위해서는 복습이 무엇보다 중요하니, 앞으로는 수업 후 복습 과제도 꼼꼼히 챙겨주시면 더욱 좋은 결과를 기대할 수 있을 것 같습니다. 화령이의 성장 가능성을 믿고 응원하겠습니다!</p>
-            </div>
-            <div class="tag-row">
-                <div class="tag positive">#수업태도우수</div>
-                <div class="tag positive">#복습테스트고득점</div>
-                <div class="tag warning">#어휘암기보강</div>
-                <div class="tag danger">#서답형과제필요</div>
+                <p class="comment-text">화령이가 대전외고 기출문제에 도전하며 실력 향상을 위해 노력하는 모습이 보기 좋습니다. 다만 클카 과제와 로직플로우, 백지복습 등 복습 과제들이 미완성된 부분이 아쉽습니다. 복습은 학습한 내용을 완전히 내 것으로 만드는 중요한 과정이니, 앞으로는 수업 후 복습 과제도 꾸준히 완료할 수 있도록 격려해 주시면 좋겠습니다. 화령이의 성실한 학습 태도로 충분히 목표를 달성할 수 있을 것입니다.</p>
             </div>
         </div>
-        
         <div class="footer">
             <div class="footer-logo">정윤정영어</div>
             <p style="font-size: 13px; margin-bottom: 12px;">문의사항이 있으신가요?</p>
