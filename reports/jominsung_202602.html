@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 02월 학습 보고서 - 조민성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            border-top: 5px solid #3498db;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #3498db;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h2::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #3498db;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .summary-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .progress-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e67e22;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .progress-content {
+            color: #5a6c7d;
+            font-size: 14px;
+        }
+
+        .assignment-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .assignment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #9b59b6;
+        }
+
+        .assignment-date {
+            font-size: 13px;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .assignment-content {
+            flex: 1;
+            margin: 0 15px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .comment-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+
+        .comment-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .comment-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .schedule-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #1abc9c;
+        }
+
+        .schedule-date {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1abc9c;
+            text-align: center;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .schedule-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .schedule-topic {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 15px;
+        }
+
+        .schedule-task {
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .assignment-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .assignment-content {
+                margin: 0;
+            }
+            
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 02월 학습 보고서</h1>
+            <div class="student-info">
+                <div class="info-item">
+                    <span class="info-label">학생명</span>
+                    <span class="info-value">조민성</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">수업 기간</span>
+                    <span class="info-value">2026년 01월</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">총 수업 횟수</span>
+                    <span class="info-value">8회</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>학습 요약</h2>
+            <div class="summary-content">
+                2026년 01월 한 달 동안 총 8회의 수업을 통해 수학II 과정의 핵심 단원들을 체계적으로 학습하였습니다. 
+                로그함수부터 시작하여 삼각함수의 기본 개념, 그래프, 그리고 활용까지 완전히 마스터하는 데 중점을 두었습니다. 
+                특히 삼각함수 단원에서는 단순 암기보다는 단위원을 활용한 원리 이해에 집중하여 응용력을 기르는 데 성공했습니다. 
+                또한 미적분의 도함수 활용까지 진도를 나가며, 고등 수학의 전반적인 흐름을 이해할 수 있도록 하였습니다.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>진도 현황</h2>
+            <div class="progress-item">
+                <div class="progress-title">수학II - 로그함수</div>
+                <div class="progress-content">✅ 완료: 로그함수의 정의, 성질, 그래프 및 활용 문제 해결</div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">수학II - 삼각함수</div>
+                <div class="progress-content">✅ 완료: 일반각, 호도법, 삼각함수 정의, 그래프, 사인·코사인 법칙, 도형의 넓이</div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">미적분 - 도함수</div>
+                <div class="progress-content">🔄 진행중: 도함수의 활용 (곡선 밖 점 이전까지 완료)</div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">향후 계획</div>
+                <div class="progress-content">📋 예정: 대수 대단원 마무리 후 쎈 교재 및 기출문제 병행 학습</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>과제 수행 현황</h2>
+            <div class="assignment-list">
+                <div class="assignment-item">
+                    <div class="assignment-date">01/03</div>
+                    <div class="assignment-content">유형편 로그함수</div>
+                </div>
+                <div class="assignment-item">
+                    <div class="assignment-date">01/07</div>
+                    <div class="assignment-content">~p. 116 (삼각함수 기본)</div>
+                </div>
+                <div class="assignment-item">
+                    <div class="assignment-date">01/14</div>
+                    <div class="assignment-content">~p. 133 (삼각함수 그래프)</div>
+                </div>
+                <div class="assignment-item">
+                    <div class="assignment-date">01/15</div>
+                    <div class="assignment-content">도함수의 활용 (곡선 밖 점 이전)</div>
+                </div>
+                <div class="assignment-item">
+                    <div class="assignment-date">01/21</div>
+                    <div class="assignment-content">~p. 164 (사인법칙, 코사인법칙)</div>
+                </div>
+                <div class="assignment-item">
+                    <div class="assignment-date">01/24</div>
+                    <div class="assignment-content">~p. 163 (삼각함수 활용)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>상세 수업 일정</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <div class="schedule-date">01/03</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">로그함수와 그 활용</div>
+                        <div class="schedule-task">과제: 유형편 로그함수</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/07</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">일반각, 호도법, 삼각함수</div>
+                        <div class="schedule-task">과제: ~p. 116</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/13</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">삼각함수 심화</div>
+                        <div class="schedule-task">과제: ~p. 116 (보강 수업 진행)</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/14</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">삼각함수의 그래프</div>
+                        <div class="schedule-task">과제: ~p. 133</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/15</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">미적분 ~ 도함수 활용</div>
+                        <div class="schedule-task">과제: 도함수의 활용 (곡선 밖 점 이전)</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/17</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">삼각함수의 그래프 복습</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/21</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">사인법칙, 코사인법칙, 도형의 넓이</div>
+                        <div class="schedule-task">과제: ~p. 164</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">01/24</div>
+                    <div class="schedule-content">
+                        <div class="schedule-topic">삼각함수의 활용</div>
+                        <div class="schedule-task">과제: ~p. 163</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>선생님 코멘트</h2>
+            <div class="comment-content">
+                <div class="comment-item">
+                    <strong>학습 태도:</strong> 조민성 학생은 매우 성실하게 수업에 참여하고 있으며, 휴
