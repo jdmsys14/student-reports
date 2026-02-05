@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>전민건 - 2026년 02월 학습 보고서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F1F5F9;
+      color: #1E293B;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 480px; margin: 0 auto; background: #F1F5F9; min-height: 100vh; }
+    
+    /* 헤더 */
+    .header {
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      color: white;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .header__academy { font-size: 0.8125rem; font-weight: 500; opacity: 0.9; margin-bottom: 4px; letter-spacing: 0.5px; }
+    .header__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .header__period { font-size: 0.875rem; opacity: 0.85; }
+    .header__student {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    
+    /* 콘텐츠 */
+    .content { padding: 20px 16px 32px; }
+    
+    /* 카드 */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card__title-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+    
+    /* 통계 */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .stat-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .stat-item__value { font-size: 1.5rem; font-weight: 700; color: #3B82F6; }
+    .stat-item__label { font-size: 0.75rem; color: #64748B; margin-top: 4px; }
+    
+    /* 요약 */
+    .summary-card {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1px solid #BFDBFE;
+    }
+    .summary-card .card__title-icon { background: #3B82F6; color: white; }
+    .summary__text { font-size: 0.9375rem; color: #334155; line-height: 1.8; }
+    
+    /* 진도 */
+    .progress-section .card__title-icon { background: #10B981; color: white; }
+    .progress-item { margin-bottom: 16px; }
+    .progress-item:last-child { margin-bottom: 0; }
+    .progress-item__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .progress-item__label { font-size: 0.875rem; font-weight: 600; color: #334155; }
+    .progress-item__value { font-size: 0.8125rem; color: #3B82F6; font-weight: 600; }
+    .progress-bar { height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden; }
+    .progress-bar__fill { height: 100%; background: linear-gradient(90deg, #3B82F6, #60A5FA); border-radius: 4px; }
+    
+    /* 수업 기록 */
+    .lessons-section .card__title-icon { background: #8B5CF6; color: white; }
+    .lesson-list { display: flex; flex-direction: column; gap: 12px; }
+    .lesson-item { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; }
+    .lesson-item__header {
+      background: #F8FAFC;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .lesson-item__date { font-size: 0.875rem; font-weight: 600; color: #1E293B; }
+    .lesson-item__course {
+      font-size: 0.75rem;
+      color: #3B82F6;
+      background: #EFF6FF;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    .lesson-item__body { padding: 16px; display: none; }
+    .lesson-item.active .lesson-item__body { display: block; }
+    .lesson-item__row { display: flex; margin-bottom: 10px; }
+    .lesson-item__row:last-child { margin-bottom: 0; }
+    .lesson-item__label { width: 64px; flex-shrink: 0; font-size: 0.8125rem; color: #64748B; font-weight: 500; }
+    .lesson-item__content { font-size: 0.875rem; color: #334155; flex: 1; }
+    .toggle-icon {
+      width: 20px; height: 20px; border-radius: 50%; background: #E2E8F0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: #64748B; transition: transform 0.2s;
+    }
+    .lesson-item.active .toggle-icon { transform: rotate(180deg); }
+    
+    /* 과제 */
+    .homework-section .card__title-icon { background: #F59E0B; color: white; }
+    .homework-list { display: flex; flex-direction: column; gap: 10px; }
+    .homework-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 12px;
+      background: #FFFBEB; border-radius: 10px; border-left: 3px solid #F59E0B;
+    }
+    .homework-item__date { font-size: 0.75rem; color: #92400E; font-weight: 600; white-space: nowrap; }
+    .homework-item__content { font-size: 0.875rem; color: #78350F; }
+    
+    /* 코멘트 */
+    .comment-section .card__title-icon { background: #EC4899; color: white; }
+    .comment-box {
+      background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
+      border-radius: 12px; padding: 20px; border-left: 4px solid #EC4899;
+    }
+    .comment-box__text { font-size: 0.9375rem; color: #831843; line-height: 1.8; white-space: pre-line; }
+    .comment-box__signature { margin-top: 16px; text-align: right; font-size: 0.8125rem; color: #9D174D; font-weight: 600; }
+    
+    /* 푸터 */
+    .footer { background: #1E293B; color: white; padding: 24px 20px; text-align: center; }
+    .footer__academy { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+    .footer__contact { display: flex; flex-direction: column; gap: 8px; }
+    .footer__contact a { color: #94A3B8; text-decoration: none; font-size: 0.875rem; }
+    .footer__copyright { margin-top: 16px; font-size: 0.75rem; color: #64748B; }
+    
+    .empty-state { text-align: center; padding: 24px; color: #94A3B8; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header__academy">제이디수학</div>
+      <h1 class="header__title">2026년 02월</h1>
+      <p class="header__period">학습 보고서</p>
+      <div class="header__student">전민건 학생</div>
+    </header>
+
+    <main class="content">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-item__value">8</div>
+          <div class="stat-item__label">수업 횟수</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__value">6</div>
+          <div class="stat-item__label">과제 수</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__value">100%</div>
+          <div class="stat-item__label">출석률</div>
+        </div>
+      </div>
+
+      <section class="card summary-card">
+        <h2 class="card__title"><span class="card__title-icon">📊</span>학습 요약</h2>
+        <p class="summary__text">1월 한 달 동안 단항식과 다항식의 계산부터 시작하여 일차부등식과 그 활용, 연립방정식까지 순차적으로 학습하였습니다. 단원평가에서 만점을 받았고, 특히 일차부등식 활용 문제에서 식을 세우는 능력이 우수한 모습을 보였습니다.</p>
+      </section>
+
+      <section class="card progress-section">
+        <h2 class="card__title"><span class="card__title-icon">📈</span>진도 현황</h2>
+        
+    <div class="progress-item">
+      <div class="progress-item__header">
+        <span class="progress-item__label">중학교 수학(대수 영역)</span>
+        <span class="progress-item__value">75%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" style="width: 75%"></div>
+      </div>
+    </div>
+      </section>
+
+      <section class="card lessons-section">
+        <h2 class="card__title"><span class="card__title-icon">📚</span>수업 기록</h2>
+        <div class="lesson-list">
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 2일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">단항식의 계산</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 이번시간 수력충전을 챙겨오지 않았습니다. 다음시간은 챙겨올 수 있도록 이야기부탁드립니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 3일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">다항식의 계산</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 금일 개념원리 소단원 3단원까지 마무리하여 수력충전으로 부족한 부분 채울 수 있도록 숙제로 부여하였습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 8일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">1강~2강 단항식과 다항식의 계산
+[영어] 단어 0점</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 내일 등원하여 단원평가 진행 예정으로 공부해올 수 있도록 이야기하였습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 9일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">부등식과 일차부등식</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 순환소수 ~ 다항식의 계산 단원평가 (10/10문제)
+[2] 부등식 수업 진행하면서 중1 개념인 방정식과 항등식, 등식의 성질 등 함께 복습하였습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 15일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">일차 부등식의 활용</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 일차부등식 활용은 문장을 보고 식으로 써내려 가는 단원입니다. 많은 아이들이 식을 쓰는 것을 어려워하는데 민건이는 스스로 잘 만들었습니다. 거속시, 소금물 등은 내일 등원시 다시 수업 진행할 예정입니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 16일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">일차부등식 활용(원가정가, 거속시, 소금물)</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 원가, 정가, 판매가, 이익금에 대해 비유를 통해 쉽게 이해할 수 있도록 설명하였습니다. 
+[2] 거, 속, 시 > 관계에 대한 공식 암기와 시간과 속력의 단위를 항상 맞춰야 한다는 것을 설명하였습니다.
+[3] 소금물은 비커를 그려 관계식을 쓸 수 있도록 설명하였습니다.
+> 각 유형별 푸는 방법을 이용하여 문제를 풀 수 있도록 연습하였습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 22일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">일차부등식 활용</span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 23일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">연립방정식</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 이전까지는 미지수가 1개인 일차방정식에 대해 해를 구했다면 금일 수업에서 미지수가 2개인 일차방정식에 대한 해를 구하고, 연립방정식에서 두 식을 동시에 만족시키는 해의 의미와 이를 구하는 기본적인 풀이 방법을 중심으로 학습하였습니다.</span>
+        </div>
+      </div>
+    </div></div>
+      </section>
+
+      <section class="card homework-section">
+        <h2 class="card__title"><span class="card__title-icon">✏️</span>과제 현황</h2>
+        <div class="homework-list">
+    <div class="homework-item">
+      <span class="homework-item__date">1월 2일</span>
+      <span class="homework-item__content">~p. 79</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 3일</span>
+      <span class="homework-item__content">(수력충전) 단항식의 계산</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 9일</span>
+      <span class="homework-item__content">~p. 103</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 15일</span>
+      <span class="homework-item__content">~p. 112</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 16일</span>
+      <span class="homework-item__content">(수력충전)~p. 92</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 23일</span>
+      <span class="homework-item__content">~p. 145</span>
+    </div></div>
+      </section>
+
+      <section class="card comment-section">
+        <h2 class="card__title"><span class="card__title-icon">💬</span>선생님 코멘트</h2>
+        <div class="comment-box">
+          <p class="comment-box__text">민건이는 단원평가에서 만점을 받을 정도로 기본기가 탄탄하며, 특히 일차부등식 활용에서 문장을 식으로 변환하는 능력이 뛰어납니다. 다만 교재 준비물 챙기는 부분에서 아쉬움이 있었고, 영어 단어 암기에도 더 신경써야 할 것 같습니다. 2월에는 연립방정식을 본격적으로 학습하면서 문제 해결 능력을 더욱 발전시켜 나가겠습니다.</p>
+          <p class="comment-box__signature">- 제이디 </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__academy">JD Math Academy</div>
+      <div class="footer__contact">
+        <a href="tel:053-123-4567">📞 010-8227-2874</a>
+        <a href="http://pf.kakao.com/_CCsnj/chat
+">💬 카카오톡 상담</a>
+      </div>
+      <p class="footer__copyright">© 2025 제이디 수학. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.lesson-item__header').forEach(header => {
+      header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
