@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>박소윤 - 2026년 02월 학습 보고서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F1F5F9;
+      color: #1E293B;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 480px; margin: 0 auto; background: #F1F5F9; min-height: 100vh; }
+    
+    /* 헤더 */
+    .header {
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      color: white;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .header__academy { font-size: 0.8125rem; font-weight: 500; opacity: 0.9; margin-bottom: 4px; letter-spacing: 0.5px; }
+    .header__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .header__period { font-size: 0.875rem; opacity: 0.85; }
+    .header__student {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    
+    /* 콘텐츠 */
+    .content { padding: 20px 16px 32px; }
+    
+    /* 카드 */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card__title-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+    
+    /* 통계 */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .stat-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .stat-item__value { font-size: 1.5rem; font-weight: 700; color: #3B82F6; }
+    .stat-item__label { font-size: 0.75rem; color: #64748B; margin-top: 4px; }
+    
+    /* 요약 */
+    .summary-card {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1px solid #BFDBFE;
+    }
+    .summary-card .card__title-icon { background: #3B82F6; color: white; }
+    .summary__text { font-size: 0.9375rem; color: #334155; line-height: 1.8; }
+    
+    /* 진도 */
+    .progress-section .card__title-icon { background: #10B981; color: white; }
+    .progress-item { margin-bottom: 16px; }
+    .progress-item:last-child { margin-bottom: 0; }
+    .progress-item__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .progress-item__label { font-size: 0.875rem; font-weight: 600; color: #334155; }
+    .progress-item__value { font-size: 0.8125rem; color: #3B82F6; font-weight: 600; }
+    .progress-bar { height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden; }
+    .progress-bar__fill { height: 100%; background: linear-gradient(90deg, #3B82F6, #60A5FA); border-radius: 4px; }
+    
+    /* 수업 기록 */
+    .lessons-section .card__title-icon { background: #8B5CF6; color: white; }
+    .lesson-list { display: flex; flex-direction: column; gap: 12px; }
+    .lesson-item { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; }
+    .lesson-item__header {
+      background: #F8FAFC;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .lesson-item__date { font-size: 0.875rem; font-weight: 600; color: #1E293B; }
+    .lesson-item__course {
+      font-size: 0.75rem;
+      color: #3B82F6;
+      background: #EFF6FF;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    .lesson-item__body { padding: 16px; display: none; }
+    .lesson-item.active .lesson-item__body { display: block; }
+    .lesson-item__row { display: flex; margin-bottom: 10px; }
+    .lesson-item__row:last-child { margin-bottom: 0; }
+    .lesson-item__label { width: 64px; flex-shrink: 0; font-size: 0.8125rem; color: #64748B; font-weight: 500; }
+    .lesson-item__content { font-size: 0.875rem; color: #334155; flex: 1; }
+    .toggle-icon {
+      width: 20px; height: 20px; border-radius: 50%; background: #E2E8F0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: #64748B; transition: transform 0.2s;
+    }
+    .lesson-item.active .toggle-icon { transform: rotate(180deg); }
+    
+    /* 과제 */
+    .homework-section .card__title-icon { background: #F59E0B; color: white; }
+    .homework-list { display: flex; flex-direction: column; gap: 10px; }
+    .homework-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 12px;
+      background: #FFFBEB; border-radius: 10px; border-left: 3px solid #F59E0B;
+    }
+    .homework-item__date { font-size: 0.75rem; color: #92400E; font-weight: 600; white-space: nowrap; }
+    .homework-item__content { font-size: 0.875rem; color: #78350F; }
+    
+    /* 코멘트 */
+    .comment-section .card__title-icon { background: #EC4899; color: white; }
+    .comment-box {
+      background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
+      border-radius: 12px; padding: 20px; border-left: 4px solid #EC4899;
+    }
+    .comment-box__text { font-size: 0.9375rem; color: #831843; line-height: 1.8; white-space: pre-line; }
+    .comment-box__signature { margin-top: 16px; text-align: right; font-size: 0.8125rem; color: #9D174D; font-weight: 600; }
+    
+    /* 푸터 */
+    .footer { background: #1E293B; color: white; padding: 24px 20px; text-align: center; }
+    .footer__academy { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+    .footer__contact { display: flex; flex-direction: column; gap: 8px; }
+    .footer__contact a { color: #94A3B8; text-decoration: none; font-size: 0.875rem; }
+    .footer__copyright { margin-top: 16px; font-size: 0.75rem; color: #64748B; }
+    
+    .empty-state { text-align: center; padding: 24px; color: #94A3B8; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header__academy">제이디수학</div>
+      <h1 class="header__title">2026년 02월</h1>
+      <p class="header__period">학습 보고서</p>
+      <div class="header__student">박소윤 학생</div>
+    </header>
+
+    <main class="content">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-item__value">6</div>
+          <div class="stat-item__label">수업 횟수</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__value">5</div>
+          <div class="stat-item__label">과제 수</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__value">100%</div>
+          <div class="stat-item__label">출석률</div>
+        </div>
+      </div>
+
+      <section class="card summary-card">
+        <h2 class="card__title"><span class="card__title-icon">📊</span>학습 요약</h2>
+        <p class="summary__text">박소윤 학생은 1월 한 달 동안 중학 수학의 기본 개념인 최대공약수와 최소공배수부터 시작하여 정수와 유리수 계산, 문자와 식까지 체계적으로 학습했습니다. 개념원리와 RPM 교재를 중심으로 중간고사 범위까지 완료하며 단계적으로 실력을 쌓아나가고 있습니다.</p>
+      </section>
+
+      <section class="card progress-section">
+        <h2 class="card__title"><span class="card__title-icon">📈</span>진도 현황</h2>
+        
+    <div class="progress-item">
+      <div class="progress-item__header">
+        <span class="progress-item__label">최대공약수/최소공배수</span>
+        <span class="progress-item__value">85%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" style="width: 85%"></div>
+      </div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-item__header">
+        <span class="progress-item__label">정수와 유리수</span>
+        <span class="progress-item__value">80%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" style="width: 80%"></div>
+      </div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-item__header">
+        <span class="progress-item__label">문자와 식</span>
+        <span class="progress-item__value">90%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" style="width: 90%"></div>
+      </div>
+    </div>
+      </section>
+
+      <section class="card lessons-section">
+        <h2 class="card__title"><span class="card__title-icon">📚</span>수업 기록</h2>
+        <div class="lesson-list">
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 2일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">최대공약수와 최소공배수</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 최소공배수와 최대공약수에서 문장제 문제에서 어려움이 있습니다. 문제를 정확하게 이해하고 풀어나가는 과정을 연습해야합니다.
+[2] 개념원리와 RPM 교재를 중심으로 진행하겠습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 6일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">[1] 최대 공약수, 최소 공배수 문제풀이</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 목요일까지 최대공약수, 최소공배수를 풀이할 것
+[2] 목요일부터 정수와 유리수 넘어감.
+[3] 중간고사 시험 범위까지 집중하여서 학습</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 8일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">정수와 유리소 계산</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 정수와 유리수 계산. 계산을 많이 해봐야함.
+[2] 아직 본격적인 계산전이라 계산력을 파악하기 어려움.
+[3] 과제 충분히 할 수 있도록 이야기함.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 12일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">정수와 유리수, 소인수분해</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 계산은 최대공약수, 최소공배수 보다 나음.
+[2] 단 어려운 계산은 아직 어려움</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 15일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1] 편안한 여정 되셔요.
+[2] 쎈 교재까지 중간고사 범위 충실하게 풀 수 있도록 진행하겠습니다.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-item__header">
+        <span class="lesson-item__date">1월 26일</span>
+        <span class="lesson-item__course">수업</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="lesson-item__body">
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">교재</span>
+          <span class="lesson-item__content">-</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">수업내용</span>
+          <span class="lesson-item__content">문자와 식 계산</span>
+        </div>
+        <div class="lesson-item__row">
+          <span class="lesson-item__label">특이사항</span>
+          <span class="lesson-item__content">[1]월, 화, 금 6시-7시
+[2] 중간고사 범위인 문자와 식까지는 완료했음
+[3] 중간고사 범위까지 면밀하게 학습하여 중간대비
+[4] 계산 과정에서 괄호와 부호로 인한 오답이 있음. 이 부분 확인 필요</span>
+        </div>
+      </div>
+    </div></div>
+      </section>
+
+      <section class="card homework-section">
+        <h2 class="card__title"><span class="card__title-icon">✏️</span>과제 현황</h2>
+        <div class="homework-list">
+    <div class="homework-item">
+      <span class="homework-item__date">1월 6일</span>
+      <span class="homework-item__content">개념원리, RPM 최대공약수, 최소공배수</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 8일</span>
+      <span class="homework-item__content">정수와 유리수 계산만!
+최대공약수 최소공배수는 주말에 숙제</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 12일</span>
+      <span class="homework-item__content">(개념)~110
+(RPM)~78</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 15일</span>
+      <span class="homework-item__content">(개념원리)~p128
+(RPM)~p91
+문자와 식까지</span>
+    </div>
+    <div class="homework-item">
+      <span class="homework-item__date">1월 26일</span>
+      <span class="homework-item__content">(개념원리, RPM)~문자와 식 정리 덜 되어 있는 부분 완료 및 채점, 질문할 문항 정리</span>
+    </div></div>
+      </section>
+
+      <section class="card comment-section">
+        <h2 class="card__title"><span class="card__title-icon">💬</span>선생님 코멘트</h2>
+        <div class="comment-box">
+          <p class="comment-box__text">박소윤 학생은 중학 수학의 기본기를 차근차근 쌓아나가며 꾸준한 학습 태도를 보여주고 있습니다. 특히 정수와 유리수 계산에서 초기 우려보다 좋은 실력을 보였으나, 복잡한 계산과 문장제 문제에서는 더 많은 연습이 필요합니다. 현재 괄호와 부호 처리에서 실수가 발생하고 있어 이 부분에 대한 집중 학습이 필요합니다. 다음 달에는 중간고사 대비를 위해 쎈 교재까지 활용하여 문제 해결력을 더욱 강화해 나가겠습니다.</p>
+          <p class="comment-box__signature">- 제이디 </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__academy">JD Math Academy</div>
+      <div class="footer__contact">
+        <a href="tel:053-123-4567">📞 010-8227-2874</a>
+        <a href="http://pf.kakao.com/_CCsnj/chat
+">💬 카카오톡 상담</a>
+      </div>
+      <p class="footer__copyright">© 2025 제이디 수학. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.lesson-item__header').forEach(header => {
+      header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
