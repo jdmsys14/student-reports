@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 02월 학습 보고서 - 조규민</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h2 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            background: #f1f5f9;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .info-item .label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #667eea;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content {
+            margin-top: 4px;
+        }
+
+        .timeline-subject {
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .timeline-homework {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .timeline-note {
+            font-size: 0.85rem;
+            color: #f59e0b;
+            background: #fef3c7;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 8px;
+            height: 8px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 8px;
+            transition: width 0.3s ease;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ddd6fe;
+            color: #5b21b6;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 2px;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 16px 0;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 02월 학습 보고서</h1>
+            <p>조규민 학생</p>
+        </div>
+
+        <div class="card">
+            <h2>📋 기본 정보</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">학생명</div>
+                    <div class="value">조규민</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">수업 기간</div>
+                    <div class="value">2026년 01월</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">총 수업 횟수</div>
+                    <div class="value">8회</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">결석/보강</div>
+                    <div class="value">1회 결석 → 보강완료</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📚 학습 요약</h2>
+            <p style="margin-bottom: 16px;">2026년 1월 한 달간 <strong>로그함수</strong>부터 시작하여 <strong>삼각함수</strong> 전반과 <strong>미적분의 도함수 활용</strong>까지 폭넓은 수학 영역을 학습했습니다.</p>
+            
+            <div class="highlight">
+                <strong>주요 학습 흐름:</strong><br>
+                로그함수 → 삼각함수 기초(일반각, 호도법) → 삼각함수 그래프 → 미적분 도함수 → 삼각함수 법칙(사인, 코사인) → 삼각함수 활용
+            </div>
+
+            <div style="margin-top: 16px;">
+                <span class="tag">로그함수</span>
+                <span class="tag">삼각함수</span>
+                <span class="tag">미적분</span>
+                <span class="tag">도함수 활용</span>
+                <span class="tag">사인법칙</span>
+                <span class="tag">코사인법칙</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📈 진도 현황</h2>
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-weight: 500;">대수 단원 진행률</span>
+                    <span style="color: #667eea; font-weight: 600;">95%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%;"></div>
+                </div>
+                <p style="font-size: 0.9rem; color: #64748b;">※ 대단원 마지막 1개 단원 남은 상황 (2주 후 완료 예정)</p>
+            </div>
+
+            <div style="background: #f1f5f9; padding: 16px; border-radius: 8px;">
+                <h4 style="margin-bottom: 12px; color: #1e293b;">다음 학습 계획</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;">• 현재 교재 마무리 (2주 예정)</li>
+                    <li style="margin-bottom: 8px;">• 쎈 교재 병행 학습</li>
+                    <li>• 기출문제 풀이 시작</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2">✅ 과제 수행 현황</h2>
+            <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-weight: 500;">과제 완료율</span>
+                    <span style="color: #10b981; font-weight: 600;">87.5%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 87.5%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
+                <div style="background: #ecfdf5; padding: 12px; border-radius: 8px; border-left: 3px solid #10b981;">
+                    <div style="font-weight: 500; color: #065f46;">완료된 과제</div>
+                    <div style="font-size: 0.9rem; color: #047857; margin-top: 4px;">
+                        유형편 로그함수, ~p.116(2회), ~p.133, ~p.164, ~p.163
+                    </div>
+                </div>
+                <div style="background: #fef3c7; padding: 12px; border-radius: 8px; border-left: 3px solid #f59e0b;">
+                    <div style="font-weight: 500; color: #92400e;">미완료 과제</div>
+                    <div style="font-size: 0.9rem; color: #b45309; margin-top: 4px;">
+                        1회 과제 누락 (개념원리 도함수 활용 후 진행)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📝 수업 상세 기록</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-03</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">로그함수와 그 활용</div>
+                        <div class="timeline-homework">과제: 유형편 로그함수</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-07</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">일반각, 호도법, 삼각함수</div>
+                        <div class="timeline-homework">과제: ~p.116</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-13</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">삼각함수</div>
+                        <div class="timeline-homework">과제: ~p.116</div>
+                        <div class="timeline-note">지난 토요일 결석 보강 진행하였습니다.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-14</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">삼각함수의 그래프</div>
+                        <div class="timeline-homework">과제: ~p.133</div>
+                        <div class="timeline-note">삼각함수의 그래프를 계속 그려보고 단위원을 이용하여 풀 수 있도록 지도</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-15</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">미적분 ~ 도함수 활용</div>
+                        <div class="timeline-homework">과제: (개념원리) ~도함수의 활용 (곡선 밖 점 이전)</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-17</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">삼각함수의 그래프</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-01-21</div>
+                    <div class="timeline-content">
+                        <div class="timeline-subject">사인법칙, 코사인법칙, 도형의 넓이</div>
+                        <div class="timeline-homework">과제: ~p.164</div>
+                        <div class="timeline-note">중학생때 기하 단원의 개념과 함께 수업진행하였습니다.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item
