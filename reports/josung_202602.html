@@ -30,7 +30,6 @@
       min-height: 100vh; 
     }
     
-    /* ==================== 헤더 ==================== */
     .header {
       background: #2563EB;
       color: white;
@@ -73,12 +72,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     
-    /* ==================== 콘텐츠 ==================== */
     .content { 
       padding: 24px 16px 40px; 
     }
     
-    /* ==================== 카드 ==================== */
     .card {
       background: white;
       border-radius: 12px;
@@ -104,7 +101,6 @@
       font-size: 1.25rem;
     }
     
-    /* ==================== 통계 ==================== */
     .stats-grid { 
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
@@ -140,7 +136,6 @@
       font-weight: 500;
     }
     
-    /* ==================== 학습 요약 ==================== */
     .summary-card {
       background: #EFF6FF;
       border: 1px solid #BFDBFE;
@@ -153,7 +148,48 @@
       font-weight: 500;
     }
     
-    /* ==================== 진도 현황 ==================== */
+    .textbooks-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .textbook-tag {
+      background: #EFF6FF;
+      color: #2563EB;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid #BFDBFE;
+    }
+    
+    .weekly-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .week-item {
+      background: #F8FAFC;
+      padding: 16px;
+      border-radius: 10px;
+      border-left: 4px solid #2563EB;
+    }
+    
+    .week-item__title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #2563EB;
+      margin-bottom: 8px;
+    }
+    
+    .week-item__content {
+      font-size: 0.875rem;
+      color: #334155;
+      line-height: 1.7;
+    }
+    
     .progress-item { 
       margin-bottom: 20px; 
     }
@@ -202,113 +238,6 @@
       transition: width 0.6s ease;
     }
     
-    /* ==================== 수업 기록 ==================== */
-    .lesson-list { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 12px; 
-    }
-    
-    .lesson-item { 
-      border: 1px solid #E2E8F0; 
-      border-radius: 10px; 
-      overflow: hidden;
-      transition: box-shadow 0.2s;
-    }
-    
-    .lesson-item:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    
-    .lesson-item__header {
-      background: #F8FAFC;
-      padding: 14px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    
-    .lesson-item__header:hover {
-      background: #F1F5F9;
-    }
-    
-    .lesson-item__date { 
-      font-size: 0.875rem; 
-      font-weight: 600; 
-      color: #1E293B; 
-    }
-    
-    .lesson-item__course {
-      font-size: 0.75rem;
-      color: #2563EB;
-      background: #EFF6FF;
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-weight: 600;
-    }
-    
-    .lesson-item__body { 
-      padding: 16px; 
-      display: none; 
-      background: white;
-    }
-    
-    .lesson-item.active .lesson-item__body { 
-      display: block; 
-    }
-    
-    .lesson-item__row { 
-      display: flex; 
-      margin-bottom: 12px;
-      align-items: flex-start;
-    }
-    
-    .lesson-item__row:last-child { 
-      margin-bottom: 0; 
-    }
-    
-    .lesson-item__label { 
-      width: 72px; 
-      flex-shrink: 0; 
-      font-size: 0.8125rem; 
-      color: #64748B; 
-      font-weight: 600;
-    }
-    
-    .lesson-item__content { 
-      font-size: 0.875rem; 
-      color: #334155; 
-      flex: 1;
-      line-height: 1.6;
-    }
-    
-    .toggle-icon {
-      width: 24px; 
-      height: 24px; 
-      border-radius: 50%; 
-      background: #E2E8F0;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 0.625rem; 
-      color: #64748B; 
-      transition: transform 0.3s, background 0.2s;
-      font-weight: 600;
-    }
-    
-    .lesson-item__header:hover .toggle-icon {
-      background: #CBD5E1;
-    }
-    
-    .lesson-item.active .toggle-icon { 
-      transform: rotate(180deg); 
-      background: #2563EB;
-      color: white;
-    }
-    
-    /* ==================== 과제 현황 ==================== */
     .homework-list { 
       display: flex; 
       flex-direction: column; 
@@ -341,25 +270,12 @@
       line-height: 1.6;
     }
     
-    /* ==================== 선생님 코멘트 ==================== */
     .comment-box {
       background: #FDF2F8;
       border-radius: 10px; 
       padding: 24px; 
       border: 1px solid #FBCFE8;
       position: relative;
-    }
-    
-    .comment-box::before {
-      content: '"';
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      font-size: 3rem;
-      color: #EC4899;
-      opacity: 0.15;
-      font-family: Georgia, serif;
-      line-height: 1;
     }
     
     .comment-box__text { 
@@ -379,7 +295,6 @@
       font-weight: 600;
     }
     
-    /* ==================== 푸터 ==================== */
     .footer { 
       background: #0F172A; 
       color: white; 
@@ -460,7 +375,17 @@
           <span class="card__title-icon">📊</span>
           <span>학습 요약</span>
         </h2>
-        <p class="summary__text">조인성 학생은 1월 한 달간 명제부터 시작하여 함수의 종류, 합성함수, 역함수, 유리함수까지 체계적으로 학습하였습니다. 중간에 모의고사를 통해 실력을 점검하며 부족한 개념을 보완하는 과정을 거쳤습니다.</p>
+        <p class="summary__text">1월에는 명제와 함수 단원을 중심으로 학습하였으며, 집합의 성질과 연산 단원평가에서 만점, 명제와 조건 단원평가에서 9/10문제를 맞히는 우수한 성과를 보였습니다. 함수의 다양한 종류부터 유리함수까지 순차적으로 진도를 나가며, 25년 고1 3월 모의고사에서 84점(1등급)을 획득했습니다.</p>
+      </section>
+
+      <section class="card"><h2 class="card__title"><span class="card__title-icon">📕</span><span>사용 교재</span></h2><div class="textbooks-list"><span class="textbook-tag">📖 쎈</span></div></section>
+
+      <section class="card">
+        <h2 class="card__title">
+          <span class="card__title-icon">📚</span>
+          <span>수업 내용 정리</span>
+        </h2>
+        <div class="weekly-summary"><div class="week-item"><div class="week-item__title">1주차</div><div class="week-item__content">명제의 기본 개념을 학습하고 집합의 성질과 연산 단원평가에서 만점을 달성했습니다.</div></div><div class="week-item"><div class="week-item__title">2주차</div><div class="week-item__content">명제에서 절대부등식까지 확장하여 학습하고, 함수의 종류와 합성함수, 역함수의 개념을 새롭게 배웠습니다.</div></div><div class="week-item"><div class="week-item__title">3주차</div><div class="week-item__content">함수 개념을 심화하고 유리함수를 시작했으며, 명제와 조건 단원평가에서 9/10문제를 맞혔습니다.</div></div><div class="week-item"><div class="week-item__title">4주차</div><div class="week-item__content">25년 고1 3월 모의고사를 풀이하고 유리함수 C단계 문제를 통해 사고력을 기르는 학습을 진행했습니다.</div></div></div>
       </section>
 
       <section class="card">
@@ -468,179 +393,7 @@
           <span class="card__title-icon">📈</span>
           <span>진도 현황</span>
         </h2>
-        
-    <div class="progress-item">
-      <div class="progress-item__header">
-        <span class="progress-item__label">명제 단원</span>
-        <span class="progress-item__value">100%</span>
-      </div>
-      <div class="progress-item__description">명제의 기본 개념부터 절대부등식까지 완료. 단원평가에서 9/10문제 정답으로 우수한 성과</div>
-      <div class="progress-bar">
-        <div class="progress-bar__fill" style="width: 100%"></div>
-      </div>
-    </div>
-    <div class="progress-item">
-      <div class="progress-item__header">
-        <span class="progress-item__label">함수 단원</span>
-        <span class="progress-item__value">75%</span>
-      </div>
-      <div class="progress-item__description">함수의 종류, 합성함수, 역함수, 유리함수까지 진행. 중학교 개념에서 확장된 고등 함수 개념 학습 중</div>
-      <div class="progress-bar">
-        <div class="progress-bar__fill" style="width: 75%"></div>
-      </div>
-    </div>
-      </section>
-
-      <section class="card">
-        <h2 class="card__title">
-          <span class="card__title-icon">📚</span>
-          <span>수업 기록</span>
-        </h2>
-        <div class="lesson-list">
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 2일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">명제</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">특이사항</span>
-          <span class="lesson-item__content">[1] 집합의 성질과 연산 단원평가 (10/10문제)`</span>
-        </div>
-      </div>
-    </div>
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 6일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">명제 - 절대부등식</span>
-        </div>
-        
-      </div>
-    </div>
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 9일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">함수의 종류, 합성함수, 역함수</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">특이사항</span>
-          <span class="lesson-item__content">[1] 중학생 때 배운 함수 개념을 확장하여 새로운 정의와 다양한 함수들을 배우는 과정이라, 초반에는 개념이 정리되지 않아 다소 어려움을 느낄 수 있습니다. 문제를 풀면서 충분히 이해하고 차근차근 정리할 수 있도록 학습할 예정입니다.`</span>
-        </div>
-      </div>
-    </div>
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 13일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">함수의 종류, 합성함수, 역함수</span>
-        </div>
-        
-      </div>
-    </div>
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 16일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">유리함수</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">특이사항</span>
-          <span class="lesson-item__content">[1] 명제와 조건 단원평가 (9/10문제)
-[2] 다음 주 화요일에 마지막 단원인 </span>
-        </div>
-      </div>
-    </div>
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 20일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">모의고사 풀이 및 (쎈) 유리함수</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">특이사항</span>
-          <span class="lesson-item__content">[1] (지난숙제) 25년 고1 3월 모의고사 (점수: 84점 / 1등급)
-> 휘발된 개념은 다시 한번 설명해주고 스스로 풀어 볼 수 있도록 하였습니다.
-> 이번 모의고사를 통해 중3-2 과정이 부족하다고 생각이 들었습니다. 모의고사 풀이를 통해 개념이 부족한 부분은 채워넣을 수 있도록 하겠습니다.</span>
-        </div>
-      </div>
-    </div>
-    <div class="lesson-item">
-      <div class="lesson-item__header">
-        <span class="lesson-item__date">1월 23일</span>
-        <span class="lesson-item__course">수업</span>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="lesson-item__body">
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">교재</span>
-          <span class="lesson-item__content">-</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">수업내용</span>
-          <span class="lesson-item__content">유리함수 C단계</span>
-        </div>
-        <div class="lesson-item__row">
-          <span class="lesson-item__label">특이사항</span>
-          <span class="lesson-item__content">[1] 유리함수 C단계 문제에는 교육청 기출이 많이 포함되어 있어 사고력을 요구하는 문제가 많습니다. 이에 맞게 인성이는 풀이 과정에서 깊이 생각하며 문제를 해결하는 모습이 보였고, 질문에서도 이러한 점이 잘 드러났습니다.</span>
-        </div>
-      </div>
-    </div></div>
+        <div class="progress-item"><div class="progress-item__header"><span class="progress-item__label">명제</span><span class="progress-item__value">100%</span></div><div class="progress-item__description">기본 개념부터 절대부등식까지 완료하고 단원평가에서 우수한 성과 달성</div><div class="progress-bar"><div class="progress-bar__fill" style="width: 100%"></div></div></div><div class="progress-item"><div class="progress-item__header"><span class="progress-item__label">함수</span><span class="progress-item__value">75%</span></div><div class="progress-item__description">함수의 종류, 합성함수, 역함수, 유리함수까지 진행 중이며 C단계 문제 해결 중</div><div class="progress-bar"><div class="progress-bar__fill" style="width: 75%"></div></div></div>
       </section>
 
       <section class="card">
@@ -648,35 +401,7 @@
           <span class="card__title-icon">✏️</span>
           <span>과제 현황</span>
         </h2>
-        <div class="homework-list">
-    <div class="homework-item">
-      <span class="homework-item__date">1월 2일</span>
-      <span class="homework-item__content">명제 B단계</span>
-    </div>
-    <div class="homework-item">
-      <span class="homework-item__date">1월 6일</span>
-      <span class="homework-item__content">명제 C단계</span>
-    </div>
-    <div class="homework-item">
-      <span class="homework-item__date">1월 9일</span>
-      <span class="homework-item__content">B~C단계</span>
-    </div>
-    <div class="homework-item">
-      <span class="homework-item__date">1월 13일</span>
-      <span class="homework-item__content">C단계</span>
-    </div>
-    <div class="homework-item">
-      <span class="homework-item__date">1월 16일</span>
-      <span class="homework-item__content">~p. 183</span>
-    </div>
-    <div class="homework-item">
-      <span class="homework-item__date">1월 20일</span>
-      <span class="homework-item__content">25년 고1 6월 모의고사</span>
-    </div>
-    <div class="homework-item">
-      <span class="homework-item__date">1월 23일</span>
-      <span class="homework-item__content">유리함수 C단계, 고1 6월 모의고사</span>
-    </div></div>
+        <div class="homework-list"><div class="homework-item"><span class="homework-item__date">1월 2일</span><span class="homework-item__content">명제 B단계</span></div><div class="homework-item"><span class="homework-item__date">1월 6일</span><span class="homework-item__content">명제 C단계</span></div><div class="homework-item"><span class="homework-item__date">1월 9일</span><span class="homework-item__content">B~C단계</span></div><div class="homework-item"><span class="homework-item__date">1월 13일</span><span class="homework-item__content">C단계</span></div><div class="homework-item"><span class="homework-item__date">1월 16일</span><span class="homework-item__content">~p. 183</span></div><div class="homework-item"><span class="homework-item__date">1월 20일</span><span class="homework-item__content">25년 고1 6월 모의고사</span></div><div class="homework-item"><span class="homework-item__date">1월 23일</span><span class="homework-item__content">유리함수 C단계, 고1 6월 모의고사</span></div></div>
       </section>
 
       <section class="card">
@@ -685,7 +410,7 @@
           <span>선생님 코멘트</span>
         </h2>
         <div class="comment-box">
-          <p class="comment-box__text">인성이는 명제 단원에서 우수한 성과를 보였고, 함수 단원에서도 초기 어려움을 극복하며 차근차근 개념을 정리해가고 있습니다. 모의고사 84점(1등급)으로 전반적인 실력이 우수하나 중3-2 과정의 보완이 필요합니다. 유리함수 C단계에서 보인 깊이 있는 사고력과 적극적인 질문 태도가 매우 긍정적입니다. 다음 달에는 함수 단원을 마무리하고 부족한 기초 개념을 보강하여 더욱 탄탄한 실력을 쌓아가겠습니다.</p>
+          <p class="comment-box__text">조인성 학생은 단원평가와 모의고사에서 우수한 성과를 보이며 학습 능력이 뛰어납니다. 특히 유리함수 C단계에서 깊이 생각하며 문제를 해결하는 사고력이 인상적입니다. 중3-2 과정이 다소 부족한 것으로 파악되어 모의고사 풀이를 통해 보완하고 있으며, 2월에는 함수 단원을 완료하고 다음 단원으로 넘어갈 예정입니다.</p>
           <p class="comment-box__signature">- 제이디 선생님</p>
         </div>
       </section>
@@ -700,13 +425,5 @@
       <p class="footer__copyright">© 2025 제이디 수학. All rights reserved.</p>
     </footer>
   </div>
-  
-  <script>
-    document.querySelectorAll('.lesson-item__header').forEach(header => {
-      header.addEventListener('click', () => {
-        header.parentElement.classList.toggle('active');
-      });
-    });
-  </script>
 </body>
 </html>
