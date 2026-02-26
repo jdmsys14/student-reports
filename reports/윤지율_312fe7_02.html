@@ -98,7 +98,7 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
 
 <nav class="nav-bar">
   <a href="#summary" class="nav-item active">요약</a>
-  
+  <a href="#tests" class="nav-item">테스트</a>
   <a href="#attendance" class="nav-item">출석</a>
   <a href="#scores" class="nav-item">성적</a>
   <a href="#progress" class="nav-item">학습</a>
@@ -128,7 +128,7 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
     </div>
     <div class="kpi-box neutral">
       <div class="kpi-label">수업 일수</div>
-      <div class="kpi-value">0일</div>
+      <div class="kpi-value">12일</div>
       <div class="kpi-change same">— 2월</div>
     </div>
   </div>
@@ -136,6 +136,131 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
 
 <!-- ━━ TEST RESULTS ━━ -->
 
+<div class="section fade-up" id="tests">
+  <div class="section-label">Test Results</div>
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📝 테스트 결과 종합</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="margin-bottom:16px">
+    <div style="font-size:13px;font-weight:600;color:var(--main);margin-bottom:8px;">단어(Vocabulary) 테스트</div>
+    <div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/02</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">96</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/03</div>
+      </div>
+      <div class="test-score-big" style="color:var(--sub)">93</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/05</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">96</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/06</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">96</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/09</div>
+      </div>
+      <div class="test-score-big" style="color:var(--sub)">86</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/10</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">96</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/12</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">97</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/13</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">95</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">단어 평가</div>
+        <div class="test-date">02/23</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">100</div>
+    </div>
+  </div><div style="margin-bottom:16px">
+    <div style="font-size:13px;font-weight:600;color:var(--main);margin-bottom:8px;">듣기(Listening) 평가</div>
+    <div class="test-result-item">
+      <div>
+        <div class="test-name">듣기 평가</div>
+        <div class="test-date">02/05</div>
+      </div>
+      <div class="test-score-big" style="color:var(--sub)">90</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">듣기 평가</div>
+        <div class="test-date">02/09</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">100</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">듣기 평가</div>
+        <div class="test-date">02/23</div>
+      </div>
+      <div class="test-score-big" style="color:var(--sub)">90</div>
+    </div>
+  </div><div style="margin-bottom:16px">
+    <div style="font-size:13px;font-weight:600;color:var(--main);margin-bottom:8px;">문법(Grammar) 평가</div>
+    <div class="test-result-item">
+      <div>
+        <div class="test-name">문법 평가</div>
+        <div class="test-date">02/09</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">95</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">문법 평가</div>
+        <div class="test-date">02/10</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">100</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">문법 평가</div>
+        <div class="test-date">02/12</div>
+      </div>
+      <div class="test-score-big" style="color:var(--positive)">100</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">문법 평가</div>
+        <div class="test-date">02/13</div>
+      </div>
+      <div class="test-score-big" style="color:var(--sub)">85</div>
+    </div><div class="test-result-item">
+      <div>
+        <div class="test-name">문법 평가</div>
+        <div class="test-date">02/23</div>
+      </div>
+      <div class="test-score-big" style="color:var(--sub)">90</div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ━━ ATTENDANCE ━━ -->
 <div class="section fade-up" id="attendance">
@@ -172,6 +297,25 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
 
   <!-- 단어 TEST 라인차트 -->
   
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📖 단어 테스트</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px;">
+          <div>
+            <div style="font-size:11px;color:var(--text-muted);">2월 평균</div>
+            <div style="font-size:24px;font-weight:700;color:var(--main);">95<span style="font-size:13px;color:var(--text-muted);font-weight:400;">점</span></div>
+          </div>
+        </div>
+        <div class="chart-wrap" style="height:180px;">
+          <canvas id="wordChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 영역별 레이더 + 프로그레스 -->
   <div class="card">
@@ -240,7 +384,7 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
         </div>
         <div class="alert-box">
       <div class="alert-icon">📌</div>
-      <div class="alert-text">2월 말 과제 미완 기록이 있으나 명절 연휴 기간으로 인한 일시적 상황으로 판단됨</div>
+      <div class="alert-text">2월 후반부(19-24일) 과제 미완 기록 주의. 연휴 이후 학습 루틴 재정립 필요. 단어 100개 일일 시험 체계로 전환되었으므로 매일 꾸준한 단어 학습 관리 필수.</div>
     </div>
       </div>
     </div>
@@ -258,9 +402,9 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
           <div style="font-size:48px;font-weight:700;color:var(--warning);">58%</div>
           <div style="font-size:13px;color:var(--text-secondary);">과제 수행 개선 필요</div>
         </div>
-        <div class="stat-row"><span class="stat-label">과제 부여 횟수</span><span class="stat-value">0회</span></div>
-        <div class="stat-row"><span class="stat-label">완료 횟수</span><span class="stat-value" style="color:var(--positive);">0회</span></div>
-        <div class="stat-row"><span class="stat-label">미제출</span><span class="stat-value">0회</span></div>
+        <div class="stat-row"><span class="stat-label">과제 부여 횟수</span><span class="stat-value">12회</span></div>
+        <div class="stat-row"><span class="stat-label">완료 횟수</span><span class="stat-value" style="color:var(--positive);">7회</span></div>
+        <div class="stat-row"><span class="stat-label">미제출</span><span class="stat-value">5회</span></div>
       </div>
     </div>
   </div>
@@ -277,7 +421,103 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
         <div class="log-scroll">
           <table class="log-table">
             <thead><tr><th>날짜</th><th>출석</th><th>단어</th><th>듣기</th><th>문법</th><th>독해</th><th>과제</th></tr></thead>
-            <tbody><tr><td colspan="7" style="color:#94A3B8;padding:16px;">수업 기록 없음</td></tr></tbody>
+            <tbody><tr>
+    <td style="white-space:nowrap;">02/02</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>96</strong></td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/03</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td>93</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/05</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>96</strong></td>
+    <td>90</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/06</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>96</strong></td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/09</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td>86</td>
+    <td><strong>100</strong></td>
+    <td><strong>95</strong></td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/10</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>96</strong></td>
+    <td>-</td>
+    <td><strong>100</strong></td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/12</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>97</strong></td>
+    <td>-</td>
+    <td><strong>100</strong></td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/13</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>95</strong></td>
+    <td>-</td>
+    <td>85</td>
+    <td>-</td>
+    <td>✅</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/19</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/20</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/23</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td><strong>100</strong></td>
+    <td>90</td>
+    <td>90</td>
+    <td>-</td>
+    <td>-</td>
+  </tr><tr>
+    <td style="white-space:nowrap;">02/24</td>
+    <td><span class="score-dot high"></span>출석</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr></tbody>
           </table>
         </div>
       </div>
@@ -290,12 +530,12 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);co
   <div class="section-label">Teacher's Comment</div>
   <div class="card">
     <h3 style="font-size:15px;font-weight:600;margin-bottom:12px;">💬 선생님 종합 코멘트</h3>
-    <div class="comment-box">윤지율 학생은 2월 한 달간 12일 수업에 100% 출석하며 매우 성실한 학습 태도를 보였습니다. 단어(95점)와 문법(94점) 영역에서 우수한 성적을 거두었으며, 특히 단어 시험에서 96~97점의 높은 점수를 지속적으로 달성하고 있습니다. 듣기 영역도 평균 93점으로 안정적인 실력을 갖추고 있습니다.<br>문법 학습에서는 일반동사의 부정문과 의문문 단원을 성공적으로 마무리했고, 현재 현재진행형 단원에 진입한 상태입니다. 2월 13일 문법 평가에서 85점을 받았으나, 선생님 피드백에 따르면 전체적으로 개념을 잘 이해하고 있는 것으로 평가되었습니다.<br>독해 영역의 경우 아직 구체적 평가가 이루어지지 않았으나, 선생님은 단순 해석보다 본문 전체의 논리적 구조와 내용 이해를 중점적으로 지도하고 있습니다. 월말의 과제 미완 기록들이 있으나, 이는 명절 연휴 기간의 일시적 상황으로 보입니다.<br>윤지율 학생은 기초가 탄탄하고 학습 성취도가 좋은 편이므로, 앞으로의 지속적인 복습과 반복 학습을 통해 더욱 높은 수준의 영어 실력 발전을 기대할 수 있습니다.</div>
+    <div class="comment-box">윤지율 학생은 2월 한 달간 12일 모두 출석하며 학습에 충실한 태도를 보여주었습니다. 단어 평균 95점, 듣기 평균 93점, 문법 평균 94점으로 전반적인 성취도가 우수하며, 특히 문법 영역에서 100점 만점을 기록하는 등 탁월한 학습 성과를 이루었습니다.<br><br>지율 학생은 일반동사의 부정문과 의문문 학습을 완료하고 현재 현재진행형으로 진학했습니다. 선생님의 피드백에 따르면 문법 개념을 정~~말 잘 이해하고 있으며, 주어진 과제들도 대부분 성실하게 수행하고 있습니다. 다만 2월 후반부(19일, 20일, 23일, 24일)에 과제 미완 기록이 있으므로, 연휴 이후 과제 수행률을 높일 필요가 있습니다.<br><br>독해 영역은 아직 평가 점수가 기록되지 않았으나, 선생님께서는 단순 해석을 넘어 본문의 전체적인 구조와 내용을 꼼꼼히 이해하는 깊이 있는 학습을 강조하고 계십니다. 3월 독해 평가를 앞두고 있으니, 수업 시간 복습을 더욱 성실하게 진행하고 긴 호흡으로 글의 전체 맥락을 파악하는 연습이 필요합니다.</div>
     <div class="alert-box" style="margin-top:16px;background:#F0FDF4;border-color:#BBF7D0;">
       <div class="alert-icon">🔔</div>
       <div class="alert-text" style="color:#166534;">
         <strong>2월 학습 안내</strong><br>
-        • 3월부터 단어 시험 100개 진행(합격선 85점) - 매일 꾸준한 복습 필요<br>• 약 1~2개월 후 교재 전체 최종 평가(200~300문항) 준비<br>• 현재진행형 문법 단원 학습 중 - 관련 개념 숙지 및 과제 성실하게 수행
+        • 단어 100문항 일일 시험 준비 - 합격선 85점 이상 유지 (현재 우수 중)<br>• 3월 독해 평가 대비 - 본문 전체 구조 및 내용 이해 중심 학습<br>• 과제 수행률 개선 - 후반부 과제 미완 기록 해결, 매일 꾸준히 진행<br>• 독해 4단원 전체 마무리 후 평가 - 약 200~300문항 종합 테스트 준비 (평균 90점 이상 목표)
       </div>
     </div>
   </div>
@@ -315,13 +555,16 @@ const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.targe
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>{document.querySelectorAll('.progress-bar-fill').forEach(b=>{b.style.width=b.dataset.width+'%';});},300);
 const navItems=document.querySelectorAll('.nav-item');
-const navSections=["summary","attendance","scores","progress","comment"];
+const navSections=["summary","tests","attendance","scores","progress","comment"];
 window.addEventListener('scroll',()=>{let cur='';navSections.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<200)cur=id;});navItems.forEach(i=>{i.classList.toggle('active',i.getAttribute('href')==='#'+cur);});});
 Chart.defaults.font.family="'Noto Sans KR',sans-serif";
 Chart.defaults.font.size=11;
 
 new Chart(document.getElementById('attendChart'),{type:'doughnut',data:{labels:['출석','결석'],datasets:[{data:[12,0],backgroundColor:['#1C4D8D','#E2E8F0'],borderWidth:0}]},options:{cutout:'72%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}}}});
 
+
+const wMin=Math.max(70,Math.min(...[96,93,96,96,86,96,97,95,100])-5);
+new Chart(document.getElementById('wordChart'),{type:'line',data:{labels:["2/2","2/3","2/5","2/6","2/9","2/10","2/12","2/13","2/23"],datasets:[{label:'단어',data:[96,93,96,96,86,96,97,95,100],borderColor:'#1C4D8D',backgroundColor:'rgba(28,77,141,0.08)',fill:true,tension:.35,pointRadius:4,pointBackgroundColor:'#1C4D8D',pointBorderColor:'#fff',pointBorderWidth:2,borderWidth:2.5}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:wMin,max:105,grid:{color:'#F1F5F9'},ticks:{stepSize:5}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{backgroundColor:'#1E293B',padding:8,cornerRadius:8}}}});
 
 
 new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:["단어","듣기","문법","독해"],datasets:[{label:'2월',data:[95,93,94,0],borderColor:'#1C4D8D',backgroundColor:'rgba(28,77,141,0.15)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#1C4D8D'}]},options:{responsive:true,maintainAspectRatio:false,scales:{r:{min:60,max:100,ticks:{stepSize:10,backdropColor:'transparent',font:{size:10}},grid:{color:'#E2E8F0'},pointLabels:{font:{size:12,weight:'600'}}}},plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:16,font:{size:11}}}}}});
