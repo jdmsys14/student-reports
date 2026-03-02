@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>학습 보고서 - 학생</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet"><style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: #eef0f5; color: #1a1a2e; min-height: 100vh; }
+  .report-wrap { max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 40px; }
+
+  /* HEADER */
+  .header { background: linear-gradient(150deg, #0f2d55 0%, #1a4a8a 50%, #0f2d55 100%); padding: 36px 24px 30px; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header::after { content: ''; position: absolute; bottom: -30px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .header-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); color: #a8d4ff; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 5px 12px; border-radius: 20px; }
+  .header-academy { font-size: 11px; color: rgba(255,255,255,0.45); text-align: right; line-height: 1.6; }
+  .header-title { font-size: 24px; font-weight: 900; color: #fff; line-height: 1.3; margin-bottom: 4px; }
+  .header-sub { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 300; }
+
+  /* STUDENT CARD */
+  .student-card { margin: 20px 20px 0; background: linear-gradient(135deg, #f8fafc, #eef4ff); border-radius: 18px; padding: 20px; border: 1px solid #dde8f8; position: relative; overflow: hidden; }
+  .student-card::after { content: ''; position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; border-radius: 50%; background: rgba(26,74,138,0.06); }
+  .student-card-inner { display: flex; align-items: center; gap: 16px; }
+  .student-avatar { width: 56px; height: 56px; background: linear-gradient(135deg, #1a4a8a, #3b82f6); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 14px rgba(26,74,138,0.3); }
+  .student-info { flex: 1; }
+  .student-name { font-size: 20px; font-weight: 700; color: #0f2d55; }
+  .student-class { font-size: 12px; color: #6b7280; margin-top: 3px; display: flex; align-items: center; gap: 6px; }
+  .class-tag { background: #e0ebff; color: #1a4a8a; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .student-period { margin-top: 14px; display: flex; gap: 8px; }
+  .period-item { flex: 1; background: #fff; border-radius: 10px; padding: 10px; text-align: center; border: 1px solid #e8edf6; }
+  .period-label { font-size: 10px; color: #9ca3af; font-weight: 500; margin-bottom: 4px; }
+  .period-value { font-size: 13px; font-weight: 700; color: #1a4a8a; }
+
+  /* SECTION */
+  .section { padding: 24px 20px 0; }
+  .section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+  .section-dot { width: 4px; height: 18px; border-radius: 2px; }
+  .section-dot.math { background: linear-gradient(180deg, #3b82f6, #1a4a8a); }
+  .section-dot.english { background: linear-gradient(180deg, #10b981, #059669); }
+  .section-dot.attend { background: linear-gradient(180deg, #f59e0b, #d97706); }
+  .section-dot.total { background: linear-gradient(180deg, #8b5cf6, #6d28d9); }
+  .section-title-text { font-size: 13px; font-weight: 700; color: #374151; letter-spacing: 0.5px; }
+  .section-badge { margin-left: auto; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 8px; }
+  .badge-math { background: #dbeafe; color: #1a4a8a; }
+  .badge-english { background: #d1fae5; color: #065f46; }
+
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, #e8edf6, transparent); margin: 24px 20px 0; }
+
+  /* 수학 테스트 카드 */
+  .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .test-card { background: #f8fafc; border-radius: 14px; padding: 16px; border: 1px solid #e8edf2; position: relative; overflow: hidden; }
+  .test-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
+  .test-card.blue::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .test-card.navy::before { background: linear-gradient(90deg, #1a4a8a, #3b82f6); }
+  .test-card.green::before { background: linear-gradient(90deg, #10b981, #34d399); }
+  .test-card.amber::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .test-date { font-size: 10px; color: #9ca3af; margin-bottom: 6px; }
+  .test-type { font-size: 11px; font-weight: 600; color: #6b7280; margin-bottom: 8px; }
+  .test-score { font-size: 28px; font-weight: 700; line-height: 1; }
+  .test-card.blue .test-score { color: #3b82f6; }
+  .test-card.navy .test-score { color: #1a4a8a; }
+  .test-card.green .test-score { color: #10b981; }
+  .test-card.amber .test-score { color: #f59e0b; }
+  .test-score-max { font-size: 12px; color: #d1d5db; font-weight: 400; }
+  .test-chip { margin-top: 6px; display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .chip-pass { background: #dbeafe; color: #1a4a8a; }
+  .chip-good { background: #d1fae5; color: #065f46; }
+  .chip-caution { background: #fef3c7; color: #92400e; }
+
+  /* 영어 단어 시험 */
+  .vocab-list { display: flex; flex-direction: column; gap: 10px; }
+  .vocab-item { background: #f8fafc; border-radius: 12px; padding: 14px 16px; border: 1px solid #e8edf2; display: flex; align-items: center; gap: 12px; }
+  .vocab-date { font-size: 11px; color: #9ca3af; width: 52px; flex-shrink: 0; }
+  .vocab-bar-wrap { flex: 1; }
+  .vocab-title { font-size: 11px; color: #6b7280; margin-bottom: 5px; }
+  .vocab-bar-track { background: #e8edf2; border-radius: 6px; height: 7px; overflow: hidden; }
+  .vocab-bar-fill { height: 100%; border-radius: 6px; }
+  .vocab-score-wrap { text-align: right; flex-shrink: 0; }
+  .vocab-score-num { font-size: 16px; font-weight: 700; color: #1a4a8a; }
+  .vocab-score-max { font-size: 10px; color: #9ca3af; }
+
+  /* 출석 */
+  .attend-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .attend-box { background: #f8fafc; border-radius: 12px; padding: 14px 10px; text-align: center; border: 1px solid #e8edf2; }
+  .attend-num { font-size: 24px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .attend-box.present .attend-num { color: #10b981; }
+  .attend-box.absent .attend-num { color: #ef4444; }
+  .attend-box.late .attend-num { color: #f59e0b; }
+  .attend-box-label { font-size: 10px; color: #9ca3af; font-weight: 500; }
+  .attend-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-header-row { display: contents; }
+  .cal-day-label { font-size: 9px; color: #9ca3af; text-align: center; padding: 4px 0; font-weight: 600; }
+  .cal-cell { aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; }
+  .cal-cell.empty { background: transparent; }
+  .cal-cell.present { background: #d1fae5; color: #065f46; }
+  .cal-cell.absent { background: #fee2e2; color: #991b1b; }
+  .cal-cell.late { background: #fef3c7; color: #92400e; }
+  .cal-cell.none { background: #f3f4f6; color: #9ca3af; }
+
+  /* 숙제달성률 */
+  .homework-section { display: flex; flex-direction: column; gap: 10px; }
+  .hw-item { display: flex; align-items: center; gap: 12px; }
+  .hw-label { font-size: 11px; color: #374151; font-weight: 500; flex-shrink: 0; }
+  .hw-label-wide { width: 80px; }
+  .hw-bar-track { flex: 1; background: #f1f5f9; border-radius: 8px; height: 8px; overflow: hidden; }
+  .hw-bar-fill { height: 100%; border-radius: 8px; }
+  .hw-pct { font-size: 12px; font-weight: 700; color: #374151; width: 34px; text-align: right; flex-shrink: 0; }
+  .hw-pct.full { color: #10b981; }
+  .hw-pct.high { color: #3b82f6; }
+  .hw-pct.mid { color: #f59e0b; }
+
+  /* 선생님 코멘트 */
+  .comment-set { display: flex; flex-direction: column; gap: 14px; }
+  .comment-box { border-radius: 14px; padding: 18px; }
+  .comment-box.math { background: #f0f6ff; border: 1px solid #c7dcff; border-left: 4px solid #1a4a8a; }
+  .comment-box.english { background: #f0fdf8; border: 1px solid #a7f3d0; border-left: 4px solid #10b981; }
+  .comment-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .comment-icon { width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .comment-icon.math { background: #dbeafe; }
+  .comment-icon.english { background: #d1fae5; }
+  .comment-teacher { font-size: 12px; font-weight: 700; }
+  .comment-teacher.math { color: #1a4a8a; }
+  .comment-teacher.english { color: #065f46; }
+  .comment-sub { font-size: 10px; color: #9ca3af; margin-left: auto; }
+  .comment-text { font-size: 12.5px; color: #374151; line-height: 1.85; font-weight: 300; }
+  .comment-highlight { display: inline-block; background: rgba(26,74,138,0.08); color: #1a4a8a; border-radius: 4px; padding: 0 4px; font-weight: 500; }
+  .comment-highlight.green { background: rgba(16,185,129,0.1); color: #065f46; }
+
+  /* 종합 */
+  .total-card { background: linear-gradient(135deg, #0f2d55 0%, #1a4a8a 100%); border-radius: 18px; padding: 22px; display: flex; align-items: center; justify-content: space-between; }
+  .total-left { }
+  .total-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+  .total-score { font-size: 40px; font-weight: 900; color: #fff; line-height: 1; }
+  .total-max { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+  .total-right { text-align: right; }
+  .total-stars { font-size: 20px; letter-spacing: 2px; margin-bottom: 6px; }
+  .total-grade { background: rgba(255,255,255,0.15); color: #fbbf24; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; display: inline-block; border: 1px solid rgba(251,191,36,0.3); }
+
+  /* FOOTER */
+  .footer { margin: 28px 20px 0; text-align: center; padding: 18px; background: #f8fafc; border-radius: 14px; border: 1px solid #e8edf2; }
+  .footer-text { font-size: 11px; color: #9ca3af; line-height: 1.9; }
+  .footer-text strong { color: #1a4a8a; font-weight: 700; }
+
+  /* 진척도 레이더 없이 점수 카드만으로 깔끔하게 */
+  .score-summary { background: #f8fafc; border-radius: 16px; padding: 18px; border: 1px solid #e8edf2; }
+  .score-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .score-row:last-child { margin-bottom: 0; }
+  .score-row-label { font-size: 12px; font-weight: 600; color: #374151; width: 64px; flex-shrink: 0; }
+  .score-row-bar-wrap { flex: 1; background: #e8edf2; border-radius: 8px; height: 10px; overflow: hidden; }
+  .score-row-bar { height: 100%; border-radius: 8px; }
+  .bar-math { background: linear-gradient(90deg, #1a4a8a, #60a5fa); }
+  .bar-english { background: linear-gradient(90deg, #10b981, #6ee7b7); }
+  .score-row-val { font-size: 13px; font-weight: 700; color: #1a4a8a; width: 40px; text-align: right; flex-shrink: 0; }
+  .score-row-val.green { color: #10b981; }
+
+  .growth-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-top: 8px; }
+  .growth-pill.up { background: #d1fae5; color: #065f46; }
+  .growth-pill.down { background: #fee2e2; color: #991b1b; }
+</style></head><body><div class="report-wrap"><div class="header"><div class="header-top"><div class="header-badge">📋 MONTHLY REPORT</div><div class="header-academy">비상잉글리시아이</div></div><div class="header-title">26년 2월<br>학습 보고서</div><div class="header-sub">2026년 2월 수업 결과 안내</div></div><div class="student-card"><div class="student-card-inner"><div class="student-avatar">🎯</div><div class="student-info"><div class="student-name">학생</div><div class="student-class"><span class="class-tag">미정</span> 미정</div></div></div><div class="student-period"><div class="period-item"><div class="period-label">수학 교재</div><div class="period-value">미정</div></div><div class="period-item"><div class="period-label">수학 과정</div><div class="period-value">미정</div></div><div class="period-item"><div class="period-label">영어 수업</div><div style="display:flex;flex-direction:column;gap:3px;margin-top:2px;"></div></div></div></div><div class="divider"></div><div class="section"><div class="section-header"><div style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,#8b5cf6,#6d28d9);"></div><div class="section-title-text">2월 학습 요약</div></div><div style="background:linear-gradient(135deg,#f5f0ff,#ede9fe);border-radius:14px;padding:16px;border:1px solid #ddd6fe;margin-bottom:14px;"><div style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #ddd6fe;border-radius:20px;padding:4px 12px;margin-bottom:10px;"><span style="font-size:11px;">✨</span><span style="font-size:10px;font-weight:700;color:#7c3aed;">AI 학습 분석</span></div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:400;">제공된 수업 데이터가 없어 분석이 불가능합니다. 정확한 학생 정보, 수강 과목, 시험 성적, 출석 기록 등의 데이터가 필요합니다.</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="background:#f8fafc;border-radius:14px;padding:16px;border:1px solid #e8edf2;text-align:center;"><div style="font-size:22px;margin-bottom:6px;">📐</div><div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">수업 과목</div><div style="font-size:14px;font-weight:700;color:#1a4a8a;">미정</div></div><div style="background:#f8fafc;border-radius:14px;padding:16px;border:1px solid #e8edf2;text-align:center;"><div style="font-size:22px;margin-bottom:6px;">📚</div><div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">주교재</div><div style="font-size:13px;font-weight:700;color:#1a4a8a;">미정</div></div><div style="background:#f0fdf8;border-radius:14px;padding:16px;border:1px solid #a7f3d0;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;"><span style="font-size:14px;">🗓️</span><span style="font-size:10px;color:#065f46;font-weight:500;">출석률</span></div><div style="font-size:28px;font-weight:900;color:#10b981;line-height:1;">0%</div><div style="font-size:10px;color:#6b7280;margin-top:3px;">0일 / 0일</div></div><div style="background:#f0f6ff;border-radius:14px;padding:16px;border:1px solid #c7dcff;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;"><span style="font-size:14px;">✏️</span><span style="font-size:10px;color:#1a4a8a;font-weight:500;">숙제달성률</span></div><div style="font-size:28px;font-weight:900;color:#1a4a8a;line-height:1;">0%</div><div style="font-size:10px;color:#6b7280;margin-top:3px;">수학 평균</div></div><div style="background:#fffbeb;border-radius:14px;padding:16px;border:1px solid #fde68a;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;"><span style="font-size:14px;">🏆</span><span style="font-size:10px;color:#92400e;font-weight:500;">수학 최고점</span></div><div style="font-size:28px;font-weight:900;color:#d97706;line-height:1;">0점</div><div style="font-size:10px;color:#6b7280;margin-top:3px;">미정</div></div><div style="background:#f0fdf8;border-radius:14px;padding:16px;border:1px solid #a7f3d0;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;"><span style="font-size:14px;">📈</span><span style="font-size:10px;color:#065f46;font-weight:500;">영어 단어 평균</span></div><div style="font-size:28px;font-weight:900;color:#10b981;line-height:1;">0%</div><div style="font-size:10px;color:#6b7280;margin-top:3px;">0회 평균</div></div></div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot attend"></div><div class="section-title-text">출석 현황</div><div class="section-badge" style="background:#fef3c7;color:#92400e;margin-left:auto;font-size:10px;font-weight:700;padding:3px 10px;border-radius:8px;">2026.02</div></div><div class="attend-summary"><div class="attend-box present"><div class="attend-num">0</div><div class="attend-box-label">출석</div></div><div class="attend-box absent"><div class="attend-num">0</div><div class="attend-box-label">결석</div></div><div class="attend-box late"><div class="attend-num">0</div><div class="attend-box-label">지각</div></div></div><div style="background:#f8fafc;border-radius:14px;padding:16px;border:1px solid #e8edf2;"><div class="attend-calendar"><div class="cal-day-label">월</div><div class="cal-day-label">화</div><div class="cal-day-label">수</div><div class="cal-day-label">목</div><div class="cal-day-label">금</div><div class="cal-day-label">토</div><div class="cal-day-label">일</div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell none">1</div><div class="cal-cell none">2</div><div class="cal-cell none">3</div><div class="cal-cell none">4</div><div class="cal-cell none">5</div><div class="cal-cell none">6</div><div class="cal-cell none">7</div><div class="cal-cell none">8</div><div class="cal-cell none">9</div><div class="cal-cell none">10</div><div class="cal-cell none">11</div><div class="cal-cell none">12</div><div class="cal-cell none">13</div><div class="cal-cell none">14</div><div class="cal-cell none">15</div><div class="cal-cell none">16</div><div class="cal-cell none">17</div><div class="cal-cell none">18</div><div class="cal-cell none">19</div><div class="cal-cell none">20</div><div class="cal-cell none">21</div><div class="cal-cell none">22</div><div class="cal-cell none">23</div><div class="cal-cell none">24</div><div class="cal-cell none">25</div><div class="cal-cell none">26</div><div class="cal-cell none">27</div><div class="cal-cell none">28</div></div><div style="display:flex;gap:12px;margin-top:12px;justify-content:center;"><div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280;"><div style="width:10px;height:10px;border-radius:3px;background:#d1fae5;"></div>출석</div><div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280;"><div style="width:10px;height:10px;border-radius:3px;background:#fee2e2;"></div>결석</div><div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280;"><div style="width:10px;height:10px;border-radius:3px;background:#fef3c7;"></div>지각</div><div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280;"><div style="width:10px;height:10px;border-radius:3px;background:#f3f4f6;"></div>비수업</div></div></div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot math"></div><div class="section-title-text">수학 테스트 결과</div><div class="section-badge badge-math">0회 응시</div></div><div style="display:flex;flex-direction:column;"><div style="text-align:center;padding:20px;color:#9ca3af;font-size:13px;">테스트 기록이 없습니다.</div></div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot math"></div><div class="section-title-text">수학 숙제달성률</div></div><div style="text-align:center;padding:15px;color:#9ca3af;font-size:12px;">데이터 없음</div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot english"></div><div class="section-title-text">영어 단어시험</div><div class="section-badge badge-english">0회 응시</div></div><div style="text-align:center;padding:20px;color:#9ca3af;font-size:13px;">시험 기록이 없습니다.</div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot english"></div><div class="section-title-text">영어 숙제달성률</div></div><div style="text-align:center;padding:15px;color:#9ca3af;font-size:12px;">데이터 없음</div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot total"></div><div class="section-title-text">선생님 코멘트</div></div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot math"></div><div class="section-title-text">2월 수업 내용</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #e8edf2;"><div style="font-size:11px;color:#1a4a8a;font-weight:700;margin-bottom:8px;">📐 수학</div><div style="font-size:12px;color:#4b5563;line-height:1.7;font-weight:300;"><p>수학 수업 데이터가 없습니다.</p></div></div><div style="background:#f0fdf8;border-radius:12px;padding:14px 16px;border:1px solid #a7f3d0;"><div style="font-size:11px;color:#065f46;font-weight:700;margin-bottom:12px;">📖 영어 — 과목별 수업 내용</div><div style="display:flex;flex-direction:column;gap:10px;"><div style="text-align:center;padding:15px;color:#9ca3af;font-size:12px;">수업 내용 없음</div></div></div></div></div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot total"></div><div class="section-title-text">3월 학습 방향</div></div><div style="background:linear-gradient(135deg,#f0f6ff,#f0fdf8);border-radius:14px;padding:18px;border:1px solid #c7dcff;"><div style="display:flex;flex-direction:column;gap:10px;"><div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:24px;height:24px;background:#dbeafe;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📐</div><div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">데이터 제공 후 수학 목표 설정</div></div><div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:24px;height:24px;background:#d1fae5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📖</div><div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">데이터 제공 후 영어 목표 설정</div></div><div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:24px;height:24px;background:#fef3c7;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">🎯</div><div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">완전한 학습 데이터 수집 필요</div></div></div></div></div><div style="margin:28px 20px 0;background:linear-gradient(135deg,#1a3a6b 0%,#0f2d55 100%);border-radius:18px;overflow:hidden;"><div style="padding:24px 24px 0;text-align:center;"><div style="font-size:15px;font-weight:900;color:#fbbf24;letter-spacing:1px;margin-bottom:2px;">ENGLISH EYE 잉글리시아이 원천</div></div><div style="height:1px;background:rgba(255,255,255,0.08);margin:18px 24px 0;"></div><div style="padding:18px 24px 0;text-align:center;"><div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border-radius:20px;padding:8px 20px;margin-bottom:12px;"><span style="font-size:14px;">📞</span><span style="font-size:14px;font-weight:700;color:#fff;">010-2651-6545</span></div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.7;">카카오톡 채널로 문의 주시면 빠른 상담 가능합니다.</div></div><div style="height:1px;background:rgba(255,255,255,0.08);margin:18px 24px 0;"></div><div style="padding:16px 24px 20px;text-align:center;"><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.9;">본 보고서는 2026년 2월 학습 활동을 기반으로 작성되었습니다.<br>작성일: 2026년 2월 28일</div></div><div style="padding:0 20px 24px;"><a href="http://pf.kakao.com/_xahlxon/chat" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#FEE500;border-radius:14px;padding:16px;text-decoration:none;box-shadow:0 4px 14px rgba(254,229,0,0.35);"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C6.03 2 2 5.36 2 9.5c0 2.69 1.7 5.05 4.26 6.38L5.2 19.1c-.1.28.2.52.46.37l4.04-2.67c.42.05.86.08 1.3.08 4.97 0 9-3.36 9-7.5S15.97 2 11 2z" fill="#3C1E1E"/></svg><span style="font-size:14px;font-weight:700;color:#3C1E1E;">카카오톡으로 문의하기</span></a></div></div></div></body></html>
