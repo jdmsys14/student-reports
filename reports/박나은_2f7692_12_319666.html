@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>정윤정영어 - 박나은  1~2월 학습 리포트</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;background:linear-gradient(135deg,#f5f7fa 0%,#e9ecef 100%);padding:15px;line-height:1.6;min-height:100vh}
+.container{max-width:480px;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(37,99,235,0.12)}
+.header{background:linear-gradient(135deg,#2563EB 0%,#1D4ED8 100%);color:white;padding:25px 20px;text-align:center}
+.header h1{font-size:14px;opacity:.9;margin-bottom:4px;font-weight:400}
+.header h2{font-size:24px;font-weight:700;margin-bottom:8px}
+.header .badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px;font-size:13px;display:inline-block}
+.section{padding:24px 20px;border-bottom:8px solid #f5f7fa}
+.section:last-of-type{border-bottom:none}
+.section-title{font-size:17px;font-weight:700;color:#1E293B;margin-bottom:16px;display:flex;align-items:center}
+.section-title::before{content:"";width:4px;height:18px;background:#2563EB;margin-right:10px;border-radius:2px}
+.donut-row{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.donut-legend{flex:1}
+.donut-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#475569;margin-bottom:6px}
+.donut-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:16px}
+.kpi-card{background:#f8fafc;padding:12px 8px;border-radius:12px;text-align:center;border:1px solid #e2e8f0}
+.kpi-label{font-size:10px;color:#64748b;margin-bottom:6px}
+.kpi-value{font-size:18px;font-weight:700}
+.kpi-value.excellent{color:#059669}.kpi-value.good{color:#2563EB}.kpi-value.warning{color:#d97706}.kpi-value.danger{color:#dc2626}
+.kpi-sub{font-size:10px;color:#94a3b8;margin-top:2px}
+.summary-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.summary-box-title{font-size:11px;color:#1d4ed8;font-weight:700;margin-bottom:10px;letter-spacing:0.3px}
+.summary-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.summary-row:last-child{margin-bottom:0}
+.summary-label{font-size:12px;color:#475569;min-width:90px;font-weight:500}
+.summary-bar{flex:1;height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden}
+.summary-bar-fill{height:100%;border-radius:5px}
+.summary-bar-fill.green{background:linear-gradient(90deg,#34d399,#059669)}
+.summary-bar-fill.yellow{background:linear-gradient(90deg,#fbbf24,#d97706)}
+.summary-bar-fill.red{background:linear-gradient(90deg,#f87171,#dc2626)}
+.summary-pct{font-size:12px;font-weight:700;min-width:36px;text-align:right}
+.summary-pct.green{color:#059669}.summary-pct.yellow{color:#d97706}.summary-pct.red{color:#dc2626}
+.learning-item{margin-bottom:16px}
+.learning-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.learning-name{font-size:13px;font-weight:600;color:#334155}
+.learning-status{font-size:11px;padding:3px 8px;border-radius:10px;font-weight:600}
+.status-complete{background:#dcfce7;color:#16a34a}
+.status-partial{background:#fef9c3;color:#ca8a04}
+.status-incomplete{background:#fee2e2;color:#dc2626}
+.progress-bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-bottom:6px}
+.progress-fill{height:100%;border-radius:4px}
+.progress-fill.green{background:linear-gradient(90deg,#34d399,#059669)}
+.progress-fill.yellow{background:linear-gradient(90deg,#fbbf24,#d97706)}
+.progress-fill.red{background:linear-gradient(90deg,#f87171,#dc2626)}
+.progress-fill.blue{background:linear-gradient(90deg,#60a5fa,#2563EB)}
+.progress-detail{display:flex;justify-content:space-between;align-items:center}
+.progress-pct{font-size:11px;font-weight:700;color:#475569}
+.progress-legend{display:flex;gap:8px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:3px;font-size:10px;color:#64748b}
+.legend-dot{width:6px;height:6px;border-radius:50%}
+.legend-dot.green{background:#059669}.legend-dot.yellow{background:#d97706}.legend-dot.red{background:#dc2626}.legend-dot.gray{background:#94a3b8}.legend-dot.blue{background:#2563EB}
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insight-card{padding:16px;border-radius:14px}
+.insight-card.strength{background:#f0fdf4;border:1px solid #bbf7d0}
+.insight-card.improve{background:#fff7ed;border:1px solid #fed7aa}
+.insight-icon{font-size:22px;margin-bottom:8px}
+.insight-title{font-size:13px;font-weight:700;color:#1E293B;margin-bottom:8px}
+.insight-list{font-size:12px;color:#475569;line-height:1.8}
+.comment-box{background:#f8fafc;border-radius:14px;padding:20px;border:1px solid #e2e8f0}
+.comment-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #e2e8f0}
+.comment-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#1D4ED8);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;box-shadow:0 4px 12px rgba(37,99,235,0.3)}
+.comment-name{font-size:15px;font-weight:700;color:#1E293B}
+.comment-role{font-size:11px;color:#64748b;margin-top:2px}
+.comment-body{display:flex;flex-direction:column;gap:0}
+.comment-paragraph{font-size:13px;color:#475569;line-height:1.9;padding:10px 0;border-bottom:1px solid #f1f5f9}
+.comment-paragraph:first-child{padding-top:0}
+.comment-paragraph:last-child{border-bottom:none;padding-bottom:0}
+.comment-greeting{color:#1E293B;font-weight:500}
+.comment-warning{background:#fffbeb;border-radius:8px;padding:10px 12px !important;border:none !important;border-left:3px solid #f59e0b !important;color:#92400e !important;margin:4px 0}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{padding:5px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.tag.positive{background:#dbeafe;color:#1d4ed8}.tag.warning{background:#fef9c3;color:#92400e}.tag.danger{background:#fee2e2;color:#991b1b}
+.vocab-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.vocab-tag{background:#eff6ff;color:#1d4ed8;padding:4px 10px;border-radius:10px;font-size:11px;border:1px solid #bfdbfe}
+.footer{background:#1e293b;color:white;padding:24px 20px;text-align:center;border-top-left-radius:24px;border-top-right-radius:24px}
+.footer-logo{font-size:14px;font-weight:700;margin-bottom:8px}
+.btn-call{display:inline-block;background:#2563EB;color:white;text-decoration:none;padding:12px 28px;border-radius:30px;font-weight:600;font-size:14px}
+.empty-state{text-align:center;padding:20px;color:#94a3b8;font-size:13px}
+@media(max-width:360px){body{padding:10px}.section{padding:20px 16px}.header{padding:20px 16px}.header h2{font-size:22px}}</style></head><body><div class="container">
+
+<div class="header">
+  <h1>정윤정영어 | 윈터 예비고3</h1>
+  <h2>박나은  학생</h2>
+  <div class="badge">2026년 1월 ~ 2월 학습 리포트</div>
+</div>
+
+<div class="section">
+  <div class="section-title">출석현황</div>
+  <div class="donut-row">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+    <circle cx="70" cy="70" r="54" fill="none" stroke="#e2e8f0" stroke-width="16"/>
+    <circle cx="70" cy="70" r="54" fill="none" stroke="#2563EB" stroke-width="16" stroke-dasharray="339.29200658769764 0" stroke-dashoffset="-0" transform="rotate(-90 70 70)" />
+    
+    
+    <text x="70" y="64" text-anchor="middle" font-size="18" font-weight="bold" fill="#1E293B">100%</text>
+    <text x="70" y="82" text-anchor="middle" font-size="10" fill="#64748b">출석률</text>
+  </svg>
+    <div class="donut-legend">
+      <div class="donut-legend-item"><div class="donut-dot" style="background:#2563EB"></div>출석 7회</div>
+      <div class="donut-legend-item"><div class="donut-dot" style="background:#60a5fa"></div>동영상 0회</div>
+      <div class="donut-legend-item"><div class="donut-dot" style="background:#fca5a5"></div>결석 0회</div>
+      <div class="donut-legend-item"><div class="donut-dot" style="background:#94a3b8"></div>총 7회</div>
+    </div>
+  </div>
+  <div class="kpi-grid"><div class="kpi-card"><div class="kpi-label">과제 통합 제출률</div><div class="kpi-value excellent">100%</div><div class="kpi-sub">12/12 완료</div></div><div class="kpi-card"><div class="kpi-label">주간지 완성도</div><div class="kpi-value warning">57%</div><div class="kpi-sub">4/7 제출</div></div><div class="kpi-card"><div class="kpi-label">클래스카드 응시율</div><div class="kpi-value danger">33%</div><div class="kpi-sub">2/6 완료</div></div><div class="kpi-card"><div class="kpi-label">복습 테스트</div><div class="kpi-value danger">-</div><div class="kpi-sub">데이터 없음</div></div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">학습현황</div>
+  <div class="summary-box">
+  <div class="summary-box-title">📊 이번 달 완성도 요약 (2026년 1월 ~ 2월)</div>
+  <div class="summary-row">
+    <span class="summary-label">과제 통합 (1~3)</span>
+    <div class="summary-bar"><div class="summary-bar-fill green" style="width:100%"></div></div>
+    <span class="summary-pct green">100%</span>
+  </div>
+  <div class="summary-row">
+    <span class="summary-label">주간지 완성도</span>
+    <div class="summary-bar"><div class="summary-bar-fill red" style="width:57%"></div></div>
+    <span class="summary-pct red">57%</span>
+  </div>
+  <div class="summary-row">
+    <span class="summary-label">클래스카드 응시율</span>
+    <div class="summary-bar"><div class="summary-bar-fill red" style="width:33%"></div></div>
+    <span class="summary-pct red">33%</span>
+  </div>
+</div><div class="learning-item">
+    <div class="learning-header">
+      <span class="learning-name">📚 과제1 (기출독해)</span>
+      <span class="learning-status status-complete">완료</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+    <div class="progress-detail">
+      <span class="progress-pct">5/5 (100%)</span>
+      <div class="progress-legend"><div class="legend-item"><div class="legend-dot green"></div>완료 5</div><div class="legend-item"><div class="legend-dot red"></div>미제출 0</div></div>
+    </div>
+  </div><div class="learning-item">
+    <div class="learning-header">
+      <span class="learning-name">📖 과제2 (어법)</span>
+      <span class="learning-status status-complete">완료</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+    <div class="progress-detail">
+      <span class="progress-pct">6/6 (100%)</span>
+      <div class="progress-legend"><div class="legend-item"><div class="legend-dot green"></div>완료 6</div><div class="legend-item"><div class="legend-dot red"></div>미제출 0</div></div>
+    </div>
+  </div><div class="learning-item">
+    <div class="learning-header">
+      <span class="learning-name">✍️ 과제3 (서답형)</span>
+      <span class="learning-status status-complete">완료</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+    <div class="progress-detail">
+      <span class="progress-pct">1/1 (100%)</span>
+      <div class="progress-legend"><div class="legend-item"><div class="legend-dot green"></div>완료 1</div><div class="legend-item"><div class="legend-dot red"></div>미제출 0</div></div>
+    </div>
+  </div><div class="learning-item">
+    <div class="learning-header">
+      <span class="learning-name">📝 주간담금질</span>
+      <span class="learning-status status-incomplete">진행중</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill red" style="width:57%"></div></div>
+    <div class="progress-detail">
+      <span class="progress-pct">4/7 (57%)</span>
+      <div class="progress-legend"><div class="legend-item"><div class="legend-dot green"></div>제출 4</div><div class="legend-item"><div class="legend-dot red"></div>미제출 3</div></div>
+    </div>
+  </div><div class="learning-item">
+    <div class="learning-header">
+      <span class="learning-name">🃏 클래스카드 (어휘)</span>
+      <span class="learning-status status-incomplete">진행중</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill red" style="width:33%"></div></div>
+    <div class="progress-detail">
+      <span class="progress-pct">2/6 (33%)</span>
+      <div class="progress-legend"><div class="legend-item"><div class="legend-dot green"></div>완료 2</div><div class="legend-item"><div class="legend-dot gray"></div>미응시 4</div><div class="legend-item"><div class="legend-dot red"></div>통과x 0</div></div>
+    </div>
+  </div>
+  <div style="margin-top:12px"><div style="font-size:12px;color:#64748b;margin-bottom:6px">🔤 이번 달 어휘시험</div><div class="vocab-list"><span class="vocab-tag">[2주차] DAY1~5</span><span class="vocab-tag">[3주차] DAY1~4</span><span class="vocab-tag">[4주차] DAY1~5</span><span class="vocab-tag">[5주차] DAY1~5 & [실전모고1회] 파트1</span><span class="vocab-tag">[실전모고 1회] 파트2</span><span class="vocab-tag">[수특 독해] 1회차 & 미니모의고사 1회</span><span class="vocab-tag">수특 2회차&미니모고 2회</span></div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">강점 및 개선사항</div>
+  <div class="insight-grid">
+    <div class="insight-card strength"><div class="insight-icon">💪</div><div class="insight-title">강점</div><div class="insight-list">• 데이터를 확인해주세요</div></div>
+    <div class="insight-card improve"><div class="insight-icon">📈</div><div class="insight-title">개선 필요</div><div class="insight-list">• 데이터를 확인해주세요</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">학습관리 조교 코멘트</div>
+  <div class="comment-box">
+    <div class="comment-header">
+      <div class="comment-avatar">문</div>
+      <div class="comment-info">
+        <div class="comment-name">문서영</div>
+        <div class="comment-role">학습관리 담당</div>
+      </div>
+    </div>
+    <div class="comment-body"><p class="comment-paragraph comment-greeting">안녕하세요, 담당 조교T 문서영입니다.<br>26겨울방학 학습 리포트 전달드립니다.</p><p class="comment-paragraph comment-warning">나은이는 26윈터특강기간 동안 매주 출석하며 성실한 모습을 보여주었습니다. 수업시간에도 모르는 문제나 헷갈리는 부분을 주저하지 않고 적극적으로 질문하는 모습이 특히 인상깊었습니다. 자신의 약점을 놓치지 않고 채워나가고자 하는 태도를 꾸준히 유지하여 학습 역량을 키워낸다면 중간고사에서 더욱 더 두각을 드러낼 것으로 기대됩니다. 또한, 독해 문제의 정답 근거를 작성하는 과제를 매주 성실하게 수행해주었습니다. 스스로 근거를 작성하며 논리 구조를 쌓는 연습을 앞으로도 꾸준히 반복한다면, 3월 모의고사에서 높은 성적으로 이어질 것으로 보입니다.<br>다만, 과제를 꾸준히 해내는 데에는 다소 어려움을 보입니다. 어법, 독해 과제는 매주 꾸준히 제출해주었지만, 그 이외의 과제들의 제출률은 낮은 편입니다. 과제의 양이 적지 않고, 바쁜 시기인 만큼, 한 번에 몰아서 하기보다는 하루에 독해 몇 지문씩, 어법 몇 문제씩 나누어 수행하는 방식으로 학습해보길 바랍니다. 방학 동안에 매일 꾸준히 반복학습을 하는 습관을 길러보길 바라며, 그동안 밀린 미완 과제들 역시 포기하지 않고 완성할 수 있도록 지속적으로 옆에서 관심을 가지고 지도하겠습니다.</p><p class="comment-paragraph">앞으로도 나은이의 학습 상황을 세심하게 살피며, 취약 부분을 잘 채워나갈 수 있는데에 도움이 될 수 있도록 최선을 다하겠습니다. 감사합니다.</p></div>
+  </div>
+  <div class="tag-row"></div>
+</div>
+
+<div class="footer">
+  <div class="footer-logo">정윤정영어</div>
+  <p style="font-size:13px;margin-bottom:12px;">문의사항이 있으신가요?</p>
+  <a href="tel:01086740509" class="btn-call">📞 010-8674-0509 전화하기</a>
+</div>
+
+</div></body></html>
