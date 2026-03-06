@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>EiE 동서변 어학원 · 2026년 2월 학습 보고서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --main:#1C4D8D;--main-light:#2A6BC5;--main-pale:#E8F0FB;
+  --sub:#018790;--sub-light:#02B5C1;--sub-pale:#E0F5F6;
+  --positive:#10B981;--positive-pale:#ECFDF5;
+  --warning:#EF4444;--warning-pale:#FEF2F2;
+  --neutral:#F59E0B;
+  --bg:#F8FAFC;--card:#FFFFFF;--text:#1E293B;
+  --text-secondary:#64748B;--text-muted:#94A3B8;
+  --border:#E2E8F0;--radius:16px;--radius-sm:10px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;max-width:100vw;overflow-x:hidden}
+.header{background:linear-gradient(135deg,var(--main) 0%,var(--main-light) 100%);padding:32px 20px 28px;color:#fff;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-40%;right:-20%;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%}
+.header-academy{font-size:13px;font-weight:400;opacity:.85;letter-spacing:.5px;margin-bottom:4px}
+.header-title{font-size:22px;font-weight:700;margin-bottom:2px}
+.header-period{font-size:13px;font-weight:300;opacity:.75}
+.header-meta{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.header-tag{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:5px 12px;border-radius:20px;font-size:12px}
+.container{padding:0 16px 100px;max-width:480px;margin:0 auto}
+.section{margin-top:20px}
+.section-label{font-size:11px;font-weight:600;color:var(--main);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-left:2px}
+.card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.card+.card{margin-top:12px}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi-box{background:var(--bg);border-radius:var(--radius-sm);padding:16px 14px;text-align:center;position:relative;overflow:hidden}
+.kpi-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi-box.main::before{background:var(--main)}.kpi-box.sub::before{background:var(--sub)}
+.kpi-box.positive::before{background:var(--positive)}.kpi-box.neutral::before{background:var(--neutral)}
+.kpi-label{font-size:11px;color:var(--text-secondary);font-weight:500;margin-bottom:6px}
+.kpi-value{font-size:28px;font-weight:700;line-height:1}
+.kpi-box.main .kpi-value{color:var(--main)}.kpi-box.sub .kpi-value{color:var(--sub)}
+.kpi-box.positive .kpi-value{color:var(--positive)}.kpi-box.neutral .kpi-value{color:var(--neutral)}
+.kpi-change{font-size:11px;margin-top:4px;font-weight:500}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.stat-row:last-child{border-bottom:none}
+.stat-label{font-size:14px;color:var(--text-secondary)}
+.stat-value{font-size:14px;font-weight:600}
+.stat-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.stat-badge.excellent{background:var(--positive-pale);color:var(--positive)}
+.stat-badge.good{background:var(--sub-pale);color:var(--sub)}
+.stat-badge.warn{background:var(--warning-pale);color:var(--warning)}
+.chart-wrap{position:relative;width:100%;height:220px;margin-top:12px}
+.chart-wrap canvas{width:100%!important;height:100%!important}
+.progress-item{margin-bottom:14px}.progress-item:last-child{margin-bottom:0}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:6px}
+.progress-name{font-size:13px;font-weight:500;color:var(--text)}
+.progress-score{font-size:13px;font-weight:600}
+.progress-bar-bg{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.progress-bar-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(.4,0,.2,1);width:0}
+.expandable-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.expandable-header h3{font-size:15px;font-weight:600}
+.expand-icon{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform .3s ease;flex-shrink:0}
+.expand-icon svg{width:14px;height:14px;color:var(--text-secondary)}
+.expandable-header.active .expand-icon{transform:rotate(180deg)}
+.expandable-content{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.expandable-content.open{max-height:3000px}
+.expandable-inner{padding-top:16px}
+.log-table{width:100%;border-collapse:collapse;font-size:12px}
+.log-table th{background:var(--main-pale);color:var(--main);font-weight:600;padding:8px 6px;text-align:center;font-size:11px;white-space:nowrap}
+.log-table td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--border);vertical-align:middle;font-size:12px}
+.log-table tr:last-child td{border-bottom:none}
+.log-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+.score-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.score-dot.high{background:var(--positive)}.score-dot.mid{background:var(--neutral)}.score-dot.low{background:var(--warning)}
+.comment-box{background:linear-gradient(135deg,var(--main-pale),var(--sub-pale));border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;line-height:1.7;color:var(--text);border-left:3px solid var(--main);margin-bottom:12px}
+.ci{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:10px;background:var(--card)}
+.ci:last-child{margin-bottom:0}
+.ci-head{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--main-pale);border-bottom:1px solid var(--border)}
+.ci-icon{font-size:17px;flex-shrink:0}
+.ci-title{font-size:13px;font-weight:700;color:var(--main)}
+.ci-body{padding:10px 14px 12px;font-size:13px;color:var(--text-secondary);line-height:1.7}
+.ci-body mark{background:rgba(28,77,141,.12);color:var(--main);border-radius:3px;padding:0 3px;font-weight:600;font-style:normal}
+.textbook-tag{display:inline-block;background:var(--main-pale);color:var(--main);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;margin:3px 4px 3px 0}
+.alert-box{display:flex;gap:10px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:var(--radius-sm);padding:14px;margin-top:12px}
+.alert-icon{font-size:18px;flex-shrink:0}
+.alert-text{font-size:13px;color:#92400E;line-height:1.6}
+.footer{margin-top:32px;text-align:center;padding:24px 20px;border-top:1px solid var(--border)}
+.footer-academy{font-size:14px;font-weight:600;color:var(--main);margin-bottom:4px}
+.footer-contact{font-size:13px;color:var(--text-secondary)}
+.footer-date{font-size:11px;color:var(--text-muted);margin-top:8px}
+.nav-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);display:flex;justify-content:center;gap:6px;padding:12px 16px;z-index:100}
+.nav-item{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav-item.active,.nav-item:hover{background:var(--main);color:#fff}
+.doughnut-wrap{position:relative;width:140px;height:140px;margin:0 auto}
+.doughnut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.doughnut-center .value{font-size:32px;font-weight:700;color:var(--main);line-height:1}
+.doughnut-center .label{font-size:11px;color:var(--text-muted);margin-top:2px}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.scroll-hint{font-size:10px;color:var(--text-muted);margin-bottom:8px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-academy">EiE 동서변 어학원</div>
+  <div class="header-title">전예빈 학생 학습 리포트</div>
+  <div class="header-period">2026년 2월</div>
+  <div class="header-meta">
+    <span class="header-tag">📚 </span>
+    <span class="header-tag">📅 수업 8회</span>
+    <span class="header-tag">✅ 출석률 50%</span>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <a href="#summary" class="nav-item active">Summary</a>
+  <a href="#attendance" class="nav-item">출결</a>
+  <a href="#scores" class="nav-item">점수</a>
+  <a href="#progress" class="nav-item">학습</a>
+  <a href="#comment" class="nav-item">코멘트</a>
+</nav>
+
+<div class="container">
+
+<div class="section fade-up" id="summary">
+  <div class="section-label">Summary</div>
+  <div class="kpi-grid">
+    <div class="kpi-box main">
+      <div class="kpi-label">단어 평균</div>
+      <div class="kpi-value">71.5</div>
+      <div class="kpi-change">점</div>
+    </div>
+    <div class="kpi-box sub">
+      <div class="kpi-label">출석률</div>
+      <div class="kpi-value">50%</div>
+      <div class="kpi-change"></div>
+    </div>
+    <div class="kpi-box positive">
+      <div class="kpi-label">과제 수행</div>
+      <div class="kpi-value">100%</div>
+      <div class="kpi-change">— 완벽 수행</div>
+    </div>
+    <div class="kpi-box neutral">
+      <div class="kpi-label">수업 일수</div>
+      <div class="kpi-value">8일</div>
+      <div class="kpi-change">— 2026년 2월</div>
+    </div>
+  </div>
+  <div class="comment-box" style="margin-top:16px;">예빈 학생은 2월에 출석률 50%로 학습 지속성이 저하되었으나, 출석한 수업에서는 단어와 듣기 영역에서 괄목할 만한 진전을 보였습니다. 특히 마지막 주 단어 95점, 듣기 70점의 성과는 집중력 있는 학습의 결과이며, 과제 완수율 100%는 학습 의지를 반영합니다.</div>
+</div>
+
+<div class="section fade-up" id="attendance">
+  <div class="section-label">Attendance</div>
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📅 출석 현황</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+          <div class="doughnut-wrap">
+            <canvas id="attendChart"></canvas>
+            <div class="doughnut-center">
+              <div class="value">50</div>
+              <div class="label">출석률 %</div>
+            </div>
+          </div>
+          <div>
+            <div class="stat-row" style="border:none;padding:6px 0;">
+              <span class="stat-label" style="font-size:13px;">정상출석</span>
+              <span class="stat-badge excellent" style="margin-left:8px;">4일</span>
+            </div>
+            
+            <div class="stat-row" style="border:none;padding:6px 0;">
+              <span class="stat-label" style="font-size:13px;">결석</span>
+              <span class="stat-badge warn" style="margin-left:8px;">4일</span>
+            </div>
+          </div>
+        </div>
+        <div class="alert-box" style="background:#FEF2F2;border-color:#FECACA;margin-top:12px;"><div class="alert-icon">⚠️</div><div class="alert-text" style="color:#991B1B;">결석일: <strong>2026-02-02, 2026-02-05, 2026-02-19, 2026-02-23</strong></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section fade-up" id="scores">
+  <div class="section-label">Scores</div>
+  
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📖 단어 테스트</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:var(--text-muted);">2026년 2월 평균</div>
+          <div style="font-size:24px;font-weight:700;color:var(--main);">71.5<span style="font-size:13px;color:var(--text-muted);font-weight:400;">점</span></div>
+        </div>
+        <div class="chart-wrap" style="height:180px;"><canvas id="wordChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📊 영역별 평균 점수</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div class="chart-wrap" style="height:240px;"><canvas id="radarChart"></canvas></div>
+        <div style="margin-top:16px;">
+          <div class="progress-item">
+    <div class="progress-header">
+      <span class="progress-name">단어</span>
+      <span class="progress-score" style="color:var(--main)">71.5점</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="background:var(--main);" data-width="71.5"></div>
+    </div>
+  </div>
+          
+          
+          <div class="progress-item">
+    <div class="progress-header">
+      <span class="progress-name">듣기</span>
+      <span class="progress-score" style="color:var(--sub-light)">70점</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="background:var(--sub-light);" data-width="70"></div>
+    </div>
+  </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="section fade-up" id="progress">
+  <div class="section-label">Learning Progress</div>
+
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>✅ 과제 수행도</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="text-align:center;margin-bottom:16px;">
+          <div style="font-size:48px;font-weight:700;color:var(--positive)">100%</div>
+          <div style="font-size:13px;color:var(--text-secondary);">전 과제 완벽 수행</div>
+        </div>
+        <div class="stat-row"><span class="stat-label">과제 부여 횟수</span><span class="stat-value">3회</span></div>
+        <div class="stat-row"><span class="stat-label">완료 횟수</span><span class="stat-value" style="color:var(--positive);">3회</span></div>
+        <div class="stat-row"><span class="stat-label">미완료</span><span class="stat-value">0회</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <h3>📋 수업 로그</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content">
+      <div class="expandable-inner">
+        <div class="scroll-hint">← 좌우로 스크롤 →</div>
+        <div class="log-scroll">
+          <table class="log-table">
+            <thead><tr><th>날짜</th><th>출석</th><th>단어</th><th>듣기</th><th>문법</th><th>독해</th><th>과제</th></tr></thead>
+            <tbody><tr><td style="white-space:nowrap">02/02</td><td><span style="color:#EF4444;font-weight:600;">결석</span></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td style="white-space:nowrap">02/05</td><td><span style="color:#EF4444;font-weight:600;">결석</span></td><td>-</td><td>-</td><td>-</td><td>-</td><td>✅</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 듣기: 고1 모의고사 10/10 / 독해: 다빈출모의고사 6/6</span></td></tr><tr><td style="white-space:nowrap">02/09</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--warning);">48</td><td>-</td><td>-</td><td>-</td><td>✅</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 문법: 주격관계대명사 19/20 / 듣기: 고1 모의고사7/7 / 독해: 다빈출 모의고사 3/6</span></td></tr><tr><td style="white-space:nowrap">02/12</td><td><span class="score-dot high"></span>출석</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td style="white-space:nowrap">02/12</td><td><span class="score-dot high"></span>출석</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td style="white-space:nowrap">02/19</td><td><span style="color:#EF4444;font-weight:600;">결석</span></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 문법: 주격관계대명사</span></td></tr><tr><td style="white-space:nowrap">02/23</td><td><span style="color:#EF4444;font-weight:600;">결석</span></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td style="white-space:nowrap">02/26</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--positive);font-weight:700;">95</td><td style="color:var(--neutral);">70</td><td>-</td><td>-</td><td>✅</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 문법: 최상급 문제풀이 / 독해: 고1 모의고사 주제찾기</span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section fade-up" id="comment">
+  <div class="section-label">Teacher's Comment</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <span style="font-size:18px;">💬</span>
+      <h3 style="font-size:15px;font-weight:700;">선생님 종합 코멘트</h3>
+    </div>
+    <div class="comment-box">예빈 학생은 2월에 출석률 50%로 학습 지속성이 저하되었으나, 출석한 수업에서는 단어와 듣기 영역에서 괄목할 만한 진전을 보였습니다. 특히 마지막 주 단어 95점, 듣기 70점의 성과는 집중력 있는 학습의 결과이며, 과제 완수율 100%는 학습 의지를 반영합니다.</div>
+    <div class="ci"><div class="ci-head"><span class="ci-icon">📚</span><span class="ci-title">단어</span></div><div class="ci-body">기초 단어(48점)에서 고1 모의고사 수준의 고난도 어휘(95점)로 급속한 성장을 이루었습니다. 교재 내 단어 학습을 병행하며 어휘 확장에 집중하고 있습니다.</div></div><div class="ci"><div class="ci-head"><span class="ci-icon">👂</span><span class="ci-title">듣기</span></div><div class="ci-body">고1 모의고사 수준의 듣기 문제를 풀이하며 실전 감각을 익히고 있습니다. 70점의 성과를 통해 중상 수준의 청취 능력을 갖추었습니다.</div></div><div class="ci"><div class="ci-head"><span class="ci-icon">🔤</span><span class="ci-title">문법</span></div><div class="ci-body">관계대명사, 재귀대명사, 최상급 등 고1 수준의 핵심 문법을 학습하고 있습니다. 직접 작성하고 발표하는 참여식 수업으로 이해도를 높이고 있습니다.</div></div><div class="ci"><div class="ci-head"><span class="ci-icon">📖</span><span class="ci-title">독해</span></div><div class="ci-body">2026년 <mark>고1 다빈출 모의고사</mark>와 2025년 고1 기출 문제로 실전 독해를 훈련하고 있습니다. 시간 제한 하에 매주 6문제씩 풀이하며 <mark>주제 찾기</mark>와 문장 분석 능력을 배양하고 있습니다.</div></div><div class="ci"><div class="ci-head"><span class="ci-icon">✍️</span><span class="ci-title">영작 및 기출 대비</span></div><div class="ci-body">중2 학교 내용 지문을 바탕으로 한 <mark>영작쓰기</mark> 10문제를 진행하여 중간·기말고사에 미리 대비하고 있습니다.</div></div>
+    
+    <div class="alert-box" style="background:#F0FDF4;border-color:#BBF7D0;margin-top:14px;">
+      <div class="alert-icon">🔔</div>
+      <div class="alert-text" style="color:#166534;"><strong>다음달 학습 방향</strong><br>3월에는 현재의 단어와 듣기 성장세를 유지하면서 결석 없는 꾸준한 출석이 최우선입니다. 어려워지는 고1 수준 어휘에 대한 지속적인 복습과 독해·문법 영역의 정확도 향상에 중점을 두어 전반적인 학력 향상을 이루기를 기대합니다.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-academy">EiE 동서변 어학원</div>
+  <div class="footer-contact">문의 <a href="tel:01049033617" style="color:var(--sub);text-decoration:none;font-weight:500;">010-4903-3617</a></div>
+  <div class="footer-date">보고서 생성일: 2026년 3월 6일</div>
+</div>
+
+</div>
+
+<script>
+function toggleExpand(h){h.classList.toggle('active');h.nextElementSibling.classList.toggle('open');}
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>{document.querySelectorAll('.progress-bar-fill').forEach(b=>{b.style.width=b.dataset.width+'%';});},300);
+const navItems=document.querySelectorAll('.nav-item');
+const secs=['summary','attendance','scores','progress','comment'];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<200)cur=id;});
+  navItems.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+document.querySelectorAll('.nav-item').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+});
+Chart.defaults.font.family="'Noto Sans KR',sans-serif";
+Chart.defaults.font.size=11;
+
+new Chart(document.getElementById('attendChart'),{
+  type:'doughnut',
+  data:{labels:['출석','결석'],datasets:[{data:[4,4],backgroundColor:['#1C4D8D','#E2E8F0'],borderWidth:0}]},
+  options:{cutout:'72%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}}}
+});
+
+
+new Chart(document.getElementById('wordChart'),{
+  type:'line',
+  data:{
+    labels:["02/09","02/26"],
+    datasets:[{label:'단어 점수',data:[48,95],borderColor:'#1C4D8D',backgroundColor:'rgba(28,77,141,.08)',fill:true,tension:.35,pointRadius:4,pointBackgroundColor:'#1C4D8D',pointBorderColor:'#fff',pointBorderWidth:2,borderWidth:2.5}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{y:{min:60,max:105,grid:{color:'#F1F5F9'},ticks:{stepSize:10}},x:{grid:{display:false}}},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1E293B',padding:8,cornerRadius:8}}
+  }
+});
+
+
+
+new Chart(document.getElementById('radarChart'),{
+  type:'radar',
+  data:{
+    labels:["단어","듣기"],
+    datasets:[{label:'2026년 2월',data:[71.5,70],borderColor:'#1C4D8D',backgroundColor:'rgba(28,77,141,.15)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#1C4D8D'}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:0,max:100,ticks:{stepSize:20,backdropColor:'transparent',font:{size:10}},grid:{color:'#E2E8F0'},pointLabels:{font:{size:12,weight:'600'}}}},
+    plugins:{legend:{display:false}}
+  }
+});
+
+</script>
+</body></html>
