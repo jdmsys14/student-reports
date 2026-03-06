@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>EiE 동서변 어학원 · 2026년 2월 학습 보고서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --main:#1C4D8D;--main-light:#2A6BC5;--main-pale:#E8F0FB;
+  --sub:#018790;--sub-light:#02B5C1;--sub-pale:#E0F5F6;
+  --positive:#10B981;--positive-pale:#ECFDF5;
+  --warning:#EF4444;--warning-pale:#FEF2F2;
+  --neutral:#F59E0B;
+  --bg:#F8FAFC;--card:#FFFFFF;--text:#1E293B;
+  --text-secondary:#64748B;--text-muted:#94A3B8;
+  --border:#E2E8F0;--radius:16px;--radius-sm:10px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;max-width:100vw;overflow-x:hidden}
+.header{background:linear-gradient(135deg,var(--main) 0%,var(--main-light) 100%);padding:32px 20px 28px;color:#fff;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-40%;right:-20%;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%}
+.header-academy{font-size:13px;font-weight:400;opacity:.85;letter-spacing:.5px;margin-bottom:4px}
+.header-title{font-size:22px;font-weight:700;margin-bottom:2px}
+.header-period{font-size:13px;font-weight:300;opacity:.75}
+.header-meta{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.header-tag{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:5px 12px;border-radius:20px;font-size:12px}
+.container{padding:0 16px 100px;max-width:480px;margin:0 auto}
+.section{margin-top:20px}
+.section-label{font-size:11px;font-weight:600;color:var(--main);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-left:2px}
+.card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.card+.card{margin-top:12px}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi-box{background:var(--bg);border-radius:var(--radius-sm);padding:16px 14px;text-align:center;position:relative;overflow:hidden}
+.kpi-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi-box.main::before{background:var(--main)}.kpi-box.sub::before{background:var(--sub)}
+.kpi-box.positive::before{background:var(--positive)}.kpi-box.neutral::before{background:var(--neutral)}
+.kpi-label{font-size:11px;color:var(--text-secondary);font-weight:500;margin-bottom:6px}
+.kpi-value{font-size:28px;font-weight:700;line-height:1}
+.kpi-box.main .kpi-value{color:var(--main)}.kpi-box.sub .kpi-value{color:var(--sub)}
+.kpi-box.positive .kpi-value{color:var(--positive)}.kpi-box.neutral .kpi-value{color:var(--neutral)}
+.kpi-change{font-size:11px;margin-top:4px;font-weight:500}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.stat-row:last-child{border-bottom:none}
+.stat-label{font-size:14px;color:var(--text-secondary)}
+.stat-value{font-size:14px;font-weight:600}
+.stat-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.stat-badge.excellent{background:var(--positive-pale);color:var(--positive)}
+.stat-badge.good{background:var(--sub-pale);color:var(--sub)}
+.stat-badge.warn{background:var(--warning-pale);color:var(--warning)}
+.chart-wrap{position:relative;width:100%;height:220px;margin-top:12px}
+.chart-wrap canvas{width:100%!important;height:100%!important}
+.progress-item{margin-bottom:14px}.progress-item:last-child{margin-bottom:0}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:6px}
+.progress-name{font-size:13px;font-weight:500;color:var(--text)}
+.progress-score{font-size:13px;font-weight:600}
+.progress-bar-bg{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.progress-bar-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(.4,0,.2,1);width:0}
+.expandable-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.expandable-header h3{font-size:15px;font-weight:600}
+.expand-icon{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform .3s ease;flex-shrink:0}
+.expand-icon svg{width:14px;height:14px;color:var(--text-secondary)}
+.expandable-header.active .expand-icon{transform:rotate(180deg)}
+.expandable-content{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.expandable-content.open{max-height:3000px}
+.expandable-inner{padding-top:16px}
+.log-table{width:100%;border-collapse:collapse;font-size:12px}
+.log-table th{background:var(--main-pale);color:var(--main);font-weight:600;padding:8px 6px;text-align:center;font-size:11px;white-space:nowrap}
+.log-table td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--border);vertical-align:middle;font-size:12px}
+.log-table tr:last-child td{border-bottom:none}
+.log-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+.score-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.score-dot.high{background:var(--positive)}.score-dot.mid{background:var(--neutral)}.score-dot.low{background:var(--warning)}
+.comment-box{background:linear-gradient(135deg,var(--main-pale),var(--sub-pale));border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;line-height:1.7;color:var(--text);border-left:3px solid var(--main);margin-bottom:12px}
+.ci{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:10px;background:var(--card)}
+.ci:last-child{margin-bottom:0}
+.ci-head{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--main-pale);border-bottom:1px solid var(--border)}
+.ci-icon{font-size:17px;flex-shrink:0}
+.ci-title{font-size:13px;font-weight:700;color:var(--main)}
+.ci-body{padding:10px 14px 12px;font-size:13px;color:var(--text-secondary);line-height:1.7}
+.ci-body mark{background:rgba(28,77,141,.12);color:var(--main);border-radius:3px;padding:0 3px;font-weight:600;font-style:normal}
+.textbook-tag{display:inline-block;background:var(--main-pale);color:var(--main);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;margin:3px 4px 3px 0}
+.alert-box{display:flex;gap:10px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:var(--radius-sm);padding:14px;margin-top:12px}
+.alert-icon{font-size:18px;flex-shrink:0}
+.alert-text{font-size:13px;color:#92400E;line-height:1.6}
+.footer{margin-top:32px;text-align:center;padding:24px 20px;border-top:1px solid var(--border)}
+.footer-academy{font-size:14px;font-weight:600;color:var(--main);margin-bottom:4px}
+.footer-contact{font-size:13px;color:var(--text-secondary)}
+.footer-date{font-size:11px;color:var(--text-muted);margin-top:8px}
+.nav-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);display:flex;justify-content:center;gap:6px;padding:12px 16px;z-index:100}
+.nav-item{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav-item.active,.nav-item:hover{background:var(--main);color:#fff}
+.doughnut-wrap{position:relative;width:140px;height:140px;margin:0 auto}
+.doughnut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.doughnut-center .value{font-size:32px;font-weight:700;color:var(--main);line-height:1}
+.doughnut-center .label{font-size:11px;color:var(--text-muted);margin-top:2px}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.scroll-hint{font-size:10px;color:var(--text-muted);margin-bottom:8px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-academy">EiE 동서변 어학원</div>
+  <div class="header-title">권도현 학생 학습 리포트</div>
+  <div class="header-period">2026년 2월</div>
+  <div class="header-meta">
+    <span class="header-tag">📚 </span>
+    <span class="header-tag">📅 수업 5회</span>
+    <span class="header-tag">✅ 출석률 100%</span>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <a href="#summary" class="nav-item active">Summary</a>
+  <a href="#attendance" class="nav-item">출결</a>
+  <a href="#scores" class="nav-item">점수</a>
+  <a href="#progress" class="nav-item">학습</a>
+  <a href="#comment" class="nav-item">코멘트</a>
+</nav>
+
+<div class="container">
+
+<div class="section fade-up" id="summary">
+  <div class="section-label">Summary</div>
+  <div class="kpi-grid">
+    <div class="kpi-box main">
+      <div class="kpi-label">단어 평균</div>
+      <div class="kpi-value">56.8</div>
+      <div class="kpi-change">점</div>
+    </div>
+    <div class="kpi-box sub">
+      <div class="kpi-label">출석률</div>
+      <div class="kpi-value">100%</div>
+      <div class="kpi-change">— 개근</div>
+    </div>
+    <div class="kpi-box positive">
+      <div class="kpi-label">과제 수행</div>
+      <div class="kpi-value">60%</div>
+      <div class="kpi-change">3/5회</div>
+    </div>
+    <div class="kpi-box neutral">
+      <div class="kpi-label">수업 일수</div>
+      <div class="kpi-value">5일</div>
+      <div class="kpi-change">— 2026년 2월</div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="section fade-up" id="attendance">
+  <div class="section-label">Attendance</div>
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📅 출석 현황</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+          <div class="doughnut-wrap">
+            <canvas id="attendChart"></canvas>
+            <div class="doughnut-center">
+              <div class="value">100</div>
+              <div class="label">출석률 %</div>
+            </div>
+          </div>
+          <div>
+            <div class="stat-row" style="border:none;padding:6px 0;">
+              <span class="stat-label" style="font-size:13px;">정상출석</span>
+              <span class="stat-badge excellent" style="margin-left:8px;">5일</span>
+            </div>
+            
+            <div class="stat-row" style="border:none;padding:6px 0;">
+              <span class="stat-label" style="font-size:13px;">결석</span>
+              <span class="stat-badge good" style="margin-left:8px;">0일</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section fade-up" id="scores">
+  <div class="section-label">Scores</div>
+  
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📖 단어 테스트</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:var(--text-muted);">2026년 2월 평균</div>
+          <div style="font-size:24px;font-weight:700;color:var(--main);">56.8<span style="font-size:13px;color:var(--text-muted);font-weight:400;">점</span></div>
+        </div>
+        <div class="chart-wrap" style="height:180px;"><canvas id="wordChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📊 영역별 평균 점수</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div class="chart-wrap" style="height:240px;"><canvas id="radarChart"></canvas></div>
+        <div style="margin-top:16px;">
+          <div class="progress-item">
+    <div class="progress-header">
+      <span class="progress-name">단어</span>
+      <span class="progress-score" style="color:var(--main)">56.8점</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="background:var(--main);" data-width="56.8"></div>
+    </div>
+  </div>
+          
+          
+          <div class="progress-item">
+    <div class="progress-header">
+      <span class="progress-name">듣기</span>
+      <span class="progress-score" style="color:var(--sub-light)">70점</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="background:var(--sub-light);" data-width="70"></div>
+    </div>
+  </div>
+          <div class="progress-item">
+    <div class="progress-header">
+      <span class="progress-name">독해</span>
+      <span class="progress-score" style="color:var(--neutral)">70점</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="background:var(--neutral);" data-width="70"></div>
+    </div>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="section fade-up" id="progress">
+  <div class="section-label">Learning Progress</div>
+
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>📚 교재 진행 현황</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">사용 교재</div>
+        <div><span class="textbook-tag">고1 모의고사</span><span class="textbook-tag">고등영어듣기</span><span class="textbook-tag">문장의 기초</span><span class="textbook-tag">중3 문법 교과과정</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="expandable-header active" onclick="toggleExpand(this)">
+      <h3>✅ 과제 수행도</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content open">
+      <div class="expandable-inner">
+        <div style="text-align:center;margin-bottom:16px;">
+          <div style="font-size:48px;font-weight:700;color:var(--neutral)">60%</div>
+          <div style="font-size:13px;color:var(--text-secondary);">3/5회 완료</div>
+        </div>
+        <div class="stat-row"><span class="stat-label">과제 부여 횟수</span><span class="stat-value">5회</span></div>
+        <div class="stat-row"><span class="stat-label">완료 횟수</span><span class="stat-value" style="color:var(--positive);">3회</span></div>
+        <div class="stat-row"><span class="stat-label">미완료</span><span class="stat-value">2회</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <h3>📋 수업 로그</h3>
+      <div class="expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+    </div>
+    <div class="expandable-content">
+      <div class="expandable-inner">
+        <div class="scroll-hint">← 좌우로 스크롤 →</div>
+        <div class="log-scroll">
+          <table class="log-table">
+            <thead><tr><th>날짜</th><th>출석</th><th>단어</th><th>듣기</th><th>문법</th><th>독해</th><th>과제</th></tr></thead>
+            <tbody><tr><td style="white-space:nowrap">02/09</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--warning);">66/100</td><td style="color:var(--warning);">64/100 (고1 듣기)</td><td>-</td><td>-</td><td>부분 미완료</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 독해: 고1 모의고사 해설, 문장 분석 진행했습니다.</span></td></tr><tr><td style="white-space:nowrap">02/12</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--warning);">54/100</td><td style="color:var(--neutral);">82/100 (고등듣기)</td><td>-</td><td style="color:var(--positive);font-weight:700;">2025</td><td>일부 미완료</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 문법: 오늘은 문장의 기초, 해석방법과 이론에 대해서 수업진행했습니다. 
+
+해당내용 잘 숙지해서 독해 수업에 잘 활용할 수 있도록 반복적인 숙달 부탁드리겠습니다.</span></td></tr><tr><td style="white-space:nowrap">02/19</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--warning);">62/100</td><td>-</td><td>-</td><td>-</td><td>✅</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 독해: 다음주 월요일에 고1 모의고사가 있을 예정입니다. 참고해 주시기 바랍니다.</span></td></tr><tr><td style="white-space:nowrap">02/23</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--warning);">46/100</td><td>-</td><td>-</td><td style="color:var(--neutral);">70/100</td><td>✅</td></tr><tr><td style="white-space:nowrap">02/26</td><td><span class="score-dot high"></span>출석</td><td style="color:var(--warning);">56/100</td><td style="color:var(--warning);">64/100 (고1 듣기)</td><td>-</td><td>-</td><td>✅</td></tr><tr><td></td><td colspan="6" style="padding:2px 8px 8px;text-align:left;"><span style="font-size:11px;color:var(--sub);background:var(--sub-pale);border-radius:4px;padding:2px 7px;">📝 문법: 중3 1학기 문법 과정중 관계대명사 what에 대해서 학습하고 연습문제 풀었습니다. 다음시간에 관계대명사 what에 대한 Test있을 예정입니다. 
+
+미리미리 공부하도록 지도해주세요.</span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section fade-up" id="comment">
+  <div class="section-label">Teacher's Comment</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <span style="font-size:18px;">💬</span>
+      <h3 style="font-size:15px;font-weight:700;">선생님 종합 코멘트</h3>
+    </div>
+    
+    <div class="comment-box">현재 고등학교 모의고사로 독해수업이 계속되고 있습니다. 내용이 다소 어렵고 지루할 수 있지만, 계속해서 신경써서 정확한 독해 및 내용의 요약과 정리에 많이 애를 쓰고 심혈을 기울이고 있습니다. 곧 2025학년도 6월 모의고사 내용의 정리도 마무리 될 예정입니다. 이부분도 철저하게 복습 하도록 지도해 주시기 바랍니다. 복습 Test가 있을 예정입니다. 
+
+또한 월요일에는 고1 모의고사를 실시할 예정입니다. 우선은 70정 이상 (3등급 이상)을 받는 것을 목표로 하고 있습니다. 사설 모의고사를 치러왔기 때문에 다소 까다롭게 생각될 수 있습니다. 지금 공부하는 과정을 믿고, 반복해서 열심히 공부하도록 격려해주세요!<br><br>오늘 모의고사 실시했습니다. 전체적으로 많이 성적이 올라온 상황입니다. 3등급 성적을 받기는 했으나… 듣기, 어휘쪽에서 아직 부족한 것이 많이 보이고 있습니다. 꾸준하게 공부하도록 격려해주시기 바랍니다.<br><br>다음주 목요일에는 지난번에 실시한 모의고사 Test가 있습니다. 해당 모의고사의 결과와 상관없이 모의고사의 내용을 스스로 공부하고 제가 테스트 하는 과정을 거칠 예정입니다. 미리미리 공부하도록 챙겨주세요. 양이 만만치 않습니다. 
+
+또한 3학년 1학기에 들어가는 가장 중요한 문법중 하나인 관계대명사 what에 대해서도 동일하게 Test가 있습니다. 
+
+위의 두 Test에 불합격하는 경우에는 과제 및 추가적인 보충학습이 있을 예정입니다. 잘 준비하도록 독려해주세요.</div>
+    
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-academy">EiE 동서변 어학원</div>
+  <div class="footer-contact">문의 <a href="tel:01049033617" style="color:var(--sub);text-decoration:none;font-weight:500;">010-4903-3617</a></div>
+  <div class="footer-date">보고서 생성일: 2026년 3월 6일</div>
+</div>
+
+</div>
+
+<script>
+function toggleExpand(h){h.classList.toggle('active');h.nextElementSibling.classList.toggle('open');}
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>{document.querySelectorAll('.progress-bar-fill').forEach(b=>{b.style.width=b.dataset.width+'%';});},300);
+const navItems=document.querySelectorAll('.nav-item');
+const secs=['summary','attendance','scores','progress','comment'];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<200)cur=id;});
+  navItems.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+document.querySelectorAll('.nav-item').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+});
+Chart.defaults.font.family="'Noto Sans KR',sans-serif";
+Chart.defaults.font.size=11;
+
+new Chart(document.getElementById('attendChart'),{
+  type:'doughnut',
+  data:{labels:['출석','결석'],datasets:[{data:[5,0.001],backgroundColor:['#1C4D8D','#E2E8F0'],borderWidth:0}]},
+  options:{cutout:'72%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}}}
+});
+
+
+new Chart(document.getElementById('wordChart'),{
+  type:'line',
+  data:{
+    labels:["02/09","02/12","02/19","02/23","02/26"],
+    datasets:[{label:'단어 점수',data:[66,54,62,46,56],borderColor:'#1C4D8D',backgroundColor:'rgba(28,77,141,.08)',fill:true,tension:.35,pointRadius:4,pointBackgroundColor:'#1C4D8D',pointBorderColor:'#fff',pointBorderWidth:2,borderWidth:2.5}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{y:{min:60,max:105,grid:{color:'#F1F5F9'},ticks:{stepSize:10}},x:{grid:{display:false}}},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1E293B',padding:8,cornerRadius:8}}
+  }
+});
+
+
+
+new Chart(document.getElementById('radarChart'),{
+  type:'radar',
+  data:{
+    labels:["단어","듣기","독해"],
+    datasets:[{label:'2026년 2월',data:[56.8,70,70],borderColor:'#1C4D8D',backgroundColor:'rgba(28,77,141,.15)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#1C4D8D'}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:0,max:100,ticks:{stepSize:20,backdropColor:'transparent',font:{size:10}},grid:{color:'#E2E8F0'},pointLabels:{font:{size:12,weight:'600'}}}},
+    plugins:{legend:{display:false}}
+  }
+});
+
+</script>
+</body></html>
