@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 03월 학습 보고서 - 조인성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+            padding: 20px 16px;
+        }
+        
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .header .student-info {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 16px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+        
+        .info-item .label {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 4px;
+        }
+        
+        .info-item .value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .summary-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 16px;
+        }
+        
+        .progress-item {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .progress-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .progress-desc {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        .test-results {
+            margin: 16px 0;
+        }
+        
+        .test-item {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            border-left: 4px solid #48bb78;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .test-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+        
+        .test-score {
+            font-size: 18px;
+            font-weight: 700;
+            color: #38a169;
+            margin-bottom: 8px;
+        }
+        
+        .test-details {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .assignments {
+            background: #fffaf0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .assignment-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #744210;
+        }
+        
+        .comment-section {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 8px;
+        }
+        
+        .comment-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+        
+        .highlight {
+            background: #fef5e7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 12px;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .card {
+                padding: 20px 16px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 03월 학습 보고서</h1>
+            <div class="student-info">
+                조인성 학생 · 수학
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📊 학습 개요</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">수업 기간</div>
+                    <div class="value">2026년 02월</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">총 수업 횟수</div>
+                    <div class="value">8회</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">주요 과정</div>
+                    <div class="value">공통수학2</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📚 학습 요약</h2>
+            <div class="summary-text">
+                2월 한 달 동안 <span class="highlight">공통수학2 과정을 완전히 마무리</span>하고, 체계적인 문제 풀이를 통해 실력을 점검하는 시간을 가졌습니다. 
+                무리식과 무리함수 단원을 끝으로 공통수학2 전체 진도를 완료한 후, 다양한 모의고사를 통해 실전 감각을 기르며 부족한 부분을 보완해 나갔습니다.
+            </div>
+            <div class="summary-text">
+                특히 고난도 문제에 대한 접근 방법과 풀이 흐름을 스스로 고민하는 능력이 향상되었으며, 
+                <span class="highlight">어려운 문제를 피하지 않고 끝까지 해결하려는 적극적인 학습 태도</span>를 보여주었습니다.
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📖 진도 현황</h2>
+            <div class="progress-item">
+                <div class="progress-title">공통수학2 - 무리식과 무리함수</div>
+                <div class="progress-desc">✅ 완료 (2026-02-03) - 전체 공통수학2 과정 마무리</div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-title">모의고사 문제 풀이</div>
+                <div class="progress-desc">✅ 진행중 - 25년 고1 9월, 10월 / 25년 고2 3월 / 24년 고2 3월 / 23년 고2 3월 / 24년 고1 6월 모의고사</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📈 모의고사 성적 현황</h2>
+            <div class="test-results">
+                <div class="test-item">
+                    <div class="test-name">25년 고1 9월 모의고사</div>
+                    <div class="test-score">88점 (1등급)</div>
+                    <div class="test-details">4점 문항 3문제 틀림, 대부분 계산 실수로 인한 오답</div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-name">25년 고1 10월 모의고사</div>
+                    <div class="test-score">96점 (1등급)</div>
+                    <div class="test-details">30번 1문제만 틀림, 힌트 후 스스로 해결</div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-name">25년 고2 3월 모의고사</div>
+                    <div class="test-score">84점 (1등급)</div>
+                    <div class="test-details">1등급컷 80점 상회</div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-name">24년 고2 3월 모의고사</div>
+                    <div class="test-score">75점 (2등급)</div>
+                    <div class="test-details">3점 3문제, 4점 4문제 틀림 → 모두 힌트 후 스스로 해결</div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-name">24년 고1 6월 모의고사</div>
+                    <div class="test-score">88점 (1등급)</div>
+                    <div class="test-details">20번, 21번, 28번 중 2문제 계산실수</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>✏️ 과제 수행 현황</h2>
+            <div class="assignments">
+                <div class="assignment-item">• 공통수학2 교재 끝까지 완료</div>
+                <div class="assignment-item">• 25년 고1 10월 모의고사 완료</div>
+                <div class="assignment-item">• 25년 고2 3월 모의고사 완료</div>
+                <div class="assignment-item">• 23년 고2 3월 모의고사 진행중</div>
+                <div class="assignment-item">• 24년 고1 3월, 6월 모의고사 진행중</div>
+                <div class="assignment-item">• 24년 고1 9월, 10월 모의고사 예정</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💬 선생님 종합 코멘트</h2>
+            <div class="comment-section">
+                <div class="comment-text">
+                    <strong>🎯 학습 태도의 강점</strong><br>
+                    인성이는 모의고사에서 20번, 21번, 30번과 같은 고난도 문제를 해결하기 위한 접근 방법이나 풀이 흐름을 스스로 잘 고민하는 모습을 보이고 있습니다. 
+                    어려운 문제를 피하지 않고 끝까지 생각해보려는 태도가 매우 인상적이며, 이는 수학 실력 향상의 핵심 요소입니다.
+                </div>
+                
+                <div class="comment-text">
+                    <strong>📊 성적 분석</strong><br>
+                    대부분의 모의고사에서 1등급을 유지하고 있으며, 특히 10월 모의고사에서는 96점이라는 우수한 성적을 기록했습니다. 
+                    틀린 문제들도 대부분 힌트만 제공하면 스스로 해결할 수 있는 수준으로, 개념 이해도가 매우 높습니다.
+                </div>
+                
+                <div class="comment-text">
+                    <strong>🔧 보완 사항</strong><br>
+                    모의고사를 진행하면서 기본이 되는 곱셈공식 부분이 조금 더 탄탄해지면 좋겠다는 점을 확인했습니다. 
+                    계산 실수로 인한 아쉬운 실점을 방지하기 위해 기본 계산 과정을 반복 점검하여 보완해 나가겠습니다.
+                </div>
+                
+                <div class="comment-text">
+                    <strong>🎓 향후 계획</strong><br>
+                    공통수학2 과정이 완료되었으므로, 앞으로는 문제 풀이를 통한 실력 정리와 함께 다음 단계로 무리 없이 이어질 수 있도록 체계적으로 지도하겠습니다.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
