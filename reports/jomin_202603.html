@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 03월 학습 보고서 - 조규민</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .student-info {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .student-info h2 {
+            color: #1e293b;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .info-item .label {
+            font-weight: 600;
+            color: #475569;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .info-item .value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h2 {
+            color: #1e293b;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .lesson-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            border-left: 4px solid #06b6d4;
+        }
+
+        .lesson-date {
+            font-weight: 600;
+            color: #0891b2;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .lesson-content {
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .lesson-assignment {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .lesson-note {
+            background: #fef3c7;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            font-size: 14px;
+            color: #92400e;
+            margin-top: 8px;
+        }
+
+        .progress-section {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #0284c7;
+            margin-bottom: 16px;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: #0369a1;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .progress-content {
+            color: #1e293b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a7f3d0 0%, #6ee7b7 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .comment-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #bae6fd;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .header {
+                padding: 24px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .card, .student-info {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026년 03월 학습 보고서</h1>
+            <div class="subtitle">개별 맞춤 학습 진행 상황</div>
+        </div>
+
+        <div class="student-info">
+            <h2>학생 정보</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">학생명</div>
+                    <div class="value">조규민</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">수업 기간</div>
+                    <div class="value">2026년 02월</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">총 수업 횟수</div>
+                    <div class="value">5회</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">보고서 기준</div>
+                    <div class="value">2026년 03월</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>학습 요약</h2>
+            <div class="progress-section">
+                <div class="progress-title">전체 학습 흐름</div>
+                <div class="progress-content">
+                    2월 한 달간 <span class="highlight">수열과 급수</span> 영역을 집중적으로 학습하였으며, 
+                    <strong>수열의 합(시그마), 귀납적 정의, 수학적 귀납법</strong> 등 핵심 개념을 완료했습니다. 
+                    또한 <span class="highlight">도함수 활용과 4차함수</span> 영역까지 확장하여 진행하였고, 
+                    개념편 교재를 마무리하는 단계에 도달했습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>상세 수업 기록</h2>
+            
+            <div class="lesson-item">
+                <div class="lesson-date">2026-02-04 (1회차)</div>
+                <div class="lesson-content">수열의합(시그마)의 정의와 성질 및 여러가지 수열</div>
+                <div class="lesson-assignment">과제: ~p. 219</div>
+                <div class="lesson-note">
+                    수열의 합을 학습하는 과정에서 대학 과정에서 다루는 군수열 개념까지 함께 진행하여 다소 어렵게 느껴졌을 것으로 생각됩니다. 
+                    해당 내용은 고등 과정에서 '이름 없는 수열' 형태로 자주 등장하는 유형이어서, 이후 학습을 대비해 함께 지도하였습니다.
+                </div>
+            </div>
+
+            <div class="lesson-item">
+                <div class="lesson-date">2026-02-07 (2회차)</div>
+                <div class="lesson-content">여러가지 수열의 합</div>
+                <div class="lesson-assignment">과제: ~p. 219</div>
+            </div>
+
+            <div class="lesson-item">
+                <div class="lesson-date">2026-02-11 (3회차)</div>
+                <div class="lesson-content">수열의 귀납적 정의, 수학적귀납법, 피보나치수열</div>
+                <div class="lesson-assignment">과제: ~p. 233 (교재끝)</div>
+                <div class="lesson-note">
+                    금일 수업으로 개념 수업이 마무리 되었습니다. 
+                    2월 남은 기간동안 개념편, 유형편 교재 마무리할 수 있도록 지도하겠습니다.
+                </div>
+            </div>
+
+            <div class="lesson-item">
+                <div class="lesson-date">2026-02-12 (4회차)</div>
+                <div class="lesson-content">도함수 활용, 4차함수</div>
+                <div class="lesson-assignment">과제: (개념원리)도함수 활용, RPM 풀기</div>
+                <div class="lesson-note">
+                    2월 중, 적분 완료 예정
+                </div>
+            </div>
+
+            <div class="lesson-item">
+                <div class="lesson-date">2026-02-21 (5회차)</div>
+                <div class="lesson-content">수학적 귀납법</div>
+                <div class="lesson-assignment">과제: 삼각함수부터 교재 끝까지 연습문제 마무리</div>
+                <div class="lesson-note">
+                    이번 숙제로 개념편 교재가 마무리될 예정입니다. 
+                    방학 기간 동안 배운 개념을 바탕으로 다양한 유형의 문제를 충분히 연습할 수 있도록 수업을 진행하겠습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>진도 현황</h2>
+            <div class="progress-section">
+                <div class="progress-title">개념편 교재</div>
+                <div class="progress-content">
+                    • 수열과 급수 영역: <span class="highlight">완료</span><br>
+                    • 도함수 활용: <span class="highlight">진행 중</span><br>
+                    • 전체 진행률: 약 90% (p. 233까지 완료)
+                </div>
+            </div>
+            <div class="progress-section">
+                <div class="progress-title">문제집 (RPM)</div>
+                <div class="progress-content">
+                    • 도함수 활용 영역 진행 중<br>
+                    • 삼각함수부터 교재 끝까지 연습문제 진행 예정
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>과제 수행 현황</h2>
+            <div class="progress-content">
+                <strong>✓ 성실한 과제 수행:</strong> 매 수업마다 주어진 분량의 과제를 꾸준히 수행하고 있습니다.<br>
+                <strong>✓ 단계별 학습:</strong> p. 219 → p. 233 → 개념원리 도함수 활용 → RPM 문제집 순으로 체계적 진행<br>
+                <strong>✓ 마무리 단계:</strong> 개념편 교재 완전 마무리를 위한 최종 연습문제 진행 중
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>선생님 종합 코멘트</h2>
+            <div class="comment-section">
+                <p style="margin-bottom: 16px;">
+                    <strong>조규민 학생은 2월 한 달간 매우 체계적이고 성실하게 학습에 임했습니다.</strong>
+                </p>
+                
+                <p style="margin-bottom: 16px;">
+                    특히 <span class="highlight">수열과 급수</span> 영역에서 고등학교 과정을 넘어 대학 수준의 군수열 개념까지 도전하며 
+                    심화 학습에 적극적으로 참여했습니다. 처음에는 다소 어려워했지만, 
+                    반복 학습을 통해 점진적으로 이해도를 높여가고 있는 모습이 인상적입니다.
+                </p>
+                
+                <p style="margin-bottom: 16px;">
+                    <strong>개념편 교재가 거의 완료</strong>되어가는 시점에서, 앞으로는 다양한 유형의 문제를 통한 
+                    실전 연습에 중점을 두고 진행할 예정입니다. 특히 <span class="highlight">적분 영역까
