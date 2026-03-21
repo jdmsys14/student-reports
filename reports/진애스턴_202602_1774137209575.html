@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>수학 학습 보고서 - 진애스턴 2026년 02월</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f4f6fb; --surface:#ffffff; --surface2:#eef1f8;
+    --border:rgba(0,0,0,0.07);
+    --accent1:#3b6ef6; --accent2:#12b886; --accent3:#f76707; --accent4:#e64980;
+    --text-primary:#1a1f36; --text-secondary:#515872; --text-muted:#9ba3b8;
+    --radius:16px; --radius-sm:10px;
+    --shadow:0 2px 12px rgba(0,0,0,0.055);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:480px;margin:0 auto;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .header{padding:52px 24px 36px;position:relative;overflow:hidden;background:linear-gradient(145deg,#2d55e0 0%,#3b6ef6 55%,#5a82f8 100%)}
+  .header::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.08)}
+  .header::after{content:'';position:absolute;bottom:-40px;left:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05)}
+  .header-label{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .1s forwards}
+  .header-label::before{content:'';width:14px;height:2px;background:rgba(255,255,255,0.55);border-radius:2px}
+  .header-name{font-size:30px;font-weight:900;line-height:1.2;color:#fff;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .2s forwards}
+  .header-name span{color:rgba(255,255,255,0.6)}
+  .header-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-top:8px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .3s forwards}
+  .header-meta{position:absolute;top:52px;right:24px;text-align:right;z-index:1;opacity:0;animation:fadeIn .5s ease .4s forwards}
+  .header-meta-academy{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85)}
+  .header-meta-date{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px}
+  .section{padding:24px 20px 0;opacity:0;animation:fadeUp .5s ease forwards}
+  .section:nth-child(2){animation-delay:.35s}.section:nth-child(3){animation-delay:.45s}.section:nth-child(4){animation-delay:.55s}.section:nth-child(5){animation-delay:.65s}.section:nth-child(6){animation-delay:.75s}
+  .sec-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .id-card{background:var(--surface);border-radius:var(--radius);padding:20px;display:flex;align-items:center;gap:16px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .id-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--accent1),var(--accent2))}
+  .id-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--accent1),#5480f8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 14px rgba(59,110,246,0.22)}
+  .id-info-name{font-size:20px;font-weight:700;color:var(--text-primary)}
+  .id-info-detail{font-size:12px;color:var(--text-secondary);margin-top:4px}
+  .id-badge{margin-left:auto;background:#e6faf3;border:1px solid #b2eedd;color:var(--accent2);font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card{background:var(--surface);border-radius:var(--radius-sm);padding:18px 16px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
+  .stat-card.blue::after{background:var(--accent1)}.stat-card.green::after{background:var(--accent2)}.stat-card.orange::after{background:var(--accent3)}.stat-card.red::after{background:var(--accent4)}
+  .stat-label{font-size:11px;color:var(--text-muted);margin-bottom:8px;font-weight:500}
+  .stat-value{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px}
+  .stat-card.blue .stat-value{color:var(--accent1)}.stat-card.green .stat-value{color:var(--accent2)}.stat-card.orange .stat-value{color:var(--accent3)}.stat-card.red .stat-value{color:var(--accent4)}
+  .stat-desc{font-size:11px;color:var(--text-muted)}
+  .stat-card.full{grid-column:1/-1}
+  .eval-item{margin-bottom:14px}.eval-item:last-child{margin-bottom:0}
+  .eval-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+  .eval-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+  .eval-score{font-size:13px;font-weight:700}
+  .eval-bar-bg{height:7px;background:var(--surface2);border-radius:6px;overflow:hidden}
+  .eval-bar-fill{height:100%;border-radius:6px;animation:growBar 1s cubic-bezier(.16,1,.3,1) .6s both}
+  @keyframes growBar{from{width:0!important}}
+  .eval-bar-fill.blue{background:linear-gradient(90deg,var(--accent1),#7ba3ff)}.eval-bar-fill.green{background:linear-gradient(90deg,var(--accent2),#6edfc3)}.eval-bar-fill.orange{background:linear-gradient(90deg,var(--accent3),#ffac5e)}
+  .insight-list{display:flex;flex-direction:column;gap:10px}
+  .insight-card{background:var(--surface);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;gap:12px;align-items:flex-start}
+  .insight-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+  .dot-blue{background:var(--accent1)}.dot-green{background:var(--accent2)}.dot-orange{background:var(--accent3)}.dot-red{background:var(--accent4)}
+  .insight-text{font-size:13px;color:var(--text-secondary);line-height:1.75}
+  .insight-text strong{color:var(--text-primary);font-weight:700}
+  .tag-blue{background:#eef2fe;color:var(--accent1)}.tag-green{background:#e6faf3;color:var(--accent2)}.tag-orange{background:#fff3e8;color:var(--accent3)}.tag-red{background:#fde9f0;color:var(--accent4)}.tag-gray{background:var(--surface2);color:var(--text-muted)}
+  .attention-card{background:#fff8f0;border:1px solid #ffd8b0;border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start}
+  .attention-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+  .attention-title{font-size:12px;font-weight:700;color:var(--accent3);margin-bottom:6px}
+  .attention-text{font-size:13px;color:var(--text-secondary);line-height:1.75}
+  .roadmap{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .roadmap-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;position:relative}
+  .roadmap-row:not(:last-child)::after{content:'';position:absolute;left:15px;top:36px;bottom:-10px;width:1px;background:var(--border)}
+  .roadmap-circle{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700}
+  .circle-done{background:var(--accent2);color:#fff}.circle-now{background:var(--accent1);color:#fff;box-shadow:0 0 0 4px rgba(59,110,246,0.12)}.circle-next{background:var(--surface2);color:var(--text-muted);border:1px solid var(--border)}
+  .roadmap-info{padding-top:4px;flex:1}
+  .roadmap-title{font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3}
+  .roadmap-desc{font-size:12px;color:var(--text-muted);margin-top:2px}
+  .roadmap-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:auto;flex-shrink:0;margin-top:4px}
+  .comment-box{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);border-left:4px solid var(--accent3);box-shadow:var(--shadow)}
+  .comment-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .comment-avatar{width:32px;height:32px;background:#fff3e8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .comment-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+  .comment-role{font-size:11px;color:var(--text-muted)}
+  .comment-text{font-size:13px;color:var(--text-secondary);line-height:1.85}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:'';position:absolute;left:7px;top:10px;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent1),transparent);border-radius:2px}
+  .tl-item{position:relative;padding-bottom:20px}
+  .tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--text-muted)}
+  .tl-item.absent::before{border-color:var(--accent4);background:#fde9f0}.tl-item.special::before{border-color:var(--accent3);background:#fff3e8}.tl-item.normal::before{border-color:var(--accent1);background:#eef2fe}
+  .tl-date{font-size:10px;color:var(--text-muted);margin-bottom:5px;font-weight:500}
+  .tl-card{background:var(--surface);border-radius:var(--radius-sm);padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .tl-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+  .tl-desc{font-size:12px;color:var(--text-secondary);margin-top:5px;line-height:1.65}
+  .tl-tag{font-size:10px;font-weight:600;margin-top:8px;display:inline-block;padding:2px 8px;border-radius:6px}
+  .donut-wrap{display:flex;align-items:center;gap:20px;background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .donut-legend{flex:1}
+  .legend-item{display:flex;align-items:center;gap:8px;padding:5px 0}
+  .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .legend-name{font-size:12px;color:var(--text-secondary);flex:1}
+  .legend-val{font-size:12px;font-weight:700;color:var(--text-primary)}
+  .footer-text{font-size:12px;color:var(--text-muted);line-height:1.8;text-align:center}
+  .footer-text a{color:var(--accent1);text-decoration:none;font-weight:700}
+  .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:10px 0 calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.06)}
+  .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:opacity .2s}
+  .nav-item:active{opacity:.5}
+  .nav-icon{font-size:20px}
+  .nav-label{font-size:9px;font-weight:500;color:var(--text-muted)}
+  .nav-item.active .nav-label{color:var(--accent1);font-weight:700}
+  .tab-section{display:none}.tab-section.active{display:block}
+  .course-list{display:flex;flex-direction:column;gap:10px}
+  .course-card{background:var(--surface);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .course-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .course-badge{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:-0.3px}
+  .badge-blue{background:#eef2fe;color:var(--accent1)}.badge-green{background:#e6faf3;color:var(--accent2)}
+  .course-info{min-width:0}
+  .course-name{font-size:15px;font-weight:700;color:var(--text-primary)}
+  .course-topic{font-size:11px;color:var(--text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .course-books{display:flex;gap:6px;flex-shrink:0}
+  .book-tag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;background:var(--surface2);color:var(--text-secondary);border:1px solid var(--border);white-space:nowrap}
+  .schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .schedule-box{background:#eef2fe;border:1px solid #c5d3fc;border-radius:var(--radius-sm);padding:16px;text-align:center}
+  .schedule-day{font-size:14px;font-weight:700;color:var(--accent1);margin-top:6px}
+  .schedule-time{font-size:12px;color:var(--text-secondary);margin-top:3px}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">Math Report · 2026년 02월</div>
+    <div class="header-name">진애스턴 <span>학습</span><br>보고서</div>
+    <div class="header-sub">2026년 02월 · 제이디 수학학원</div>
+    <div class="header-meta">
+      <div class="header-meta-academy">제이디 수학학원</div>
+      <div class="header-meta-date">2026년 02월 기준</div>
+    </div>
+  </div>
+
+  <!-- TAB: HOME -->
+  <div id="tab-home" class="tab-section active">
+
+    <div class="section">
+      <div class="sec-label">학생 프로파일</div>
+      <div class="id-card">
+        <div class="id-avatar">&#128208;</div>
+        <div>
+          <div class="id-info-name">진애스턴</div>
+          <div class="id-info-detail">중2 과정</div>
+        </div>
+        <div class="id-badge">노력중 &#11088;</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">진행 과정 및 교재</div>
+      <div class="course-list"><div class="course-card">
+  <div class="course-left">
+    <div class="course-badge badge-green">중2</div>
+    <div class="course-info">
+      <div class="course-name">중2 수학</div>
+      <div class="course-topic">부등식과 일차부등식 활용</div>
+    </div>
+  </div>
+  <div class="course-books"><span class="book-tag">개념원리</span><span class="book-tag">프린트</span></div>
+</div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">2026년 02월 수업 현황</div>
+      <div class="stats-grid"><div class="stat-card blue">
+  <div class="stat-label">총 수업 횟수</div>
+  <div class="stat-value">7회</div>
+  <div class="stat-desc">정상 수업 6회 + 보강 1회</div>
+</div><div class="stat-card orange">
+  <div class="stat-label">결석</div>
+  <div class="stat-value">1회</div>
+  <div class="stat-desc">2월 12일(목) 여행으로 인한 결석</div>
+</div><div class="stat-card green">
+  <div class="stat-label">출석률</div>
+  <div class="stat-value">85.7%</div>
+  <div class="stat-desc">보강 수업으로 보충 완료</div>
+</div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">이달의 학습 인사이트</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="insight-dot dot-orange"></div>
+  <div class="insight-text"><strong>문장 해석 능력 강화 필요</strong> - 미지수 설정과 문장을 식으로 변환하는 과정에서 조금 더 체계적인 연습이 필요합니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-green"></div>
+  <div class="insight-text"><strong>시각적 학습 효과 우수</strong> - 표와 그림을 활용한 문제 정리 방식에 긍정적으로 반응하고 있습니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-orange"></div>
+  <div class="insight-text"><strong>개념 이해보다는 구조 파악이 과제</strong> - 기초 개념은 충분하지만, 깊이 있는 사고 후 식을 세우는 습관 형성이 필요합니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-blue"></div>
+  <div class="insight-text"><strong>기초 강화 중</strong> - 중1 일차방정식 활용으로 돌아가 체계적으로 기초를 다지고 있으며, 단계적 진행으로 충분히 개선 가능합니다.</div>
+</div></div>
+    </div>
+
+    <div class="section">
+  <div class="sec-label">주의 사항</div>
+  <div class="attention-card">
+    <div class="attention-icon">&#9888;&#65039;</div>
+    <div>
+      <div class="attention-title">학습 방향 조정 안내</div>
+      <div class="attention-text">학생이 중2 일차부등식 활용에서 <strong>문장을 식으로 변환하는 부분</strong>에 어려움을 보여, 2월 26일부터 중1 일차방정식 활용으로 기초를 강화하고 있습니다. 이는 개념 부족이 아닌 <strong>문제 해석 구조</strong>를 더 탄탄히 다지기 위한 전략적 조정입니다. 차근차근 진행하면 자연스럽게 실력이 향상될 것으로 예상됩니다.</div>
+    </div>
+  </div>
+</div>
+
+    <div class="section">
+      <div class="sec-label">학습 로드맵</div>
+      <div class="roadmap"><div class="roadmap-row">
+  <div class="roadmap-circle circle-done">&#10003;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">단항식과 다항식의 계산</div>
+    <div class="roadmap-desc">항 구분과 계산 순서 학습 완료</div>
+  </div>
+  <span class="roadmap-badge tag-green">완료</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-done">&#10003;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">부등식과 일차부등식</div>
+    <div class="roadmap-desc">부등식의 정의, 성질, 기본 문제 해결 완료</div>
+  </div>
+  <span class="roadmap-badge tag-green">완료</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-now">&#9679;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">중1 일차방정식 활용 (기초 강화)</div>
+    <div class="roadmap-desc">문장 해석 및 식 세우기 체계적 연습 중</div>
+  </div>
+  <span class="roadmap-badge tag-blue">진행중</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-next">&#8594;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">중2 일차부등식 활용 재학습</div>
+    <div class="roadmap-desc">기초 강화 후 심화 문제(원가정가, 거속시, 소금물) 진행 예정</div>
+  </div>
+  <span class="roadmap-badge tag-gray">예정</span>
+</div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">선생님 코멘트</div>
+      <div class="comment-box">
+        <div class="comment-header">
+          <div class="comment-avatar">&#128221;</div>
+          <div>
+            <div class="comment-title">담당 선생님</div>
+            <div class="comment-role">제이디 수학학원</div>
+          </div>
+        </div>
+        <div class="comment-text">진애스턴 학생은 수학의 기본 개념을 잘 이해하고 있으며, 특히 시각적 학습 방식(표, 그림)에 긍정적으로 반응하고 있습니다. 다만 문장 문제에서 조건을 정확히 해석하여 식으로 세우는 부분에 더 많은 연습이 필요한 상황입니다. 현재 중1 기초 과정으로 돌아가 체계적으로 강화하고 있으니, 꾸준한 학습으로 충분히 극복할 수 있을 것으로 기대됩니다.</div>
+      </div>
+    </div>
+
+    <div style="margin:28px 20px 0;padding:18px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div class="footer-text">
+        궁금한 점은 카카오톡 채널로 문의해 주세요.<br>
+        <a href="http://pf.kakao.com/_CCsnj/chat">제이디 수학학원</a> · 항상 감사합니다 &#128591;
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- TAB: TIMELINE -->
+  <div id="tab-timeline" class="tab-section">
+    <div class="section">
+      <div class="sec-label">2026년 02월 수업 기록</div>
+      <div class="timeline"><div class="tl-item normal">
+  <div class="tl-date">2026년 2월 2일 (월)</div>
+  <div class="tl-card">
+    <div class="tl-title">단항식과 다항식의 계산</div>
+    <div class="tl-desc">항 구분과 계산 순서 중요성 강조. 수의 관계를 직관적으로 이해하는 연습 필요. 과제: ~p.72</div>
+    <span class="tl-tag tag-blue">기초개념</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026년 2월 5일 (목)</div>
+  <div class="tl-card">
+    <div class="tl-title">다항식의 계산</div>
+    <div class="tl-desc">식 정리와 동류항 계산의 중요성 학습. 동류항 정확히 찾고 정리하는 방법 지도. 과제: ~p.79</div>
+    <span class="tl-tag tag-blue">동류항계산</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026년 2월 9일 (월)</div>
+  <div class="tl-card">
+    <div class="tl-title">부등식의 정의와 성질 및 일차부등식</div>
+    <div class="tl-desc">부등식의 기본 개념과 일차부등식 학습. 과제: ~p.103</div>
+    <span class="tl-tag tag-green">부등식</span>
+  </div>
+</div><div class="tl-item absent">
+  <div class="tl-date">2026년 2월 12일 (목)</div>
+  <div class="tl-card">
+    <div class="tl-title">결석 - 여행</div>
+    <div class="tl-desc">학생 여행으로 인한 결석. 2월 21일(토) 보강 수업 예정</div>
+    <span class="tl-tag tag-red">결석</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026년 2월 19일 (목)</div>
+  <div class="tl-card">
+    <div class="tl-title">일차부등식</div>
+    <div class="tl-desc">일차부등식 기본 문제 해결 및 풀이 방법 학습. 과제: ~p.107</div>
+    <span class="tl-tag tag-green">일차부등식</span>
+  </div>
+</div><div class="tl-item special">
+  <div class="tl-date">2026년 2월 21일 (토)</div>
+  <div class="tl-card">
+    <div class="tl-title">일차부등식 활용 (결석 보강)</div>
+    <div class="tl-desc">2월 12일 결석분 보강 수업. 일차부등식 활용 기초 학습. 원가정가, 거속시, 소금물은 다음 수업에서 진행. 과제: ~p.112</div>
+    <span class="tl-tag tag-orange">보강수업</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026년 2월 23일 (월)</div>
+  <div class="tl-card">
+    <div class="tl-title">일차부등식 활용</div>
+    <div class="tl-desc">원가와 정가 개념 이해, 거리·속력·시간 문제(표 활용), 소금물 문제(시각적 정리). 주어진 조건을 표나 그림으로 먼저 정리하도록 지도. 과제: ~p.121</div>
+    <span class="tl-tag tag-green">활용문제</span>
+  </div>
+</div><div class="tl-item special">
+  <div class="tl-date">2026년 2월 26일 (목)</div>
+  <div class="tl-card">
+    <div class="tl-title">중1 일차방정식 활용 (기초 강화)</div>
+    <div class="tl-desc">중2 내용에서 문장 해석 및 미지수 설정이 어려워, 중1 기초로 돌아가 체계적으로 연습. 문장을 정확히 해석하여 식으로 옮기는 연습 중심. 과제: (중1-1 개념원리) 체크 부분</div>
+    <span class="tl-tag tag-orange">기초강화</span>
+  </div>
+</div></div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- TAB: ANALYSIS -->
+  <div id="tab-analysis" class="tab-section">
+    <div class="section">
+      <div class="sec-label">수업 분포</div>
+      <div class="donut-wrap">
+  <svg width="100" height="100" viewBox="0 0 100 100" style="flex-shrink:0">
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#eef1f8" stroke-width="13"/>
+    <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent1)" stroke-width="13" stroke-dasharray="215.42 35.90" stroke-dashoffset="0.00" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent2)" stroke-width="13" stroke-dasharray="35.90 215.42" stroke-dashoffset="-215.42" transform="rotate(-90 50 50)"/>
+    <text x="50" y="47" text-anchor="middle" fill="#1a1f36" font-size="15" font-weight="900" font-family="Noto Sans KR">7</text>
+    <text x="50" y="59" text-anchor="middle" fill="#9ba3b8" font-size="8" font-family="Noto Sans KR">수업</text>
+  </svg>
+  <div class="donut-legend"><div class="legend-item">
+  <div class="legend-dot" style="background:var(--accent1)"></div>
+  <div class="legend-name">중2 과정</div>
+  <div class="legend-val" style="color:var(--accent1)">6회</div>
+</div><div class="legend-item">
+  <div class="legend-dot" style="background:var(--accent2)"></div>
+  <div class="legend-name">중1 기초 강화</div>
+  <div class="legend-val" style="color:var(--accent2)">1회</div>
+</div></div>
+</div>
+    </div>
+    <div class="section">
+      <div class="sec-label">능력 지표</div>
+      <div style="background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">개념 이해</span>
+    <span class="eval-score" style="color:var(--accent2)">75%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill green" style="width:75%"></div></div>
+</div><div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">문제 해석</span>
+    <span class="eval-score" style="color:var(--accent3)">60%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill orange" style="width:60%"></div></div>
+</div><div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">식 세우기</span>
+    <span class="eval-score" style="color:var(--accent3)">55%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill orange" style="width:55%"></div></div>
+</div><div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">시각적 학습</span>
+    <span class="eval-score" style="color:var(--accent2)">80%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill green" style="width:80%"></div></div>
+</div><div class="eval-item" style="margin-bottom:0">
+  <div class="eval-header">
+    <span class="eval-name">출석 성실도</span>
+    <span class="eval-score" style="color:var(--accent2)">85%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill green" style="width:85%"></div></div>
+</div>
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- TAB: NOTICE -->
+  <div id="tab-notice" class="tab-section">
+    <div class="section">
+      <div class="sec-label">다음 달 공지사항</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="insight-dot dot-blue"></div>
+  <div class="insight-text"><strong>3월 2일(월)은 공휴일로 휴강</strong>입니다. 편안한 휴일 보내시기 바랍니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-orange"></div>
+  <div class="insight-text">현재 중1 기초 과정으로 복습 중이며, 기초가 탄탄해진 후 <strong>중2 일차부등식 활용</strong>으로 진행할 예정입니다.</div>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">예상 시간표</div>
+      <div style="background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div class="schedule-grid"><div class="schedule-box">
+  <div style="font-size:22px">&#128197;</div>
+  <div class="schedule-day">월요일</div>
+  <div class="schedule-time">정규 수업</div>
+</div><div class="schedule-box">
+  <div style="font-size:22px">&#128197;</div>
+  <div class="schedule-day">목요일</div>
+  <div class="schedule-time">정규 수업</div>
+</div></div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.8">※ 학교 마치는 시간에 따라 변동될 수 있습니다.</div>
+      </div>
+    </div>
+    <div style="margin:28px 20px 0;padding:18px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div class="footer-text">
+        문의사항은 카카오톡으로 연락주세요.<br>
+        <a href="http://pf.kakao.com/_CCsnj/chat">제이디 수학학원</a> · 감사합니다 &#128591;
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="switchTab('home',this)"><div class="nav-icon">&#127968;</div><div class="nav-label">홈</div></div>
+    <div class="nav-item" onclick="switchTab('timeline',this)"><div class="nav-icon">&#128203;</div><div class="nav-label">수업기록</div></div>
+    <div class="nav-item" onclick="switchTab('analysis',this)"><div class="nav-icon">&#128202;</div><div class="nav-label">분석</div></div>
+    <div class="nav-item" onclick="switchTab('notice',this)"><div class="nav-icon">&#128226;</div><div class="nav-label">공지</div></div>
+  </nav>
+
+</div>
+<script>
+function switchTab(name,el){
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
