@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>박건후 학습 리포트 - 2026년 3월</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+:root{--primary:#0F2854;--primary-light:#1a3d7a;--accent:#F59E0B;--success:#10B981;--warning:#F59E0B;--danger:#EF4444;--gray-50:#F8FAFC;--gray-100:#F1F5F9;--gray-200:#E2E8F0;--gray-600:#64748B;--gray-900:#1E293B;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--gray-100);color:var(--gray-900);line-height:1.6}
+.container{max-width:480px;margin:0 auto;background:white;min-height:100vh}
+.header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);padding:32px 24px 40px;color:white}
+.header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.academy-name{font-size:13px;opacity:.9}
+.period-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:12px;font-size:11px}
+.student-name{font-size:28px;font-weight:800;margin-bottom:8px}
+.header-subtitle{font-size:14px;opacity:.85}
+.kpi-section{padding:0 20px;margin-top:-24px;margin-bottom:8px}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi-card{background:white;border-radius:16px;padding:16px 12px;box-shadow:0 4px 12px rgba(15,40,84,.12);text-align:center}
+.kpi-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:16px}
+.kpi-icon.attendance{background:#DCFCE7}.kpi-icon.homework{background:#DBEAFE}.kpi-icon.score{background:#FEF3C7}
+.kpi-label{font-size:11px;color:var(--gray-600);margin-bottom:4px}
+.kpi-value{font-size:24px;font-weight:800;color:var(--primary);line-height:1;margin-bottom:4px}
+.kpi-value.good{color:var(--success)}.kpi-value.bad{color:var(--danger)}.kpi-value.normal{color:var(--warning)}
+.kpi-desc{font-size:10px;color:var(--gray-600)}
+.section{padding:24px 20px 0}
+.section-header{display:flex;align-items:center;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--gray-200)}
+.section-number{width:28px;height:28px;background:var(--primary);color:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-right:10px;flex-shrink:0}
+.section-title{font-size:18px;font-weight:700;color:var(--primary)}
+.card{background:var(--gray-50);border-radius:16px;padding:20px;border:1px solid var(--gray-200);margin-bottom:12px}
+.comment-card{background:linear-gradient(135deg,#FFF7ED,#FFFBEB);border-left:4px solid var(--accent);border-radius:12px;padding:20px;font-size:14px;line-height:1.8;color:#4B5563;margin-bottom:0}
+.progress-item{margin-bottom:14px}
+.progress-item:last-child{margin-bottom:0}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:6px}
+.progress-label{font-size:13px;font-weight:600;color:var(--gray-900)}
+.progress-percent{font-size:13px;font-weight:700}
+.progress-bar{height:10px;background:var(--gray-200);border-radius:5px;overflow:hidden}
+.progress-fill{height:100%;border-radius:5px;transition:width .8s}
+.progress-fill.good{background:linear-gradient(90deg,var(--success),#34D399)}
+.progress-fill.normal{background:linear-gradient(90deg,var(--warning),#FBBF24)}
+.progress-fill.bad{background:linear-gradient(90deg,var(--danger),#F87171)}
+.log-timeline{position:relative;padding-left:20px}
+.log-timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--gray-200)}
+.log-item{position:relative;margin-bottom:14px;padding-left:16px}
+.log-item:last-child{margin-bottom:0}
+.log-item::before{content:'';position:absolute;left:-14px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--primary);border:2px solid white;box-shadow:0 0 0 2px var(--gray-200)}
+.log-date{font-size:12px;color:var(--primary);font-weight:600;margin-bottom:3px}
+.log-content{font-size:13px;color:var(--gray-900);line-height:1.5;margin-bottom:5px}
+.log-badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600}
+.badge-score{background:#DCFCE7;color:#166534}
+.badge-homework{background:#DBEAFE;color:#1E40AF}
+.insight-box{background:white;border-radius:12px;padding:16px;border-left:4px solid var(--primary);margin-bottom:12px}
+.insight-title{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px}
+.insight-list{list-style:none}
+.insight-list li{font-size:13px;padding:5px 0;padding-left:20px;position:relative;color:var(--gray-900)}
+.insight-list li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:700}
+.insight-list li.warning::before{content:'!';color:var(--warning)}
+.subj-section{margin:0 20px 20px;border-radius:16px;overflow:hidden;border:1px solid #E2E8F0}
+.subj-header-bar{padding:16px 20px;display:flex;align-items:center;gap:12px}
+.subj-icon{font-size:22px}
+.subj-title-wrap{}
+.subj-title{font-size:17px;font-weight:700}
+.subj-class{font-size:12px;opacity:.85;margin-top:2px}
+.subj-body{padding:16px 20px}
+.subj-kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.subj-kpi{background:rgba(255,255,255,.7);border-radius:10px;padding:10px 8px;text-align:center;border:1px solid rgba(0,0,0,.06)}
+.subj-kpi-label{font-size:10px;color:var(--gray-600);margin-bottom:3px}
+.subj-kpi-value{font-size:18px;font-weight:700}
+.subj-kpi-value.good{color:var(--success)}.subj-kpi-value.bad{color:var(--danger)}.subj-kpi-value.normal{color:var(--warning)}
+.subj-logs-title{font-size:12px;font-weight:600;color:var(--gray-600);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--gray-200)}
+.subj-comment{border-radius:10px;padding:14px;font-size:13px;line-height:1.7;color:#4B5563;margin-top:14px;border-left:3px solid}
+.footer{background:var(--primary);color:white;padding:32px 24px;text-align:center;border-top-left-radius:24px;border-top-right-radius:24px;margin-top:28px}
+.footer-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.footer-subtitle{font-size:13px;opacity:.85;margin-bottom:16px}
+.contact-btn{display:inline-block;background:white;color:var(--primary);padding:12px 32px;border-radius:24px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-top"><div class="academy-name">공부의철인 화정학원</div><div class="period-badge">2026년 3월</div></div>
+    <div class="student-name">박건후</div>
+    <div class="header-subtitle">월간 학습 성장 리포트 · 2026년 3월</div>
+  </div>
+  <div class="kpi-section">
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-icon attendance">📅</div><div class="kpi-label">출석률</div><div class="kpi-value good">100%</div><div class="kpi-desc">40/40회</div></div>
+      <div class="kpi-card"><div class="kpi-icon homework">✏️</div><div class="kpi-label">과제 이행</div><div class="kpi-value ">-</div><div class="kpi-desc">데이터없음</div></div>
+      <div class="kpi-card"><div class="kpi-icon score">🎯</div><div class="kpi-label">평균 정답률</div><div class="kpi-value ">-</div><div class="kpi-desc">데이터없음</div></div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><div class="section-title">선생님 종합 평가</div></div>
+    <div class="comment-card">건후 학생은 3월 한 달간 완벽한 출석률(100%)을 유지하며 학원 수업에 성실하게 참여하고 있습니다. 수학, 국어, 영어 과목을 균형있게 수강 중이며, 앞으로의 학습 진행 상황을 지속적으로 관찰하겠습니다.</div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><div class="section-title">학습 인사이트</div></div>
+    <div class="insight-box"><div class="insight-title">🎯 강점</div><ul class="insight-list"><li>완벽한 출석률 유지로 학습에 대한 성실한 태도</li><li>다양한 과목 수강으로 전반적인 학력 향상 추구</li></ul></div>
+    <div class="insight-box" style="border-left-color:var(--warning)"><div class="insight-title" style="color:var(--warning)">💡 개선 포인트</div><ul class="insight-list"><li class="warning">각 과목별 학습 성과 데이터 축적을 통한 맞춤형 지도 필요</li></ul></div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><div class="section-title">과목별 학습 분석</div></div>
+  </div><div class="subj-section">
+      <div class="subj-header-bar" style="background:linear-gradient(135deg,#EFF6FF,white);border-bottom:1px solid #BFDBFE">
+        <div class="subj-icon">📐</div>
+        <div class="subj-title-wrap">
+          <div class="subj-title" style="color:#1D4ED8">수학</div>
+          <div class="subj-class" style="color:#1D4ED8">송지연m1</div>
+        </div>
+      </div>
+      <div class="subj-body" style="background:white">
+        <div class="subj-kpi-row">
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">출석</div>
+            <div class="subj-kpi-value good">19/19회</div>
+          </div>
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">정답률</div>
+            <div class="subj-kpi-value ">-</div>
+          </div>
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">과제 이행</div>
+            <div class="subj-kpi-value ">-</div>
+          </div>
+        </div>
+        
+        
+        <div class="subj-comment" style="background:#EFF6FF;border-color:#1D4ED8;">수학 수업에 꾸준히 참석하고 있습니다. 앞으로 개념 이해와 문제풀이 능력을 함께 기르는 데 집중하도록 하겠습니다.</div>
+      </div>
+    </div><div class="subj-section">
+      <div class="subj-header-bar" style="background:linear-gradient(135deg,#F0FDF4,white);border-bottom:1px solid #BBF7D0">
+        <div class="subj-icon">📖</div>
+        <div class="subj-title-wrap">
+          <div class="subj-title" style="color:#15803D">국어</div>
+          <div class="subj-class" style="color:#15803D">국어A</div>
+        </div>
+      </div>
+      <div class="subj-body" style="background:white">
+        <div class="subj-kpi-row">
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">출석</div>
+            <div class="subj-kpi-value good">20/20회</div>
+          </div>
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">정답률</div>
+            <div class="subj-kpi-value ">-</div>
+          </div>
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">과제 이행</div>
+            <div class="subj-kpi-value ">-</div>
+          </div>
+        </div>
+        
+        
+        <div class="subj-comment" style="background:#F0FDF4;border-color:#15803D;">국어 수업에 성실하게 참여하고 있습니다. 독해력과 문제해석 능력을 강화할 수 있도록 지도하겠습니다.</div>
+      </div>
+    </div><div class="subj-section">
+      <div class="subj-header-bar" style="background:linear-gradient(135deg,#FFF7ED,white);border-bottom:1px solid #FED7AA">
+        <div class="subj-icon">🔤</div>
+        <div class="subj-title-wrap">
+          <div class="subj-title" style="color:#C2410C">영어</div>
+          <div class="subj-class" style="color:#C2410C">Elena</div>
+        </div>
+      </div>
+      <div class="subj-body" style="background:white">
+        <div class="subj-kpi-row">
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">출석</div>
+            <div class="subj-kpi-value good">1/1회</div>
+          </div>
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">정답률</div>
+            <div class="subj-kpi-value ">-</div>
+          </div>
+          <div class="subj-kpi">
+            <div class="subj-kpi-label">과제 이행</div>
+            <div class="subj-kpi-value ">-</div>
+          </div>
+        </div>
+        
+        
+        <div class="subj-comment" style="background:#FFF7ED;border-color:#C2410C;">영어 수업을 시작했습니다. 꾸준한 참석으로 영어 기초를 탄탄히 다질 수 있도록 노력하겠습니다.</div>
+      </div>
+    </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><div class="section-title">4월 학습 방향</div></div>
+    <div class="card"><ul style="list-style:none"><li style="padding:8px 0;border-bottom:1px solid var(--gray-200);font-size:13px;">1. 4월: 수학·국어·영어 기초 개념 완벽 정리</li><li style="padding:8px 0;border-bottom:1px solid var(--gray-200);font-size:13px;">2. 각 과목별 정답률 70% 이상 달성</li><li style="padding:8px 0;border-bottom:1px solid var(--gray-200);font-size:13px;">3. 꾸준한 출석으로 학습 습관 강화</li></ul></div>
+  </div>
+  <div class="footer">
+    <div class="footer-title">공부의철인 화정학원</div>
+    <div class="footer-subtitle">학습 상담 및 문의</div>
+    <a href="tel:010-2933-4222" class="contact-btn">📞 010-2933-4222</a>
+  </div>
+</div>
+<script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.progress-fill').forEach(function(b){
+      var w=b.style.width;b.style.width='0%';
+      setTimeout(function(){b.style.width=w;},100);
+    });
+  },300);
+});
+</script>
+</body></html>
