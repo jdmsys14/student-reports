@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>수학 학습 보고서 - (매칭없음) 2026년 03월</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f4f6fb; --surface:#ffffff; --surface2:#eef1f8;
+    --border:rgba(0,0,0,0.07);
+    --accent1:#f57724; --accent2:#13e7a7; --accent3:#f76707; --accent4:#12b886;
+    --text-primary:#1a1f36; --text-secondary:#515872; --text-muted:#9ba3b8;
+    --radius:16px; --radius-sm:10px;
+    --shadow:0 2px 12px rgba(0,0,0,0.055);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:480px;margin:0 auto;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .header{padding:52px 24px 36px;position:relative;overflow:hidden;background:linear-gradient(145deg, #f57724 0%, #ff9f4c 100%)}
+  .header::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.08)}
+  .header::after{content:'';position:absolute;bottom:-40px;left:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05)}
+  .header-label{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .1s forwards}
+  .header-label::before{content:'';width:14px;height:2px;background:rgba(255,255,255,0.55);border-radius:2px}
+  .header-name{font-size:30px;font-weight:900;line-height:1.2;color:#fff;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .2s forwards}
+  .header-name span{color:rgba(255,255,255,0.6)}
+  .header-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-top:8px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .3s forwards}
+  .header-meta{position:absolute;top:52px;right:24px;text-align:right;z-index:1;opacity:0;animation:fadeIn .5s ease .4s forwards}
+  .header-meta-academy{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85)}
+  .header-meta-date{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px}
+  .section{padding:24px 20px 0;opacity:0;animation:fadeUp .5s ease forwards}
+  .section:nth-child(2){animation-delay:.35s}.section:nth-child(3){animation-delay:.45s}.section:nth-child(4){animation-delay:.55s}.section:nth-child(5){animation-delay:.65s}.section:nth-child(6){animation-delay:.75s}
+  .sec-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .id-card{background:var(--surface);border-radius:var(--radius);padding:20px;display:flex;align-items:center;gap:16px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .id-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--accent1),var(--accent2))}
+  .id-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--accent1),#5480f8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 14px rgba(59,110,246,0.22)}
+  .id-info-name{font-size:20px;font-weight:700;color:var(--text-primary)}
+  .id-info-detail{font-size:12px;color:var(--text-secondary);margin-top:4px}
+  .id-badge{margin-left:auto;background:#e6faf3;border:1px solid #b2eedd;color:var(--accent2);font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card{background:var(--surface);border-radius:var(--radius-sm);padding:18px 16px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
+  .stat-card.blue::after{background:var(--accent1)}.stat-card.green::after{background:var(--accent2)}.stat-card.orange::after{background:var(--accent3)}.stat-card.red::after{background:var(--accent4)}
+  .stat-label{font-size:11px;color:var(--text-muted);margin-bottom:8px;font-weight:500}
+  .stat-value{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px}
+  .stat-card.blue .stat-value{color:var(--accent1)}.stat-card.green .stat-value{color:var(--accent2)}.stat-card.orange .stat-value{color:var(--accent3)}.stat-card.red .stat-value{color:var(--accent4)}
+  .stat-desc{font-size:11px;color:var(--text-muted)}
+  .eval-item{margin-bottom:14px}.eval-item:last-child{margin-bottom:0}
+  .eval-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+  .eval-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+  .eval-score{font-size:13px;font-weight:700}
+  .eval-bar-bg{height:7px;background:var(--surface2);border-radius:6px;overflow:hidden}
+  .eval-bar-fill{height:100%;border-radius:6px;animation:growBar 1s cubic-bezier(.16,1,.3,1) .6s both}
+  @keyframes growBar{from{width:0!important}}
+  .eval-bar-fill.blue{background:linear-gradient(90deg,var(--accent1),#7ba3ff)}.eval-bar-fill.green{background:linear-gradient(90deg,var(--accent2),#6edfc3)}.eval-bar-fill.orange{background:linear-gradient(90deg,var(--accent3),#ffac5e)}
+  .insight-list{display:flex;flex-direction:column;gap:10px}
+  .insight-card{background:var(--surface);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;gap:12px;align-items:flex-start}
+  .insight-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+  .dot-blue{background:var(--accent1)}.dot-green{background:var(--accent2)}.dot-orange{background:var(--accent3)}.dot-red{background:var(--accent4)}
+  .insight-text{font-size:13px;color:var(--text-secondary);line-height:1.75}
+  .insight-text strong{color:var(--text-primary);font-weight:700}
+  .tag-blue{background:#eef2fe;color:var(--accent1)}.tag-green{background:#e6faf3;color:var(--accent2)}.tag-orange{background:#fff3e8;color:var(--accent3)}.tag-red{background:#fde9f0;color:var(--accent4)}.tag-gray{background:var(--surface2);color:var(--text-muted)}
+  .attention-card{border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start;border:1px solid}
+  .attention-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+  .attention-title{font-size:12px;font-weight:700;margin-bottom:6px}
+  .attention-text{font-size:13px;color:var(--text-secondary);line-height:1.75}
+  .roadmap{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .roadmap-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;position:relative}
+  .roadmap-row:not(:last-child)::after{content:'';position:absolute;left:15px;top:36px;bottom:-10px;width:1px;background:var(--border)}
+  .roadmap-circle{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700}
+  .circle-done{background:var(--accent2);color:#fff}.circle-now{background:var(--accent1);color:#fff;box-shadow:0 0 0 4px rgba(59,110,246,0.12)}.circle-next{background:var(--surface2);color:var(--text-muted);border:1px solid var(--border)}
+  .roadmap-info{padding-top:4px;flex:1}
+  .roadmap-title{font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3}
+  .roadmap-desc{font-size:12px;color:var(--text-muted);margin-top:2px}
+  .roadmap-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:auto;flex-shrink:0;margin-top:4px}
+  .comment-box{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);border-left:4px solid var(--accent3);box-shadow:var(--shadow)}
+  .comment-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .comment-avatar{width:32px;height:32px;background:#fff3e8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .comment-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+  .comment-role{font-size:11px;color:var(--text-muted)}
+  .comment-text{font-size:13px;color:var(--text-secondary);line-height:1.85}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:'';position:absolute;left:7px;top:10px;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent1),transparent);border-radius:2px}
+  .tl-item{position:relative;padding-bottom:20px}
+  .tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--text-muted)}
+  .tl-item.absent::before{border-color:var(--accent4);background:#fde9f0}.tl-item.special::before{border-color:var(--accent3);background:#fff3e8}.tl-item.normal::before{border-color:var(--accent1);background:#eef2fe}
+  .tl-date{font-size:10px;color:var(--text-muted);margin-bottom:5px;font-weight:500}
+  .tl-card{background:var(--surface);border-radius:var(--radius-sm);padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .tl-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+  .tl-desc{font-size:12px;color:var(--text-secondary);margin-top:5px;line-height:1.65}
+  .tl-tag{font-size:10px;font-weight:600;margin-top:8px;display:inline-block;padding:2px 8px;border-radius:6px}
+  .donut-wrap{display:flex;align-items:center;gap:20px;background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .donut-legend{flex:1}
+  .legend-item{display:flex;align-items:center;gap:8px;padding:5px 0}
+  .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .legend-name{font-size:12px;color:var(--text-secondary);flex:1}
+  .legend-val{font-size:12px;font-weight:700;color:var(--text-primary)}
+  .footer-text{font-size:12px;color:var(--text-muted);line-height:1.8;text-align:center}
+  .footer-text a{color:var(--accent1);text-decoration:none;font-weight:700}
+  .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:10px 0 calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.06)}
+  .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:opacity .2s}
+  .nav-item:active{opacity:.5}
+  .nav-icon{font-size:20px}
+  .nav-label{font-size:9px;font-weight:500;color:var(--text-muted)}
+  .nav-item.active .nav-label{color:var(--accent1);font-weight:700}
+  .tab-section{display:none}.tab-section.active{display:block}
+  .course-list{display:flex;flex-direction:column;gap:10px}
+  .course-card{background:var(--surface);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+  .course-left{display:flex;align-items:center;gap:12px;width:100%}
+  .course-badge{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:-0.3px}
+  .badge-blue{background:#eef2fe;color:var(--accent1)}.badge-green{background:#e6faf3;color:var(--accent2)}
+  .course-info{min-width:0;flex:1}
+  .course-name{font-size:15px;font-weight:700;color:var(--text-primary)}
+  .course-topic{font-size:11px;color:var(--text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .course-books{display:flex;gap:6px;flex-wrap:wrap}
+  .book-tag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;background:var(--surface2);color:var(--text-secondary);border:1px solid var(--border);white-space:nowrap}
+  .schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .schedule-box{background:#eef2fe;border:1px solid #c5d3fc;border-radius:var(--radius-sm);padding:16px;text-align:center}
+  .schedule-day{font-size:14px;font-weight:700;color:var(--accent1);margin-top:6px}
+  .schedule-time{font-size:12px;color:var(--text-secondary);margin-top:3px}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="header-label">Math Report · 2026년 03월</div>
+    <div class="header-name">(매칭없음) <span>학습</span><br>보고서</div>
+    <div class="header-sub">2026년 03월 · 민샘학원</div>
+    <div class="header-meta">
+      <div class="header-meta-academy">민샘학원</div>
+      <div class="header-meta-date">2026년 03월 기준</div>
+    </div>
+  </div>
+
+  <div id="tab-home" class="tab-section active">
+    <div class="section">
+      <div class="sec-label">학생 프로파일</div>
+      <div class="id-card">
+        <div class="id-avatar">&#128208;</div>
+        <div>
+          <div class="id-info-name">(매칭없음)</div>
+          <div class="id-info-detail">매칭 대기 중</div>
+        </div>
+        <div class="id-badge">노력중 &#11088;</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="sec-label">진행 과정 및 교재</div>
+      <div class="course-list"><div style="color:var(--text-muted);font-size:13px;padding:12px">수업 과정 정보가 없습니다.</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">2026년 03월 수업 현황</div>
+      <div class="stats-grid"><div class="stat-card red">
+  <div class="stat-label">이번달 수업</div>
+  <div class="stat-value">0회</div>
+  <div class="stat-desc">아직 수업이 진행되지 않았어요</div>
+</div><div class="stat-card orange">
+  <div class="stat-label">출석률</div>
+  <div class="stat-value">0%</div>
+  <div class="stat-desc">수업 배정 대기 중이에요</div>
+</div><div class="stat-card orange">
+  <div class="stat-label">학습 상태</div>
+  <div class="stat-value">대기</div>
+  <div class="stat-desc">학생 매칭 및 과정 선정이 필요해요</div>
+</div></div>
+    </div>
+    
+    <div class="section">
+      <div class="sec-label">이달의 학습 인사이트</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="insight-dot dot-orange"></div>
+  <div class="insight-text"><strong>학생 매칭이 아직 완료되지 않았어요.</strong> 수업 시작 전에 학습 목표와 현재 수준을 파악하여 최적의 학습 계획을 세워드릴 예정입니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-blue"></div>
+  <div class="insight-text">수업 시작 시 첫 진단 평가를 통해 학생의 강점과 개선 영역을 파악하고 맞춤형 지도를 시작하겠습니다.</div>
+</div></div>
+    </div>
+    
+    <div class="section">
+      <div class="sec-label">학습 로드맵</div>
+      <div class="roadmap"><div class="roadmap-row">
+  <div class="roadmap-circle circle-now">&#9679;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">학생 매칭 및 레벨 진단</div>
+    <div class="roadmap-desc">현재 학습 수준과 목표를 파악하는 단계입니다</div>
+  </div>
+  <span class="roadmap-badge tag-blue">진행중</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-next">&#8594;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">맞춤형 수업 계획 수립</div>
+    <div class="roadmap-desc">학생의 특성에 맞는 교재와 학습 방법을 결정합니다</div>
+  </div>
+  <span class="roadmap-badge tag-gray">예정</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-next">&#8594;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">본격적인 수업 시작</div>
+    <div class="roadmap-desc">체계적인 학습을 통해 실력 향상을 도모합니다</div>
+  </div>
+  <span class="roadmap-badge tag-gray">예정</span>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">선생님 코멘트</div>
+      <div class="comment-box">
+        <div class="comment-header">
+          <div class="comment-avatar">&#128221;</div>
+          <div>
+            <div class="comment-title">담당 선생님</div>
+            <div class="comment-role">민샘학원</div>
+          </div>
+        </div>
+        <div class="comment-text">3월 수업 기록을 보니 아직 학생 매칭이 진행 중이네요. 빠른 시일 내에 적절한 과정을 배정하여 수업을 시작하겠습니다. 수업이 시작되면 정기적으로 학습 진도와 성과를 보고해 드리겠으니 많은 기대 부탁드려요.</div>
+      </div>
+    </div>
+    <div style="margin:28px 20px 0;padding:18px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div class="footer-text">
+        궁금한 점은 카카오톡 채널로 문의해 주세요.<br>
+        <a href="">민샘학원</a> · 항상 감사합니다 &#128591;
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <div id="tab-timeline" class="tab-section">
+    <div class="section">
+      <div class="sec-label">2026년 03월 수업 기록</div>
+      <div class="timeline"><div style="color:var(--text-muted);font-size:13px;padding:12px">수업 기록이 없습니다.</div></div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <div id="tab-analysis" class="tab-section">
+    <div class="section">
+      <div class="sec-label">수업 분포</div>
+      <div style="color:var(--text-muted);font-size:13px;padding:12px">분포 데이터가 없습니다.</div>
+    </div>
+    <div class="section">
+      <div class="sec-label">능력 지표</div>
+      <div style="background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="color:var(--text-muted);font-size:13px">능력 지표 데이터가 없습니다.</div>
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <div id="tab-notice" class="tab-section">
+    <div class="section">
+      <div class="sec-label">다음 달 공지사항</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="insight-dot dot-blue"></div>
+  <div class="insight-text">학생 매칭 후 첫 수업에서 <strong>진단 평가</strong>를 진행하여 현재 수준을 파악하게 됩니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-green"></div>
+  <div class="insight-text">개인별 맞춤 학습 계획 수립으로 효율적인 학습을 지원해 드리겠습니다.</div>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">예상 시간표</div>
+      <div style="background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div class="schedule-grid"><div style="color:var(--text-muted);font-size:13px">시간표 정보가 없습니다.</div></div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.8">※ 학교 마치는 시간에 따라 변동될 수 있습니다.</div>
+      </div>
+    </div>
+    <div style="margin:28px 20px 0;padding:18px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div class="footer-text">
+        문의사항은 카카오톡으로 연락주세요.<br>
+        <a href="">민샘학원</a> · 감사합니다 &#128591;
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="switchTab('home',this)"><div class="nav-icon">&#127968;</div><div class="nav-label">홈</div></div>
+    <div class="nav-item" onclick="switchTab('timeline',this)"><div class="nav-icon">&#128203;</div><div class="nav-label">수업기록</div></div>
+    <div class="nav-item" onclick="switchTab('analysis',this)"><div class="nav-icon">&#128202;</div><div class="nav-label">분석</div></div>
+    <div class="nav-item" onclick="switchTab('notice',this)"><div class="nav-icon">&#128226;</div><div class="nav-label">공지</div></div>
+  </nav>
+</div>
+<script>
+function switchTab(name,el){
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
