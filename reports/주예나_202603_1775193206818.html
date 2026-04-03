@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>학습 보고서 - 주예나 2026년 03월</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6fb;--surface:#fff;--surface2:#eef1f8;
+  --border:rgba(0,0,0,0.07);
+  --accent1:#3b6ef6;--accent2:#12b886;--accent3:#f59f00;--accent4:#f03e3e;
+  --text1:#1a1f36;--text2:#515872;--text3:#9ba3b8;
+  --r:16px;--rs:10px;
+  --sh:0 2px 12px rgba(0,0,0,0.055);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text1);-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+
+/* 헤더 */
+.header{padding:52px 24px 36px;position:relative;overflow:hidden;
+  background:linear-gradient(145deg,#3b6ef6 0%,#5480f8 60%,#7ba3ff 100%)}
+.header::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.header::after{content:'';position:absolute;bottom:-40px;left:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05)}
+.h-label{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.75);text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .1s forwards}
+.h-label::before{content:'';width:14px;height:2px;background:rgba(255,255,255,0.55);border-radius:2px}
+.h-name{font-size:30px;font-weight:900;line-height:1.2;color:#fff;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .2s forwards}
+.h-name span{color:rgba(255,255,255,0.65)}
+.h-sub{font-size:13px;color:rgba(255,255,255,0.75);margin-top:8px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .3s forwards}
+.h-meta{position:absolute;top:52px;right:24px;text-align:right;z-index:1;opacity:0;animation:fadeIn .5s ease .4s forwards}
+.h-academy{font-size:12px;font-weight:700;color:rgba(255,255,255,0.9)}
+.h-date{font-size:10px;color:rgba(255,255,255,0.6);margin-top:3px}
+
+/* 섹션 */
+.section{padding:24px 20px 0;opacity:0;animation:fadeUp .5s ease forwards}
+.section:nth-child(2){animation-delay:.35s}.section:nth-child(3){animation-delay:.45s}
+.section:nth-child(4){animation-delay:.55s}.section:nth-child(5){animation-delay:.65s}
+.section:nth-child(6){animation-delay:.75s}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.empty{color:var(--text3);font-size:13px;padding:12px}
+
+/* 프로파일 */
+.id-card{background:var(--surface);border-radius:var(--r);padding:20px;
+  display:flex;align-items:center;gap:16px;border:1px solid var(--border);
+  box-shadow:var(--sh);position:relative;overflow:hidden}
+.id-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--accent1),var(--accent2))}
+.id-avatar{width:54px;height:54px;background:linear-gradient(135deg,#3b6ef6,#5480f8);
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  font-size:24px;flex-shrink:0;box-shadow:0 4px 14px rgba(59,110,246,0.22)}
+.id-name{font-size:20px;font-weight:700;color:var(--text1)}
+.id-detail{font-size:12px;color:var(--text2);margin-top:4px}
+.id-badge{margin-left:auto;background:#e8effe;border:1px solid #c5d3fc;
+  color:var(--accent1);font-size:11px;font-weight:700;padding:6px 12px;
+  border-radius:20px;white-space:nowrap}
+
+/* 과정 */
+.course-list{display:flex;flex-direction:column;gap:10px}
+.course-card{background:var(--surface);border-radius:var(--rs);padding:16px;
+  border:1px solid var(--border);box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px}
+.course-left{display:flex;align-items:center;gap:12px}
+.course-badge{width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+.badge-blue{background:#e8effe;color:var(--accent1)}
+.badge-green{background:#e6faf3;color:var(--accent2)}
+.course-name{font-size:15px;font-weight:700;color:var(--text1)}
+.course-topic{font-size:11px;color:var(--text3);margin-top:2px}
+.books{display:flex;gap:6px;flex-wrap:wrap}
+.book-tag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;
+  background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+
+/* 통계 */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat-card{background:var(--surface);border-radius:var(--rs);padding:18px 16px;
+  border:1px solid var(--border);box-shadow:var(--sh);position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
+.stat-card.blue::after{background:var(--accent1)}.stat-card.green::after{background:var(--accent2)}
+.stat-card.orange::after{background:var(--accent3)}.stat-card.red::after{background:var(--accent4)}
+.stat-label{font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:500}
+.stat-value{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px}
+.stat-card.blue .stat-value{color:var(--accent1)}.stat-card.green .stat-value{color:var(--accent2)}
+.stat-card.orange .stat-value{color:var(--accent3)}.stat-card.red .stat-value{color:var(--accent4)}
+.stat-desc{font-size:11px;color:var(--text3)}
+
+/* 인사이트 */
+.insight-list{display:flex;flex-direction:column;gap:10px}
+.insight-card{background:var(--surface);border-radius:var(--rs);padding:16px;
+  border:1px solid var(--border);box-shadow:var(--sh);display:flex;gap:12px;align-items:flex-start}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dot-blue{background:var(--accent1)}.dot-green{background:var(--accent2)}
+.dot-orange{background:var(--accent3)}.dot-red{background:var(--accent4)}
+.insight-text{font-size:13px;color:var(--text2);line-height:1.75}
+.insight-text strong{color:var(--text1);font-weight:700}
+
+/* 태그 */
+.tag-blue{background:#e8effe;color:var(--accent1)}.tag-green{background:#e6faf3;color:var(--accent2)}
+.tag-orange{background:#fff3e8;color:var(--accent3)}.tag-red{background:#fde9f0;color:var(--accent4)}
+.tag-gray{background:var(--surface2);color:var(--text3)}
+
+/* 주의 */
+.attention-card{border-radius:var(--rs);padding:16px;display:flex;gap:12px;
+  align-items:flex-start;border:1px solid}
+.att-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.att-title{font-size:12px;font-weight:700;margin-bottom:6px}
+.att-text{font-size:13px;color:var(--text2);line-height:1.75}
+
+/* 로드맵 */
+.roadmap-box{background:var(--surface);border-radius:var(--r);padding:20px;
+  border:1px solid var(--border);box-shadow:var(--sh)}
+.rm-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;position:relative}
+.rm-row:not(:last-child)::after{content:'';position:absolute;left:15px;top:36px;
+  bottom:-10px;width:1px;background:var(--border)}
+.rm-circle{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:12px;font-weight:700}
+.c-done{background:var(--accent2);color:#fff}
+.c-now{background:var(--accent1);color:#fff;box-shadow:0 0 0 4px rgba(59,110,246,0.12)}
+.c-next{background:var(--surface2);color:var(--text3);border:1px solid var(--border)}
+.rm-info{padding-top:4px;flex:1}
+.rm-title{font-size:14px;font-weight:600;color:var(--text1)}
+.rm-desc{font-size:12px;color:var(--text3);margin-top:2px}
+.rm-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:auto;flex-shrink:0;margin-top:4px}
+
+/* 코멘트 */
+.comment-box{background:var(--surface);border-radius:var(--r);padding:20px;
+  border:1px solid var(--border);border-left:4px solid var(--accent3);box-shadow:var(--sh)}
+.cm-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.cm-avatar{width:32px;height:32px;background:#fff3e8;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px}
+.cm-title{font-size:13px;font-weight:700;color:var(--text1)}
+.cm-role{font-size:11px;color:var(--text3)}
+.cm-text{font-size:13px;color:var(--text2);line-height:1.85}
+
+/* 타임라인 */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:'';position:absolute;left:7px;top:10px;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--accent1),transparent);border-radius:2px}
+.tl-item{position:relative;padding-bottom:20px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:9px;height:9px;
+  border-radius:50%;background:#fff;border:2px solid var(--text3)}
+.tl-item.absent::before{border-color:var(--accent4);background:#fde9f0}
+.tl-item.special::before{border-color:var(--accent3);background:#fff3e8}
+.tl-item.normal::before{border-color:var(--accent1);background:#e8effe}
+.tl-date{font-size:10px;color:var(--text3);margin-bottom:5px;font-weight:500}
+.tl-card{background:var(--surface);border-radius:var(--rs);padding:14px 16px;
+  border:1px solid var(--border);box-shadow:var(--sh)}
+.tl-title{font-size:13px;font-weight:700;color:var(--text1)}
+.tl-desc{font-size:12px;color:var(--text2);margin-top:5px;line-height:1.65}
+.tl-tag{font-size:10px;font-weight:600;margin-top:8px;display:inline-block;padding:2px 8px;border-radius:6px}
+.ill-badge{display:inline-flex;align-items:center;gap:5px;background:#fde9f0;
+  border:1px solid #f9a8c9;border-radius:20px;padding:3px 10px;
+  font-size:10px;font-weight:700;color:#e64980;margin-bottom:8px}
+
+/* 도넛 */
+.donut-wrap{display:flex;align-items:center;gap:20px;background:var(--surface);
+  border-radius:var(--r);padding:20px;border:1px solid var(--border);box-shadow:var(--sh)}
+.donut-legend{flex:1}
+.leg-item{display:flex;align-items:center;gap:8px;padding:5px 0}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.leg-name{font-size:12px;color:var(--text2);flex:1}
+.leg-val{font-size:12px;font-weight:700;color:var(--text1)}
+
+/* 능력 */
+.ab-item{margin-bottom:14px}
+.ab-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+.ab-name{font-size:13px;font-weight:500;color:var(--text1)}
+.ab-score{font-size:13px;font-weight:700}
+.ab-bg{height:7px;background:var(--surface2);border-radius:6px;overflow:hidden}
+.bar-fill-blue,.bar-fill-green,.bar-fill-orange{
+  height:100%;border-radius:6px;animation:growBar 1s cubic-bezier(.16,1,.3,1) .6s both}
+@keyframes growBar{from{width:0!important}}
+.bar-fill-blue{background:linear-gradient(90deg,var(--accent1),#7ba3ff)}
+.bar-fill-green{background:linear-gradient(90deg,var(--accent2),#6edfc3)}
+.bar-fill-orange{background:linear-gradient(90deg,var(--accent3),#ffac5e)}
+
+/* 시간표 */
+.sched-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sched-box{background:#e8effe;border:1px solid #c5d3fc;border-radius:var(--rs);padding:16px;text-align:center}
+.sched-day{font-size:14px;font-weight:700;color:var(--accent1);margin-top:6px}
+.sched-time{font-size:12px;color:var(--text2);margin-top:3px}
+
+/* 푸터 */
+.footer-box{margin:28px 20px 0;padding:18px;background:var(--surface);
+  border-radius:var(--rs);border:1px solid var(--border);box-shadow:var(--sh)}
+.footer-text{font-size:12px;color:var(--text3);line-height:1.8;text-align:center}
+.footer-text a{color:var(--accent1);text-decoration:none;font-weight:700}
+
+/* 하단 네비 */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:480px;background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);padding:10px 0 calc(10px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:repeat(4,1fr);z-index:100;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.06)}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.nav-icon{font-size:20px}
+.nav-label{font-size:9px;font-weight:500;color:var(--text3)}
+.nav-item.active .nav-label{color:var(--accent1);font-weight:700}
+.tab-section{display:none}.tab-section.active{display:block}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="h-label">English Report · 2026년 03월</div>
+    <div class="h-name">주예나 <span>학습</span><br>보고서</div>
+    <div class="h-sub">2026년 03월 · 아너스 영어</div>
+    <div class="h-meta">
+      <div class="h-academy">아너스 영어</div>
+      <div class="h-date">2026년 03월 기준</div>
+    </div>
+  </div>
+
+  <!-- 홈 탭 -->
+  <div id="tab-home" class="tab-section active">
+    <div class="section">
+      <div class="sec-label">학생 프로파일</div>
+      <div class="id-card">
+        <div class="id-avatar">📖</div>
+        <div>
+          <div class="id-name">주예나</div>
+          <div class="id-detail">중학교 1학년</div>
+        </div>
+        <div class="id-badge">우수 ⭐</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="sec-label">진행 과정 및 교재</div>
+      <div class="course-list"><div class="course-card">
+  <div class="course-left">
+    <div class="course-badge badge-green">중1</div>
+    <div>
+      <div class="course-name">2026년 중1C(화목금)</div>
+      <div class="course-topic">문법(5형식, to부정사, 동명사, 전치사, 접속사) 및 독해</div>
+    </div>
+  </div>
+  <div class="books"><span class="book-tag">천일문 중등 Grammar Level 1</span><span class="book-tag">리딩 릴레이 스타터 2</span></div>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">2026년 03월 수업 현황</div>
+      <div class="stats-grid"><div class="stat-card green">
+  <div class="stat-label">출석률</div>
+  <div class="stat-value">93%</div>
+  <div class="stat-desc">13/14회 출석</div>
+</div><div class="stat-card green">
+  <div class="stat-label">과제이행률</div>
+  <div class="stat-value">92%</div>
+  <div class="stat-desc">11/12건 완료</div>
+</div><div class="stat-card green">
+  <div class="stat-label">개인단어 평균</div>
+  <div class="stat-value">99%</div>
+  <div class="stat-desc">단어 테스트 평균 점수</div>
+</div><div class="stat-card green">
+  <div class="stat-label">독해단어 평균</div>
+  <div class="stat-value">98%</div>
+  <div class="stat-desc">독해 단어 테스트 평균 점수</div>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">이달의 학습 인사이트</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="dot dot-green"></div>
+  <div class="insight-text"><strong>뛰어난 학습 성실성</strong>으로 매달 높은 출석률과 과제 완료율을 유지하고 있습니다.</div>
+</div><div class="insight-card">
+  <div class="dot dot-green"></div>
+  <div class="insight-text">개인단어 및 독해단어 테스트에서 <strong>99%, 98%의 탁월한 성적</strong>을 기록하며 어휘력이 우수합니다.</div>
+</div><div class="insight-card">
+  <div class="dot dot-blue"></div>
+  <div class="insight-text">지문 해석 및 듣기 과제 수행이 <strong>매우 안정적</strong>이며 꾸준한 진도를 이루고 있습니다.</div>
+</div><div class="insight-card">
+  <div class="dot dot-orange"></div>
+  <div class="insight-text">온라인 과제 완료율(73%)은 비교적 양호하나, <strong>추가 학습 강화</strong>가 도움이 될 것으로 보입니다.</div>
+</div></div>
+    </div>
+    <div class="section">
+  <div class="sec-label">특이 사항</div>
+  <div class="attention-card" style="background:#fff8f0;border-color:#ffd8b0">
+    <div class="att-icon">⚠️</div>
+    <div>
+      <div class="att-title" style="color:var(--accent3)">교재비 안내</div>
+      <div class="att-text">3월 10일 독해 교재(리딩 릴레이 스타터 2) 배부로 인해 3월 중 교재비 청구 예정입니다.</div>
+    </div>
+  </div>
+</div>
+    <div class="section">
+      <div class="sec-label">학습 로드맵</div>
+      <div class="roadmap-box"><div class="rm-row">
+  <div class="rm-circle c-done">✓</div>
+  <div class="rm-info">
+    <div class="rm-title">기초 문법 완성(5형식, to부정사, 동명사)</div>
+    <div class="rm-desc">3월 초중반 진행 완료</div>
+  </div>
+  <span class="tag-green rm-badge">완료</span>
+</div><div class="rm-row">
+  <div class="rm-circle c-now">●</div>
+  <div class="rm-info">
+    <div class="rm-title">심화 문법 학습(전치사, 접속사)</div>
+    <div class="rm-desc">3월 중후반 진행 중</div>
+  </div>
+  <span class="tag-blue rm-badge">진행중</span>
+</div><div class="rm-row">
+  <div class="rm-circle c-next">→</div>
+  <div class="rm-info">
+    <div class="rm-title">독해 능력 강화 및 통합 복습</div>
+    <div class="rm-desc">4월 예정</div>
+  </div>
+  <span class="tag-gray rm-badge">예정</span>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">선생님 코멘트</div>
+      <div class="comment-box">
+        <div class="cm-header">
+          <div class="cm-avatar">📝</div>
+          <div>
+            <div class="cm-title">담당 선생님</div>
+            <div class="cm-role">아너스 영어</div>
+          </div>
+        </div>
+        <div class="cm-text">주예나 학생은 이번 달에도 매우 성실한 학습 태도를 보여주었습니다. 99%의 개인단어 평균과 꾸준한 수업 참석으로 우수한 실력을 입증했습니다. 천일문 중등 Grammar Level 1의 전치사와 접속사 단원을 차근차근 완료하고 있으며, 새로 시작한 리딩 릴레이 독해 교재에서도 좋은 성과를 기대합니다. 4월에는 이 학습 동력을 유지하여 더욱 심화된 내용으로 나아갈 것을 권장합니다.</div>
+      </div>
+    </div>
+    <div class="footer-box">
+      <div class="footer-text">
+        궁금한 점은 카카오톡 채널로 문의해 주세요.<br>
+        <a href="">아너스 영어</a> · 항상 감사합니다 🙏
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- 수업기록 탭 -->
+  <div id="tab-timeline" class="tab-section">
+    <div class="section">
+      <div class="sec-label">2026년 03월 수업 기록</div>
+      <div class="timeline"><div class="tl-item normal">
+  <div class="tl-date">2026-03-05</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 5형식 문장 학습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 115-116 진행, 개인단어 27/30 통과, 독해단어 33/35 통과</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-06</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: Chapter 학습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 117-119 진행, 개인단어 30/30 통과</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item special">
+  <div class="tl-date">2026-03-10</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">독해 교재 배부 및 to부정사 학습</div>
+    <div class="tl-desc">리딩 릴레이 스타터 2 교재 배부, 천일문 중등 Grammar Level 1 pp. 122-124 진행</div>
+    <span class="tl-tag tag-orange">교재비청구예정</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-12</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: to부정사 학습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 126-128 진행, 개인단어 30/30 통과, 과제 미수행</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-13</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 동명사 학습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 129-131 진행, 개인단어 30/30 통과</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-17</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법 워크북: Chapter 복습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 워크북 pp. 82-83 진행, 지문 15/15 통과</div>
+    <span class="tl-tag tag-green">복습</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-19</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 장소와 위치 표현</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 138-140 진행, 개인단어 30/30 통과, 숙제 미지참</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-20</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 시간 표현</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 141-143 진행, 개인단어 통과</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item absent">
+  <div class="tl-date">2026-03-23</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">결석</div>
+    <div class="tl-desc">수업 미참석</div>
+    <span class="tl-tag tag-red">결석</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-24</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 전치사 학습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 144-145 진행, 개인단어 30/30 통과</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-26</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법 워크북: 전치사 복습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 워크북 pp. 90-91 진행, 개인단어 30/30 통과</div>
+    <span class="tl-tag tag-green">복습</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-27</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 접속사 학습</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 150-151 진행, 개인단어 30/30 통과, 과제 미완료</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div><div class="tl-item normal">
+  <div class="tl-date">2026-03-31</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">문법: 여러 가지 접속사</div>
+    <div class="tl-desc">천일문 중등 Grammar Level 1 pp. 152-154 진행, 개인단어 30/30 통과, 독해단어 37/37 통과</div>
+    <span class="tl-tag tag-blue">문법</span>
+  </div>
+</div></div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- 분석 탭 -->
+  <div id="tab-analysis" class="tab-section">
+    <div class="section">
+      <div class="sec-label">수업 분포</div>
+      <div class="donut-wrap">
+  <svg width="100" height="100" viewBox="0 0 100 100" style="flex-shrink:0">
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#eef1f8" stroke-width="13"/>
+    <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent1)" stroke-width="13" stroke-dasharray="212.66 38.67" stroke-dashoffset="0.00" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent2)" stroke-width="13" stroke-dasharray="38.67 212.66" stroke-dashoffset="-212.66" transform="rotate(-90 50 50)"/>
+    <text x="50" y="47" text-anchor="middle" fill="#1a1f36" font-size="15" font-weight="900" font-family="Noto Sans KR">13</text>
+    <text x="50" y="59" text-anchor="middle" fill="#9ba3b8" font-size="8" font-family="Noto Sans KR">수업</text>
+  </svg>
+  <div class="donut-legend"><div class="leg-item">
+  <div class="leg-dot" style="background:var(--accent1)"></div>
+  <div class="leg-name">문법 수업</div>
+  <div class="leg-val" style="color:var(--accent1)">11회</div>
+</div><div class="leg-item">
+  <div class="leg-dot" style="background:var(--accent2)"></div>
+  <div class="leg-name">독해/복습</div>
+  <div class="leg-val" style="color:var(--accent2)">2회</div>
+</div></div>
+</div>
+    </div>
+    <div class="section">
+      <div class="sec-label">능력 지표</div>
+      <div style="background:var(--surface);border-radius:var(--r);padding:20px;
+        border:1px solid var(--border);box-shadow:var(--sh)">
+        <div class="ab-item">
+  <div class="ab-header">
+    <span class="ab-name">출석성실도</span>
+    <span class="ab-score" style="color:var(--accent1)">93%</span>
+  </div>
+  <div class="ab-bg"><div class="bar-fill-blue" style="width:93%"></div></div>
+</div><div class="ab-item">
+  <div class="ab-header">
+    <span class="ab-name">과제이행도</span>
+    <span class="ab-score" style="color:var(--accent2)">92%</span>
+  </div>
+  <div class="ab-bg"><div class="bar-fill-green" style="width:92%"></div></div>
+</div><div class="ab-item">
+  <div class="ab-header">
+    <span class="ab-name">개인단어테스트</span>
+    <span class="ab-score" style="color:var(--accent3)">99%</span>
+  </div>
+  <div class="ab-bg"><div class="bar-fill-orange" style="width:99%"></div></div>
+</div><div class="ab-item" style="margin-bottom:0">
+  <div class="ab-header">
+    <span class="ab-name">독해단어테스트</span>
+    <span class="ab-score" style="color:var(--accent3)">98%</span>
+  </div>
+  <div class="ab-bg"><div class="bar-fill-orange" style="width:98%"></div></div>
+</div>
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- 공지 탭 -->
+  <div id="tab-notice" class="tab-section">
+    <div class="section">
+      <div class="sec-label">다음 달 공지사항</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="dot dot-orange"></div>
+  <div class="insight-text">3월 10일 배부된 리딩 릴레이 스타터 2 교재비가 청구될 예정입니다.</div>
+</div><div class="insight-card">
+  <div class="dot dot-blue"></div>
+  <div class="insight-text">4월부터는 문법 심화 과정과 독해 능력 강화에 중점을 두고 진행할 계획입니다.</div>
+</div><div class="insight-card">
+  <div class="dot dot-green"></div>
+  <div class="insight-text">온라인 과제 완료율 향상을 위해 추가적인 학습 독려를 권장합니다.</div>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">예상 시간표</div>
+      <div style="background:var(--surface);border-radius:var(--r);padding:20px;
+        border:1px solid var(--border);box-shadow:var(--sh)">
+        <div class="sched-grid"><div class="sched-box">
+  <div style="font-size:22px">📅</div>
+  <div class="sched-day">화</div>
+  <div class="sched-time">정규 수업일</div>
+</div><div class="sched-box">
+  <div style="font-size:22px">📅</div>
+  <div class="sched-day">목</div>
+  <div class="sched-time">정규 수업일</div>
+</div><div class="sched-box">
+  <div style="font-size:22px">📅</div>
+  <div class="sched-day">금</div>
+  <div class="sched-time">정규 수업일</div>
+</div></div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text3);line-height:1.8">
+          ※ 학교 마치는 시간에 따라 변동될 수 있습니다.
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+      <div class="footer-text">
+        문의사항은 카카오톡으로 연락주세요.<br>
+        <a href="">아너스 영어</a> · 감사합니다 🙏
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="sw('home',this)"><div class="nav-icon">🏠</div><div class="nav-label">홈</div></div>
+    <div class="nav-item" onclick="sw('timeline',this)"><div class="nav-icon">📋</div><div class="nav-label">수업기록</div></div>
+    <div class="nav-item" onclick="sw('analysis',this)"><div class="nav-icon">📊</div><div class="nav-label">분석</div></div>
+    <div class="nav-item" onclick="sw('notice',this)"><div class="nav-icon">📢</div><div class="nav-label">공지</div></div>
+  </nav>
+</div>
+<script>
+function sw(name,el){
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body></html>
