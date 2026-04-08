@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김세아 학습 보고서</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:20px 0;line-height:1.6}
+.container{max-width:600px;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:30px 20px;text-align:center}
+.header h1{font-size:24px;margin-bottom:10px;font-weight:700}
+.header .period{font-size:14px;opacity:0.9;font-weight:300}
+.section{padding:25px 20px;border-bottom:1px solid #f0f0f0}
+.section:last-child{border-bottom:none}
+.section-title{font-size:18px;font-weight:700;color:#333;margin-bottom:15px;display:flex;align-items:center}
+.section-title::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);margin-right:10px;border-radius:2px}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:15px}
+.stat-card{background:#f8f9ff;border-radius:15px;padding:20px;text-align:center;border:2px solid #e8ebff}
+.stat-value{font-size:32px;font-weight:700;color:#667eea;margin-bottom:5px}
+.stat-label{font-size:13px;color:#666}
+.chart-container{position:relative;height:250px;margin:20px 0}
+.chart-container.tall{height:300px}
+.test-card{background:white;border:2px solid #e8ebff;border-radius:12px;padding:15px;margin:12px 0}
+.test-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.test-name{font-size:15px;font-weight:700;color:#333}
+.test-count{font-size:12px;color:#666;background:#f0f0f0;padding:4px 10px;border-radius:12px}
+.test-scores{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.test-score-item{text-align:center}
+.test-score-label{font-size:11px;color:#999;margin-bottom:3px}
+.test-score-value{font-size:18px;font-weight:700}
+.test-score-value.avg{color:#667eea}.test-score-value.max{color:#4caf50}.test-score-value.min{color:#ff9800}
+.score-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;margin-left:8px}
+.score-badge.excellent{background:#e8f5e9;color:#4caf50}
+.score-badge.good{background:#e3f2fd;color:#2196f3}
+.score-badge.normal{background:#fff3e0;color:#ff9800}
+.score-badge.need-improve{background:#ffebee;color:#f44336}
+.english-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:15px;border-radius:10px;margin-bottom:20px;text-align:center}
+.english-header h3{font-size:18px;margin-bottom:5px}
+.english-header p{font-size:13px;opacity:0.9}
+.class-list{margin-top:15px}
+.class-item{padding:12px 15px;background:white;border:2px solid #e8ebff;border-radius:10px;margin:8px 0;font-size:14px;color:#555}
+.attendance-summary{display:flex;justify-content:space-around;margin-top:15px}
+.attendance-item{text-align:center}
+.attendance-value{font-size:24px;font-weight:700;margin-bottom:5px}
+.attendance-value.present{color:#4caf50}.attendance-value.absent{color:#f44336}
+.attendance-label{font-size:13px;color:#666}
+.highlight{background:#fff3cd;padding:15px;border-radius:10px;border-left:4px solid #ffc107;margin:15px 0;font-size:14px;color:#333;line-height:1.7}
+.content-list{margin-top:15px}
+.content-item{padding:12px;background:#f8f9ff;border-radius:8px;margin:8px 0;font-size:13px;color:#555}
+.content-date{font-weight:700;color:#667eea;margin-right:8px}
+.content-subject{display:inline-block;padding:2px 8px;background:#667eea;color:white;border-radius:4px;font-size:11px;margin-right:8px}
+.footer{padding:20px;text-align:center;background:#f8f9ff;color:#666;font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📚 김세아 학생 학습 보고서</h1>
+    <div class="period">2026년 03월 · 아이톡학원</div>
+  </div>
+  <div class="section">
+    <div class="section-title">📊 학습 요약</div>
+    <div style="background:#fff0f3;border-left:4px solid #f44336;padding:12px 15px;border-radius:8px;margin:15px 0;font-size:13px;color:#c62828">🏥 <strong>건강 사유 결석이 감지되었습니다.</strong> 보충 수업 일정을 별도로 안내드릴게요.</div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-value">17</div><div class="stat-label">총 수업 횟수</div></div>
+      <div class="stat-card"><div class="stat-value">94.1%</div><div class="stat-label">출석률</div></div>
+      <div class="stat-card"><div class="stat-value">96.5점</div><div class="stat-label">영어 단어 평균</div></div>
+      <div class="stat-card"><div class="stat-value">1회</div><div class="stat-label">결석</div></div>
+    </div>
+  </div>
+  <div class="section" style="background:linear-gradient(to bottom,#f8f9ff 0%,white 100%)">
+    <div class="section-title">🎯 영어 테스트 점수 상세</div>
+    <div class="english-header">
+      <h3>📈 전체 평균 93.0점</h3>
+      <p>총 10개 영역 · 28회 테스트 응시</p>
+    </div>
+    <div class="test-card"><div class="test-card-header"><div class="test-name">📝 단어테스트<span class="score-badge excellent">완벽</span></div><div class="test-count">10회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">96.7점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">95점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">🎧 듣기테스트<span class="score-badge good">우수</span></div><div class="test-count">4회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">95.0점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">85점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">✏️ 문법쪽지시험<span class="score-badge excellent">완벽</span></div><div class="test-count">1회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">100.0점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">100점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">🎤 듣기쪽지시험<span class="score-badge good">우수</span></div><div class="test-count">2회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">86.3점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">92점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">80.56점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">📖 리딩단어시험<span class="score-badge good">우수</span></div><div class="test-count">4회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">92.9점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">75.78점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">📊 리딩단원평가<span class="score-badge normal">양호</span></div><div class="test-count">2회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">69.2점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">88.48점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">50점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">⭕ 문법객관식<span class="score-badge excellent">완벽</span></div><div class="test-count">1회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">100.0점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">100점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">✍️ 문법서술형<span class="score-badge excellent">완벽</span></div><div class="test-count">1회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">100.0점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">100점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">🔥 문법고난도<span class="score-badge excellent">완벽</span></div><div class="test-count">1회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">100.0점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">100점</div></div></div></div><div class="test-card"><div class="test-card-header"><div class="test-name">📚 리딩시험<span class="score-badge good">우수</span></div><div class="test-count">2회</div></div><div class="test-scores"><div class="test-score-item"><div class="test-score-label">평균</div><div class="test-score-value avg">87.5점</div></div><div class="test-score-item"><div class="test-score-label">최고</div><div class="test-score-value max">100점</div></div><div class="test-score-item"><div class="test-score-label">최저</div><div class="test-score-value min">75점</div></div></div></div>
+    <div style="margin-top:25px"><h4 style="font-size:15px;color:#333;margin-bottom:15px;font-weight:700">📊 단어테스트 점수 추이</h4><div class="chart-container tall"><canvas id="wordTestTrendChart"></canvas></div></div>
+    <div class="highlight" style="margin-top:20px">
+      <p style="margin-bottom:10px"><strong>✨ 강점 분석</strong><br>• 단어테스트에서 96.7점 평균으로 어휘력이 매우 우수함<br>• 문법 영역(객관식, 서술형, 고난도)에서 모두 100점 획득하여 문법 이해도가 탁월함<br>• 듣기테스트 95.0점 평균으로 청취 능력이 안정적으로 우수함</p>
+      <p><strong>📌 보완 영역</strong><br>• 리딩단원평가에서 50점과 88.48점으로 편차가 있으니 유형별 복습 강화 필요<br>• 심화반 리딩단어시험에서 75.78점으로 기초반 대비 낮은 점수가 나왔으므로 고난도 어휘 집중학습 권장<br>• 리딩 실전 해석 능력 향상을 위해 꾸준한 장문독해 연습 필요</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">✅ 출결 현황</div>
+    <div class="attendance-summary">
+      <div class="attendance-item"><div class="attendance-value present">16회</div><div class="attendance-label">출석</div></div>
+      <div class="attendance-item"><div class="attendance-value absent">1회</div><div class="attendance-label">결석</div></div>
+    </div>
+    <div style="margin-top:20px"><canvas id="attendanceChart"></canvas></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📝 최근 주요 수업 내용</div>
+    <div class="content-list"><div class="content-item"><span class="content-date">03/31</span><span class="content-subject">영어</span>내신 대비, 단어테스트 및 리딩단어시험</div><div class="content-item"><span class="content-date">03/26</span><span class="content-subject">영어</span>Frank Lloyd Wright, 리딩시험</div><div class="content-item"><span class="content-date">03/25</span><span class="content-subject">영어</span>내신 대비 (단어테스트, 내신 대비 암기 및 문제풀이)</div><div class="content-item"><span class="content-date">03/24</span><span class="content-subject">영어</span>문법객관식, 문법서술형, 문법고난도 평가</div><div class="content-item"><span class="content-date">03/19</span><span class="content-subject">영어</span>AI Art Controversy 심화수업 및 단어시험, 듣기평가</div></div>
+  </div>
+  <div class="section"><div class="section-title">🏫 수강 클래스</div><div class="class-list"><div class="class-item">📘 중등영어중2A</div><div class="class-item">🎧 중등영어2심화</div></div></div>
+  <div class="section">
+    <div class="section-title">💬 종합 평가</div>
+    <div class="highlight">
+      <p style="margin-bottom:10px"><strong>✨ 우수한 점</strong><br>• 단어테스트에서 96.7점 평균으로 어휘력이 매우 우수함<br>• 문법 영역(객관식, 서술형, 고난도)에서 모두 100점 획득하여 문법 이해도가 탁월함<br>• 듣기테스트 95.0점 평균으로 청취 능력이 안정적으로 우수함</p>
+      <p><strong>📌 개선 방향</strong><br>• 리딩단원평가에서 50점과 88.48점으로 편차가 있으니 유형별 복습 강화 필요<br>• 심화반 리딩단어시험에서 75.78점으로 기초반 대비 낮은 점수가 나왔으므로 고난도 어휘 집중학습 권장<br>• 리딩 실전 해석 능력 향상을 위해 꾸준한 장문독해 연습 필요</p>
+    </div>
+    <div style="background:#f8f9ff;padding:15px;border-radius:10px;border-left:4px solid #667eea;margin-top:15px;font-size:14px;color:#333;line-height:1.7">✏️ 세아는 단어와 문법 영역에서 탁월한 실력을 보이고 있습니다. 특히 매월 안정적인 단어테스트 점수와 문법 평가 만점이 인상적입니다. 다만 리딩 영역에서 난이도에 따른 편차가 있으므로, 심화반에서의 고난도 지문 학습에 집중하면 더욱 균형잡힌 성장을 이룰 수 있을 것으로 예상됩니다.</div>
+  </div>
+  <div class="footer">아이톡학원 | 학습 보고서</div>
+</div>
+<script>
+new Chart(document.getElementById('attendanceChart').getContext('2d'),{type:'bar',data:{labels:['출석','결석'],datasets:[{data:[16,1],backgroundColor:['rgba(76,175,80,0.8)','rgba(244,67,54,0.8)'],borderColor:['rgba(76,175,80,1)','rgba(244,67,54,1)'],borderWidth:2,borderRadius:8}]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:5}}}}});
+new Chart(document.getElementById('wordTestTrendChart').getContext('2d'),{type:'line',data:{labels:["03/03","03/04","03/05","03/10","03/11","03/12","03/18","03/25","03/26","03/31"],datasets:[{label:'단어테스트 점수',data:[97.5,97.5,95,100,95,95,95,95.92,98,98],borderColor:'rgba(102,126,234,1)',backgroundColor:'rgba(102,126,234,0.1)',borderWidth:3,fill:true,tension:0.4,pointRadius:5,pointHoverRadius:7,pointBackgroundColor:'rgba(102,126,234,1)',pointBorderColor:'#fff',pointBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top'},tooltip:{callbacks:{label:function(c){return c.parsed.y.toFixed(1)+'점';}}}}  ,scales:{y:{beginAtZero:false,min:90,max:105,ticks:{stepSize:5}},x:{ticks:{font:{size:11}}}}}});
+</script>
+</body></html>
