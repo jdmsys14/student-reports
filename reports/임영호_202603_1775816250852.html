@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>임영호 학습 보고서</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f4f6;color:#2d3748;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;background:#f2f4f6;min-height:100vh;padding-bottom:32px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ① 헤더 -->
+<div style="background:#5bb8a0;padding:28px 22px 28px;position:relative;overflow:hidden">
+  <div style="position:absolute;right:0;top:0;width:55%;height:100%;background-image:radial-gradient(circle,rgba(255,255,255,0.18) 1.5px,transparent 1.5px);background-size:16px 16px"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative">
+    <span style="font-size:13px;font-weight:800;color:white">● 아이톡학원</span>
+    <span style="background:rgba(255,255,255,0.2);color:white;border-radius:20px;padding:5px 16px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.35)">2026년 03월</span>
+  </div>
+  <div style="font-size:12px;color:rgba(255,255,255,0.75);letter-spacing:1.5px;margin-bottom:8px;position:relative">월간 영어 학습 보고서</div>
+  <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:20px;position:relative">
+    <span style="font-size:36px;font-weight:900;color:#ffffff;letter-spacing:-1px">임영호</span>
+    <span style="font-size:22px;font-weight:700;color:#000000">학생</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;position:relative">
+    <span style="background:white;color:#333;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700">초등영어E2(2시)</span>
+  </div>
+</div>
+
+<!-- ② 핵심 지표 3개 + 컬러바 -->
+<div style="background:white;position:relative">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+    <div style="padding:16px 8px 12px;text-align:center;border-right:1px solid #f0f0f0">
+      <div style="font-size:20px;font-weight:900;color:#5bb8a0;margin-bottom:3px">96.5점</div>
+      <div style="font-size:11px;color:#aaa">단어 평균</div>
+    </div>
+    <div style="padding:16px 8px 12px;text-align:center;border-right:1px solid #f0f0f0">
+      <div style="font-size:20px;font-weight:900;color:#74c9c0;margin-bottom:3px">98점</div>
+      <div style="font-size:11px;color:#aaa">리딩 평균</div>
+    </div>
+    <div style="padding:16px 8px 12px;text-align:center">
+      <div style="font-size:20px;font-weight:900;color:#f97316;margin-bottom:3px">-점</div>
+      <div style="font-size:11px;color:#aaa">문법 평균</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);height:4px">
+    <div style="background:#5bb8a0"></div>
+    <div style="background:#9dddd4"></div>
+    <div style="background:#f97316"></div>
+  </div>
+</div>
+
+
+
+<!-- ③ 영어 핵심 지표 -->
+<div style="padding:20px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">영어 핵심 지표</span>
+  </div>
+  <div style="background:white;border-radius:20px;padding:16px 16px 8px;border:1px solid #f0f0f0">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+      <!-- 단어 카드 -->
+      <div style="background:#e8f5f1;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">단어 평균</span>
+          <span style="background:white;color:#888;border-radius:10px;padding:2px 9px;font-size:11px;font-weight:700">12회</span>
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#5bb8a0;line-height:1;margin-bottom:8px">96.5</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px">최고 100점 · 최저 77점</div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:96.5%;background:#5bb8a0;border-radius:2px"></div></div>
+      </div>
+
+      <!-- 리딩 카드 -->
+      <div style="background:#e8f5f1;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">리딩 평균</span>
+          <span style="background:white;color:#888;border-radius:10px;padding:2px 9px;font-size:11px;font-weight:700">5회</span>
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#5bb8a0;line-height:1;margin-bottom:8px">98</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px">우수</div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:98%;background:#5bb8a0;border-radius:2px"></div></div>
+      </div>
+
+      <!-- 문법 카드 -->
+      <div style="background:#fef0e6;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">문법 평균</span>
+          
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#f97316;line-height:1;margin-bottom:8px">-</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px"></div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:0%;background:#f97316;border-radius:2px"></div></div>
+      </div>
+
+      <!-- 듣기 카드 -->
+      <div style="background:#fefce8;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">듣기 평균</span>
+          <span style="background:white;color:#888;border-radius:10px;padding:2px 9px;font-size:11px;font-weight:700">2회</span>
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#d4a017;line-height:1;margin-bottom:8px">80</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px">양호</div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:80%;background:#d4a017;border-radius:2px"></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ④ 단어 테스트 점수 추이 -->
+
+<div style="padding:0 16px 20px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">단어 테스트 점수 추이</span>
+  </div>
+  <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f0f0f0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+      <div style="font-size:15px;font-weight:800;color:#2d3748">📚 단어 시험</div>
+      <div style="background:#e8f5f1;color:#5bb8a0;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700">평균 96.5점</div>
+    </div>
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:16px">2026년 03월 전체 13회 응시</div>
+    <div style="position:relative;height:200px">
+      <canvas id="chart_0"></canvas>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:10px">
+      <div style="width:10px;height:10px;border-radius:2px;background:#5bb8a0"></div>
+      <span style="font-size:11px;color:#9ca3af">단어 시험 점수</span>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 리딩 테스트 점수 추이 -->
+
+<div style="padding:0 16px 20px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">리딩 테스트 점수 추이</span>
+  </div>
+  <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f0f0f0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+      <div style="font-size:15px;font-weight:800;color:#2d3748">📖 리딩단원평가</div>
+      <div style="background:#e8f5f1;color:#5bb8a0;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700">평균 98점</div>
+    </div>
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:16px">2026년 03월 5회 응시 · 우수</div>
+    <div style="position:relative;height:200px">
+      <canvas id="chart_1"></canvas>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:10px">
+      <div style="width:10px;height:10px;border-radius:2px;background:#5bb8a0"></div>
+      <span style="font-size:11px;color:#9ca3af">리딩단원평가 점수</span>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ 문법 테스트 점수 추이 -->
+
+
+<!-- ⑦ 듣기 테스트 점수 추이 -->
+
+<div style="padding:0 16px 20px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">듣기 테스트 점수 추이</span>
+  </div>
+  <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f0f0f0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+      <div style="font-size:15px;font-weight:800;color:#2d3748">🎧 듣기모의고사</div>
+      <div style="background:#e8f5f1;color:#5bb8a0;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700">쪽지 85점 평균</div>
+    </div>
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:16px">듣기쪽지 4회 · 듣기평가 2회 응시</div>
+    <div style="position:relative;height:200px">
+      <canvas id="chart_3"></canvas>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:10px">
+      <div style="width:10px;height:10px;border-radius:2px;background:#f6c90e"></div>
+      <span style="font-size:11px;color:#9ca3af">듣기모의고사 점수</span>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ 영역별 테스트 현황 -->
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">영역별 테스트 현황</span>
+  </div>
+  <div style="background:white;border-radius:18px;padding:0 20px;border:1px solid #f0f0f0">
+    
+<div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #f0f0f0">
+  <div style="width:44px;height:44px;border-radius:12px;background:#e8f5f1;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📚</div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:14px;font-weight:700;color:#2d3748;margin-bottom:2px">단어 테스트</div>
+    <div style="font-size:11px;color:#9ca3af;margin-bottom:8px">12회 응시 · 초등영어E2(2시) 기준</div>
+    <div style="height:4px;background:#f0f0f0;border-radius:2px;overflow:hidden">
+      <div style="height:100%;width:96.5%;background:#5bb8a0;border-radius:2px"></div>
+    </div>
+  </div>
+  <div style="text-align:right;flex-shrink:0">
+    <div style="font-size:20px;font-weight:900;color:#5bb8a0;margin-bottom:4px">96.5점</div>
+    <div style="font-size:11px;color:#9ca3af">12회</div>
+  </div>
+</div>
+    
+<div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #f0f0f0">
+  <div style="width:44px;height:44px;border-radius:12px;background:#e8f5f1;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📖</div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:14px;font-weight:700;color:#2d3748;margin-bottom:2px">리딩 테스트</div>
+    <div style="font-size:11px;color:#9ca3af;margin-bottom:8px">5회 응시 · 우수</div>
+    <div style="height:4px;background:#f0f0f0;border-radius:2px;overflow:hidden">
+      <div style="height:100%;width:98%;background:#5bb8a0;border-radius:2px"></div>
+    </div>
+  </div>
+  <div style="text-align:right;flex-shrink:0">
+    <div style="font-size:20px;font-weight:900;color:#5bb8a0;margin-bottom:4px">98점</div>
+    <div style="font-size:11px;color:#9ca3af">5회</div>
+  </div>
+</div>
+    
+    
+<div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #f0f0f0">
+  <div style="width:44px;height:44px;border-radius:12px;background:#fefce8;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🎧</div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:14px;font-weight:700;color:#2d3748;margin-bottom:2px">듣기 평가</div>
+    <div style="font-size:11px;color:#9ca3af;margin-bottom:8px">2회 응시 · 양호</div>
+    <div style="height:4px;background:#f0f0f0;border-radius:2px;overflow:hidden">
+      <div style="height:100%;width:80%;background:#d4a017;border-radius:2px"></div>
+    </div>
+  </div>
+  <div style="text-align:right;flex-shrink:0">
+    <div style="font-size:20px;font-weight:900;color:#d4a017;margin-bottom:4px">80점</div>
+    <div style="font-size:11px;color:#9ca3af">2회</div>
+  </div>
+</div>
+    
+<div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #f0f0f0">
+  <div style="width:44px;height:44px;border-radius:12px;background:#fef0e6;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">✏️</div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:14px;font-weight:700;color:#2d3748;margin-bottom:2px">듣기 쪽지 시험</div>
+    <div style="font-size:11px;color:#9ca3af;margin-bottom:8px">4회 응시 · 우수</div>
+    <div style="height:4px;background:#f0f0f0;border-radius:2px;overflow:hidden">
+      <div style="height:100%;width:85%;background:#5bb8a0;border-radius:2px"></div>
+    </div>
+  </div>
+  <div style="text-align:right;flex-shrink:0">
+    <div style="font-size:20px;font-weight:900;color:#5bb8a0;margin-bottom:4px">85점</div>
+    <div style="font-size:11px;color:#9ca3af">4회</div>
+  </div>
+</div>
+    
+    <div style="height:1px"></div>
+  </div>
+</div>
+
+<!-- ⑨ 월별 상세 기록 -->
+<div style="padding:20px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">월별 상세 기록</span>
+  </div>
+  
+<div style="background:white;border-radius:14px;padding:16px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <span style="font-size:15px;font-weight:800;color:#2d3748">03/03</span>
+    <div style="text-align:right;font-size:11px;color:#9ca3af"><span style="font-size:11px;color:#9ca3af">영어</span></div>
+  </div>
+  <div style="font-size:13px;color:#555;line-height:1.7">Unit 13 문장 읽기, 단어 쓰기 시험 준비</div>
+  
+</div>
+<div style="background:white;border-radius:14px;padding:16px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <span style="font-size:15px;font-weight:800;color:#2d3748">03/04</span>
+    <div style="text-align:right;font-size:11px;color:#9ca3af"><span style="font-size:11px;color:#9ca3af">영어</span></div>
+  </div>
+  <div style="font-size:13px;color:#555;line-height:1.7">문장 시험-Unit 1 page 20~21 풀기</div>
+  
+</div>
+<div style="background:white;border-radius:14px;padding:16px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <span style="font-size:15px;font-weight:800;color:#2d3748">03/24</span>
+    <div style="text-align:right;font-size:11px;color:#9ca3af"><span style="font-size:11px;color:#9ca3af">영어</span></div>
+  </div>
+  <div style="font-size:13px;color:#555;line-height:1.7">Unit 1 단원평가, 해석시험 Unit 2 단어, 문장 읽기</div>
+  
+</div>
+<div style="background:white;border-radius:14px;padding:16px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <span style="font-size:15px;font-weight:800;color:#2d3748">03/31</span>
+    <div style="text-align:right;font-size:11px;color:#9ca3af"><span style="font-size:11px;color:#9ca3af">영어</span></div>
+  </div>
+  <div style="font-size:13px;color:#555;line-height:1.7">초등기본단어22과 TEST, 리딩UNIT11 단어연습</div>
+  
+</div>
+</div>
+
+<!-- ⑩ 개별 보충 기록 -->
+
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">개별 보충 기록</span>
+  </div>
+  
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">🌟</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">리딩 해석 시험에서 4회 연속 만점을 기록하여 독해력이 우수함</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">리딩 해석 시험에서 4회 연속 만점을 기록하여 독해력이 우수함</div>
+    </div>
+  </div>
+</div>
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">📖</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">월별 초반부터 대부분의 단어테스트에서 100점을 달성하여 학습 태도가 성실함</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">월별 초반부터 대부분의 단어테스트에서 100점을 달성하여 학습 태도가 성실함</div>
+    </div>
+  </div>
+</div>
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">🎧</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">매 수업 빠짐없이 등원하여 학습 의욕과 책임감이 높음</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">매 수업 빠짐없이 등원하여 학습 의욕과 책임감이 높음</div>
+    </div>
+  </div>
+</div>
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">🎯</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">3월 말로 갈수록 단어테스트 성적이 100점에서 77점으로 하락 추세를 보여 복습 강화 필요</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">3월 말로 갈수록 단어테스트 성적이 100점에서 77점으로 하락 추세를 보여 복습 강화 필요</div>
+    </div>
+  </div>
+</div>
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">✏️</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">듣기 모의고사에서 90점에서 70점으로 하락하여 듣기 집중력 향상 필요</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">듣기 모의고사에서 90점에서 70점으로 하락하여 듣기 집중력 향상 필요</div>
+    </div>
+  </div>
+</div>
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">⚡</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">후반부 난이도 높은 단원에서 단어 점수 변동성이 크므로 단어 암기 방법 재검토 권장</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">후반부 난이도 높은 단원에서 단어 점수 변동성이 크므로 단어 암기 방법 재검토 권장</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ⑪ 담당 선생님 코멘트 -->
+
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">담당 선생님 코멘트</span>
+  </div>
+  <div style="background:white;border-radius:16px;padding:20px;border:1px solid #f0f0f0;border-left:4px solid #5bb8a0;font-size:13px;color:#444;line-height:1.8">
+    ✏️ 2026년 03월에 임영호 학생은 매 수업 결석 없이 18회 모두 등원하여 학습 성실성을 보였습니다. 월초부터 중순까지는 리딩 해석 시험에서 완벽한 성적(100점)을 유지하고 단어테스트도 대부분 100점을 기록하며 우수한 학습 역량을 보였습니다. 다만 월말로 갈수록 단어테스트 성적이 하락(100점→77점)하는 경향을 보이므로, 복습 시간을 늘리고 암기 방법을 점검하는 것을 권장드립니다.
+  </div>
+</div>
+
+<!-- ⑫ 학습 커리큘럼 진도 -->
+
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">학습 커리큘럼 진도</span>
+  </div>
+  <div style="background:white;border-radius:18px;padding:0 20px;border:1px solid #f0f0f0">
+    
+<div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #f0f0f0">
+  <div style="width:40px;height:40px;border-radius:10px;background:#fef0e6;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📙</div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:2px">초등영어E2(2시)</div>
+    <div style="font-size:11px;color:#9ca3af">진행 중</div>
+  </div>
+  <span style="background:#f3f4f6;color:#9ca3af;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;flex-shrink:0">진행중</span>
+</div>
+  </div>
+</div>
+
+<!-- ⑬ CTA 푸터 -->
+<div style="margin:20px 16px 8px;background:linear-gradient(135deg,#3d9e8c,#5bb8a0);border-radius:20px;padding:24px;text-align:center">
+  <p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:16px;line-height:1.8">
+    궁금하신 점은 언제든지 편하게 연락 주세요!<br>
+    <strong style="color:white">아이톡학원</strong>이 함께 응원할게요 😊
+  </p>
+  <a href="tel:041-567-8242" style="display:block;background:#ff6b35;color:white;border-radius:14px;padding:15px;font-size:15px;font-weight:800;text-decoration:none">
+    📞 041-567-8242 문의하기
+  </a>
+</div>
+<div style="text-align:center;font-size:11px;color:#bbb;padding:12px 0 8px">
+  아이톡학원 · 2026년 03월 월간 영어 학습 보고서 · 임영호 학생
+</div>
+
+</div>
+<script>
+
+if(document.getElementById('chart_0')){
+  new Chart(document.getElementById('chart_0').getContext('2d'),{
+    type:'bar',
+    data:{labels:["03/03","03/05","03/06","03/09","03/10","03/16","03/17","03/19","03/20","03/24","03/26","03/27","03/31"],datasets:[{data:[100,100,100,100,100,100,100,100,100,100,92.4,86.4,77],backgroundColor:'#5bb8a0cc',borderColor:'#5bb8a0',borderWidth:0,borderRadius:6,borderSkipped:false}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      layout:{padding:{top:24}},
+      scales:{
+        y:{beginAtZero:false,min:62,max:105,ticks:{stepSize:5,font:{size:10},color:'#ccc'},grid:{color:'#f5f5f5'},border:{display:false}},
+        x:{ticks:{font:{size:10},color:'#999'},grid:{display:false},border:{display:false}}
+      }
+    },
+    plugins:[{
+      id:'topLabel',
+      afterDatasetsDraw(chart){
+        const {ctx,data}=chart;ctx.save();
+        data.datasets[0].data.forEach((val,i)=>{
+          const bar=chart.getDatasetMeta(0).data[i];
+          ctx.fillStyle='#555';ctx.font='bold 11px Apple SD Gothic Neo,sans-serif';ctx.textAlign='center';
+          ctx.fillText(val,bar.x,bar.y-6);
+        });
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+if(document.getElementById('chart_1')){
+  new Chart(document.getElementById('chart_1').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:["1회","2회","3회","4회","5회"],
+      datasets:[{data:[100,100,100,90,100],backgroundColor:'#5bb8a0cc',borderColor:'#5bb8a0',borderWidth:0,borderRadius:6,borderSkipped:false}]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},datalabels:{display:false}},
+      layout:{padding:{top:24}},
+      scales:{
+        y:{beginAtZero:false,min:75,max:105,ticks:{stepSize:5,font:{size:10},color:'#ccc'},grid:{color:'#f5f5f5'},border:{display:false}},
+        x:{ticks:{font:{size:10},color:'#999'},grid:{display:false},border:{display:false}}
+      }
+    },
+    plugins:[{
+      id:'topLabel',
+      afterDatasetsDraw(chart){
+        const {ctx,data}=chart;ctx.save();
+        data.datasets[0].data.forEach((val,i)=>{
+          const bar=chart.getDatasetMeta(0).data[i];
+          ctx.fillStyle='#555';ctx.font='bold 11px Apple SD Gothic Neo,sans-serif';ctx.textAlign='center';
+          ctx.fillText(val,bar.x,bar.y-6);
+        });
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+
+if(document.getElementById('chart_3')){
+  new Chart(document.getElementById('chart_3').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:["1회","2회"],
+      datasets:[{data:[90,70],backgroundColor:'#f6c90ecc',borderColor:'#f6c90e',borderWidth:0,borderRadius:6,borderSkipped:false}]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},datalabels:{display:false}},
+      layout:{padding:{top:24}},
+      scales:{
+        y:{beginAtZero:false,min:55,max:105,ticks:{stepSize:5,font:{size:10},color:'#ccc'},grid:{color:'#f5f5f5'},border:{display:false}},
+        x:{ticks:{font:{size:10},color:'#999'},grid:{display:false},border:{display:false}}
+      }
+    },
+    plugins:[{
+      id:'topLabel',
+      afterDatasetsDraw(chart){
+        const {ctx,data}=chart;ctx.save();
+        data.datasets[0].data.forEach((val,i)=>{
+          const bar=chart.getDatasetMeta(0).data[i];
+          ctx.fillStyle='#555';ctx.font='bold 11px Apple SD Gothic Neo,sans-serif';ctx.textAlign='center';
+          ctx.fillText(val,bar.x,bar.y-6);
+        });
+        ctx.restore();
+      }
+    }]
+  });
+}
+</script>
+</body></html>
