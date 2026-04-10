@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>김보현 학습 보고서</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f4f6;color:#2d3748;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;background:#f2f4f6;min-height:100vh;padding-bottom:32px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ① 헤더 -->
+<div style="background:#5bb8a0;padding:28px 22px 28px;position:relative;overflow:hidden">
+  <div style="position:absolute;right:0;top:0;width:55%;height:100%;background-image:radial-gradient(circle,rgba(255,255,255,0.18) 1.5px,transparent 1.5px);background-size:16px 16px"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative">
+    <span style="font-size:13px;font-weight:800;color:white">● 아이톡학원</span>
+    <span style="background:rgba(255,255,255,0.2);color:white;border-radius:20px;padding:5px 16px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.35)">2026년 03월</span>
+  </div>
+  <div style="font-size:12px;color:rgba(255,255,255,0.75);letter-spacing:1.5px;margin-bottom:8px;position:relative">월간 영어 학습 보고서</div>
+  <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:20px;position:relative">
+    <span style="font-size:36px;font-weight:900;color:#ffffff;letter-spacing:-1px">김보현</span>
+    <span style="font-size:22px;font-weight:700;color:#000000">학생</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;position:relative">
+    
+  </div>
+</div>
+
+<!-- ② 핵심 지표 3개 + 컬러바 -->
+<div style="background:white;position:relative">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+    <div style="padding:16px 8px 12px;text-align:center;border-right:1px solid #f0f0f0">
+      <div style="font-size:20px;font-weight:900;color:#5bb8a0;margin-bottom:3px">-점</div>
+      <div style="font-size:11px;color:#aaa">단어 평균</div>
+    </div>
+    <div style="padding:16px 8px 12px;text-align:center;border-right:1px solid #f0f0f0">
+      <div style="font-size:20px;font-weight:900;color:#74c9c0;margin-bottom:3px">-점</div>
+      <div style="font-size:11px;color:#aaa">리딩 평균</div>
+    </div>
+    <div style="padding:16px 8px 12px;text-align:center">
+      <div style="font-size:20px;font-weight:900;color:#f97316;margin-bottom:3px">-점</div>
+      <div style="font-size:11px;color:#aaa">문법 평균</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);height:4px">
+    <div style="background:#5bb8a0"></div>
+    <div style="background:#9dddd4"></div>
+    <div style="background:#f97316"></div>
+  </div>
+</div>
+
+
+
+<!-- ③ 영어 핵심 지표 -->
+<div style="padding:20px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">영어 핵심 지표</span>
+  </div>
+  <div style="background:white;border-radius:20px;padding:16px 16px 8px;border:1px solid #f0f0f0">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+      <!-- 단어 카드 -->
+      <div style="background:#e8f5f1;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">단어 평균</span>
+          
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#5bb8a0;line-height:1;margin-bottom:8px">-</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px"></div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:0%;background:#5bb8a0;border-radius:2px"></div></div>
+      </div>
+
+      <!-- 리딩 카드 -->
+      <div style="background:#e8f5f1;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">리딩 평균</span>
+          
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#5bb8a0;line-height:1;margin-bottom:8px">-</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px">전 회차 만점 달성!</div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:0%;background:#5bb8a0;border-radius:2px"></div></div>
+      </div>
+
+      <!-- 문법 카드 -->
+      <div style="background:#fef0e6;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">문법 평균</span>
+          
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#f97316;line-height:1;margin-bottom:8px">-</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px"></div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:0%;background:#f97316;border-radius:2px"></div></div>
+      </div>
+
+      <!-- 듣기 카드 -->
+      <div style="background:#fefce8;border-radius:16px;padding:18px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:#666;font-weight:600">듣기 평균</span>
+          
+        </div>
+        <div style="font-size:38px;font-weight:900;color:#d4a017;line-height:1;margin-bottom:8px">-</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px"></div>
+        <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px"><div style="height:100%;width:0%;background:#d4a017;border-radius:2px"></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ④ 단어 테스트 점수 추이 -->
+
+
+<!-- ⑤ 리딩 테스트 점수 추이 -->
+
+
+<!-- ⑥ 문법 테스트 점수 추이 -->
+
+
+<!-- ⑦ 듣기 테스트 점수 추이 -->
+
+
+<!-- ⑧ 영역별 테스트 현황 -->
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">영역별 테스트 현황</span>
+  </div>
+  <div style="background:white;border-radius:18px;padding:0 20px;border:1px solid #f0f0f0">
+    
+    
+    
+    
+    
+    
+    <div style="height:1px"></div>
+  </div>
+</div>
+
+<!-- ⑨ 월별 상세 기록 -->
+<div style="padding:20px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">월별 상세 기록</span>
+  </div>
+  <p style="color:#9ca3af;font-size:13px;padding:16px 0">수업 기록이 없습니다.</p>
+</div>
+
+<!-- ⑩ 개별 보충 기록 -->
+
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">개별 보충 기록</span>
+  </div>
+  
+<div style="background:white;border-radius:14px;padding:18px;margin-bottom:10px;border:1px solid #f0f0f0">
+  <div style="display:flex;align-items:flex-start;gap:12px">
+    <span style="font-size:22px;flex-shrink:0">🌟</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:#2d3748;margin-bottom:6px">수업 참여 필요</div>
+      <div style="font-size:13px;color:#555;line-height:1.7">수업 참여 필요</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ⑪ 담당 선생님 코멘트 -->
+
+<div style="padding:8px 16px 8px">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+    <div style="width:3px;height:16px;background:#5bb8a0;border-radius:2px"></div>
+    <span style="font-size:14px;font-weight:800;color:#2d3748">담당 선생님 코멘트</span>
+  </div>
+  <div style="background:white;border-radius:16px;padding:20px;border:1px solid #f0f0f0;border-left:4px solid #5bb8a0;font-size:13px;color:#444;line-height:1.8">
+    ✏️ 2026년 03월에 수업 기록이 없습니다. 정기적인 수업 참여를 통해 영어 학습을 시작할 것을 권장합니다.
+  </div>
+</div>
+
+<!-- ⑫ 학습 커리큘럼 진도 -->
+
+
+<!-- ⑬ CTA 푸터 -->
+<div style="margin:20px 16px 8px;background:linear-gradient(135deg,#3d9e8c,#5bb8a0);border-radius:20px;padding:24px;text-align:center">
+  <p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:16px;line-height:1.8">
+    궁금하신 점은 언제든지 편하게 연락 주세요!<br>
+    <strong style="color:white">아이톡학원</strong>이 함께 응원할게요 😊
+  </p>
+  <a href="tel:041-567-8242" style="display:block;background:#ff6b35;color:white;border-radius:14px;padding:15px;font-size:15px;font-weight:800;text-decoration:none">
+    📞 041-567-8242 문의하기
+  </a>
+</div>
+<div style="text-align:center;font-size:11px;color:#bbb;padding:12px 0 8px">
+  아이톡학원 · 2026년 03월 월간 영어 학습 보고서 · 김보현 학생
+</div>
+
+</div>
+<script>
+
+
+
+
+</script>
+</body></html>
