@@ -1,0 +1,388 @@
+<!-- PARSE_DEBUG: clean_len:1817 first50:{
+  "ai_summary": "서건희 학생은 이번 달 완벽한 출석률로 학원 수업에 성실 parsed:OK keys:ai_summary,teacher_comments,next_month_goals,tags | contentLen:1829 --><!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>학습 보고서 - 서건희</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#f5f1ec; color:#1a1a1a; min-height:100vh; }
+.report-wrap { max-width:480px; margin:0 auto; background:#fff; min-height:100vh; padding-bottom:40px; }
+
+/* ── HEADER ── */
+.header { background:linear-gradient(150deg,#7c2d12 0%,#c2410c 45%,#ea580c 100%); padding:36px 24px 30px; position:relative; overflow:hidden; }
+.header::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.06); }
+.header::after  { content:''; position:absolute; bottom:-30px; left:-20px; width:130px; height:130px; border-radius:50%; background:rgba(255,255,255,0.04); }
+.header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+.header-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); color:#fed7aa; font-size:10px; font-weight:700; letter-spacing:2px; padding:5px 12px; border-radius:20px; }
+.header-academy { font-size:11px; color:rgba(255,255,255,0.5); text-align:right; line-height:1.6; }
+.header-title { font-size:24px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:4px; }
+.header-sub { font-size:13px; color:rgba(255,255,255,0.6); font-weight:300; }
+
+/* ── STUDENT CARD ── */
+.student-card { margin:20px 20px 0; background:linear-gradient(135deg,#fff7ed,#ffedd5); border-radius:18px; padding:20px; border:1px solid #fed7aa; position:relative; overflow:hidden; }
+.student-card::after { content:''; position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(234,88,12,0.06); }
+.student-card-inner { display:flex; align-items:center; gap:16px; }
+.student-avatar { width:56px; height:56px; background:linear-gradient(135deg,#c2410c,#f97316); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; box-shadow:0 4px 14px rgba(194,65,12,0.3); }
+.student-name { font-size:20px; font-weight:700; color:#7c2d12; }
+.student-class { font-size:12px; color:#9a3412; margin-top:3px; display:flex; align-items:center; gap:6px; }
+.class-tag { background:#fed7aa; color:#c2410c; font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; }
+.student-period { margin-top:14px; display:flex; gap:8px; }
+.period-item { flex:1; background:#fff; border-radius:10px; padding:10px; text-align:center; border:1px solid #fde8cc; }
+.period-label { font-size:10px; color:#9ca3af; font-weight:500; margin-bottom:4px; }
+.period-value { font-size:13px; font-weight:700; color:#c2410c; }
+
+/* ── SECTION ── */
+.section { padding:24px 20px 0; }
+.section-header { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+.section-dot { width:4px; height:18px; border-radius:2px; }
+.section-dot.orange { background:linear-gradient(180deg,#f97316,#ea580c); }
+.section-dot.dark   { background:linear-gradient(180deg,#92400e,#c2410c); }
+.section-dot.light  { background:linear-gradient(180deg,#fb923c,#f97316); }
+.section-title-text { font-size:13px; font-weight:700; color:#374151; letter-spacing:0.5px; }
+.section-badge { margin-left:auto; font-size:10px; font-weight:700; padding:3px 10px; border-radius:8px; background:#ffedd5; color:#c2410c; }
+.divider { height:1px; background:linear-gradient(90deg,transparent,#fed7aa,transparent); margin:24px 20px 0; }
+
+/* ── ATTEND ── */
+.attend-summary { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
+.attend-box { background:#f8fafc; border-radius:12px; padding:14px 10px; text-align:center; border:1px solid #e8edf2; }
+.attend-num { font-size:24px; font-weight:700; line-height:1; margin-bottom:4px; }
+.attend-box.present .attend-num { color:#10b981; }
+.attend-box.absent  .attend-num { color:#ef4444; }
+.attend-box.rate    .attend-num { color:#f97316; }
+.attend-box-label { font-size:10px; color:#9ca3af; font-weight:500; }
+.attend-calendar { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.cal-day-label { font-size:9px; color:#9ca3af; text-align:center; padding:4px 0; font-weight:600; }
+.cal-cell { aspect-ratio:1; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:500; }
+.cal-cell.empty   { background:transparent; }
+.cal-cell.present { background:#ffedd5; color:#c2410c; }
+.cal-cell.absent  { background:#fee2e2; color:#991b1b; font-weight:700; }
+.cal-cell.none    { background:#f3f4f6; color:#9ca3af; }
+
+/* ── HW ── */
+.hw-item { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+.hw-label { font-size:10px; color:#374151; font-weight:500; flex-shrink:0; width:90px; }
+.hw-bar-track { flex:1; background:#f1f5f9; border-radius:8px; height:8px; overflow:hidden; }
+.hw-bar-fill { height:100%; border-radius:8px; background:linear-gradient(90deg,#f97316,#fb923c); }
+.hw-pct { font-size:12px; font-weight:700; width:34px; text-align:right; flex-shrink:0; color:#c2410c; }
+
+/* ── COMMENT ── */
+.comment-box { border-radius:14px; padding:18px; background:#fff7ed; border:1px solid #fed7aa; border-left:4px solid #ea580c; margin-bottom:14px; }
+.comment-head { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+.comment-icon { width:26px; height:26px; border-radius:8px; background:#ffedd5; display:flex; align-items:center; justify-content:center; font-size:13px; }
+.comment-teacher { font-size:12px; font-weight:700; color:#c2410c; }
+.comment-sub { font-size:10px; color:#9ca3af; margin-left:auto; }
+.comment-highlight { display:inline-block; background:rgba(249,115,22,0.12); color:#c2410c; border-radius:4px; padding:0 4px; font-weight:600; }
+</style></head><body><div class="report-wrap"><div class="header"><div class="header-top"><div class="header-badge">📋 MONTHLY REPORT</div><div class="header-academy">민샘수학</div></div><div class="header-title">26년 4월<br>학습 보고서</div><div class="header-sub">2026년 4월 수업 결과 안내</div></div>
+  <div class="student-card">
+    <div class="student-card-inner">
+      <div class="student-avatar">✏️</div>
+      <div>
+        <div class="student-name">서건희</div>
+        <div class="student-class"><span class="class-tag">수학</span>민샘수학</div>
+      </div>
+    </div>
+    <div class="student-period">
+      <div class="period-item"><div class="period-label">보고서 기간</div><div class="period-value">2026.04</div></div>
+      <div class="period-item"><div class="period-label">출석</div><div class="period-value">19회</div></div>
+      <div class="period-item"><div class="period-label">숙제달성률</div><div class="period-value">60%</div></div>
+    </div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot orange"></div>
+      <div class="section-title-text">26년 4월 학습 요약</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border-radius:14px;padding:16px;border:1px solid #fed7aa;margin-bottom:14px;">
+      <div style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #fed7aa;border-radius:20px;padding:4px 12px;margin-bottom:10px;">
+        <span style="font-size:11px;">✨</span>
+        <span style="font-size:10px;font-weight:700;color:#c2410c;">AI 학습 분석</span>
+      </div>
+      <div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:400;">서건희 학생은 이번 달 완벽한 출석률로 학원 수업에 성실하게 참여하였으며, 기본 개념 이해도는 양호하나 숙제 이행률 개선이 필요한 상황입니다. 수학에서는 이전 학습 내용을 복습할 때 금방 이해하는 긍정적 면모를 보였으나, 문제풀이 과정에서 설명을 끝까지 청취하지 않고 성급하게 계산하는 습관으로 인한 오류가 발생하고 있습니다. 다음 달에는 개념 학습 시 주의 깊은 청취 습관을 강화하고 <strong style="color:#e85d04;">숙제 완성도</strong>를 높이는 데 집중하겠습니다.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+      <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🗓️</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">출석률</div>
+        <div style="font-size:28px;font-weight:900;color:#f97316;line-height:1;">100%</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">19일 / 19일</div>
+      </div>
+      <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">✏️</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">숙제달성률</div>
+        <div style="font-size:28px;font-weight:900;color:#ea580c;line-height:1;">60%</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">월 평균</div>
+      </div>
+      <div style="background:#fffbeb;border-radius:14px;padding:16px;border:1px solid #fde68a;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🏆</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">테스트 최고점</div>
+        <div style="font-size:28px;font-weight:900;color:#d97706;line-height:1;">86점</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">10회 응시</div>
+      </div></div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot dark"></div>
+      <div class="section-title-text">테스트 결과</div>
+      <div class="section-badge">72점 평균</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f97316,#fb923c);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.01 (수)</div>
+          
+          <div style="margin-top:8px;"><span style="font-size:10px;font-weight:700;background:#fef3c7;color:#92400e;padding:2px 7px;border-radius:6px;">보완 필요</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:30px;font-weight:700;color:#f97316;line-height:1;">65</div><div style="font-size:10px;color:#d1d5db;">점</div>
+        </div>
+      </div>
+      
+      <div style="margin-top:10px;background:#e5e7eb;border-radius:6px;height:6px;overflow:hidden;">
+        <div style="width:65%;height:100%;border-radius:6px;background:linear-gradient(90deg,#f97316,#fb923c);"></div>
+      </div>
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.04 (토)</div>
+          
+          <div style="margin-top:8px;"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:14px;font-weight:700;color:#6b7280;padding:8px 12px;background:#f3f4f6;border-radius:8px;">-</div>
+        </div>
+      </div>
+      
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.06 (월)</div>
+          
+          <div style="margin-top:8px;"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:14px;font-weight:700;color:#6b7280;padding:8px 12px;background:#f3f4f6;border-radius:8px;">-</div>
+        </div>
+      </div>
+      
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.09 (목)</div>
+          
+          <div style="margin-top:8px;"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:14px;font-weight:700;color:#6b7280;padding:8px 12px;background:#f3f4f6;border-radius:8px;">교과서 변형문제, 모의고사 단어테스트 완료</div>
+        </div>
+      </div>
+      
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.11 (토)</div>
+          
+          <div style="margin-top:8px;"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:14px;font-weight:700;color:#6b7280;padding:8px 12px;background:#f3f4f6;border-radius:8px;">-</div>
+        </div>
+      </div>
+      
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.12 (일)</div>
+          
+          <div style="margin-top:8px;"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:14px;font-weight:700;color:#6b7280;padding:8px 12px;background:#f3f4f6;border-radius:8px;">25년 3월 변형문제, 6월 변형문제 완료</div>
+        </div>
+      </div>
+      
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f97316,#fb923c);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.13 (월)</div>
+          
+          <div style="margin-top:8px;"><span style="font-size:10px;font-weight:700;background:#fff7ed;color:#ea580c;padding:2px 7px;border-radius:6px;">통과</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:30px;font-weight:700;color:#f97316;line-height:1;">70</div><div style="font-size:10px;color:#d1d5db;">점</div>
+        </div>
+      </div>
+      
+      <div style="margin-top:10px;background:#e5e7eb;border-radius:6px;height:6px;overflow:hidden;">
+        <div style="width:70%;height:100%;border-radius:6px;background:linear-gradient(90deg,#f97316,#fb923c);"></div>
+      </div>
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c2410c,#f97316);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.13 (월)</div>
+          
+          <div style="margin-top:8px;"><span style="font-size:10px;font-weight:700;background:#fff7ed;color:#ea580c;padding:2px 7px;border-radius:6px;">통과</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:30px;font-weight:700;color:#c2410c;line-height:1;">86</div><div style="font-size:10px;color:#d1d5db;">점</div>
+        </div>
+      </div>
+      
+      <div style="margin-top:10px;background:#e5e7eb;border-radius:6px;height:6px;overflow:hidden;">
+        <div style="width:86%;height:100%;border-radius:6px;background:linear-gradient(90deg,#c2410c,#f97316);"></div>
+      </div>
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e5e7eb,#d1d5db);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.14 (화)</div>
+          
+          <div style="margin-top:8px;"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:14px;font-weight:700;color:#6b7280;padding:8px 12px;background:#f3f4f6;border-radius:8px;">변형문제 20문제 이상, 단어테스트 완료</div>
+        </div>
+      </div>
+      
+    </div>
+    <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f97316,#fb923c);border-radius:14px 14px 0 0;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="flex:1;">
+          <div style="font-size:10px;color:#9ca3af;margin-bottom:6px;">2026.04.15 (수)</div>
+          
+          <div style="margin-top:8px;"><span style="font-size:10px;font-weight:700;background:#fef3c7;color:#92400e;padding:2px 7px;border-radius:6px;">보완 필요</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+          <div style="font-size:30px;font-weight:700;color:#f97316;line-height:1;">65</div><div style="font-size:10px;color:#d1d5db;">점</div>
+        </div>
+      </div>
+      
+      <div style="margin-top:10px;background:#e5e7eb;border-radius:6px;height:6px;overflow:hidden;">
+        <div style="width:65%;height:100%;border-radius:6px;background:linear-gradient(90deg,#f97316,#fb923c);"></div>
+      </div>
+    </div></div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot light"></div>
+      <div class="section-title-text">숙제 달성률</div>
+    </div>
+    <div>
+    <div class="hw-item">
+      <div class="hw-label">04.01 (수)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:91%"></div></div>
+      <div class="hw-pct">91%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.04 (토)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:76%"></div></div>
+      <div class="hw-pct">76%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.09 (목)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:20%"></div></div>
+      <div class="hw-pct">20%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.11 (토)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:84%"></div></div>
+      <div class="hw-pct">84%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.12 (일)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:25%"></div></div>
+      <div class="hw-pct">25%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.13 (월)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:92%"></div></div>
+      <div class="hw-pct">92%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.14 (화)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:20%"></div></div>
+      <div class="hw-pct">20%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">04.15 (수)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:71%"></div></div>
+      <div class="hw-pct">71%</div>
+    </div></div>
+    <div style="background:#fff7ed;border-radius:10px;padding:12px;margin-top:12px;border:1px solid #fed7aa;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:12px;color:#c2410c;font-weight:600;">월 평균 달성률</span>
+      <span style="font-size:20px;font-weight:700;color:#ea580c;">약 60%</span>
+    </div>
+  </div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot dark"></div><div class="section-title-text">선생님 피드백</div></div>
+    <div class="comment-box">
+      <div class="comment-head">
+        <div class="comment-icon">📝</div>
+        <div class="comment-teacher">전유림</div>
+        <div class="comment-sub">26년 4월 종합</div>
+      </div>
+      <div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;">서건희 학생은 이전에 학습한 문제 유형에 대해 초기에는 어려움을 느끼지만, 재설명을 통해 빠르게 이해하고 깨우치는 능력을 갖추고 있습니다. <span class="comment-highlight">문제 풀이 중 중얼거리는 습관</span>을 개선하기 위해 지도 중이며, 특히 설명을 완전히 듣지 않은 상태에서 성급하게 계산을 진행하여 오류가 발생하는 점을 개선할 필요가 있습니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(234,88,12,0.1);">앞으로 설명 청취에 대한 집중력을 높이고, 문제 풀이 전 개념 확인 단계를 철저히 거치는 습관 형성에 중점을 두어 지도하겠습니다.</div></div>
+    </div>
+    <div class="comment-box">
+      <div class="comment-head">
+        <div class="comment-icon">📝</div>
+        <div class="comment-teacher">지수현</div>
+        <div class="comment-sub">26년 4월 종합</div>
+      </div>
+      <div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;">서건희 학생은 영어 과목에서 워크북을 성공적으로 완료하고 변형문제로 진행 중이며, 문제 풀이 속도가 빠르고 <span class="comment-highlight">학습에 대한 적극적인 태도</span>를 보이고 있습니다. 지문 내용 이해는 우수하나, 영어 선지에서 비슷한 단어(conversation, conservation 등)를 혼동하거나 본문에 명시되지 않은 유의어를 어려워하는 경향이 있습니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(234,88,12,0.1);">향후에는 어휘력 강화와 함께 주제·요지 찾기에서 본문의 직접적 표현뿐만 아니라 유의어까지 폭넓게 인식하는 훈련을 지속하여, 선지 판단의 정확성을 높이도록 지도하겠습니다.</div></div>
+    </div>
+    <div class="comment-box">
+      <div class="comment-head">
+        <div class="comment-icon">📝</div>
+        <div class="comment-teacher">김진영</div>
+        <div class="comment-sub">26년 4월 종합</div>
+      </div>
+      <div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;">서건희 학생은 전반적으로 수학 문제를 잘 풀고 있으며, 어려운 문제에 대한 해결 능력도 양호합니다. 다만 쉬운 문제에서 가끔 핵심을 놓치는 경우가 발생하여 문제 접근 시 충분한 시간을 활용하지 못하고 있습니다. <span class="comment-highlight">조용하고 내성적인 성향</span>으로 인해 자발적인 질문이 제한적이며, 삼각함수 단원에서 아직 풀이 방식이 낯설어 보충이 필요한 상태입니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(234,88,12,0.1);">다음 단계에서는 삼각함수 기출문제를 통해 유형 익숙도를 높이고, 더욱 활발한 질문 제기를 유도하여 학습 이해도를 심화하도록 지도하겠습니다.</div></div>
+    </div></div><div class="divider"></div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot dark"></div>
+      <div class="section-title-text">5월 학습 방향</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border-radius:14px;padding:18px;border:1px solid #fed7aa;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#ffedd5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📐</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">삼각함수 개념 복습 및 기출문제를 통한 유형 숙달하겠습니다.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#ffedd5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📝</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">월별 숙제달성률을 60%에서 85% 이상으로 높이겠습니다.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#ffedd5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">🎯</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">문제풀이 전 개념 설명을 끝까지 청취하고 논리적 풀이 과정을 거치는 습관을 형성하겠습니다.</div>
+        </div></div>
+    </div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span style="font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 12px;border-radius:20px;border:1px solid #fed7aa;">#성실한출석관리</span><span style="font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 12px;border-radius:20px;border:1px solid #fed7aa;">#개념이해력우수</span><span style="font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 12px;border-radius:20px;border:1px solid #fed7aa;">#숙제완성도개선필요</span></div>
+  </div>
+  <div style="margin:28px 20px 0;background:linear-gradient(135deg,#7c2d12 0%,#c2410c 100%);border-radius:18px;overflow:hidden;">
+    <div style="padding:24px 24px 0;text-align:center;">
+      <div style="font-size:15px;font-weight:900;color:#fed7aa;letter-spacing:1px;margin-bottom:2px;">민샘수학</div>
+    </div>
+    <div style="height:1px;background:rgba(255,255,255,0.1);margin:16px 24px 0;"></div>
+    <div style="padding:16px 24px 20px;text-align:center;">
+      <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.9;">
+        본 보고서는 2026년 4월 학습 활동을 기반으로 작성되었습니다.<br>
+        작성일: 2026년 5월 17일
+      </div>
+    </div>
+  </div></div></body></html>
