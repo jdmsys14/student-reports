@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>수학 학습 보고서 - 임태범 2026년 04월</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f4f6fb; --surface:#ffffff; --surface2:#eef1f8;
+    --border:rgba(0,0,0,0.07);
+    --accent1:#3b6ef6; --accent2:#12b886; --accent3:#f76707; --accent4:#e64980;
+    --text-primary:#1a1f36; --text-secondary:#515872; --text-muted:#9ba3b8;
+    --radius:16px; --radius-sm:10px;
+    --shadow:0 2px 12px rgba(0,0,0,0.055);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:480px;margin:0 auto;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .header{padding:52px 24px 36px;position:relative;overflow:hidden;background:linear-gradient(145deg,#2d55e0 0%,#3b6ef6 55%,#5a82f8 100%)}
+  .header::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.08)}
+  .header::after{content:'';position:absolute;bottom:-40px;left:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05)}
+  .header-label{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .1s forwards}
+  .header-label::before{content:'';width:14px;height:2px;background:rgba(255,255,255,0.55);border-radius:2px}
+  .header-name{font-size:30px;font-weight:900;line-height:1.2;color:#fff;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .2s forwards}
+  .header-name span{color:rgba(255,255,255,0.6)}
+  .header-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-top:8px;position:relative;z-index:1;opacity:0;animation:fadeUp .5s ease .3s forwards}
+  .header-meta{position:absolute;top:52px;right:24px;text-align:right;z-index:1;opacity:0;animation:fadeIn .5s ease .4s forwards}
+  .header-meta-academy{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85)}
+  .header-meta-date{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px}
+  .section{padding:24px 20px 0;opacity:0;animation:fadeUp .5s ease forwards}
+  .section:nth-child(2){animation-delay:.35s}.section:nth-child(3){animation-delay:.45s}.section:nth-child(4){animation-delay:.55s}.section:nth-child(5){animation-delay:.65s}.section:nth-child(6){animation-delay:.75s}
+  .sec-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .id-card{background:var(--surface);border-radius:var(--radius);padding:20px;display:flex;align-items:center;gap:16px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .id-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--accent1),var(--accent2))}
+  .id-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--accent1),#5480f8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 14px rgba(59,110,246,0.22)}
+  .id-info-name{font-size:20px;font-weight:700;color:var(--text-primary)}
+  .id-info-detail{font-size:12px;color:var(--text-secondary);margin-top:4px}
+  .id-badge{margin-left:auto;background:#e6faf3;border:1px solid #b2eedd;color:var(--accent2);font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card{background:var(--surface);border-radius:var(--radius-sm);padding:18px 16px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
+  .stat-card.blue::after{background:var(--accent1)}.stat-card.green::after{background:var(--accent2)}.stat-card.orange::after{background:var(--accent3)}.stat-card.red::after{background:var(--accent4)}
+  .stat-label{font-size:11px;color:var(--text-muted);margin-bottom:8px;font-weight:500}
+  .stat-value{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px}
+  .stat-card.blue .stat-value{color:var(--accent1)}.stat-card.green .stat-value{color:var(--accent2)}.stat-card.orange .stat-value{color:var(--accent3)}.stat-card.red .stat-value{color:var(--accent4)}
+  .stat-desc{font-size:11px;color:var(--text-muted)}
+  .stat-card.full{grid-column:1/-1}
+  .eval-item{margin-bottom:14px}.eval-item:last-child{margin-bottom:0}
+  .eval-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+  .eval-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+  .eval-score{font-size:13px;font-weight:700}
+  .eval-bar-bg{height:7px;background:var(--surface2);border-radius:6px;overflow:hidden}
+  .eval-bar-fill{height:100%;border-radius:6px;animation:growBar 1s cubic-bezier(.16,1,.3,1) .6s both}
+  @keyframes growBar{from{width:0!important}}
+  .eval-bar-fill.blue{background:linear-gradient(90deg,var(--accent1),#7ba3ff)}.eval-bar-fill.green{background:linear-gradient(90deg,var(--accent2),#6edfc3)}.eval-bar-fill.orange{background:linear-gradient(90deg,var(--accent3),#ffac5e)}
+  .insight-list{display:flex;flex-direction:column;gap:10px}
+  .insight-card{background:var(--surface);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;gap:12px;align-items:flex-start}
+  .insight-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+  .dot-blue{background:var(--accent1)}.dot-green{background:var(--accent2)}.dot-orange{background:var(--accent3)}.dot-red{background:var(--accent4)}
+  .insight-text{font-size:13px;color:var(--text-secondary);line-height:1.75}
+  .insight-text strong{color:var(--text-primary);font-weight:700}
+  .tag-blue{background:#eef2fe;color:var(--accent1)}.tag-green{background:#e6faf3;color:var(--accent2)}.tag-orange{background:#fff3e8;color:var(--accent3)}.tag-red{background:#fde9f0;color:var(--accent4)}.tag-gray{background:var(--surface2);color:var(--text-muted)}
+  .attention-card{border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start;border:1px solid}
+  .attention-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+  .attention-title{font-size:12px;font-weight:700;margin-bottom:6px}
+  .attention-text{font-size:13px;color:var(--text-secondary);line-height:1.75}
+  .roadmap{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .roadmap-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;position:relative}
+  .roadmap-row:not(:last-child)::after{content:'';position:absolute;left:15px;top:36px;bottom:-10px;width:1px;background:var(--border)}
+  .roadmap-circle{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700}
+  .circle-done{background:var(--accent2);color:#fff}.circle-now{background:var(--accent1);color:#fff;box-shadow:0 0 0 4px rgba(59,110,246,0.12)}.circle-next{background:var(--surface2);color:var(--text-muted);border:1px solid var(--border)}
+  .roadmap-info{padding-top:4px;flex:1}
+  .roadmap-title{font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3}
+  .roadmap-desc{font-size:12px;color:var(--text-muted);margin-top:2px}
+  .roadmap-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:auto;flex-shrink:0;margin-top:4px}
+  .comment-box{background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);border-left:4px solid var(--accent3);box-shadow:var(--shadow)}
+  .comment-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .comment-avatar{width:32px;height:32px;background:#fff3e8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .comment-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+  .comment-role{font-size:11px;color:var(--text-muted)}
+  .comment-text{font-size:13px;color:var(--text-secondary);line-height:1.85}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:'';position:absolute;left:7px;top:10px;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent1),transparent);border-radius:2px}
+  .tl-item{position:relative;padding-bottom:20px}
+  .tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--text-muted)}
+  .tl-item.absent::before{border-color:var(--accent4);background:#fde9f0}.tl-item.special::before{border-color:var(--accent3);background:#fff3e8}.tl-item.normal::before{border-color:var(--accent1);background:#eef2fe}
+  .tl-date{font-size:10px;color:var(--text-muted);margin-bottom:5px;font-weight:500}
+  .tl-card{background:var(--surface);border-radius:var(--radius-sm);padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .tl-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+  .tl-desc{font-size:12px;color:var(--text-secondary);margin-top:5px;line-height:1.65}
+  .tl-tag{font-size:10px;font-weight:600;margin-top:8px;display:inline-block;padding:2px 8px;border-radius:6px}
+  .donut-wrap{display:flex;align-items:center;gap:20px;background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .donut-legend{flex:1}
+  .legend-item{display:flex;align-items:center;gap:8px;padding:5px 0}
+  .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .legend-name{font-size:12px;color:var(--text-secondary);flex:1}
+  .legend-val{font-size:12px;font-weight:700;color:var(--text-primary)}
+  .footer-text{font-size:12px;color:var(--text-muted);line-height:1.8;text-align:center}
+  .footer-text a{color:var(--accent1);text-decoration:none;font-weight:700}
+  .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:10px 0 calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.06)}
+  .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:opacity .2s}
+  .nav-item:active{opacity:.5}
+  .nav-icon{font-size:20px}
+  .nav-label{font-size:9px;font-weight:500;color:var(--text-muted)}
+  .nav-item.active .nav-label{color:var(--accent1);font-weight:700}
+  .tab-section{display:none}.tab-section.active{display:block}
+  .course-list{display:flex;flex-direction:column;gap:10px}
+  .course-card{background:var(--surface);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+  .course-left{display:flex;align-items:center;gap:12px;width:100%}
+  .course-badge{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:-0.3px}
+  .badge-blue{background:#eef2fe;color:var(--accent1)}.badge-green{background:#e6faf3;color:var(--accent2)}
+  .course-info{min-width:0;flex:1}
+  .course-name{font-size:15px;font-weight:700;color:var(--text-primary)}
+  .course-topic{font-size:11px;color:var(--text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .course-books{display:flex;gap:6px;flex-wrap:wrap}
+  .book-tag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;background:var(--surface2);color:var(--text-secondary);border:1px solid var(--border);white-space:nowrap}
+  .schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .schedule-box{background:#eef2fe;border:1px solid #c5d3fc;border-radius:var(--radius-sm);padding:16px;text-align:center}
+  .schedule-day{font-size:14px;font-weight:700;color:var(--accent1);margin-top:6px}
+  .schedule-time{font-size:12px;color:var(--text-secondary);margin-top:3px}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">Math Report · 2026년 04월</div>
+    <div class="header-name">임태범 <span>학습</span><br>보고서</div>
+    <div class="header-sub">2026년 04월 · 제이디 수학학원</div>
+    <div class="header-meta">
+      <div class="header-meta-academy">제이디 수학학원</div>
+      <div class="header-meta-date">2026년 04월 기준</div>
+    </div>
+  </div>
+
+  <!-- TAB: HOME -->
+  <div id="tab-home" class="tab-section active">
+
+    <div class="section">
+      <div class="sec-label">학생 프로파일</div>
+      <div class="id-card">
+        <div class="id-avatar">&#128208;</div>
+        <div>
+          <div class="id-info-name">임태범</div>
+          <div class="id-info-detail">중2</div>
+        </div>
+        <div class="id-badge">우수 &#11088;</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">진행 과정 및 교재</div>
+      <div class="course-list"><div class="course-card">
+  <div class="course-left">
+    <div class="course-badge badge-green">중2</div>
+    <div class="course-info">
+      <div class="course-name">중2 중간고사 대비</div>
+      <div class="course-topic">중간고사 전범위 (원가·정가·판매가, 부등식, 필수유형 등)</div>
+    </div>
+  </div>
+  <div class="course-books"></div>
+</div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">2026년 04월 수업 현황</div>
+      <div class="stats-grid"><div class="stat-card green">
+  <div class="stat-label">평균 점수</div>
+  <div class="stat-value">83.8점</div>
+  <div class="stat-desc">10회 시험 기준 (복수교 포함)</div>
+</div><div class="stat-card green">
+  <div class="stat-label">최고 점수</div>
+  <div class="stat-value">100점</div>
+  <div class="stat-desc">경암중 25년 1학기 중간고사</div>
+</div><div class="stat-card blue">
+  <div class="stat-label">학습 태도</div>
+  <div class="stat-value">성실</div>
+  <div class="stat-desc">8회 수업 전결석 없음</div>
+</div></div>
+    </div>
+
+    
+    <div class="section">
+      <div class="sec-label">2026년 04월 모의고사 현황</div>
+      <div class="stats-grid"><div class="stat-card green">
+  <div class="stat-label">25년 1학기 중간고사 (경산중)</div>
+  <div class="stat-value">91점</div>
+  <div class="stat-desc">서술형 문제에서 풀이 과정을 매우 잘 정리하여 완성도 있게 작성</div>
+</div><div class="stat-card green">
+  <div class="stat-label">25년 1학기 중간고사 (경암중)</div>
+  <div class="stat-value">100점</div>
+  <div class="stat-desc">만점 달성. 객관식 문제의 풀이 과정도 재작성하며 서술형 대비 강화 중</div>
+</div><div class="stat-card blue">
+  <div class="stat-label">25년 1학기 중간고사 (영남중)</div>
+  <div class="stat-value">84점</div>
+  <div class="stat-desc">원가·정가·판매가·이익금 순서 정리 연습 필요, 부등식 등호 포함 여부 확인 강화 중</div>
+</div><div class="stat-card green">
+  <div class="stat-label">23년 1학기 중간고사 유형 (오성중)</div>
+  <div class="stat-value">83.2점</div>
+  <div class="stat-desc">계산 실수로 오답 발생했으나 스스로 수정하며 개념 이해도 우수함</div>
+</div><div class="stat-card red">
+  <div class="stat-label">25년 1학기 중간고사 (정화중)</div>
+  <div class="stat-value">60점</div>
+  <div class="stat-desc">추가 집중 학습 필요</div>
+</div><div class="stat-card blue">
+  <div class="stat-label">25년 1학기 중간고사 (영신중)</div>
+  <div class="stat-value">85점</div>
+  <div class="stat-desc"></div>
+</div><div class="stat-card blue">
+  <div class="stat-label">25년 1학기 중간고사 유사 (오성중)</div>
+  <div class="stat-value">85점</div>
+  <div class="stat-desc"></div>
+</div><div class="stat-card green">
+  <div class="stat-label">24년 1학기 중간고사 유사 (오성중)</div>
+  <div class="stat-value">90점</div>
+  <div class="stat-desc"></div>
+</div><div class="stat-card green">
+  <div class="stat-label">25년 1학기 중간고사 (도원중)</div>
+  <div class="stat-value">90점</div>
+  <div class="stat-desc"></div>
+</div><div class="stat-card orange">
+  <div class="stat-label">25년 1학기 중간고사 (다사중)</div>
+  <div class="stat-value">75점</div>
+  <div class="stat-desc"></div>
+</div><div class="stat-card green">
+  <div class="stat-label">중간고사 필수유형 1</div>
+  <div class="stat-value">15/20</div>
+  <div class="stat-desc"></div>
+</div><div class="stat-card green">
+  <div class="stat-label">중간고사 필수유형 2</div>
+  <div class="stat-value">17/21</div>
+  <div class="stat-desc"></div>
+</div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">이달의 학습 인사이트</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="insight-dot dot-green"></div>
+  <div class="insight-text"><strong>개념 이해력이 우수</strong>하여 한 번 완전히 받아들인 문제는 장기기억으로 오래 기억합니다. 이는 앞으로의 학습에 탄탄한 기초가 될 것입니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-green"></div>
+  <div class="insight-text"><strong>서술형 풀이 과정을 정리하는 능력이 뛰어나</strong>며, 객관식 문제도 재작성하면서 문제 해결 능력을 더욱 강화하고 있습니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-orange"></div>
+  <div class="insight-text">계산 실수와 원가·정가 문제의 단계적 정리, 부등식 등호 포함 여부 확인 등을 함께 강화해 나갈 예정입니다. 가정에서도 동일한 방식으로 연습하면 더욱 효과적일 것입니다.</div>
+</div></div>
+    </div>
+
+    <div class="section">
+  <div class="sec-label">특이 사항</div>
+  <div class="attention-card" style="background:#fff8f0;border-color:#ffd8b0">
+    <div class="attention-icon">⚠️</div>
+    <div>
+      <div class="attention-title" style="color:var(--accent3)">안내사항</div>
+      <div class="attention-text">학생이 <strong>4월 28일 직전보강에 등원하지 못하기로 예정</strong>되어 있습니다. 시험 이후 5월 7일(목)에 등원할 예정이니, <strong>실제 시험지를 꼭 챙겨서 가져올 수 있도록 지도 부탁드립니다</strong>. 시험 결과를 함께 분석하여 부족한 부분을 보완할 예정입니다.</div>
+    </div>
+  </div>
+</div>
+
+    <div class="section">
+      <div class="sec-label">학습 로드맵</div>
+      <div class="roadmap"><div class="roadmap-row">
+  <div class="roadmap-circle circle-done">&#10003;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">원가·정가·판매가·이익금 체계적 정리</div>
+    <div class="roadmap-desc">단계적 풀이 방법 학습 및 가정에서의 반복 연습</div>
+  </div>
+  <span class="roadmap-badge tag-green">완료</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-done">&#10003;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">부등식 등호 포함 여부 확인 습관화</div>
+    <div class="roadmap-desc">정답 도출 시 등호 여부를 정확히 확인하는 연습</div>
+  </div>
+  <span class="roadmap-badge tag-green">완료</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-now">&#9679;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">계산 실수 최소화</div>
+    <div class="roadmap-desc">문제 해결 후 자기 점검 과정 강화</div>
+  </div>
+  <span class="roadmap-badge tag-blue">진행중</span>
+</div><div class="roadmap-row">
+  <div class="roadmap-circle circle-next">&#8594;</div>
+  <div class="roadmap-info">
+    <div class="roadmap-title">시험 성과 분석 및 보완</div>
+    <div class="roadmap-desc">5월 중간고사 이후 시험지 함께 검토</div>
+  </div>
+  <span class="roadmap-badge tag-gray">예정</span>
+</div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">선생님 코멘트</div>
+      <div class="comment-box">
+        <div class="comment-header">
+          <div class="comment-avatar">&#128221;</div>
+          <div>
+            <div class="comment-title">담당 선생님</div>
+            <div class="comment-role">제이디 수학학원</div>
+          </div>
+        </div>
+        <div class="comment-text">임태범 학생은 이번 달 8회 수업을 성실하게 참여하며 탁월한 개념 이해력과 우수한 서술형 능력을 보여주었습니다. 특히 경암중 100점 만점 달성과 평균 83.8점의 안정적인 성적은 매우 칭찬할 만합니다. 앞으로 계산 실수를 줄이고 원가·정가 문제의 단계적 정리와 부등식 등호 확인 등을 강화한다면 더욱 높은 성취를 이룰 수 있을 것으로 기대됩니다. 가정에서도 함께 응원해 주시면 감사하겠습니다.</div>
+      </div>
+    </div>
+
+    <div style="margin:28px 20px 0;padding:18px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div class="footer-text">
+        궁금한 점은 카카오톡 채널로 문의해 주세요.<br>
+        <a href="http://pf.kakao.com/_CCsnj/chat">제이디 수학학원</a> · 항상 감사합니다 &#128591;
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- TAB: TIMELINE -->
+  <div id="tab-timeline" class="tab-section">
+    <div class="section">
+      <div class="sec-label">2026년 04월 수업 기록</div>
+      <div class="timeline"><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 11일 (토)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">내신대비보강</div>
+    <div class="tl-desc">경산중·경암중 중간고사 검토. 서술형 풀이 과정 정리 우수. 객관식 문제의 풀이 과정 재작성 지도.</div>
+    <span class="tl-tag tag-green">평가</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 13일 (월)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">중간고사 전범위</div>
+    <div class="tl-desc">영남중 중간고사 분석 (84점). 중간고사 필수유형 22/26 풀이. 오답을 숙제로 부여하여 스스로 고민하고 풀어보는 과정 강화. 원가·정가·판매가·이익금 순서 정리법 학습.</div>
+    <span class="tl-tag tag-blue">학습</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 16일 (목)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">중간고사 전범위</div>
+    <div class="tl-desc">오성중 23년 1학기 유형 시험 (83.2점). 지난 숙제 틀린 문제 12/12 재풀이 완료. 개념 이해도 우수하며 계산 실수 개선 필요.</div>
+    <span class="tl-tag tag-green">평가</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 18일 (금)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">내신대비보강</div>
+    <div class="tl-desc">정화중 중간고사 (60점), 영신중 중간고사 (85점) 분석 및 보완 학습.</div>
+    <span class="tl-tag tag-orange">평가</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 20일 (일)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">중간고사 전범위</div>
+    <div class="tl-desc">오성중 25년 1학기 중간 유사 시험 (85점). 50문항 숙제 부여.</div>
+    <span class="tl-tag tag-green">평가</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 23일 (수)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">중간고사 전범위</div>
+    <div class="tl-desc">오성중 24년 1학기 유사 시험 (90점). 틀린 문제 고쳐쓰기 숙제 부여.</div>
+    <span class="tl-tag tag-green">평가</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 25일 (금)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">내신대비보강</div>
+    <div class="tl-desc">도원중 중간고사 (90점), 다사중 중간고사 (75점) 검토 및 보완.</div>
+    <span class="tl-tag tag-blue">평가</span>
+  </div>
+</div><div class="tl-item normal">
+  
+  <div class="tl-date">2026년 4월 27일 (일)</div>
+  <div class="tl-card" style="">
+    
+    <div class="tl-title">중간고사 전범위</div>
+    <div class="tl-desc">중간고사 필수유형 1 (15/20), 필수유형 2 (17/21) 풀이. 직전보강 미참여로 안내. 오성중 시험 전 재풀이 당부.</div>
+    <span class="tl-tag tag-orange">직전</span>
+  </div>
+</div></div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- TAB: ANALYSIS -->
+  <div id="tab-analysis" class="tab-section">
+    <div class="section">
+      <div class="sec-label">수업 분포</div>
+      <div class="donut-wrap">
+  <svg width="100" height="100" viewBox="0 0 100 100" style="flex-shrink:0">
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#eef1f8" stroke-width="13"/>
+    <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent1)" stroke-width="13" stroke-dasharray="251.33 0.00" stroke-dashoffset="0.00" transform="rotate(-90 50 50)"/>
+    <text x="50" y="47" text-anchor="middle" fill="#1a1f36" font-size="15" font-weight="900" font-family="Noto Sans KR">8</text>
+    <text x="50" y="59" text-anchor="middle" fill="#9ba3b8" font-size="8" font-family="Noto Sans KR">수업</text>
+  </svg>
+  <div class="donut-legend"><div class="legend-item">
+  <div class="legend-dot" style="background:var(--accent1)"></div>
+  <div class="legend-name">중간고사 대비</div>
+  <div class="legend-val" style="color:var(--accent1)">8회</div>
+</div></div>
+</div>
+    </div>
+    <div class="section">
+      <div class="sec-label">능력 지표</div>
+      <div style="background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">개념 이해력</span>
+    <span class="eval-score" style="color:var(--accent2)">92%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill green" style="width:92%"></div></div>
+</div><div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">서술형 표현력</span>
+    <span class="eval-score" style="color:var(--accent2)">90%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill green" style="width:90%"></div></div>
+</div><div class="eval-item">
+  <div class="eval-header">
+    <span class="eval-name">계산 정확성</span>
+    <span class="eval-score" style="color:var(--accent3)">78%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill orange" style="width:78%"></div></div>
+</div><div class="eval-item" style="margin-bottom:0">
+  <div class="eval-header">
+    <span class="eval-name">문제 풀이 재현력</span>
+    <span class="eval-score" style="color:var(--accent2)">88%</span>
+  </div>
+  <div class="eval-bar-bg"><div class="eval-bar-fill green" style="width:88%"></div></div>
+</div>
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- TAB: NOTICE -->
+  <div id="tab-notice" class="tab-section">
+    <div class="section">
+      <div class="sec-label">다음 달 공지사항</div>
+      <div class="insight-list"><div class="insight-card">
+  <div class="insight-dot dot-green"></div>
+  <div class="insight-text"><strong>8회 수업 전결석 없음</strong> - 성실한 수업 참여로 학습 성과를 극대화하고 있습니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-orange"></div>
+  <div class="insight-text"><strong>5월 7일(목) 재등원 예정</strong> - 시험 이후 실제 시험지를 꼭 가져와 함께 분석할 예정입니다.</div>
+</div><div class="insight-card">
+  <div class="insight-dot dot-blue"></div>
+  <div class="insight-text">가정에서 원가·정가 문제를 (원가 → 정가 → 판매가 → 이익금) 순서로 정리하여 푸는 습관을 함께 강화해 주시면 감사하겠습니다.</div>
+</div></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">예상 시간표</div>
+      <div style="background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div class="schedule-grid"><div style="color:var(--text-muted);font-size:13px">시간표 정보가 없습니다.</div></div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.8">※ 학교 마치는 시간에 따라 변동될 수 있습니다.</div>
+      </div>
+    </div>
+    <div style="margin:28px 20px 0;padding:18px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div class="footer-text">
+        문의사항은 카카오톡으로 연락주세요.<br>
+        <a href="http://pf.kakao.com/_CCsnj/chat">제이디 수학학원</a> · 감사합니다 &#128591;
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="switchTab('home',this)"><div class="nav-icon">&#127968;</div><div class="nav-label">홈</div></div>
+    <div class="nav-item" onclick="switchTab('timeline',this)"><div class="nav-icon">&#128203;</div><div class="nav-label">수업기록</div></div>
+    <div class="nav-item" onclick="switchTab('analysis',this)"><div class="nav-icon">&#128202;</div><div class="nav-label">분석</div></div>
+    <div class="nav-item" onclick="switchTab('notice',this)"><div class="nav-icon">&#128226;</div><div class="nav-label">공지</div></div>
+  </nav>
+
+</div>
+<script>
+function switchTab(name,el){
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
