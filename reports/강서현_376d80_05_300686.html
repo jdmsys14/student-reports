@@ -1,0 +1,206 @@
+<!-- PARSE_DEBUG: clean_len:1126 first50:{
+  "ai_summary": "강서현 학생은 <strong style=\"color:# parsed:OK keys:ai_summary,teacher_comments,next_month_goals,tags | contentLen:1138 --><!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>학습 보고서 - 강서현</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#f5f1ec; color:#1a1a1a; min-height:100vh; }
+.report-wrap { max-width:480px; margin:0 auto; background:#fff; min-height:100vh; padding-bottom:40px; }
+
+/* ── HEADER ── */
+.header { background:linear-gradient(150deg,#7c2d12 0%,#c2410c 45%,#ea580c 100%); padding:36px 24px 30px; position:relative; overflow:hidden; }
+.header::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.06); }
+.header::after  { content:''; position:absolute; bottom:-30px; left:-20px; width:130px; height:130px; border-radius:50%; background:rgba(255,255,255,0.04); }
+.header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+.header-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); color:#fed7aa; font-size:10px; font-weight:700; letter-spacing:2px; padding:5px 12px; border-radius:20px; }
+.header-academy { font-size:11px; color:rgba(255,255,255,0.5); text-align:right; line-height:1.6; }
+.header-title { font-size:24px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:4px; }
+.header-sub { font-size:13px; color:rgba(255,255,255,0.6); font-weight:300; }
+
+/* ── STUDENT CARD ── */
+.student-card { margin:20px 20px 0; background:linear-gradient(135deg,#fff7ed,#ffedd5); border-radius:18px; padding:20px; border:1px solid #fed7aa; position:relative; overflow:hidden; }
+.student-card::after { content:''; position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(234,88,12,0.06); }
+.student-card-inner { display:flex; align-items:center; gap:16px; }
+.student-avatar { width:56px; height:56px; background:linear-gradient(135deg,#c2410c,#f97316); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; box-shadow:0 4px 14px rgba(194,65,12,0.3); }
+.student-name { font-size:20px; font-weight:700; color:#7c2d12; }
+.student-class { font-size:12px; color:#9a3412; margin-top:3px; display:flex; align-items:center; gap:6px; }
+.class-tag { background:#fed7aa; color:#c2410c; font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; }
+.student-period { margin-top:14px; display:flex; gap:8px; }
+.period-item { flex:1; background:#fff; border-radius:10px; padding:10px; text-align:center; border:1px solid #fde8cc; }
+.period-label { font-size:10px; color:#9ca3af; font-weight:500; margin-bottom:4px; }
+.period-value { font-size:13px; font-weight:700; color:#c2410c; }
+
+/* ── SECTION ── */
+.section { padding:24px 20px 0; }
+.section-header { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+.section-dot { width:4px; height:18px; border-radius:2px; }
+.section-dot.orange { background:linear-gradient(180deg,#f97316,#ea580c); }
+.section-dot.dark   { background:linear-gradient(180deg,#92400e,#c2410c); }
+.section-dot.light  { background:linear-gradient(180deg,#fb923c,#f97316); }
+.section-title-text { font-size:13px; font-weight:700; color:#374151; letter-spacing:0.5px; }
+.section-badge { margin-left:auto; font-size:10px; font-weight:700; padding:3px 10px; border-radius:8px; background:#ffedd5; color:#c2410c; }
+.divider { height:1px; background:linear-gradient(90deg,transparent,#fed7aa,transparent); margin:24px 20px 0; }
+
+/* ── HW ── */
+.hw-item { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+.hw-label { font-size:10px; color:#374151; font-weight:500; flex-shrink:0; width:90px; }
+.hw-bar-track { flex:1; background:#f1f5f9; border-radius:8px; height:8px; overflow:hidden; }
+.hw-bar-fill { height:100%; border-radius:8px; background:linear-gradient(90deg,#f97316,#fb923c); }
+.hw-pct { font-size:12px; font-weight:700; width:34px; text-align:right; flex-shrink:0; color:#c2410c; }
+
+/* ── COMMENT ── */
+.comment-box { border-radius:14px; padding:18px; background:#fff7ed; border:1px solid #fed7aa; border-left:4px solid #ea580c; margin-bottom:14px; }
+/* 기존 유지 */
+.comment-highlight { ... color:#c2410c; ... }
+
+/* strong 태그 전역 오렌지 적용 추가 */
+strong { color: #e85d04; }
+.comment-head { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+.comment-icon { width:26px; height:26px; border-radius:8px; background:#ffedd5; display:flex; align-items:center; justify-content:center; font-size:13px; }
+.comment-teacher { font-size:12px; font-weight:700; color:#c2410c; }
+.comment-sub { font-size:10px; color:#9ca3af; margin-left:auto; }
+.comment-highlight { display:inline-block; background:rgba(249,115,22,0.12); color:#c2410c; border-radius:4px; padding:0 4px; font-weight:600; }
+</style></head><body><div class="report-wrap"><div class="header"><div class="header-top"><div class="header-badge">📋 MONTHLY REPORT</div><div class="header-academy">민샘학원</div></div><div class="header-title">26년 5월<br>학습 보고서</div><div class="header-sub">2026년 5월 수업 결과 안내</div></div>
+  <div class="student-card">
+    <div class="student-card-inner">
+      <div class="student-avatar">✏️</div>
+      <div>
+        <div class="student-name">강서현</div>
+        <div class="student-class"><span class="class-tag">수학</span>민샘학원</div>
+      </div>
+    </div>
+    <div class="student-period">
+      <div class="period-item"><div class="period-label">보고서 기간</div><div class="period-value">2026.05</div></div>
+      <div class="period-item"><div class="period-label">출석</div><div class="period-value">11회</div></div>
+      <div class="period-item"><div class="period-label">과제완성도</div><div class="period-value">90%</div></div>
+    </div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot orange"></div>
+      <div class="section-title-text">26년 5월 학습 요약</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border-radius:14px;padding:16px;border:1px solid #fed7aa;margin-bottom:14px;">
+      <div style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #fed7aa;border-radius:20px;padding:4px 12px;margin-bottom:10px;">
+        <span style="font-size:10px;font-weight:700;color:#c2410c;">민샘 학원 학습 분석</span>
+      </div>
+      <div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:400;">강서현 학생은 <strong style="color:#e85d04;">완벽한 출석률과 높은 숙제 달성률</strong>을 유지하며 학습에 매우 성실하게 임하고 있습니다. 다만 연립방정식, 함수 등 개념 이해 속도가 다소 느리며, 계산 실수와 문제 해결 속도 개선이 필요한 상황입니다. <strong style="color:#e85d04;">꾸준한 노력</strong>으로 평균 85점의 테스트 성적을 유지하고 있으나, 개념 정리와 유형별 반복 학습을 통해 더욱 탄탄한 기초를 다져야 할 시점입니다. 앞으로 보강 수업과 추가 학습을 통해 <strong style="color:#e85d04;">약점 보완</strong>에 집중하겠습니다.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+      <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🗓️</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">출석률</div>
+        <div style="font-size:28px;font-weight:900;color:#f97316;line-height:1;">100%</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">11일 / 11일</div>
+      </div>
+      <div style="background:#fff7ed;border-radius:14px;padding:16px;border:1px solid #fed7aa;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">✏️</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">과제 완성도</div>
+        <div style="font-size:28px;font-weight:900;color:#ea580c;line-height:1;">90%</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">월 평균</div>
+      </div>
+      <div style="background:#fffbeb;border-radius:14px;padding:16px;border:1px solid #fde68a;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🏆</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">테스트 최고점</div>
+        <div style="font-size:28px;font-weight:900;color:#d97706;line-height:1;">100점</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">11회 응시</div>
+      </div>
+      <div style="background:#fffbeb;border-radius:14px;padding:16px;border:1px solid #fde68a;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">📊</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:4px;">테스트 평균</div>
+        <div style="font-size:28px;font-weight:900;color:#d97706;line-height:1;">85점</div>
+        <div style="font-size:10px;color:#6b7280;margin-top:3px;">월 평균</div>
+      </div></div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot light"></div>
+      <div class="section-title-text">과제 완성도</div>
+    </div>
+    <div>
+    <div class="hw-item">
+      <div class="hw-label">05.06 (수)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.13 (수)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.15 (금)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.18 (월)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.20 (수)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.22 (금)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.27 (수)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div>
+    <div class="hw-item">
+      <div class="hw-label">05.29 (금)</div>
+      <div class="hw-bar-track"><div class="hw-bar-fill" style="width:90%"></div></div>
+      <div class="hw-pct">90%</div>
+    </div></div>
+    <div style="background:#fff7ed;border-radius:10px;padding:12px;margin-top:12px;border:1px solid #fed7aa;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:12px;color:#c2410c;font-weight:600;">월 평균 완성도</span>
+      <span style="font-size:20px;font-weight:700;color:#ea580c;">약 90%</span>
+    </div>
+  </div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot dark"></div><div class="section-title-text">선생님 피드백</div></div>
+    <div class="comment-box">
+      <div class="comment-head">
+        <div class="comment-icon">📝</div>
+        <div class="comment-teacher">수학-김T</div>
+        <div class="comment-sub">26년 5월 종합</div>
+      </div>
+      <div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;">강서현 학생은 결석 없이 모든 수업에 참석하고 숙제를 성실하게 완수하는 등 학습 태도가 우수합니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(234,88,12,0.1);">다만 대입법, 이항 계산, 연립방정식 활용, 함수 이해 등 핵심 개념에서 이해 속도가 완만하며, 문제 풀이 시간이 많이 소요되고 있습니다. 특히 계산 실수가 반복되고 틀린 유형이 재차 나타나는 패턴이 보입니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(234,88,12,0.1);">추가 숙제와 보강 수업을 통해 개념별 심화 학습과 유형 반복 훈련을 진행하겠습니다. 단계별 속도 개선과 정확성 향상에 중점을 두어 지도하겠습니다.</div></div>
+    </div></div><div class="divider"></div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot dark"></div>
+      <div class="section-title-text">6월 학습 방향</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border-radius:14px;padding:18px;border:1px solid #fed7aa;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#ffedd5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📐</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">연립방정식과 함수 개념 재정리를 통해 기초 이해도를 70% 이상 향상하겠습니다</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#ffedd5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📝</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">대입법, 이항 계산 등 유형별 문제를 반복 풀이하여 계산 실수를 50% 이상 감소하겠습니다</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#ffedd5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">🎯</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">문제 풀이 속도 개선 목표로 1문제당 평균 해결 시간을 30% 단축하겠습니다</div>
+        </div></div>
+    </div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span style="font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 12px;border-radius:20px;border:1px solid #fed7aa;">#성실한출석과숙제완수</span><span style="font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 12px;border-radius:20px;border:1px solid #fed7aa;">#개념이해속도개선필요</span><span style="font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 12px;border-radius:20px;border:1px solid #fed7aa;">#계산실수보완</span></div>
+  </div>
+  <div style="margin:28px 20px 0;background:linear-gradient(135deg,#7c2d12 0%,#c2410c 100%);border-radius:18px;overflow:hidden;">
+    <div style="padding:24px 24px 0;text-align:center;">
+      <div style="font-size:15px;font-weight:900;color:#fed7aa;letter-spacing:1px;margin-bottom:2px;">민샘학원</div>
+    </div>
+    <div style="height:1px;background:rgba(255,255,255,0.1);margin:16px 24px 0;"></div>
+    <div style="padding:16px 24px 20px;text-align:center;">
+      <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.9;">
+        본 보고서는 2026년 5월 학습 활동을 기반으로 작성되었습니다.<br>
+        작성일: 2026년 6월 5일
+      </div>
+    </div>
+  </div></div></body></html>
