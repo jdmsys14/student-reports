@@ -1,0 +1,117 @@
+<!-- PARSE_DEBUG: parsed:OK | feedbackTextLen:375 | totalRows:14 | filteredOut:9 --><!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>학습 보고서 - 신재환</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#FFFDE7; color:#1a1a1a; min-height:100vh; }
+.report-wrap { max-width:480px; margin:0 auto; background:#fff; min-height:100vh; padding-bottom:40px; }
+strong { color:#F9A825; }
+.header { background:linear-gradient(150deg,#b37000 0%,#F9A825 45%,#FFCA28 100%); padding:36px 24px 30px; position:relative; overflow:hidden; }
+.header::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.08); }
+.header::after  { content:''; position:absolute; bottom:-30px; left:-20px; width:130px; height:130px; border-radius:50%; background:rgba(255,255,255,0.05); }
+.header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+.header-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); color:#5a3e00; font-size:10px; font-weight:700; letter-spacing:2px; padding:5px 12px; border-radius:20px; }
+.header-academy { font-size:11px; color:rgba(90,62,0,0.6); text-align:right; line-height:1.6; }
+.header-title { font-size:24px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:4px; text-shadow:0 1px 4px rgba(0,0,0,0.15); }
+.header-sub { font-size:13px; color:rgba(255,255,255,0.75); font-weight:300; }
+.student-card { margin:20px 20px 0; background:linear-gradient(135deg,#FFFDE7,#FFF8E1); border-radius:18px; padding:20px; border:1px solid #FFE082; position:relative; overflow:hidden; }
+.student-card::after { content:''; position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(249,168,37,0.06); }
+.student-card-inner { display:flex; align-items:center; gap:16px; }
+.student-avatar { width:56px; height:56px; background:linear-gradient(135deg,#F9A825,#FFCA28); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; box-shadow:0 4px 14px rgba(249,168,37,0.35); }
+.student-name { font-size:20px; font-weight:700; color:#5a3e00; }
+.student-class { font-size:12px; color:#b37000; margin-top:3px; display:flex; align-items:center; gap:6px; }
+.class-tag { background:#FFE082; color:#b37000; font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; }
+.student-period { margin-top:14px; display:flex; gap:8px; }
+.period-item { flex:1; background:#fff; border-radius:10px; padding:10px; text-align:center; border:1px solid #FFF3CD; }
+.period-label { font-size:10px; color:#9ca3af; font-weight:500; margin-bottom:4px; }
+.period-value { font-size:13px; font-weight:700; color:#F9A825; }
+.section { padding:24px 20px 0; }
+.section-header { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+.section-dot { width:4px; height:18px; border-radius:2px; }
+.section-dot.orange { background:linear-gradient(180deg,#F9A825,#FFCA28); }
+.section-dot.dark   { background:linear-gradient(180deg,#b37000,#F9A825); }
+.section-dot.light  { background:linear-gradient(180deg,#FFCA28,#F9A825); }
+.section-title-text { font-size:13px; font-weight:700; color:#374151; letter-spacing:0.5px; }
+.section-badge { margin-left:auto; font-size:10px; font-weight:700; padding:3px 10px; border-radius:8px; background:#FFF8E1; color:#b37000; }
+.divider { height:1px; background:linear-gradient(90deg,transparent,#FFE082,transparent); margin:24px 20px 0; }
+.hw-item { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+.hw-label { font-size:10px; color:#374151; font-weight:500; flex-shrink:0; width:90px; }
+.hw-bar-track { flex:1; background:#f1f5f9; border-radius:8px; height:8px; overflow:hidden; }
+.hw-bar-fill { height:100%; border-radius:8px; background:linear-gradient(90deg,#F9A825,#FFCA28); }
+.hw-pct { font-size:12px; font-weight:700; width:34px; text-align:right; flex-shrink:0; color:#b37000; }
+.comment-box { border-radius:14px; padding:18px; background:#FFFDE7; border:1px solid #FFE082; border-left:4px solid #F9A825; margin-bottom:14px; }
+.comment-head { display:flex; align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+.comment-icon { width:26px; height:26px; border-radius:8px; background:#FFF8E1; display:flex; align-items:center; justify-content:center; font-size:13px; }
+.comment-teacher { font-size:12px; font-weight:700; color:#b37000; }
+.comment-sub { font-size:10px; color:#9ca3af; margin-left:auto; }
+.attitude-tag { font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; }
+.comment-highlight { display:inline-block; background:rgba(249,168,37,0.15); color:#b37000; border-radius:4px; padding:0 4px; font-weight:600; }
+</style></head><body><div class="report-wrap"><div class="header"><div class="header-top"><div class="header-badge">📋 MONTHLY REPORT</div><div class="header-academy">민샘학원</div></div><div class="header-title">26년 7월<br>학습 보고서</div><div class="header-sub">2026년 7월 수업 결과 안내</div></div>
+  <div class="student-card">
+    <div class="student-card-inner">
+      <div class="student-avatar">✏️</div>
+      <div>
+        <div class="student-name">신재환</div>
+        <div class="student-class"><span class="class-tag">수학</span>민샘학원</div>
+      </div>
+    </div>
+    <div class="student-period">
+      <div class="period-item"><div class="period-label">보고서 기간</div><div class="period-value">2026.07</div></div>
+      <div class="period-item"><div class="period-label">과제완성도</div><div class="period-value">-</div></div>
+    </div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot orange"></div>
+      <div class="section-title-text">26년 7월 학습 요약</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#FFFDE7,#FFF8E1);border-radius:14px;padding:16px;border:1px solid #FFE082;margin-bottom:14px;">
+      <div style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #FFE082;border-radius:20px;padding:4px 12px;margin-bottom:10px;">
+        <span style="font-size:10px;font-weight:700;color:#b37000;">민샘 학원 학습 분석</span>
+      </div>
+      <div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:400;">신재환 학생은 연립방정식의 활용 단원에서 <strong style="color:#F9A825;">거리, 속력, 시간 문제와 분배 문제</strong>를 학습하며 전반적으로 <strong style="color:#F9A825;">우수한 수업 태도</strong>를 유지하고 있습니다. 초기 집중력 저하 시점 이후 선생님의 지도에 따라 개선되었으며, 현재는 수업 중 문제 풀이를 꾸준히 진행하고 있습니다. 다만 수업 시간 내 모든 문제를 완료하지 못하는 점을 보완하여 <strong style="color:#F9A825;">자기주도적인 학습 완성</strong>을 이루어낼 수 있도록 지도하겠습니다.</div>
+    </div>
+    
+  </div><div class="divider"></div><div class="section"><div class="section-header"><div class="section-dot dark"></div><div class="section-title-text">선생님 피드백</div></div>
+    <div class="comment-box">
+      <div class="comment-head">
+        <div class="comment-icon">📝</div>
+        <div class="comment-teacher">수학-김T</div>
+        <span class="attitude-tag" style="background:rgba(249,168,37,0.15);color:#b37000;">매우 우수</span>
+        <div class="comment-sub">26년 7월 종합</div>
+      </div>
+      <div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;">신재환 학생은 연립방정식 활용 단원에서 거리, 속력, 시간 관련 문제와 분배 유형의 문제들을 학습하고 있으며, <span class="comment-highlight">수업 태도가 우수</span>합니다. 초반에 집중력이 흔들리는 시점이 있었으나, 학생이 이후 적극적으로 수정하여 현재는 수업 시간 동안 문제 풀이에 열정적으로 참여하고 있습니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(249,168,37,0.15);">현재 보완이 필요한 부분은 수업 중 주어진 문제를 시간 내에 완료하지 못하는 점입니다. 이는 시간 부족이 아닌 풀이 과정에서의 속도 개선이 필요함을 의미합니다. 따라서 제시된 숙제를 통해 부족한 부분을 보충하고 문제 유형별 풀이 패턴을 익히는 것이 중요합니다.</div><div style="font-size:12.5px;color:#374151;line-height:1.85;font-weight:300;margin-top:14px;padding-top:14px;border-top:1px solid rgba(249,168,37,0.15);">앞으로는 수업 중 집중력을 꾸준히 유지하면서 풀이 속도를 높이는 연습에 중점을 두겠습니다. 이를 통해 주어진 학습 내용을 완벽하게 습득할 수 있도록 지도하겠습니다.</div></div>
+    </div></div><div class="divider"></div><div class="divider"></div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot dark"></div>
+      <div class="section-title-text">8월 학습 방향</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#FFFDE7,#FFF8E1);border-radius:14px;padding:18px;border:1px solid #FFE082;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#FFF8E1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📐</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">연립방정식 활용 문제(거리, 속력, 시간, 분배) 유형별 풀이 전략 완성하겠습니다.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#FFF8E1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">📝</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">수업 중 제시된 문제를 정해진 시간 내에 완료하는 연습을 강화하겠습니다.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:24px;height:24px;background:#FFF8E1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">🎯</div>
+          <div style="font-size:12px;color:#374151;line-height:1.7;font-weight:400;">부족한 개념과 문제 유형에 대한 숙제를 성실하게 완료하여 기초를 탄탄히 하겠습니다.</div>
+        </div></div>
+    </div>
+  </div><div class="divider"></div>
+  <div class="section">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span style="font-size:11px;font-weight:700;background:#FFF8E1;color:#b37000;padding:4px 12px;border-radius:20px;border:1px solid #FFE082;">#우수한수업태도</span><span style="font-size:11px;font-weight:700;background:#FFF8E1;color:#b37000;padding:4px 12px;border-radius:20px;border:1px solid #FFE082;">#연립방정식완성</span><span style="font-size:11px;font-weight:700;background:#FFF8E1;color:#b37000;padding:4px 12px;border-radius:20px;border:1px solid #FFE082;">#학습집중력강화</span></div>
+  </div>
+  <div style="margin:28px 20px 0;background:linear-gradient(135deg,#b37000 0%,#F9A825 100%);border-radius:18px;overflow:hidden;">
+    <div style="padding:24px 24px 0;text-align:center;">
+      <div style="font-size:15px;font-weight:900;color:#fff;letter-spacing:1px;margin-bottom:2px;">민샘학원</div>
+    </div>
+    <div style="height:1px;background:rgba(255,255,255,0.15);margin:16px 24px 0;"></div>
+    <div style="padding:16px 24px 20px;text-align:center;">
+      <div style="font-size:11px;color:rgba(255,255,255,0.75);line-height:1.9;">
+        본 보고서는 2026년 7월 학습 활동을 기반으로 작성되었습니다.<br>
+        작성일: 2026년 7월 1일
+      </div>
+    </div>
+  </div></div></body></html>
