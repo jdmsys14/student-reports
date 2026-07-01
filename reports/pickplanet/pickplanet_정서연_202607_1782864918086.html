@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>월간 리포트 - 정서연</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{background:#1a1a2e;font-family:'Noto Sans KR',sans-serif;color:#e0e0e0;display:flex;justify-content:center;padding:0;min-height:100vh;}
+.report{max-width:480px;width:100%;background:#1e1e32;min-height:100vh;overflow:hidden;}
+.header{background:linear-gradient(135deg,#7c3aed 0%,#a855f7 100%);padding:max(env(safe-area-inset-top),32px) 24px 24px;}
+.header-badge{display:inline-block;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);font-size:10px;font-weight:700;letter-spacing:1.5px;padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
+.student-name{font-size:30px;font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.1;}
+.student-sub{font-size:12px;color:rgba(255,255,255,0.6);margin-top:6px;font-weight:400;}
+.header-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.h-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);border-radius:14px;padding:14px 10px;text-align:center;}
+.h-card.highlight{background:rgba(255,255,255,0.95);}
+.h-card-label{font-size:9px;color:rgba(255,255,255,0.55);margin-bottom:6px;letter-spacing:0.8px;text-transform:uppercase;font-weight:700;}
+.h-card.highlight .h-card-label{color:#7c3aed;}
+.h-card-value{font-size:13px;font-weight:800;color:#fff;line-height:1.2;}
+.h-card.highlight .h-card-value{color:#7c3aed;font-size:14px;}
+.tabs{display:flex;padding:16px 16px 0;gap:6px;background:#1e1e32;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.04);}
+.tab-btn{flex:1;padding:12px 0;text-align:center;font-size:13px;font-weight:700;border:none;border-radius:12px 12px 0 0;cursor:pointer;transition:all 0.25s;background:rgba(255,255,255,0.03);color:#555;font-family:'Noto Sans KR',sans-serif;}
+.tab-btn:hover{color:#c084fc;}
+.tab-btn.active{background:rgba(124,58,237,0.12);color:#c084fc;box-shadow:inset 0 -3px 0 #7c3aed;}
+.tab-content{display:none;padding:20px 16px 40px;}
+.tab-content.active{display:block;}
+.section{margin-bottom:24px;}
+.section-title{font-size:12px;font-weight:800;color:#fff;margin-bottom:14px;padding-left:12px;border-left:3px solid #7c3aed;display:flex;align-items:center;gap:8px;}
+.section-icon{font-size:13px;}
+.stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:20px 14px 14px;}
+.chart-area{display:flex;justify-content:center;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.chart-area canvas{max-width:260px;max-height:260px;}
+.grade-area{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-top:14px;}
+.grade-cell{text-align:center;padding:11px 4px;border-radius:12px;background:rgba(255,255,255,0.02);}
+.grade-cell-label{font-size:9px;color:#777;font-weight:600;margin-bottom:5px;}
+.grade-cell-badge{font-size:24px;font-weight:900;line-height:1;}
+.grade-cell.s .grade-cell-badge{color:#a855f7;}.grade-cell.a .grade-cell-badge{color:#10b981;}
+.grade-cell.b .grade-cell-badge{color:#3b82f6;}.grade-cell.c .grade-cell-badge{color:#eab308;}
+.grade-cell.d .grade-cell-badge{color:#ef4444;}
+.grade-cell.s{border-bottom:3px solid #a855f7;}.grade-cell.a{border-bottom:3px solid #10b981;}
+.grade-cell.b{border-bottom:3px solid #3b82f6;}.grade-cell.c{border-bottom:3px solid #eab308;}
+.grade-cell.d{border-bottom:3px solid #ef4444;}
+.step-bar{display:flex;gap:4px;}
+.step-item{flex:1;border-radius:12px;padding:12px 4px;text-align:center;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
+.step-item .step-num{font-size:9px;color:#444;font-weight:700;margin-bottom:4px;}
+.step-item .step-name{font-size:9px;color:#444;font-weight:600;line-height:1.3;word-break:keep-all;}
+.step-item.active{background:#7c3aed;border-color:transparent;box-shadow:0 4px 18px rgba(124,58,237,0.35);}
+.step-item.active .step-num,.step-item.active .step-name{color:#fff;}
+.keyword-row-label{font-size:11px;font-weight:700;margin-bottom:8px;}
+.keyword-row-label.str{color:#10b981;}.keyword-row-label.weak{color:#f59e0b;}
+.keyword-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+.chip.str{background:rgba(16,185,129,0.1);color:#34d399;border:1px solid rgba(16,185,129,0.2);padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;}
+.chip.weak{background:rgba(245,158,11,0.1);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;}
+.total-eval{background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(168,85,247,0.08));border:1px solid rgba(124,58,237,0.2);border-radius:18px;padding:22px;position:relative;overflow:hidden;}
+.total-eval::before{content:'';position:absolute;top:-30px;right:-30px;width:110px;height:110px;background:rgba(124,58,237,0.08);border-radius:50%;}
+.total-eval-label{font-size:9px;color:#a855f7;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1;}
+.total-eval p{font-size:13px;color:#bbb;line-height:1.85;position:relative;z-index:1;}
+.ba-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px;margin-bottom:10px;position:relative;overflow:hidden;}
+.ba-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#7c3aed,#a855f7);}
+.ba-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.ba-category{font-size:14px;font-weight:800;color:#fff;}
+.ba-tag{font-size:10px;font-weight:800;padding:4px 12px;border-radius:20px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;}
+.ba-cols-row{display:flex;align-items:center;gap:10px;}
+.ba-col{flex:1;text-align:center;}
+.ba-col-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
+.ba-col-label.before{color:#555;}.ba-col-label.after{color:#a855f7;}
+.ba-col-text{font-size:12px;line-height:1.6;padding:10px;border-radius:10px;text-align:center;}
+.ba-col-text.before{color:#666;background:rgba(255,255,255,0.02);text-decoration:line-through;text-decoration-color:rgba(255,255,255,0.15);}
+.ba-col-text.after{color:#e0e0e0;background:rgba(124,58,237,0.08);font-weight:600;border:1px solid rgba(124,58,237,0.15);}
+.ba-arrow-col{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:28px;padding-top:22px;}
+.ba-arrow{font-size:18px;color:#7c3aed;font-weight:900;}
+.growth-wrap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px 14px 14px;}
+.growth-wrap canvas{max-height:190px;}
+.comment-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px;margin-bottom:10px;}
+.comment-card.vocal{border-left:3px solid #3b82f6;}
+.comment-card.dance{border-left:3px solid #10b981;}
+.comment-card.default{border-left:3px solid #7c3aed;}
+.comment-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.comment-role{font-size:10px;font-weight:700;letter-spacing:0.5px;}
+.comment-card.vocal .comment-role{color:#60a5fa;}
+.comment-card.dance .comment-role{color:#34d399;}
+.comment-card.default .comment-role{color:#a855f7;}
+.comment-trainer{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.comment-card.vocal .comment-trainer{color:#60a5fa;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.2);}
+.comment-card.dance .comment-trainer{color:#34d399;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);}
+.comment-card.default .comment-trainer{color:#c084fc;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);}
+.comment-text{font-size:12px;color:#999;line-height:1.75;}
+.next-plan-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;text-align:center;}
+.next-plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7c3aed,#a855f7,#22d3ee);}
+.next-plan-label{font-size:9px;font-weight:800;color:#a855f7;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;}
+.next-plan-text{font-size:16px;font-weight:800;color:#fff;line-height:1.4;}
+.focus-kw-wrap{display:flex;gap:8px;flex-wrap:wrap;}
+.focus-kw-chip{padding:9px 18px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(124,58,237,0.08);color:#c084fc;border:1px solid rgba(124,58,237,0.15);}
+.growth-predict-wrap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px 14px 14px;}
+.growth-predict-wrap canvas{max-height:190px;}
+.gp-legend{display:flex;justify-content:center;gap:18px;margin-top:12px;}
+.gp-legend-item{display:flex;align-items:center;gap:6px;}
+.gp-legend-dot{width:7px;height:7px;border-radius:50%;}
+.gp-legend-line{width:14px;height:0;border-top:2px dashed;}
+.gp-legend-text{font-size:10px;color:rgba(255,255,255,0.35);font-weight:600;}
+.check-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px;}
+.check-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:13px 14px;cursor:pointer;transition:all .25s;}
+.check-item:hover{border-color:rgba(124,58,237,0.2);}
+.check-box{width:21px;height:21px;border-radius:7px;border:2px solid #3a3a50;display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent;transition:all .25s;flex-shrink:0;}
+.check-item.checked .check-box{background:#7c3aed;border-color:#7c3aed;color:#fff;}
+.check-item.checked .check-text{color:rgba(255,255,255,0.3);text-decoration:line-through;}
+.check-text{font-size:13px;color:rgba(255,255,255,0.65);font-weight:500;}
+.footer{text-align:center;padding:24px 20px 32px;border-top:1px solid rgba(255,255,255,0.04);}
+.footer p{font-size:10px;color:#3a3a50;letter-spacing:0.5px;}
+</style>
+</head>
+<body>
+<div class="report">
+
+  <div class="header">
+    <div class="header-badge">PICK PLANET ACADEMY</div>
+    <div class="header-top">
+      <div>
+        <div class="student-name">정서연</div>
+        <div class="student-sub">04년생 · 프라이빗 클래스</div>
+      </div>
+    </div>
+    <div class="header-cards">
+      <div class="h-card highlight">
+        <div class="h-card-label">월간 리포트</div>
+        <div class="h-card-value">2026. 07</div>
+      </div>
+      <div class="h-card">
+        <div class="h-card-label">메인 포지션</div>
+        <div class="h-card-value"></div>
+      </div>
+      <div class="h-card">
+        <div class="h-card-label">이달의 키워드</div>
+        <div class="h-card-value">기초 다지기</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('tab1')">프로필</button>
+    <button class="tab-btn" onclick="switchTab('tab2')">트레이닝</button>
+    <button class="tab-btn" onclick="switchTab('tab3')">로드맵</button>
+  </div>
+
+  <!-- 탭1: 프로필 -->
+  <div id="tab1" class="tab-content active">
+    <div class="section">
+      <div class="section-title"><span class="section-icon">⚙️</span> 오디션 완성도</div>
+      <div class="stat-card">
+        <div class="chart-area"><canvas id="radarOverview"></canvas></div>
+        <div class="grade-area" id="gradeGrid"></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">🧭</span> 오디션 준비 단계</div>
+      <div class="step-bar" id="stepBar"></div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">🔍</span> 강점 / 보완 키워드</div>
+      <div class="keyword-row-label str">강점</div>
+      <div class="keyword-row" id="strChips"></div>
+      <div class="keyword-row-label weak">보완</div>
+      <div class="keyword-row" id="weakChips"></div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">📋</span> 종합 평가</div>
+      <div class="total-eval">
+        <div class="total-eval-label">TOTAL SUMMARY</div>
+        <p id="totalEvalText">서연이는 이번 달 음정 불안정에서 양호로, 박자감 부재에서 양호로 의미 있는 성장을 이루었습니다. 기초 과정에서 핵심 요소들을 착실히 개선하고 있으며, 다음 달에는 감정 표현과 춤선 강화에 집중하여 한 단계 도약할 준비를 갖춰 나갈 예정입니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 탭2: 트레이닝 -->
+  <div id="tab2" class="tab-content">
+    <div class="section">
+      <div class="section-title"><span class="section-icon">🔄</span> BEFORE → AFTER</div>
+      <div id="baCards"></div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">📈</span> 성장 그래프</div>
+      <div class="growth-wrap"><canvas id="growthChart"></canvas></div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">💬</span> 트레이너 코멘트</div>
+      <div id="commentCards"></div>
+    </div>
+  </div>
+
+  <!-- 탭3: 로드맵 -->
+  <div id="tab3" class="tab-content">
+    <div class="section">
+      <div class="section-title"><span class="section-icon">🎯</span> 다음 달 목표</div>
+      <div class="next-plan-card">
+        <div class="next-plan-label">NEXT PLAN</div>
+        <div class="next-plan-text" id="nextPlanText">감정 표현 연습 강화 + 춤선 개선 집중 훈련으로 완성도 있는 퍼포먼스 개발</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">🔑</span> 다음 달 집중 키워드</div>
+      <div class="focus-kw-wrap" id="focusKwChips"></div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">🚀</span> 예상 성장 포인트</div>
+      <div class="growth-predict-wrap">
+        <canvas id="growthPredict"></canvas>
+        <div class="gp-legend">
+          <div class="gp-legend-item"><div class="gp-legend-dot" style="background:#7c3aed;"></div><div class="gp-legend-text">현재까지</div></div>
+          <div class="gp-legend-item"><div class="gp-legend-line" style="border-color:#22d3ee;"></div><div class="gp-legend-text">예상</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title"><span class="section-icon">✅</span> 성장 체크리스트</div>
+      <ul class="check-list" id="checkList"></ul>
+    </div>
+  </div>
+
+  <div class="footer"><p>PICK PLANET ACADEMY</p></div>
+</div>
+
+<script>
+/* ════════════════════════════════════
+   ★ n8n 치환 영역 — DATA 객체만 수정
+   ════════════════════════════════════ */
+const DATA = {
+  /* 기본 정보 */
+  studentName    : "정서연",      // 예: "권민정"
+  birthYear      : "04",        // 예: "15"
+  className      : "프라이빗 클래스",        // 예: "루키즈 클래스"
+  reportYear     : "2026",       // 예: "2026"
+  reportMonth    : 7,    // 예: 6  ← 숫자, 따옴표 없음
+  reportMonthPad : "07", // 예: "06"
+  mainPosition   : "",    // 예: "비주얼"
+  keywordOfMonth : "기초 다지기", // 예: "표정 연기"
+
+  /* 퍼포먼스 점수 1~5 (레이더 12시=오디션, 시계방향) */
+  scores: {
+    오디션 : 1,   // 예: 5
+    댄스   : 1,      // 예: 2
+    트렌드 : 1,      // 예: 4
+    비주얼 : 1,     // 예: 1
+    연습량 : 1,   // 예: 3
+    보컬   : 1       // 예: 3
+  },
+
+  /* 오디션 준비 단계 1~5 */
+  currentStep: 1,  // 예: 4
+
+  /* 키워드 — 쉼표 구분 문자열 */
+  strKeywords  : "음정 개선,박자감 향상,성실한 참여",   // 예: "표정 연기 양호,음정 안정,성실한 연습"
+  weakKeywords : "감정 표현 연습,춤선 강화,종합 안정성",  // 예: "박자 감각,춤선 개선,즉흥 대응력"
+
+  /* 종합 평가 */
+  totalEval: "서연이는 이번 달 음정 불안정에서 양호로, 박자감 부재에서 양호로 의미 있는 성장을 이루었습니다. 기초 과정에서 핵심 요소들을 착실히 개선하고 있으며, 다음 달에는 감정 표현과 춤선 강화에 집중하여 한 단계 도약할 준비를 갖춰 나갈 예정입니다.",
+
+  /* BEFORE→AFTER — "과목|태그|BEFORE내용|AFTER내용" 형식, | 구분 */
+  baItems: ["보컬|성장|음정 불안정<br>정확도 낮음|음정 양호<br>박자 감각 안정","댄스|성장|박자감 부재<br>리듬 따라잡기 어려움|박자감 양호<br>기초 리듬 안정"],
+
+  /* 성장 그래프 */
+  growthBaseMonth: 7,  // 현재 월 숫자
+  growthScores   : [1],  // 예: 5.0  또는  3.2,4.1,5.0,6.2,7.0 (최대5개)
+  /* 과거 데이터가 있으면 쉼표로 이어붙여 최대 5개 (오래된→최신 순) */
+
+  /* 트레이너 코멘트 — "역할|이름|내용|타입(vocal/dance/default)" */
+  comments: ["보컬 트레이너|김종화T|음정 불안정에서 양호로 빠르게 개선된 점이 정말 훌륭합니다. 안정적인 기초음감이 형성되었으니, 다음으로는 이 안정성 위에 감정 표현을 더하여 노래의 감동을 전달하는 훈련으로 나아갈 예정입니다.|vocal","댄스 트레이너|방시현T|박자감 없던 상태에서 양호로 개선된 것은 꾸준한 노력의 증명입니다. 이제 박자를 정확히 따라가는 기초가 마련되었으므로, 다음 달에는 이를 바탕으로 춤선을 더욱 섬세하고 우아하게 표현하는 단계로 진행하겠습니다.|dance"],
+
+  /* 로드맵 */
+  nextPlan      : "감정 표현 연습 강화 + 춤선 개선 집중 훈련으로 완성도 있는 퍼포먼스 개발",       // 예: "박자 감각 집중 훈련 + 춤선 개선 집중"
+  focusKeywords : "감정 표현,춤선 정교화,기초 안정화", // 예: "박자 정확도,춤선 개선,무대 존재감"
+  checkItems    : "감정 표현 일일 연습 15분,춤선 정확도 체크,음정 안정성 유지,박자감 심화 훈련,주간 트레이너 피드백 반영"     // 예: "박자 맞추기 집중 수업 진행,춤선 개선 집중 연습,..."
+};
+/* ════════════════════════════════════
+   ★ n8n 치환 영역 END
+   ════════════════════════════════════ */
+
+
+/* ══ 유틸 ══ */
+function getMonthLabel(base, offset) {
+  return ((base - 1 + offset) % 12 + 12) % 12 + 1 + '월';
+}
+function toGrade(s) {
+  if (s >= 4.5) return { g:'S', c:'s' };
+  if (s >= 3.5) return { g:'A', c:'a' };
+  if (s >= 2.5) return { g:'B', c:'b' };
+  if (s >= 1.5) return { g:'C', c:'c' };
+  return { g:'D', c:'d' };
+}
+function calcYRange(vals) {
+  const mx = Math.max(...vals), mn = Math.min(...vals);
+  const pad = Math.max((mx - mn) * 0.6, 1.5);
+  return { yMin: Math.max(0, Math.floor((mn-pad)*2)/2), yMax: Math.ceil((mx+pad)*2)/2 };
+}
+
+/* ══ 헤더 동적 반영 ══ */
+function renderHeader() {
+  document.title = `월간 리포트 - ${DATA.studentName}`;
+  document.querySelector('.student-name').textContent = DATA.studentName;
+  document.querySelector('.student-sub').textContent  = `${DATA.birthYear}년생 · ${DATA.className}`;
+  const cards = document.querySelectorAll('.h-card-value');
+  cards[0].textContent = `${DATA.reportYear}. ${DATA.reportMonthPad}`;
+  cards[1].textContent = DATA.mainPosition;
+  cards[2].textContent = DATA.keywordOfMonth;
+  document.getElementById('totalEvalText').textContent = DATA.totalEval;
+  document.getElementById('nextPlanText').textContent  = DATA.nextPlan;
+}
+
+/* ══ 칩 ══ */
+function renderChips() {
+  document.getElementById('strChips').innerHTML =
+    DATA.strKeywords.split(',').map(k=>`<span class="chip str">${k.trim()}</span>`).join('');
+  document.getElementById('weakChips').innerHTML =
+    DATA.weakKeywords.split(',').map(k=>`<span class="chip weak">${k.trim()}</span>`).join('');
+  document.getElementById('focusKwChips').innerHTML =
+    DATA.focusKeywords.split(',').map(k=>`<div class="focus-kw-chip">${k.trim()}</div>`).join('');
+}
+
+/* ══ 체크리스트 ══ */
+function renderChecklist() {
+  document.getElementById('checkList').innerHTML =
+    DATA.checkItems.split(',').map(t =>
+      `<li class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">${t.trim()}</span>
+      </li>`
+    ).join('');
+}
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+/* ══ BEFORE→AFTER ══ */
+function renderBA() {
+  document.getElementById('baCards').innerHTML = DATA.baItems
+    .filter(item => item && !item.startsWith('{{'))
+    .map(item => {
+      const [cat, tag, before, after] = item.split('|');
+      return `<div class="ba-card">
+        <div class="ba-header"><span class="ba-category">${cat}</span><span class="ba-tag">${tag}</span></div>
+        <div class="ba-cols-row">
+          <div class="ba-col">
+            <div class="ba-col-label before">BEFORE</div>
+            <div class="ba-col-text before">${before}</div>
+          </div>
+          <div class="ba-arrow-col"><div class="ba-arrow">→</div></div>
+          <div class="ba-col">
+            <div class="ba-col-label after">AFTER</div>
+            <div class="ba-col-text after">${after}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+}
+
+/* ══ 트레이너 코멘트 (보컬=파랑, 댄스=초록, 기타=보라) ══ */
+function renderComments() {
+  document.getElementById('commentCards').innerHTML = DATA.comments
+    .filter(item => item && !item.startsWith('{{'))
+    .map(item => {
+      const [role, trainer, text, type] = item.split('|');
+      const cls = type === 'vocal' ? 'vocal' : type === 'dance' ? 'dance' : 'default';
+      return `<div class="comment-card ${cls}">
+        <div class="comment-top">
+          <span class="comment-role">${role}</span>
+          <span class="comment-trainer">${trainer}</span>
+        </div>
+        <div class="comment-text">${text}</div>
+      </div>`;
+    }).join('');
+}
+
+/* ══ 등급 그리드 (오디션,보컬,댄스 / 연습량,트렌드,비주얼) ══ */
+function renderGrades() {
+  const ORDER = ['오디션','보컬','댄스','연습량','트렌드','비주얼'];
+  document.getElementById('gradeGrid').innerHTML = ORDER.map(k => {
+    const { g, c } = toGrade(DATA.scores[k] || 1);
+    return `<div class="grade-cell ${c}">
+      <div class="grade-cell-label">${k}</div>
+      <div class="grade-cell-badge">${g}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ══ 스텝 (STEP.1~STEP.5 고정 워딩) ══ */
+function renderSteps() {
+  const steps = [
+    { num:'STEP.1', name:'기초 준비' },
+    { num:'STEP.2', name:'집중 훈련' },
+    { num:'STEP.3', name:'오디션 진입' },
+    { num:'STEP.4', name:'오디션 심화' },
+    { num:'STEP.5', name:'캐스팅 대상' }
+  ];
+  document.getElementById('stepBar').innerHTML = steps.map((s, i) => {
+    const cls = (i + 1 === DATA.currentStep) ? 'active' : '';
+    return `<div class="step-item ${cls}">
+      <div class="step-num">${s.num}</div>
+      <div class="step-name">${s.name}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ══ 레이더 (12시=오디션, 시계방향, 마우스오버 점수 표시) ══ */
+function renderRadar() {
+  new Chart(document.getElementById('radarOverview'), {
+    type: 'radar',
+    data: {
+      labels: Object.keys(DATA.scores),
+      datasets: [{
+        data: Object.values(DATA.scores),
+        borderColor: '#7c3aed', backgroundColor: 'rgba(124,58,237,0.1)',
+        borderWidth: 2.5, pointBackgroundColor: '#7c3aed', pointRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: { r: {
+        min: 0, max: 5, ticks: { stepSize: 1, display: false },
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        angleLines: { color: 'rgba(255,255,255,0.06)' },
+        pointLabels: { color: '#aaa', font: { size: 11, weight: '600' } }
+      }},
+      plugins: {
+  legend: { display: false },
+  tooltip: { enabled: false }
+},
+startAngle: -90
+    }
+  });
+}
+
+/* ══ 성장 그래프 (트레이닝탭 — 툴팁 OFF) ══ */
+let growthRendered = false;
+function renderGrowth() {
+  if (growthRendered) return;
+  growthRendered = true;
+  const base = DATA.growthBaseMonth, scores = DATA.growthScores;
+  const labels6 = Array.from({length:6}, (_,i) => getMonthLabel(base, i));
+  const realData = [...scores, ...Array(6 - scores.length).fill(null)];
+  const { yMin, yMax } = calcYRange(scores.length ? scores : [1]);
+
+  new Chart(document.getElementById('growthChart'), {
+    type: 'line',
+    data: {
+      labels: labels6,
+      datasets: [{
+        data: realData,
+        borderColor: '#7c3aed',
+        backgroundColor: ctx => {
+          const g = ctx.chart.ctx.createLinearGradient(0,0,0,190);
+          g.addColorStop(0,'rgba(124,58,237,0.22)'); g.addColorStop(1,'rgba(124,58,237,0)');
+          return g;
+        },
+        borderWidth: 3,
+        pointBackgroundColor: '#1e1e32', pointBorderColor: '#7c3aed', pointBorderWidth: 3,
+        pointRadius: ctx => realData[ctx.dataIndex] !== null ? 7 : 0,
+        fill: true, tension: 0.35, spanGaps: false
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { min: yMin, max: yMax, ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.05)' }, border: { display: false } },
+        x: { ticks: { color: '#777', font: { size: 11, weight: '600' } }, grid: { color: 'rgba(255,255,255,0.03)' }, border: { display: false } }
+      },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } }
+    }
+  });
+}
+
+/* ══ 예상 성장 포인트 (로드맵탭 — 툴팁 OFF, +0.5 점선) ══ */
+let gpRendered = false;
+function renderGrowthPredict() {
+  if (gpRendered) return;
+  gpRendered = true;
+  const base = DATA.growthBaseMonth, scores = DATA.growthScores;
+  const cur = scores[scores.length - 1];
+  const predict = +(cur + 0.5).toFixed(1);
+  const hasHistory = scores.length >= 2;
+
+  let labels6, realData, predictData;
+  if (hasHistory) {
+    const pad = Math.max(0, 5 - scores.length);
+    labels6 = [
+      ...Array(pad).fill(null).map((_,i) => getMonthLabel(base, -(scores.length-1)+i)),
+      ...scores.map((_,i) => getMonthLabel(base, -(scores.length-1)+i+pad)),
+      getMonthLabel(base, 1)
+    ].slice(0,6);
+    realData    = [...Array(pad).fill(null), ...scores, null];
+    predictData = [...Array(pad + scores.length - 1).fill(null), cur, predict];
+  } else {
+    labels6     = Array.from({length:6}, (_,i) => getMonthLabel(base, i));
+    realData    = [cur, ...Array(5).fill(null)];
+    predictData = [cur, predict, ...Array(4).fill(null)];
+  }
+  const { yMin, yMax } = calcYRange([...scores, predict]);
+
+  new Chart(document.getElementById('growthPredict'), {
+    type: 'line',
+    data: {
+      labels: labels6,
+      datasets: [
+        {
+          label: '현재까지', data: realData,
+          borderColor: '#7c3aed',
+          backgroundColor: c => { const g=c.chart.ctx.createLinearGradient(0,0,0,190); g.addColorStop(0,'rgba(124,58,237,0.22)'); g.addColorStop(1,'rgba(124,58,237,0)'); return g; },
+          borderWidth: 3,
+          pointBackgroundColor: '#1e1e32', pointBorderColor: '#7c3aed', pointBorderWidth: 3,
+          pointRadius: ctx => realData[ctx.dataIndex] !== null ? 7 : 0,
+          fill: true, tension: 0.35, spanGaps: false
+        },
+        {
+          label: '예상', data: predictData,
+          borderColor: '#22d3ee', borderWidth: 2.5, borderDash: [7,5],
+          pointBackgroundColor: ctx => predictData[ctx.dataIndex] !== null ? '#22d3ee' : 'transparent',
+          pointBorderColor: '#22d3ee', pointBorderWidth: 3,
+          pointRadius: ctx => predictData[ctx.dataIndex] !== null ? 7 : 0,
+          fill: false, tension: 0.35, spanGaps: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { min: yMin, max: yMax, ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.05)' }, border: { display: false } },
+        x: { ticks: { color: '#777', font: { size: 11, weight: '600' } }, grid: { color: 'rgba(255,255,255,0.03)' }, border: { display: false } }
+      },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } }
+    }
+  });
+}
+
+/* ══ 탭 전환 ══ */
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab-btn')[id==='tab1'?0:id==='tab2'?1:2].classList.add('active');
+  if (id === 'tab2') renderGrowth();
+  if (id === 'tab3') renderGrowthPredict();
+}
+
+/* ══ 초기화 ══ */
+renderHeader();
+renderChips();
+renderChecklist();
+renderBA();
+renderComments();
+renderGrades();
+renderSteps();
+renderRadar();
+</script>
+</body>
+</html>
